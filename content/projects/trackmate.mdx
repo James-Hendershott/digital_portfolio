@@ -1,0 +1,38 @@
+---
+slug: trackmate
+title: TrackMate (Capstone MERN)
+date: 2024-12-01
+summary: A MERN app for asset tracking; built local Docker dev, simulated VPN data, and planned seeding strategy.
+tags: ["MERN", "Docker", "React", "Node"]
+repo: https://github.com/your-github/trackmate
+---
+
+## Overview
+Capstone project: a MERN-based asset tracking dashboard with role-based views and audit trails.
+
+## Role & stack
+Team lead; designed API endpoints, component structure, and Docker dev environment.
+
+## Problem
+Live data was gated behind VPN. Needed a local development strategy and consistent seed data.
+
+## Solution
+- Docker Compose for Mongo/Node/React
+- Seed scripts and JSON fixtures
+- Clear .env management for dev vs prod
+
+```yaml
+# docker-compose excerpt
+services:
+  api:
+    build: ./api
+    environment:
+      - MONGO_URL=mongodb://db:27017/trackmate
+```
+
+## Results
+- Unblocked dev without VPN
+- Repeatable local environment
+
+## What I learned
+Architecture and tooling decisions early on pay dividends for teams.

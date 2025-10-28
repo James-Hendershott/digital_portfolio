@@ -1,0 +1,34 @@
+---
+slug: vendor-manager
+title: Hendershott Vendor Manager
+date: 2024-04-15
+summary: A lightweight HTML/JS tool to generate Outlook deeplinks and templated vendor messages, reducing repetitive emails.
+tags: ["HTML", "JavaScript", "Automation"]
+repo: https://github.com/your-github/vendor-manager
+---
+
+## Overview
+A small browser-based tool to cut down repetitive vendor communication. It generates Outlook deeplinks with prefilled recipients/subject/body and includes quick message generators for common scenarios.
+
+## Role & stack
+I designed and built the tool solo using vanilla HTML/CSS/JS. Deployed as a static page for easy access.
+
+## Problem
+Vendor emails were repetitive and error-prone, requiring copy/paste across contacts and message templates.
+
+## Solution
+- Centralized common templates
+- Generated mailto deeplinks with merged contacts
+- Lightweight local storage for user preferences
+
+```js
+// Example: build a mailto deeplink
+const link = `mailto:${to}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
+```
+
+## Results
+- ~50% faster to draft routine messages
+- Fewer addressing mistakes
+
+## What I learned
+Simple tooling + good defaults can remove real friction for teams.

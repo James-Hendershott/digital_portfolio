@@ -1,0 +1,33 @@
+---
+slug: boomportal
+title: BoomPortal (Pi 5 + Sunshine/Moonlight)
+date: 2025-02-10
+summary: Turned a Raspberry Pi 5 into a game streaming portal with Sunshine/Moonlight; focused on latency and controller mapping.
+tags: ["Raspberry Pi", "Docker", "Networking"]
+repo: https://github.com/your-github/boomportal
+---
+
+## Overview
+A home‑lab project to stream games to thin clients using Sunshine on a Pi 5 and Moonlight clients.
+
+## Role & stack
+Configured Docker containers, Nginx reverse proxy via NPM, and controller remapping.
+
+## Problem
+Needed smooth streaming with low latency across the LAN with multiple device types.
+
+## Solution
+- Sunshine container on Pi 5
+- NPM (Nginx Proxy Manager) for TLS and routing
+- Gamepad mapping profiles
+
+```text
+Latency ~12–18ms over wired; ~25–35ms over Wi‑Fi 6 (observed).
+```
+
+## Results
+- Smooth 1080p60 streaming
+- One‑click access through reverse proxy
+
+## What I learned
+Profiling bottlenecks and mapping inputs are key for perceived performance.

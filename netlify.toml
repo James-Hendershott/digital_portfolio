@@ -1,0 +1,7 @@
+[build]
+  command = "npm run build"
+  publish = ".next"
+
+# Force prerender Contact for Netlify forms indexing (SSR pages may not be indexed automatically)
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
