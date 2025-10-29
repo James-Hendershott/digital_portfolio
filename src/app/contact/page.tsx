@@ -15,10 +15,10 @@ export default function ContactPage() {
         email me at
         {" "}
         <a
-          href="mailto:you@example.com"
+          href="mailto:james.hendershott@outlook.com"
           className="underline underline-offset-2 hover:opacity-80"
         >
-          you@example.com
+          james.hendershott@outlook.com
         </a>
         .
       </p>

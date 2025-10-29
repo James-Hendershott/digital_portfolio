@@ -7,15 +7,15 @@ export default function Home() {
     <Container className="py-12 sm:py-16">
       <section className="flex flex-col gap-6">
         <p className="text-sm uppercase tracking-wider text-foreground/60">
-          Hi, I’m Your Name
+          Hi, I’m James Hendershott
         </p>
         <h1 className="text-3xl font-semibold tracking-tight sm:text-5xl">
-          I build practical software and reliable home-lab ops.
+          I build practical software and reliable homelab ops.
         </h1>
         <p className="max-w-2xl text-foreground/70">
-          CS student and former Vendor Service Manager. I enjoy full‑stack web
-          work (TypeScript, React, Node) and homelab/DevOps (Docker, Nginx,
-          Unraid). Here are a few highlights and case studies.
+          Software engineering student and vendor manager based in Eagle Mountain, Utah.
+          I work across the MERN stack and .NET, and I run a growing Unraid homelab
+          (Docker, Nginx, Plex, *Arr). I also love 3D printing, modeling, and woodworking.
         </p>
         <div className="flex gap-3">
           <Link

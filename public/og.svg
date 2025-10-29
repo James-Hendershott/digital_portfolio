@@ -7,8 +7,8 @@
   </defs>
   <rect width="1200" height="630" fill="url(#g)"/>
   <g fill="#fff" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif">
-    <text x="80" y="300" font-size="72" font-weight="700">Your Name</text>
-    <text x="80" y="380" font-size="36" opacity="0.9">Portfolio — Projects & Case Studies</text>
-    <text x="80" y="440" font-size="24" opacity="0.85">nextjs • typescript • tailwind • mdx</text>
+  <text x="80" y="300" font-size="72" font-weight="700">James Hendershott</text>
+  <text x="80" y="380" font-size="36" opacity="0.9">Portfolio — Projects & Case Studies</text>
+  <text x="80" y="440" font-size="24" opacity="0.85">next.js • typescript • tailwind • mdx</text>
   </g>
 </svg>
