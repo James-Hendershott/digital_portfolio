@@ -2,16 +2,17 @@ import { notFound } from "next/navigation";
 import { Container } from "../../../components/Container";
 import { getProjectSlugs, getProjectContent } from "../../../lib/projects";
 
-type Params = { params: { slug: string } };
+type Params = { params: Promise<{ slug: string }> };
 
 export async function generateStaticParams() {
   return getProjectSlugs().map((slug) => ({ slug }));
 }
 
 export async function generateMetadata({ params }: Params) {
+  const { slug } = await params;
   const slugs = getProjectSlugs();
-  if (!slugs.includes(params.slug)) return {};
-  const { meta } = await getProjectContent(params.slug);
+  if (!slugs.includes(slug)) return {};
+  const { meta } = await getProjectContent(slug);
   return {
     title: meta.title,
     description: meta.summary,
@@ -20,9 +21,10 @@ export async function generateMetadata({ params }: Params) {
 }
 
 export default async function ProjectPage({ params }: Params) {
+  const { slug } = await params;
   const slugs = getProjectSlugs();
-  if (!slugs.includes(params.slug)) return notFound();
-  const { meta, mdx } = await getProjectContent(params.slug);
+  if (!slugs.includes(slug)) return notFound();
+  const { meta, mdx } = await getProjectContent(slug);
   return (
     <Container className="prose prose-zinc max-w-3xl py-12 dark:prose-invert">
       <p className="mb-2 text-sm text-foreground/60">Case study</p>
@@ -47,6 +49,14 @@ export default async function ProjectPage({ params }: Params) {
             className="rounded-md border border-foreground/20 px-4 py-2 hover:bg-black/5 dark:hover:bg-white/10"
           >
             View Code
+          </a>
+        ) : null}
+        {meta.access ? (
+          <a
+            href={meta.access}
+            className="rounded-md border border-foreground/20 px-4 py-2 hover:bg-black/5 dark:hover:bg-white/10"
+          >
+            Request Access
           </a>
         ) : null}
         {meta.live ? (
