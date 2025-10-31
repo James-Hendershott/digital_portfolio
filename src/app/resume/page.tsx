@@ -73,6 +73,18 @@ export default function ResumePage() {
           <li>Associate Degree — Field/Institution (update with details)</li>
         </ul>
       </section>
+
+      <section className="mt-12">
+        <h2 className="mb-3 text-xl font-semibold">Resume (PDF preview)</h2>
+        <div className="rounded-md border border-foreground/20">
+          <object data="/resume.pdf" type="application/pdf" width="100%" height="800">
+            <p className="p-4 text-sm text-foreground/70">
+              Your browser cannot display the PDF inline.
+              <a className="ml-1 underline" href="/resume.pdf" download>Download the resume</a>.
+            </p>
+          </object>
+        </div>
+      </section>
     </Container>
   );
 }

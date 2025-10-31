@@ -22,6 +22,15 @@ export function getProjectSlugs(): string[] {
   return fs
     .readdirSync(CONTENT_DIR)
     .filter((f) => f.endsWith(".mdx"))
+    .filter((f) => {
+      try {
+        const raw = fs.readFileSync(path.join(CONTENT_DIR, f), "utf8");
+        const { data } = matter(raw);
+        return data.draft !== true;
+      } catch {
+        return true;
+      }
+    })
     .map((f) => f.replace(/\.mdx$/, ""));
 }
 
