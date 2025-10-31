@@ -40,13 +40,13 @@ GPA 3.05
 
 Projects & Software Development Experience
 
-TrackMate (Capstone MERN) — Team Lead (2024)
+TrackMate (Capstone MERN) — Team Lead (2025)
 • Led a team to build TrackMate, a MERN‑based asset‑tracking dashboard with role‑based views and audit trails.
 • Designed API endpoints and React component architecture; built a local development environment using Docker Compose to run MongoDB, Node, and React containers.
 • Developed seed scripts and JSON fixtures to simulate VPN‑gated data for offline development; managed .env configuration for dev vs production.
 • Outcome: unblocked development without VPN and created a repeatable, self‑contained environment; emphasised that early architecture and tooling decisions pay dividends for teams.
 
-VSM Tracker (Fleet Management MERN) — Lead Developer (2024)
+VSM Tracker (Fleet Management MERN) — Full Stack (Personal Project) (2024)
 • Replaced a cumbersome Smartsheet workflow with a full‑stack MERN application that tracks out‑of‑service vehicles for a nationwide fleet.
 • Implemented a card‑based dashboard (Kanban) with visual status indicators, overdue badges, and quick‑action buttons to update unit statuses.
 • Built a Node.js/Express API with MongoDB and JWT‑based authentication supporting admin and user roles; added routes for units, vendors, locations, notes, file uploads, and quick actions.

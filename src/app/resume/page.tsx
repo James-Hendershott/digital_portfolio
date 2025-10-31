@@ -10,15 +10,16 @@ export default function ResumePage() {
     <Container className="py-12">
       <h1 className="mb-4 text-3xl font-semibold">Resume</h1>
       <p className="text-foreground/70">
-        Download a PDF copy below, and see a concise summary of experience and education on this page.
+        See a concise, always-up-to-date summary below. You can also view the full Markdown version of my resume.
       </p>
       <div className="mt-6 flex gap-3">
         <a
-          href="/resume.pdf"
+          href="/resume.md"
+          target="_blank"
+          rel="noreferrer"
           className="rounded-md bg-foreground px-4 py-2 text-background hover:opacity-90"
-          download
         >
-          Download PDF
+          View full resume (Markdown)
         </a>
         <Link
           href="/about"
@@ -31,17 +32,17 @@ export default function ResumePage() {
       <section className="prose prose-zinc mt-10 dark:prose-invert max-w-none">
         <h2>Professional Summary</h2>
         <p>
-          Detail-oriented Software Engineer currently completing a B.S. in Computer Science at Weber State University (expected Aug 2026) with a minor in User Experience Design. Experienced in full-stack web development, building RESTful APIs and creating intuitive user interfaces. Proficient in multiple programming languages (Python, Java, JavaScript, C++, C#) and familiar with Linux systems, including Arch Linux. Passionate about developing scalable applications and leveraging technology to solve real-world problems. Adept at collaborating in teams, managing projects and applying analytical thinking to software design. Former U.S. Navy air traffic controller bringing discipline and leadership to every project.
+          Hands-on software engineering student transitioning from vendor management into full-time engineering. Builds pragmatic web applications with TypeScript, React/Next.js (App Router), and Node/Express, and ships to containerised environments. Comfortable on the command line with Linux (including Arch Linux) and enjoys running a homelab. Experienced leading teams, designing APIs, and maintaining automation. Looking to leverage technical and leadership skills to contribute to innovative software engineering roles.
         </p>
 
         <h2>Technical Skills</h2>
         <div className="grid gap-3 not-prose text-sm">
-          <div><strong>Languages & Frameworks:</strong> Python, Java, JavaScript/TypeScript, C++, C#, SQL; Flask, Django, React, Node.js/Express, Spring Boot</div>
-          <div><strong>Web & UI:</strong> HTML5, CSS3, Bootstrap, responsive design, user-centered design principles</div>
-          <div><strong>DevOps & Tools:</strong> Git/GitHub, GitLab, Docker, Jenkins, GitHub Actions, Kubernetes; NEOVIM, VS Code</div>
-          <div><strong>Databases:</strong> MySQL, PostgreSQL, SQLite, basic MongoDB; schema design and query optimization</div>
-          <div><strong>Operating Systems:</strong> Linux (Ubuntu, Arch Linux), Windows, macOS; shell scripting with Bash</div>
-          <div><strong>Other Skills:</strong> Data structures & algorithms, Agile methodology, object-oriented design, scripting for automation, Jupyter notebooks</div>
+          <div><strong>Languages:</strong> TypeScript, JavaScript, Python, Java, C#, C++, SQL</div>
+          <div><strong>Frontend:</strong> React, Next.js (App Router), Tailwind CSS, MDX, Bootstrap, responsive design</div>
+          <div><strong>Backend:</strong> Node.js, Express, MongoDB (Mongoose), PostgreSQL/MySQL, .NET basics, Django/Flask</div>
+          <div><strong>DevOps:</strong> Docker & Docker Compose, Nginx Proxy Manager, Netlify, Cloudflare Analytics, GitHub Actions, Jenkins, Kubernetes (basics)</div>
+          <div><strong>Tools:</strong> Git & GitHub, GitLab, ESLint/Prettier, Postman/Insomnia, Figma (basics), Linux/Arch Linux, Bash scripting, NEOVIM, VS Code</div>
+          <div><strong>Concepts:</strong> RESTful API design, JWT authentication, role-based access, CI/CD pipelines, unit & integration testing, Agile methodology</div>
         </div>
 
         <h2>Education</h2>
@@ -69,46 +70,63 @@ export default function ResumePage() {
           </div>
         </div>
 
-        <h2>Software Development Experience</h2>
+        <h2>Projects & Software Development Experience</h2>
         <div className="space-y-4">
           <div>
-            <h3 className="text-lg font-semibold">Capstone Project – TrackMateApp</h3>
-            <p className="text-sm text-foreground/70 mb-2">2024</p>
+            <h3 className="text-lg font-semibold">TrackMate (Capstone MERN) — Team Lead</h3>
+            <p className="text-sm text-foreground/70 mb-2">2025</p>
             <ul className="text-sm space-y-1">
-              <li>Created TrackMateApp, a comprehensive task and time-tracking application built for the CS 4760 capstone course</li>
-              <li>Developed the backend using Django and REST Framework to manage user accounts, tasks, categories and time logs; implemented API endpoints for CRUD operations</li>
-              <li>Designed a responsive frontend interface using React and Bootstrap, allowing users to visualize progress and generate reports</li>
-              <li>Configured the development environment on Arch Linux, wrote shell scripts for setup and deployment, and used NEOVIM alongside VS Code for development</li>
-              <li>Maintained version control with Git, managed issues through GitHub and documented design decisions in Obsidian notes</li>
-              <li>Deployed the app locally and to cloud platforms for testing and feedback</li>
+              <li>Led a team to build TrackMate, a MERN-based asset-tracking dashboard with role-based views and audit trails.</li>
+              <li>Designed API endpoints and React component architecture; built a local development environment using Docker Compose to run MongoDB, Node, and React containers.</li>
+              <li>Developed seed scripts and JSON fixtures to simulate VPN-gated data for offline development; managed .env configuration for dev vs production.</li>
+              <li>Outcome: unblocked development without VPN and created a repeatable, self-contained environment; emphasized that early architecture and tooling decisions pay dividends for teams.</li>
             </ul>
           </div>
           <div>
-            <h3 className="text-lg font-semibold">Fleet Management REST API / VSM Tracker</h3>
-            <p className="text-sm text-foreground/70 mb-2">Amerit Fleet Solutions • 2024</p>
+            <h3 className="text-lg font-semibold">VSM Tracker (Fleet Management MERN) — Full Stack</h3>
+            <p className="text-sm text-foreground/70 mb-2">Personal project • 2024</p>
             <ul className="text-sm space-y-1">
-              <li>Designed and implemented a RESTful API in Python (Flask) for the VSM Tracker, an enhanced version of a fleet management system that centralizes maintenance records for vehicles</li>
-              <li>Developed additional features such as work-order tracking, vendor performance analytics and automated notification scripts</li>
-              <li>Used MySQL for persistent storage and containerized the application with Docker; migrated parts of the system to Django for improved scalability</li>
-              <li>Integrated monitoring and logging; built a CI/CD pipeline with GitHub Actions for automated testing and deployment</li>
+              <li>Replaced a cumbersome Smartsheet workflow with a full-stack MERN application that tracks out-of-service vehicles for a nationwide fleet.</li>
+              <li>Implemented a card-based dashboard (Kanban) with visual status indicators, overdue badges, and quick-action buttons to update unit statuses.</li>
+              <li>Built a Node.js/Express API with MongoDB and JWT-based authentication supporting admin and user roles; added routes for units, vendors, locations, notes, file uploads, and quick actions.</li>
+              <li>Integrated email notifications; added file attachment capability and CSV/Excel import scripts to backfill data from Smartsheet exports.</li>
+              <li>Deployed local and cloud environments with Docker Compose and documented Unraid MongoDB setup.</li>
             </ul>
           </div>
           <div>
-            <h3 className="text-lg font-semibold">E-Commerce Microservices – Personal Project</h3>
+            <h3 className="text-lg font-semibold">Hendershott Vendor Manager — Single-Page Utility</h3>
             <p className="text-sm text-foreground/70 mb-2">2023</p>
             <ul className="text-sm space-y-1">
-              <li>Developed a Java Spring Boot microservice to handle product inventory and order processing for a mock e-commerce platform</li>
-              <li>Exposed REST APIs, integrated with a headless CMS and used MySQL for persistent storage</li>
-              <li>Configured NGINX as a reverse proxy and built a Jenkins pipeline to automate testing and deployment to Kubernetes; collaborated via GitLab</li>
+              <li>Created a lightweight HTML/JavaScript tool that generates pre-filled mailto deep links and message templates for routine vendor emails.</li>
+              <li>Reduced drafting time by ~50% and improved accuracy and speed of repetitive communications across teams.</li>
+              <li>Persisted user preferences via local storage and implemented a clean, responsive UI.</li>
             </ul>
           </div>
           <div>
-            <h3 className="text-lg font-semibold">Personal Portfolio Website</h3>
-            <p className="text-sm text-foreground/70 mb-2">Ongoing</p>
+            <h3 className="text-lg font-semibold">BoomPortal (Pi 5 + Sunshine/Moonlight) — Homelab Project</h3>
+            <p className="text-sm text-foreground/70 mb-2">2023</p>
             <ul className="text-sm space-y-1">
-              <li>Built a responsive portfolio website using Next.js and Tailwind CSS to showcase projects, resume and blog posts</li>
-              <li>Configured continuous deployment with Vercel, wrote custom hooks in React and integrated a CMS for easy content updates</li>
-              <li>Optimized SEO and performance, achieving high Lighthouse scores</li>
+              <li>Configured a Raspberry Pi 5 as a low-latency game-streaming server using Sunshine and Moonlight with controller mapping and Nginx Proxy Manager.</li>
+              <li>Deployed services in Docker containers, set up reverse proxy with TLS certificates, and measured network performance (~12–18ms wired latency, ~25–35ms over Wi‑Fi 6).</li>
+              <li>Documented configuration steps and automated updates for personal homelab operations.</li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-lg font-semibold">Portfolio & Community Hub — Next.js + MDX</h3>
+            <p className="text-sm text-foreground/70 mb-2">2023–Present</p>
+            <ul className="text-sm space-y-1">
+              <li>Developed a content‑driven portfolio and community hub using Next.js, MDX, React 19, TypeScript, Tailwind CSS v4, and App Router.</li>
+              <li>Implemented case studies, blog posts, GitHub showcases, sitemap/robots, and basic analytics integration.</li>
+              <li>Deployed via Netlify and Nginx with TLS; integrated automation via GitHub Actions.</li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-lg font-semibold">E‑Commerce Microservices (Java) — Personal Project</h3>
+            <p className="text-sm text-foreground/70 mb-2">2023</p>
+            <ul className="text-sm space-y-1">
+              <li>Built a Spring Boot microservice to manage product inventory and order processing for a mock e‑commerce platform.</li>
+              <li>Exposed REST APIs and used MySQL for persistent storage; configured NGINX as a reverse proxy.</li>
+              <li>Built a Jenkins pipeline to automate testing and deployment to Kubernetes; collaborated via GitLab.</li>
             </ul>
           </div>
         </div>
@@ -119,19 +137,19 @@ export default function ResumePage() {
             <h3 className="text-lg font-semibold">Vendor Service Manager</h3>
             <p className="text-sm text-foreground/70 mb-2">Amerit Fleet Solutions • Apr 2022 – Present</p>
             <ul className="text-sm space-y-1">
-              <li>Oversee fleet management operations across multiple locations, leading status meetings and analyzing trend data for proactive issue resolution and cost-reduction strategies</li>
-              <li>Build strong relationships with site leadership and vendors, ensuring high availability of services and rapid response to operational issues</li>
-              <li>Leverage programming skills to develop internal tools for maintenance tracking and data dashboards, improving decision-making efficiency</li>
-              <li>Use Git and collaborative tools to manage codebases and train colleagues on version-control best practices</li>
+              <li>Oversee fleet management operations across multiple locations, leading status meetings and analysing trend data for proactive issue resolution and cost‑reduction strategies.</li>
+              <li>Build strong relationships with site leadership and vendors, ensuring high availability of services and rapid response to operational issues.</li>
+              <li>Leverage programming skills to develop internal tools (including VSM Tracker) for maintenance tracking and data dashboards, improving decision‑making efficiency.</li>
+              <li>Use Git and collaborative tools to manage codebases and train colleagues on version‑control best practices.</li>
             </ul>
           </div>
           <div>
             <h3 className="text-lg font-semibold">Service Manager</h3>
             <p className="text-sm text-foreground/70 mb-2">Aaron&apos;s Auto Pro • Sept 2020 – Apr 2022</p>
             <ul className="text-sm space-y-1">
-              <li>Managed daily operations for an automotive repair facility, ensuring customer satisfaction and overseeing scheduling and training</li>
-              <li>Analyzed repair data to identify patterns and implemented process improvements that reduced service turnaround time by 15%</li>
-              <li>Introduced digital tools for job tracking and reporting, improving workflow transparency</li>
+              <li>Managed daily operations for an automotive repair facility, ensuring customer satisfaction and overseeing scheduling and training.</li>
+              <li>Analysed repair data to identify patterns and implemented process improvements that reduced service turnaround time by 15%.</li>
+              <li>Introduced digital tools for job tracking and reporting, improving workflow transparency.</li>
             </ul>
           </div>
           <div>
@@ -157,17 +175,7 @@ export default function ResumePage() {
         </ul>
       </section>
 
-      <section className="mt-12">
-        <h2 className="mb-3 text-xl font-semibold">Resume (PDF preview)</h2>
-        <div className="rounded-md border border-foreground/20">
-          <object data="/resume.pdf" type="application/pdf" width="100%" height="800">
-            <p className="p-4 text-sm text-foreground/70">
-              Your browser cannot display the PDF inline.
-              <a className="ml-1 underline" href="/resume.pdf" download>Download the resume</a>.
-            </p>
-          </object>
-        </div>
-      </section>
+      {null}
     </Container>
   );
 }

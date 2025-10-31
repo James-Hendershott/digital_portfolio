@@ -43,3 +43,6 @@ next-env.d.ts
 # local learning log (do not commit)
 Learning.md
 notes/Learning.md
+
+# personal notes (do not commit)
+/notes/
