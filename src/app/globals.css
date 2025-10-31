@@ -1,26 +1,75 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Lofi aesthetic: soft cream for light mode */
+  --background: #faf9f6;
+  --foreground: #2d2a3e;
+  --accent-purple: #8b7ab8;
+  --accent-gold: #d4af37;
+  --accent-dark: #1a1625;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-accent-purple: var(--accent-purple);
+  --color-accent-gold: var(--accent-gold);
+  --color-accent-dark: var(--accent-dark);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    /* Lofi dark: deep purple-black with warm accents */
+    --background: #1a1625;
+    --foreground: #e8e4f3;
+    --accent-purple: #a78bca;
+    --accent-gold: #e6c86e;
+    --accent-dark: #0f0d15;
   }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Subtle Japanese-inspired accent line */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent-purple) 0%, var(--accent-gold) 50%, var(--accent-purple) 100%);
+  opacity: 0.6;
+  z-index: 9999;
+}
+
+/* Lofi link styling with gold accent */
+a {
+  color: var(--accent-purple);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--accent-gold);
+}
+
+/* Professional button styling with lofi aesthetic */
+button,
+[role="button"],
+.button {
+  transition: all 0.2s ease;
+}
+
+button:hover,
+[role="button"]:hover,
+.button:hover {
+  filter: brightness(1.1);
 }
