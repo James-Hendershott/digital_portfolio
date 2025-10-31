@@ -127,7 +127,7 @@ export default function ResumePage() {
           </div>
           <div>
             <h3 className="text-lg font-semibold">Service Manager</h3>
-            <p className="text-sm text-foreground/70 mb-2">Aaron's Auto Pro • Sept 2020 – Apr 2022</p>
+            <p className="text-sm text-foreground/70 mb-2">Aaron&apos;s Auto Pro • Sept 2020 – Apr 2022</p>
             <ul className="text-sm space-y-1">
               <li>Managed daily operations for an automotive repair facility, ensuring customer satisfaction and overseeing scheduling and training</li>
               <li>Analyzed repair data to identify patterns and implemented process improvements that reduced service turnaround time by 15%</li>
