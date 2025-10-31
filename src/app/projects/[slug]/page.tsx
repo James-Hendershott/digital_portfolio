@@ -49,6 +49,14 @@ export default async function ProjectPage({ params }: Params) {
             View Code
           </a>
         ) : null}
+        {meta.access ? (
+          <a
+            href={meta.access}
+            className="rounded-md border border-foreground/20 px-4 py-2 hover:bg-black/5 dark:hover:bg-white/10"
+          >
+            Request Access
+          </a>
+        ) : null}
         {meta.live ? (
           <a
             href={meta.live}

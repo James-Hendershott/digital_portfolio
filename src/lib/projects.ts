@@ -14,6 +14,7 @@ export type ProjectMeta = {
   tags?: string[];
   repo?: string;
   live?: string;
+  access?: string;
 };
 
 export function getProjectSlugs(): string[] {
@@ -39,6 +40,7 @@ export function getAllProjectsMeta(): ProjectMeta[] {
         tags: data.tags ?? [],
         repo: data.repo ?? undefined,
         live: data.live ?? undefined,
+        access: data.access ?? undefined,
       };
       return meta;
     })
@@ -50,7 +52,7 @@ export async function getProjectContent(slug: string) {
   const fullPath = path.join(CONTENT_DIR, `${slug}.mdx`);
   const source = fs.readFileSync(fullPath, "utf8");
   const { content, data } = matter(source);
-  const { content: mdx } = await compileMDX<{ [key: string]: any }>({
+  const { content: mdx } = await compileMDX<Record<string, unknown>>({
     source: content,
     options: {
       parseFrontmatter: false,
@@ -67,6 +69,7 @@ export async function getProjectContent(slug: string) {
     tags: data.tags ?? [],
     repo: data.repo ?? undefined,
     live: data.live ?? undefined,
+    access: data.access ?? undefined,
   };
   return { meta, mdx };
 }
