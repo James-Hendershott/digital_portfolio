@@ -14,7 +14,7 @@ export type ProjectMeta = {
   tags?: string[];
   repo?: string;
   live?: string;
-  access?: string;
+  access?: string; // e.g., mailto: link for private repo access requests
 };
 
 export function getProjectSlugs(): string[] {

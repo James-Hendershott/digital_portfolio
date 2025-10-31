@@ -10,11 +10,15 @@ export default function ResumePage() {
     <Container className="py-12">
       <h1 className="mb-4 text-3xl font-semibold">Resume</h1>
       <p className="text-foreground/70">
+<<<<<<< HEAD
         Download a PDF copy below, and see a concise summary of experience and education on this page.
+=======
+        Download a current PDF copy of my resume, generated on demand.
+>>>>>>> dd4d21f2471e01feeac03175c4d10ec56840fff5
       </p>
       <div className="mt-6 flex gap-3">
         <a
-          href="/resume.pdf"
+          href="/api/resume"
           className="rounded-md bg-foreground px-4 py-2 text-background hover:opacity-90"
           download
         >
