@@ -87,5 +87,5 @@ GPA 3.05
 ## Leadership & Activities
 
 - Member, National Society of Leadership and Success  
-- U.S. Navy veteran — discipline, composure, and precision  
+- Served in U.S. Navy (2003-2007) — discipline, composure, and precision  
 - Homelab enthusiast maintaining an active portfolio of projects and technical notes
