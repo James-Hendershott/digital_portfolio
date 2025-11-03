@@ -11,15 +11,14 @@ export default function AboutPage() {
     <>
       {/* Hero Section */}
       <section className="relative py-20 overflow-hidden">
-        {/* Large background profile image - positioned dynamically */}
-        <div className="absolute left-0 top-0 bottom-0 w-full md:w-1/2 hidden md:flex items-start justify-start profile-vignette pointer-events-none">
-          <div className="relative w-full h-full max-w-lg">
+        {/* Large background profile image - 25% larger */}
+        <div className="absolute left-0 top-0 bottom-0 w-full md:w-[62.5%] hidden md:flex items-start justify-start profile-vignette pointer-events-none">
+          <div className="relative w-full h-full">
             <Image 
               src="/images/profile.png" 
               alt="James Hendershott with son" 
               fill
-              className="object-contain object-left profile-grayscale"
-              style={{ objectPosition: 'left top' }}
+              className="object-contain object-left-top profile-grayscale"
             />
           </div>
         </div>
