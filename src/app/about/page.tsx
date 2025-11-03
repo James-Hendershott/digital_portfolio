@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Container } from "../../components/Container";
 
 export const metadata = {
@@ -117,23 +118,23 @@ export default function AboutPage() {
               What I&apos;m Building (November 2025)
             </h2>
             <div className="space-y-4">
-              <div className="p-5 rounded-xl border-l-4 border-purple-500 bg-black/5 dark:bg-white/5 hover:bg-black/10 dark:hover:bg-white/10 transition-colors">
-                <h3 className="font-semibold text-lg mb-2">Where&apos;s My App</h3>
+              <Link href="/projects/wheres-my-app" className="block p-5 rounded-xl border-l-4 border-purple-500 bg-black/5 dark:bg-white/5 hover:bg-black/10 dark:hover:bg-white/10 hover:border-purple-600 transition-all group">
+                <h3 className="font-semibold text-lg mb-2 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors">Where&apos;s My App →</h3>
                 <p className="text-foreground/70 text-sm">Full-stack home inventory tracker with QR codes, rack maps, and PWA support</p>
-              </div>
-              <div className="p-5 rounded-xl border-l-4 border-yellow-500 bg-black/5 dark:bg-white/5 hover:bg-black/10 dark:hover:bg-white/10 transition-colors">
-                <h3 className="font-semibold text-lg mb-2">Retro Adventure Game</h3>
+              </Link>
+              <Link href="/projects/retro-adventure-game" className="block p-5 rounded-xl border-l-4 border-yellow-500 bg-black/5 dark:bg-white/5 hover:bg-black/10 dark:hover:bg-white/10 hover:border-yellow-600 transition-all group">
+                <h3 className="font-semibold text-lg mb-2 group-hover:text-yellow-600 dark:group-hover:text-yellow-400 transition-colors">Retro Adventure Game →</h3>
                 <p className="text-foreground/70 text-sm">Django-powered text adventure with database-backed state</p>
-              </div>
-              <div className="p-5 rounded-xl border-l-4 border-purple-500 bg-black/5 dark:bg-white/5 hover:bg-black/10 dark:hover:bg-white/10 transition-colors">
-                <h3 className="font-semibold text-lg mb-2">TrackMate</h3>
+              </Link>
+              <Link href="/projects/trackmate" className="block p-5 rounded-xl border-l-4 border-purple-500 bg-black/5 dark:bg-white/5 hover:bg-black/10 dark:hover:bg-white/10 hover:border-purple-600 transition-all group">
+                <h3 className="font-semibold text-lg mb-2 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors">TrackMate →</h3>
                 <p className="text-foreground/70 text-sm">Capstone MERN asset tracking system with Docker dev environment</p>
-              </div>
-              <div className="p-5 rounded-xl border-l-4 border-yellow-500 bg-black/5 dark:bg-white/5 hover:bg-black/10 dark:hover:bg-white/10 transition-colors">
-                <h3 className="font-semibold text-lg mb-2">VSM Tracker</h3>
+              </Link>
+              <Link href="/projects/vsm-tracker" className="block p-5 rounded-xl border-l-4 border-yellow-500 bg-black/5 dark:bg-white/5 hover:bg-black/10 dark:hover:bg-white/10 hover:border-yellow-600 transition-all group">
+                <h3 className="font-semibold text-lg mb-2 group-hover:text-yellow-600 dark:group-hover:text-yellow-400 transition-colors">VSM Tracker →</h3>
                 <p className="text-foreground/70 text-sm">Internal fleet management tool replacing Smartsheet workflows</p>
-              </div>
-              <div className="p-5 rounded-xl border-l-4 border-purple-500 bg-black/5 dark:bg-white/5 hover:bg-black/10 dark:hover:bg-white/10 transition-colors">
+              </Link>
+              <div className="p-5 rounded-xl border-l-4 border-purple-500 bg-black/5 dark:bg-white/5">
                 <h3 className="font-semibold text-lg mb-2">Off-Grid Home Assistant</h3>
                 <p className="text-foreground/70 text-sm">Building a self-contained smart home system for my new camper</p>
               </div>

@@ -53,11 +53,21 @@ export default function ProjectsPage() {
                 <Link
                   key={p.slug}
                   href={`/projects/${p.slug}`}
-                  className="group relative rounded-xl border-2 border-purple-500/20 hover:border-purple-500/40 p-6 bg-background transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-purple-500/10"
+                  className="group relative rounded-xl border-2 border-purple-500/20 hover:border-purple-500/40 p-6 bg-background transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-purple-500/10 overflow-hidden"
                 >
-                  {/* Project thumbnail placeholder */}
-                  <div className="aspect-video mb-4 rounded-lg bg-gradient-to-br from-purple-600/20 to-yellow-500/20 dark:from-purple-400/20 dark:to-yellow-400/20 flex items-center justify-center border border-foreground/10">
-                    <span className="text-foreground/40 text-xs font-medium">Project Screenshot</span>
+                  {/* Project thumbnail with hover effect */}
+                  <div className="relative aspect-video mb-4 rounded-lg overflow-hidden border border-foreground/10">
+                    {/* Placeholder background */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-purple-600/20 to-yellow-500/20 dark:from-purple-400/20 dark:to-yellow-400/20 flex items-center justify-center">
+                      <span className="text-foreground/40 text-xs font-medium">Project Screenshot</span>
+                    </div>
+                    
+                    {/* Screenshot overlay - fades in on hover */}
+                    <div className="absolute inset-0 opacity-0 group-hover:opacity-70 transition-opacity duration-500">
+                      <div className="w-full h-full bg-gradient-to-br from-purple-600/30 to-yellow-500/30 dark:from-purple-400/30 dark:to-yellow-400/30 backdrop-blur-sm flex items-center justify-center">
+                        <span className="text-white text-sm font-medium">View Project →</span>
+                      </div>
+                    </div>
                   </div>
                   
                   <h3 className="text-xl font-bold mb-2 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors">
@@ -111,11 +121,21 @@ export default function ProjectsPage() {
             {allProjects.map((p) => (
               <div
                 key={p.slug}
-                className="group relative rounded-xl border-2 border-foreground/10 hover:border-yellow-500/40 p-6 bg-background transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+                className="group relative rounded-xl border-2 border-foreground/10 hover:border-yellow-500/40 p-6 bg-background transition-all duration-300 hover:-translate-y-1 hover:shadow-lg overflow-hidden"
               >
-                {/* Project thumbnail placeholder */}
-                <div className="aspect-video mb-4 rounded-lg bg-gradient-to-br from-yellow-600/20 to-purple-500/20 dark:from-yellow-400/20 dark:to-purple-400/20 flex items-center justify-center border border-foreground/10">
-                  <span className="text-foreground/40 text-xs font-medium">Screenshot</span>
+                {/* Project thumbnail with hover effect */}
+                <div className="relative aspect-video mb-4 rounded-lg overflow-hidden border border-foreground/10">
+                  {/* Placeholder background */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-yellow-600/20 to-purple-500/20 dark:from-yellow-400/20 dark:to-purple-400/20 flex items-center justify-center">
+                    <span className="text-foreground/40 text-xs font-medium">Screenshot</span>
+                  </div>
+                  
+                  {/* Screenshot overlay - fades in on hover */}
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-70 transition-opacity duration-500">
+                    <div className="w-full h-full bg-gradient-to-br from-yellow-600/30 to-purple-500/30 dark:from-yellow-400/30 dark:to-purple-400/30 backdrop-blur-sm flex items-center justify-center">
+                      <span className="text-white text-sm font-medium">View Details →</span>
+                    </div>
+                  </div>
                 </div>
 
                 <h3 className="text-lg font-bold mb-2">
