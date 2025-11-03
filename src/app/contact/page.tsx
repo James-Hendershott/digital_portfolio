@@ -15,10 +15,10 @@ export default function ContactPage() {
         email me at
         {" "}
         <a
-          href="mailto:james.hendershott@outlook.com"
+          href="mailto:james_hendershott@outlook.com"
           className="underline underline-offset-2 hover:opacity-80"
         >
-          james.hendershott@outlook.com
+          james_hendershott@outlook.com
         </a>
         .
       </p>
@@ -27,10 +27,10 @@ export default function ContactPage() {
         Prefer email? Reach me directly at
         {" "}
         <a
-          href="mailto:james.hendershott@outlook.com"
+          href="mailto:james_hendershott@outlook.com"
           className="font-medium underline underline-offset-2"
         >
-          james.hendershott@outlook.com
+          james_hendershott@outlook.com
         </a>
         .
         <br />
