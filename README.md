@@ -1,9 +1,10 @@
 ## Digital Portfolio (Next.js 16 + TypeScript + Tailwind v4 + MDX)
 
-This is a personal portfolio built with Next.js App Router, TypeScript, Tailwind CSS v4, and MDX for project case studies. It includes a server‑generated resume PDF and a safe way to showcase proprietary projects without exposing private repos.
+This is a personal portfolio built with Next.js App Router, TypeScript, Tailwind CSS v4, and MDX for project case studies. It features a **lofi Japanese aesthetic** with purple and gold accents, floating animations, and a modern hero section.
 
 ### Features
 
+- **Lofi Japanese Design**: Purple/gold color scheme, floating geometric shapes, smooth animations
 - MDX case studies under `content/projects/*.mdx`
 - Pages: Home, Projects, Project detail, About, Contact (Netlify Forms), Resume, Now
 - GitHub showcase on Home (set `GITHUB_USERNAME`)
@@ -11,6 +12,17 @@ This is a personal portfolio built with Next.js App Router, TypeScript, Tailwind
 - Private project access: use `access` frontmatter to render a "Request Access" button
 - SEO: metadata, `sitemap.xml`, `robots.txt`
 - Optional Cloudflare Web Analytics (set `CLOUDFLARE_ANALYTICS_TOKEN`)
+
+### Design Philosophy
+
+The portfolio embraces a **lofi Japanese aesthetic**:
+- **Purple & Gold**: Represents creativity, nobility, and achievement
+- **Floating Animations**: Inspired by cherry blossoms drifting in the wind
+- **Geometric Shapes**: Japanese pattern-inspired decorative elements
+- **Dark/Light Mode**: Automatic theme switching based on system preferences
+- **Responsive**: Mobile-first design that scales beautifully to desktop
+
+See `DESIGN_LEARNING.md` for a comprehensive guide on the design system, animations, and implementation details.
 
 ### Getting started (local dev)
 
