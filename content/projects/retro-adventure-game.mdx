@@ -1,17 +1,16 @@
----
 slug: retro-adventure-game
 title: Retro Adventure Game
 date: 2025-11-01
-summary: An enhanced version of the original 1980 Style Adventure Game with improved gameplay mechanics, expanded story, and refined command parsing. Public repository actively maintained.
-tags: ["JavaScript", "Game Development", "Interactive Fiction"]
+summary: A Django‑powered web version of my 1980s‑style text adventure with database‑backed progress and session‑based gameplay.
+tags: ["Python", "Django", "PostgreSQL", "Interactive Fiction"]
 repo: https://github.com/James-Hendershott/retro_adventure_game.git
 ---
 
 ## Overview
-Retro Adventure Game is the evolved version of my earlier text adventure project. This iteration builds on the original 1980 Style Adventure Game with enhanced features, better code organization, and more engaging gameplay. It captures the nostalgia of classic text adventures while incorporating modern development practices.
+Retro Adventure Game is the evolved version of my earlier text adventure project, rebuilt as a Python/Django app with persistent game state. It captures the nostalgia of classic text adventures while adding web interactivity and a retro CRT‑style theme.
 
 ## Role & Stack
-Solo developer building with vanilla JavaScript, focusing on clean architecture and player experience.
+Solo developer using Python, Django, and PostgreSQL.
 
 ## Background
 This project originated from the 1980 Style Adventure Game (https://github.com/James-Hendershott/1980_Style_Adventure-Game.git) and represents a complete refactoring and expansion of the original concept.
@@ -26,25 +25,19 @@ The original adventure game was a good start but needed:
 
 ## Solution
 Rebuilt the game from the ground up with:
-- Modular JavaScript architecture
-- Enhanced parser supporting natural language commands
+- Django project structure (apps, models, views) + PostgreSQL persistence
+- Enhanced parser supporting more natural command patterns
 - Expanded world with multiple locations and puzzles
-- Robust state management system
-- Better error handling and player guidance
+- Session‑based progress tracking and save/load
+- Retro CRT visual style (templates/static files)
 
-```javascript
-// Example: Enhanced command parsing
-function parseCommand(input) {
-  const words = input.toLowerCase().trim().split(/\s+/);
-  const verb = words[0];
-  const noun = words.slice(1).join(" ");
-  
-  return {
-    verb: normalizeVerb(verb),
-    target: noun,
-    raw: input
-  };
-}
+```py
+# Example: Django view handling a command (simplified)
+def submit_command(request):
+    cmd = request.POST.get("command", "").strip()
+    game = get_game_for_session(request)
+    result = game.process(cmd)  # updates state, returns messages
+    return render(request, "game/play.html", {"game": game, "result": result})
 ```
 
 ## Gameplay Features
@@ -61,11 +54,10 @@ function parseCommand(input) {
 - Foundation for future adventure game projects
 
 ## What I Learned
-- Refactoring vs. rebuilding trade-offs
-- Importance of iterative development
-- Game design principles (pacing, feedback, challenge)
+- Moving from a CLI prototype to a web app with Django
+- Database‑backed state and session management
 - Parser design for natural language input
-- State management patterns for interactive applications
+- Game design principles (pacing, feedback, challenge)
 - Value of playtesting and user feedback
 
 ## Future Plans

@@ -58,11 +58,11 @@ GPA 3.05
 - Built a content-driven portfolio using Next.js 16, React 19, TypeScript, Tailwind v4, and MDX.
 - Features: MDX case studies, GitHub showcase, sitemap/robots, Netlify contact form, optional analytics; App Router and static generation.
 
-### Retro Adventure Game — JavaScript (2025)
-- Enhanced text adventure with modular architecture, improved parser, inventory and state systems; public GitHub repository.
+### Retro Adventure Game — Python/Django (2025)
+- Django‑powered web text adventure with database‑backed progress, improved parser, and retro CRT‑style theme; public GitHub repository.
 
-### Where’s My App? — Utility (2025)
-- Created a simple tracker to log app installations across devices (name, device, version, date, platform) for personal inventory.
+### Where’s My App? — Home Storage Tracker (2025)
+- Full‑stack inventory system for racks/containers/items; QR scanning and printing, SVG rack maps, item photos (S3), PWA offline support; Auth.js + Prisma + PostgreSQL.
 
 ### E-Commerce Microservices (Java) — Personal (2023)
 - Spring Boot microservice for inventory and orders; REST APIs; MySQL; NGINX reverse proxy; Jenkins CI pipeline; GitLab collaboration.

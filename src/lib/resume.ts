@@ -172,17 +172,17 @@ export const resumeData: ResumeData = {
     {
       name: "Retro Adventure Game",
       link: "https://github.com/James-Hendershott/retro_adventure_game",
-      tech: ["JavaScript", "Browser APIs"],
+      tech: ["Python", "Django", "PostgreSQL"],
       bullets: [
-        "Enhanced text adventure with improved parsing, inventory, and modular state management.",
+        "Django-powered web version with database-backed progress, parser improvements, and retro CRT theme.",
       ],
     },
     {
-      name: "Where's My App?",
+      name: "Where’s My App?",
       link: "https://github.com/James-Hendershott/wheresMyApp",
-      tech: ["JavaScript", "Web"],
+      tech: ["Next.js", "TypeScript", "PostgreSQL", "Prisma", "Auth.js", "Zod", "PWA", "QR"],
       bullets: [
-        "Utility to track app installations across devices, versions, and platforms.",
+        "Home storage tracker with QR scanning, interactive rack maps (SVG), item photos to S3, and full movement history.",
       ],
     },
   ],
