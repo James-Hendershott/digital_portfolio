@@ -95,24 +95,24 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Right: Profile Image with vignette and decorative frames */}
+            {/* Right: Profile Image larger than frame with vignette */}
             <div className="relative hidden lg:flex items-center justify-center">
-              {/* Profile image with vignette effect */}
-              <div className="relative z-0 w-72 h-72 rounded-2xl overflow-hidden profile-vignette">
+              {/* Profile image - larger and behind decorative frames with vignette */}
+              <div className="absolute z-0 w-96 h-96 profile-vignette">
                 <Image 
                   src="/images/profile.png" 
-                  alt="James Hendershott" 
-                  width={288}
-                  height={288}
+                  alt="James Hendershott with son" 
+                  width={384}
+                  height={384}
                   className="object-cover profile-grayscale w-full h-full"
                   priority
                 />
               </div>
               
               {/* Decorative frame elements - overlaid on top */}
-              <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                <div className="w-80 h-80 border-2 border-purple-400 dark:border-purple-500 rotate-6 opacity-40"></div>
-                <div className="absolute w-80 h-80 border-2 border-yellow-500 dark:border-yellow-400 -rotate-6 opacity-40"></div>
+              <div className="relative z-10 flex items-center justify-center pointer-events-none">
+                <div className="w-80 h-80 border-2 border-purple-400 dark:border-purple-500 rotate-6 opacity-50"></div>
+                <div className="absolute w-80 h-80 border-2 border-yellow-500 dark:border-yellow-400 -rotate-6 opacity-50"></div>
               </div>
             </div>
           </div>
