@@ -26,11 +26,11 @@ export default function AboutPage() {
                 {/* Photo larger than container, behind decorative corners */}
                 <div className="absolute -inset-4 profile-vignette">
                   <Image 
-                    src="/images/profile.png" 
-                    alt="James Hendershott with son" 
+                    src="/images/profile1.png" 
+                    alt="James Hendershott with family" 
                     width={224}
                     height={224}
-                    className="object-cover profile-grayscale w-full h-full"
+                    className="object-cover object-top profile-grayscale w-full h-full"
                   />
                 </div>
                 {/* Decorative corner elements - overlaid on top */}

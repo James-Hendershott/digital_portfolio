@@ -100,11 +100,11 @@ export default function Home() {
               {/* Profile image - larger and behind decorative frames with vignette */}
               <div className="absolute z-0 w-96 h-96 profile-vignette">
                 <Image 
-                  src="/images/profile.png" 
-                  alt="James Hendershott with son" 
+                  src="/images/profile1.png" 
+                  alt="James Hendershott with family" 
                   width={384}
                   height={384}
-                  className="object-cover profile-grayscale w-full h-full"
+                  className="object-cover object-top profile-grayscale w-full h-full"
                   priority
                 />
               </div>
