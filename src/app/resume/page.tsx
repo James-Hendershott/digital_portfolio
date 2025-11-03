@@ -9,30 +9,70 @@ export default function ResumePage() {
   return (
     <Container className="py-12">
       <h1 className="mb-4 text-3xl font-semibold">Resume</h1>
-      <p className="text-foreground/70">
-        See a concise, always-up-to-date summary below. You can also view the full Markdown version of my resume.
+      <p className="text-foreground/70 mb-6">
+        Download my resume in your preferred format or view a summary below.
       </p>
-      <div className="mt-6 flex gap-3">
-        <a
-          href="/resume.md"
-          target="_blank"
-          rel="noreferrer"
-          className="rounded-md bg-foreground px-4 py-2 text-background hover:opacity-90"
-        >
-          View full resume (Markdown)
-        </a>
-        <Link
-          href="/about"
-          className="rounded-md border border-foreground/20 px-4 py-2 hover:bg-black/5 dark:hover:bg-white/10"
-        >
-          View About page
-        </Link>
+      
+      <div className="mb-8 rounded-lg border border-foreground/10 bg-black/5 p-6 dark:bg-white/5">
+        <h2 className="mb-4 text-lg font-semibold">Download Resume</h2>
+        <div className="flex flex-wrap gap-3">
+          <a
+            href="/api/resume"
+            download="James_Hendershott_Resume.pdf"
+            className="inline-flex items-center gap-2 rounded-md bg-foreground px-4 py-2 text-background hover:opacity-90"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-4 w-4">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+              <polyline points="7 10 12 15 17 10"></polyline>
+              <line x1="12" y1="15" x2="12" y2="3"></line>
+            </svg>
+            Download PDF
+          </a>
+          <a
+            href="/resume.md"
+            download="James_Hendershott_Resume.md"
+            className="inline-flex items-center gap-2 rounded-md border border-foreground/20 px-4 py-2 hover:bg-black/5 dark:hover:bg-white/10"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-4 w-4">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+              <polyline points="7 10 12 15 17 10"></polyline>
+              <line x1="12" y1="15" x2="12" y2="3"></line>
+            </svg>
+            Download Markdown
+          </a>
+          <a
+            href="/resume.md"
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center gap-2 rounded-md border border-foreground/20 px-4 py-2 hover:bg-black/5 dark:hover:bg-white/10"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-4 w-4">
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+              <polyline points="15 3 21 3 21 9"></polyline>
+              <line x1="10" y1="14" x2="21" y2="3"></line>
+            </svg>
+            View Markdown
+          </a>
+          <Link
+            href="/about"
+            className="inline-flex items-center gap-2 rounded-md border border-foreground/20 px-4 py-2 hover:bg-black/5 dark:hover:bg-white/10"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-4 w-4">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+              <circle cx="12" cy="7" r="4"></circle>
+            </svg>
+            About Me
+          </Link>
+        </div>
+        <p className="mt-4 text-xs text-foreground/60">
+          Note: DOCX format can be generated from the Markdown file using tools like Pandoc or online converters.
+        </p>
       </div>
 
-      <section className="prose prose-zinc mt-10 dark:prose-invert max-w-none">
+      <section className="prose prose-zinc dark:prose-invert max-w-none">
         <h2>Professional Summary</h2>
         <p>
-          Hands-on software engineering student transitioning from vendor management into full-time engineering. Builds pragmatic web applications with TypeScript, React/Next.js (App Router), and Node/Express, and ships to containerised environments. Comfortable on the command line with Linux (including Arch Linux) and enjoys running a homelab. Experienced leading teams, designing APIs, and maintaining automation. Looking to leverage technical and leadership skills to contribute to innovative software engineering roles.
+          Hands-on software engineering student transitioning from vendor management into full-time engineering. Builds pragmatic web applications with TypeScript, React/Next.js (App Router), and Node/Express, and ships to containerized environments. Comfortable on the command line with Linux (including Arch Linux) and enjoys running a homelab. Experienced leading teams, designing APIs, and maintaining automation. Looking to leverage technical and leadership skills to contribute to innovative software engineering roles.
         </p>
 
         <h2>Technical Skills</h2>
@@ -170,7 +210,7 @@ export default function ResumePage() {
         <h2>Leadership & Activities</h2>
         <ul className="text-sm space-y-1">
           <li>Member, National Society of Leadership and Success</li>
-          <li>U.S. Navy veteran – cultivated discipline, attention to detail and the ability to perform under pressure</li>
+          <li>Served in U.S. Navy (2003-2007) – cultivated discipline, attention to detail and the ability to perform under pressure</li>
           <li>Maintain an active digital portfolio of projects and technical notes to document learning and showcase work</li>
         </ul>
       </section>
