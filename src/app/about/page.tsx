@@ -21,10 +21,10 @@ export default function AboutPage() {
           <div className="max-w-4xl mx-auto">
             {/* Profile Section */}
             <div className="flex flex-col md:flex-row gap-8 items-center mb-12">
-              {/* Profile Photo with decorative corners */}
+              {/* Profile Photo with vignette and decorative corners */}
               <div className="relative flex-shrink-0">
-                {/* Photo without border */}
-                <div className="w-48 h-48 rounded-2xl overflow-hidden">
+                {/* Photo with vignette effect */}
+                <div className="w-48 h-48 rounded-2xl overflow-hidden profile-vignette">
                   <Image 
                     src="/images/profile.png" 
                     alt="James Hendershott" 

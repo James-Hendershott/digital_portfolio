@@ -95,10 +95,10 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Right: Profile Image with decorative frames overlapping */}
+            {/* Right: Profile Image with vignette and decorative frames */}
             <div className="relative hidden lg:flex items-center justify-center">
-              {/* Profile image - full size, no border */}
-              <div className="relative z-0 w-72 h-72 rounded-2xl overflow-hidden">
+              {/* Profile image with vignette effect */}
+              <div className="relative z-0 w-72 h-72 rounded-2xl overflow-hidden profile-vignette">
                 <Image 
                   src="/images/profile.png" 
                   alt="James Hendershott" 
