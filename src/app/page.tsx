@@ -95,15 +95,15 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Right: Profile Image 30% larger with enhanced vignette */}
+            {/* Right: Profile Image with enhanced vignette */}
             <div className="relative hidden lg:flex items-center justify-center">
-              {/* Profile image - 30% larger (w-[500px] h-[500px]) and behind decorative frames */}
-              <div className="absolute z-0 w-[500px] h-[500px] profile-vignette">
+              {/* Profile image - behind decorative frames */}
+              <div className="absolute z-0 w-[450px] h-[450px] profile-vignette">
                 <Image 
                   src="/images/profile1.png" 
                   alt="James Hendershott with family" 
-                  width={500}
-                  height={500}
+                  width={450}
+                  height={450}
                   className="object-cover object-top profile-grayscale w-full h-full"
                   priority
                 />
