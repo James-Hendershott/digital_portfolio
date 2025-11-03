@@ -42,7 +42,7 @@ export default function AboutPage() {
                 <p className="text-foreground/60 leading-relaxed">
                   I&apos;m James Hendershott, currently a vendor manager at Amerit while completing my software engineering degree. 
                   I live with my wife Savanah (33) and our kids Theo (5) and Sophie (3). 
-                  When I&apos;m not coding, you&apos;ll find me building things, exploring the outdoors, or tinkering with technology.
+                  When I&apos;m not coding or learning new software, you&apos;ll find me playing with my kids, building things, exploring the outdoors, or tinkering with technology.
                 </p>
               </div>
             </div>
@@ -51,7 +51,7 @@ export default function AboutPage() {
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16">
               <div className="p-6 rounded-xl border-2 border-purple-500/20 hover:border-purple-500/40 transition-colors bg-black/5 dark:bg-white/5">
                 <div className="text-3xl font-bold text-purple-600 dark:text-purple-400 mb-1">22+</div>
-                <div className="text-sm text-foreground/60">Years Experience</div>
+                <div className="text-sm text-foreground/60">Years of Leadership Experience</div>
               </div>
               <div className="p-6 rounded-xl border-2 border-yellow-500/20 hover:border-yellow-500/40 transition-colors bg-black/5 dark:bg-white/5">
                 <div className="text-3xl font-bold text-yellow-600 dark:text-yellow-400 mb-1">7+</div>
@@ -62,8 +62,8 @@ export default function AboutPage() {
                 <div className="text-sm text-foreground/60">Technologies</div>
               </div>
               <div className="p-6 rounded-xl border-2 border-yellow-500/20 hover:border-yellow-500/40 transition-colors bg-black/5 dark:bg-white/5">
-                <div className="text-3xl font-bold text-yellow-600 dark:text-yellow-400 mb-1">4</div>
-                <div className="text-sm text-foreground/60">3D Printers</div>
+                <div className="text-3xl font-bold text-yellow-600 dark:text-yellow-400 mb-1">20+</div>
+                <div className="text-sm text-foreground/60">Docker Containers</div>
               </div>
             </div>
           </div>
@@ -156,8 +156,12 @@ export default function AboutPage() {
                 <h3 className="text-xl font-semibold text-purple-600 dark:text-purple-400">Hardware & Maker Projects</h3>
                 <div className="space-y-3">
                   <div className="p-4 rounded-lg bg-background border border-foreground/10">
-                    <div className="font-medium mb-1">🖨️ 3D Printing</div>
-                    <p className="text-sm text-foreground/60">Elegoo Saturn 4 Ultra, Creality K1 Max, Bambu A1 & H2D</p>
+                    <div className="font-medium mb-1">🎨 3D Design & Printing</div>
+                    <p className="text-sm text-foreground/60">CAD modeling, functional prototypes, miniatures, and custom parts</p>
+                  </div>
+                  <div className="p-4 rounded-lg bg-background border border-foreground/10">
+                    <div className="font-medium mb-1">🪚 Woodworking</div>
+                    <p className="text-sm text-foreground/60">Building furniture, shop projects, and functional pieces</p>
                   </div>
                   <div className="p-4 rounded-lg bg-background border border-foreground/10">
                     <div className="font-medium mb-1">⚡ Electronics</div>
@@ -165,10 +169,10 @@ export default function AboutPage() {
                   </div>
                   <div className="p-4 rounded-lg bg-background border border-foreground/10">
                     <div className="font-medium mb-1">🖥️ Homelab</div>
-                    <p className="text-sm text-foreground/60">Unraid NAS with 12+ Docker containers</p>
+                    <p className="text-sm text-foreground/60">Unraid NAS with 20+ Docker containers</p>
                   </div>
                   <div className="p-4 rounded-lg bg-background border border-foreground/10">
-                    <div className="font-medium mb-1">🎨 Miniature Painting</div>
+                    <div className="font-medium mb-1">🖌️ Miniature Painting</div>
                     <p className="text-sm text-foreground/60">Warhammer 40K, D&D minis</p>
                   </div>
                 </div>
@@ -193,10 +197,6 @@ export default function AboutPage() {
                   <div className="p-4 rounded-lg bg-background border border-foreground/10">
                     <div className="font-medium mb-1">🏕️ Camping & Fishing</div>
                     <p className="text-sm text-foreground/60">Weekend trips, teaching the kids</p>
-                  </div>
-                  <div className="p-4 rounded-lg bg-background border border-foreground/10">
-                    <div className="font-medium mb-1">🪚 Woodworking</div>
-                    <p className="text-sm text-foreground/60">Building furniture and functional pieces</p>
                   </div>
                 </div>
               </div>
