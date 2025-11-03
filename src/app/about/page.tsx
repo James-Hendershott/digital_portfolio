@@ -37,11 +37,11 @@ export default function AboutPage() {
                   </span>
                 </h1>
                 <p className="text-xl text-foreground/70 mb-4">
-                  40-year-old software engineer & maker based in Eagle Mountain, Utah
+                  Aspiring Software Engineer & Maker based in Eagle Mountain, Utah
                 </p>
                 <p className="text-foreground/60 leading-relaxed">
                   I&apos;m James Hendershott, currently a vendor manager at Amerit while completing my software engineering degree. 
-                  I live with my wife Savanah (33) and our kids Theo (5) and Sophie (3). 
+                  I live with my wife Savanah and our kids Theo and Sophie. 
                   When I&apos;m not coding or learning new software, you&apos;ll find me playing with my kids, building things, exploring the outdoors, or tinkering with technology.
                 </p>
               </div>
