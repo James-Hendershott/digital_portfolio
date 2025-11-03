@@ -6,69 +6,232 @@ export const metadata = {
 
 export default function AboutPage() {
   return (
-    <Container className="prose prose-zinc max-w-3xl py-12 dark:prose-invert">
-      <h1>About Me</h1>
-      <p>
-        I&apos;m James Hendershott, a 40-year-old software engineering student based in
-        Eagle Mountain, Utah. I&apos;m currently a vendor manager for a fleet maintenance
-        company (Amerit), and I&apos;m working toward a career shift into full-time software development.
-      </p>
-      <p>
-        I live with my wife Savanah (33) and our two kids—Theo (5) and Sophie (3).
-        When I&apos;m not coding or working, you&apos;ll find me pursuing my passions outdoors
-        and tinkering with technology.
-      </p>
+    <>
+      {/* Hero Section */}
+      <section className="relative py-20 overflow-hidden">
+        {/* Decorative background elements */}
+        <div className="absolute inset-0 opacity-10 pointer-events-none">
+          <div className="absolute top-10 right-20 w-40 h-40 border-2 border-purple-400 dark:border-purple-500 rounded-full animate-float"></div>
+          <div className="absolute bottom-20 left-10 w-32 h-32 border-2 border-yellow-500 dark:border-yellow-400 rotate-45 animate-float-slow"></div>
+        </div>
 
-      <h2>Tech Stack & Skills</h2>
-      <div className="grid gap-2 not-prose text-sm">
-        <div><strong>Languages:</strong> TypeScript, JavaScript, Python, C#, C++, Java, SQL</div>
-        <div><strong>Frameworks:</strong> Next.js 16 (App Router), React 19, Django, .NET</div>
-        <div><strong>Stacks:</strong> MERN (MongoDB, Express, React, Node), Python/Django/PostgreSQL</div>
-        <div><strong>DevOps:</strong> Docker & Docker Compose, Nginx Proxy Manager, GitHub Actions, CI/CD</div>
-        <div><strong>Homelab:</strong> Unraid server running Plex, *Arr suite (via Trash Guides), reverse proxy, VPN, backup automation</div>
-        <div><strong>Tools:</strong> Git/GitHub/GitLab, VS Code, Neovim, Linux/Arch, Postman, Prisma, Auth.js</div>
-      </div>
+        <Container className="relative z-10">
+          <div className="max-w-4xl mx-auto">
+            {/* Profile Section */}
+            <div className="flex flex-col md:flex-row gap-8 items-center mb-12">
+              {/* Profile Photo Placeholder */}
+              <div className="relative flex-shrink-0">
+                <div className="w-48 h-48 rounded-2xl bg-gradient-to-br from-purple-600/20 to-yellow-500/20 dark:from-purple-400/20 dark:to-yellow-400/20 flex items-center justify-center border-2 border-foreground/10">
+                  <span className="text-foreground/40 text-sm font-medium">Profile Photo</span>
+                </div>
+                {/* Decorative corner elements */}
+                <div className="absolute -top-2 -left-2 w-6 h-6 border-t-2 border-l-2 border-purple-500"></div>
+                <div className="absolute -bottom-2 -right-2 w-6 h-6 border-b-2 border-r-2 border-yellow-500"></div>
+              </div>
 
-      <h2>What I&apos;m Building (November 2025)</h2>
-      <ul>
-        <li><strong>Where&apos;s My App:</strong> Full-stack home inventory tracker with QR codes, rack maps, and PWA support</li>
-        <li><strong>Retro Adventure Game:</strong> Django-powered text adventure with database-backed state</li>
-        <li><strong>TrackMate:</strong> Capstone MERN asset tracking system with Docker dev environment</li>
-        <li><strong>VSM Tracker:</strong> Internal fleet management tool replacing Smartsheet workflows</li>
-        <li><strong>Off-Grid Home Assistant:</strong> Building a self-contained smart home system for my new camper</li>
-      </ul>
+              {/* Intro Text */}
+              <div className="flex-1 text-center md:text-left">
+                <h1 className="text-4xl sm:text-5xl font-bold mb-4">
+                  <span className="bg-gradient-to-r from-purple-600 to-yellow-500 dark:from-purple-400 dark:to-yellow-400 bg-clip-text text-transparent">
+                    About Me
+                  </span>
+                </h1>
+                <p className="text-xl text-foreground/70 mb-4">
+                  40-year-old software engineer & maker based in Eagle Mountain, Utah
+                </p>
+                <p className="text-foreground/60 leading-relaxed">
+                  I&apos;m James Hendershott, currently a vendor manager at Amerit while completing my software engineering degree. 
+                  I live with my wife Savanah (33) and our kids Theo (5) and Sophie (3). 
+                  When I&apos;m not coding, you&apos;ll find me building things, exploring the outdoors, or tinkering with technology.
+                </p>
+              </div>
+            </div>
 
-      <h2>Hardware & Maker Projects</h2>
-      <ul>
-        <li><strong>3D Printing:</strong> Elegoo Saturn 4 Ultra (resin), Creality K1 Max, Bambu A1, Bambu H2D (FDM) — printing functional parts, miniatures, and prototypes</li>
-        <li><strong>Electronics:</strong> Raspberry Pi projects, Cyberdeck builds, breadboard circuits, Arduino experiments</li>
-        <li><strong>Homelab:</strong> Unraid NAS with 12+ Docker containers, network automation, and remote access</li>
-        <li><strong>Miniature Painting:</strong> Warhammer 40K, D&D minis — combining art with gaming</li>
-      </ul>
+            {/* Stats Cards */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16">
+              <div className="p-6 rounded-xl border-2 border-purple-500/20 hover:border-purple-500/40 transition-colors bg-black/5 dark:bg-white/5">
+                <div className="text-3xl font-bold text-purple-600 dark:text-purple-400 mb-1">22+</div>
+                <div className="text-sm text-foreground/60">Years Experience</div>
+              </div>
+              <div className="p-6 rounded-xl border-2 border-yellow-500/20 hover:border-yellow-500/40 transition-colors bg-black/5 dark:bg-white/5">
+                <div className="text-3xl font-bold text-yellow-600 dark:text-yellow-400 mb-1">7+</div>
+                <div className="text-sm text-foreground/60">Projects Built</div>
+              </div>
+              <div className="p-6 rounded-xl border-2 border-purple-500/20 hover:border-purple-500/40 transition-colors bg-black/5 dark:bg-white/5">
+                <div className="text-3xl font-bold text-purple-600 dark:text-purple-400 mb-1">10+</div>
+                <div className="text-sm text-foreground/60">Technologies</div>
+              </div>
+              <div className="p-6 rounded-xl border-2 border-yellow-500/20 hover:border-yellow-500/40 transition-colors bg-black/5 dark:bg-white/5">
+                <div className="text-3xl font-bold text-yellow-600 dark:text-yellow-400 mb-1">4</div>
+                <div className="text-sm text-foreground/60">3D Printers</div>
+              </div>
+            </div>
+          </div>
+        </Container>
+      </section>
 
-      <h2>Outdoor Adventures & Hobbies</h2>
-      <ul>
-        <li><strong>Motocross & ATVs:</strong> Trail riding and off-road exploration</li>
-        <li><strong>Bushcraft & Survival:</strong> Primitive skills, fire-starting, shelter building, wilderness preparedness</li>
-        <li><strong>Backpacking & Hiking:</strong> Exploring Utah&apos;s backcountry with the family</li>
-        <li><strong>Camping & Fishing:</strong> Weekend trips and teaching the kids outdoor skills</li>
-        <li><strong>Woodworking:</strong> Building furniture, shop projects, and functional pieces</li>
-        <li><strong>Family Time:</strong> Anything with Theo and Sophie — building, exploring, creating</li>
-      </ul>
+      {/* Tech Stack Section */}
+      <section className="py-16 bg-black/5 dark:bg-white/5">
+        <Container>
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-3xl font-bold mb-8 flex items-center gap-3">
+              <span className="w-12 h-1 bg-gradient-to-r from-purple-600 to-yellow-500 dark:from-purple-400 dark:to-yellow-400"></span>
+              Tech Stack & Skills
+            </h2>
+            <div className="grid md:grid-cols-2 gap-6">
+              <div className="p-6 rounded-xl border border-foreground/10 bg-background hover:border-purple-500/30 transition-colors">
+                <h3 className="font-semibold text-lg mb-3 text-purple-600 dark:text-purple-400">Languages</h3>
+                <p className="text-foreground/70 text-sm leading-relaxed">
+                  TypeScript, JavaScript, Python, C#, C++, Java, SQL
+                </p>
+              </div>
+              <div className="p-6 rounded-xl border border-foreground/10 bg-background hover:border-yellow-500/30 transition-colors">
+                <h3 className="font-semibold text-lg mb-3 text-yellow-600 dark:text-yellow-400">Frameworks</h3>
+                <p className="text-foreground/70 text-sm leading-relaxed">
+                  Next.js 16 (App Router), React 19, Django, .NET
+                </p>
+              </div>
+              <div className="p-6 rounded-xl border border-foreground/10 bg-background hover:border-purple-500/30 transition-colors">
+                <h3 className="font-semibold text-lg mb-3 text-purple-600 dark:text-purple-400">Stacks</h3>
+                <p className="text-foreground/70 text-sm leading-relaxed">
+                  MERN (MongoDB, Express, React, Node), Python/Django/PostgreSQL
+                </p>
+              </div>
+              <div className="p-6 rounded-xl border border-foreground/10 bg-background hover:border-yellow-500/30 transition-colors">
+                <h3 className="font-semibold text-lg mb-3 text-yellow-600 dark:text-yellow-400">DevOps & Tools</h3>
+                <p className="text-foreground/70 text-sm leading-relaxed">
+                  Docker, GitHub Actions, Nginx, Git, VS Code, Neovim, Linux/Arch
+                </p>
+              </div>
+            </div>
+          </div>
+        </Container>
+      </section>
 
-      <h2>Background</h2>
-      <p>
-        I served as an Air Traffic Controller in the U.S. Navy (2003–2007), where I developed
-        discipline, attention to detail, and the ability to perform under pressure. After my
-        service, I worked in management roles across automotive, fabrication, and fleet industries
-        before discovering my passion for software development.
-      </p>
-      <p>
-        I love building things from the ground up—whether it&apos;s a home server, a web app,
-        an electronics project, or a woodworking piece. I&apos;m translating that hands-on,
-        maker mindset into a software engineering career, combining technical skills with
-        real-world problem-solving.
-      </p>
-    </Container>
+      {/* Current Projects Section */}
+      <section className="py-16">
+        <Container>
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-3xl font-bold mb-8 flex items-center gap-3">
+              <span className="w-12 h-1 bg-gradient-to-r from-yellow-500 to-purple-600 dark:from-yellow-400 dark:to-purple-400"></span>
+              What I&apos;m Building (November 2025)
+            </h2>
+            <div className="space-y-4">
+              <div className="p-5 rounded-xl border-l-4 border-purple-500 bg-black/5 dark:bg-white/5 hover:bg-black/10 dark:hover:bg-white/10 transition-colors">
+                <h3 className="font-semibold text-lg mb-2">Where&apos;s My App</h3>
+                <p className="text-foreground/70 text-sm">Full-stack home inventory tracker with QR codes, rack maps, and PWA support</p>
+              </div>
+              <div className="p-5 rounded-xl border-l-4 border-yellow-500 bg-black/5 dark:bg-white/5 hover:bg-black/10 dark:hover:bg-white/10 transition-colors">
+                <h3 className="font-semibold text-lg mb-2">Retro Adventure Game</h3>
+                <p className="text-foreground/70 text-sm">Django-powered text adventure with database-backed state</p>
+              </div>
+              <div className="p-5 rounded-xl border-l-4 border-purple-500 bg-black/5 dark:bg-white/5 hover:bg-black/10 dark:hover:bg-white/10 transition-colors">
+                <h3 className="font-semibold text-lg mb-2">TrackMate</h3>
+                <p className="text-foreground/70 text-sm">Capstone MERN asset tracking system with Docker dev environment</p>
+              </div>
+              <div className="p-5 rounded-xl border-l-4 border-yellow-500 bg-black/5 dark:bg-white/5 hover:bg-black/10 dark:hover:bg-white/10 transition-colors">
+                <h3 className="font-semibold text-lg mb-2">VSM Tracker</h3>
+                <p className="text-foreground/70 text-sm">Internal fleet management tool replacing Smartsheet workflows</p>
+              </div>
+              <div className="p-5 rounded-xl border-l-4 border-purple-500 bg-black/5 dark:bg-white/5 hover:bg-black/10 dark:hover:bg-white/10 transition-colors">
+                <h3 className="font-semibold text-lg mb-2">Off-Grid Home Assistant</h3>
+                <p className="text-foreground/70 text-sm">Building a self-contained smart home system for my new camper</p>
+              </div>
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      {/* Hobbies & Interests Section */}
+      <section className="py-16 bg-black/5 dark:bg-white/5">
+        <Container>
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-3xl font-bold mb-8 flex items-center gap-3">
+              <span className="w-12 h-1 bg-gradient-to-r from-purple-600 to-yellow-500 dark:from-purple-400 dark:to-yellow-400"></span>
+              Hobbies & Interests
+            </h2>
+            <div className="grid md:grid-cols-2 gap-6">
+              {/* Hardware & Maker */}
+              <div className="space-y-4">
+                <h3 className="text-xl font-semibold text-purple-600 dark:text-purple-400">Hardware & Maker Projects</h3>
+                <div className="space-y-3">
+                  <div className="p-4 rounded-lg bg-background border border-foreground/10">
+                    <div className="font-medium mb-1">🖨️ 3D Printing</div>
+                    <p className="text-sm text-foreground/60">Elegoo Saturn 4 Ultra, Creality K1 Max, Bambu A1 & H2D</p>
+                  </div>
+                  <div className="p-4 rounded-lg bg-background border border-foreground/10">
+                    <div className="font-medium mb-1">⚡ Electronics</div>
+                    <p className="text-sm text-foreground/60">Raspberry Pi, Cyberdeck builds, Arduino experiments</p>
+                  </div>
+                  <div className="p-4 rounded-lg bg-background border border-foreground/10">
+                    <div className="font-medium mb-1">🖥️ Homelab</div>
+                    <p className="text-sm text-foreground/60">Unraid NAS with 12+ Docker containers</p>
+                  </div>
+                  <div className="p-4 rounded-lg bg-background border border-foreground/10">
+                    <div className="font-medium mb-1">🎨 Miniature Painting</div>
+                    <p className="text-sm text-foreground/60">Warhammer 40K, D&D minis</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Outdoor Adventures */}
+              <div className="space-y-4">
+                <h3 className="text-xl font-semibold text-yellow-600 dark:text-yellow-400">Outdoor Adventures</h3>
+                <div className="space-y-3">
+                  <div className="p-4 rounded-lg bg-background border border-foreground/10">
+                    <div className="font-medium mb-1">🏍️ Motocross & ATVs</div>
+                    <p className="text-sm text-foreground/60">Trail riding and off-road exploration</p>
+                  </div>
+                  <div className="p-4 rounded-lg bg-background border border-foreground/10">
+                    <div className="font-medium mb-1">🔥 Bushcraft & Survival</div>
+                    <p className="text-sm text-foreground/60">Primitive skills, fire-starting, shelter building</p>
+                  </div>
+                  <div className="p-4 rounded-lg bg-background border border-foreground/10">
+                    <div className="font-medium mb-1">🥾 Backpacking & Hiking</div>
+                    <p className="text-sm text-foreground/60">Exploring Utah&apos;s backcountry</p>
+                  </div>
+                  <div className="p-4 rounded-lg bg-background border border-foreground/10">
+                    <div className="font-medium mb-1">🏕️ Camping & Fishing</div>
+                    <p className="text-sm text-foreground/60">Weekend trips, teaching the kids</p>
+                  </div>
+                  <div className="p-4 rounded-lg bg-background border border-foreground/10">
+                    <div className="font-medium mb-1">🪚 Woodworking</div>
+                    <p className="text-sm text-foreground/60">Building furniture and functional pieces</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      {/* Background/Story Section */}
+      <section className="py-16">
+        <Container>
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-3xl font-bold mb-8 flex items-center gap-3">
+              <span className="w-12 h-1 bg-gradient-to-r from-yellow-500 to-purple-600 dark:from-yellow-400 dark:to-purple-400"></span>
+              My Journey
+            </h2>
+            <div className="prose prose-zinc dark:prose-invert max-w-none">
+              <div className="p-8 rounded-2xl border-2 border-foreground/10 bg-gradient-to-br from-purple-500/5 to-yellow-500/5">
+                <p className="text-lg leading-relaxed mb-4">
+                  I served as an <strong>Air Traffic Controller in the U.S. Navy (2003–2007)</strong>, where I developed
+                  discipline, attention to detail, and the ability to perform under pressure. After my
+                  service, I worked in management roles across automotive, fabrication, and fleet industries
+                  before discovering my passion for software development.
+                </p>
+                <p className="text-lg leading-relaxed">
+                  I love building things from the ground up—whether it&apos;s a home server, a web app,
+                  an electronics project, or a woodworking piece. I&apos;m translating that hands-on,
+                  maker mindset into a software engineering career, combining technical skills with
+                  real-world problem-solving.
+                </p>
+              </div>
+            </div>
+          </div>
+        </Container>
+      </section>
+    </>
   );
 }
