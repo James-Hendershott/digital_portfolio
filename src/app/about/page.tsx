@@ -9,13 +9,13 @@ export default function AboutPage() {
     <Container className="prose prose-zinc max-w-3xl py-12 dark:prose-invert">
       <h1>About Me</h1>
       <p>
-        I'm James Hendershott, a 40-year-old software engineering student based in
-        Eagle Mountain, Utah. I'm currently a vendor manager for a fleet maintenance
-        company (Amerit), and I'm working toward a career shift into full-time software development.
+        I&apos;m James Hendershott, a 40-year-old software engineering student based in
+        Eagle Mountain, Utah. I&apos;m currently a vendor manager for a fleet maintenance
+        company (Amerit), and I&apos;m working toward a career shift into full-time software development.
       </p>
       <p>
         I live with my wife Savanah (33) and our two kids—Theo (5) and Sophie (3).
-        When I'm not coding or working, you'll find me pursuing my passions outdoors
+        When I&apos;m not coding or working, you&apos;ll find me pursuing my passions outdoors
         and tinkering with technology.
       </p>
 
@@ -29,9 +29,9 @@ export default function AboutPage() {
         <div><strong>Tools:</strong> Git/GitHub/GitLab, VS Code, Neovim, Linux/Arch, Postman, Prisma, Auth.js</div>
       </div>
 
-      <h2>What I'm Building (November 2025)</h2>
+      <h2>What I&apos;m Building (November 2025)</h2>
       <ul>
-        <li><strong>Where's My App:</strong> Full-stack home inventory tracker with QR codes, rack maps, and PWA support</li>
+        <li><strong>Where&apos;s My App:</strong> Full-stack home inventory tracker with QR codes, rack maps, and PWA support</li>
         <li><strong>Retro Adventure Game:</strong> Django-powered text adventure with database-backed state</li>
         <li><strong>TrackMate:</strong> Capstone MERN asset tracking system with Docker dev environment</li>
         <li><strong>VSM Tracker:</strong> Internal fleet management tool replacing Smartsheet workflows</li>
@@ -50,7 +50,7 @@ export default function AboutPage() {
       <ul>
         <li><strong>Motocross & ATVs:</strong> Trail riding and off-road exploration</li>
         <li><strong>Bushcraft & Survival:</strong> Primitive skills, fire-starting, shelter building, wilderness preparedness</li>
-        <li><strong>Backpacking & Hiking:</strong> Exploring Utah's backcountry with the family</li>
+        <li><strong>Backpacking & Hiking:</strong> Exploring Utah&apos;s backcountry with the family</li>
         <li><strong>Camping & Fishing:</strong> Weekend trips and teaching the kids outdoor skills</li>
         <li><strong>Woodworking:</strong> Building furniture, shop projects, and functional pieces</li>
         <li><strong>Family Time:</strong> Anything with Theo and Sophie — building, exploring, creating</li>
@@ -64,8 +64,8 @@ export default function AboutPage() {
         before discovering my passion for software development.
       </p>
       <p>
-        I love building things from the ground up—whether it's a home server, a web app,
-        an electronics project, or a woodworking piece. I'm translating that hands-on,
+        I love building things from the ground up—whether it&apos;s a home server, a web app,
+        an electronics project, or a woodworking piece. I&apos;m translating that hands-on,
         maker mindset into a software engineering career, combining technical skills with
         real-world problem-solving.
       </p>
