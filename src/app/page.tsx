@@ -95,7 +95,7 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Right: Profile Image with fade effect and Japanese-inspired frame */}
+            {/* Right: Profile Image with grayscale effect and Japanese-inspired frame */}
             <div className="relative hidden lg:flex items-center justify-center">
               {/* Decorative frame elements */}
               <div className="absolute inset-0 flex items-center justify-center">
@@ -103,13 +103,13 @@ export default function Home() {
                 <div className="absolute w-80 h-80 border-2 border-yellow-500 dark:border-yellow-400 -rotate-6 opacity-30"></div>
               </div>
               
-              {/* Profile image with vignette fade effect */}
-              <div className="relative z-10 w-72 h-72 rounded-2xl overflow-hidden profile-vignette">
+              {/* Profile image with grayscale effect - becomes color on hover */}
+              <div className="relative z-10 w-72 h-72 rounded-2xl overflow-hidden border-2 border-foreground/10">
                 <Image 
                   src="/images/profile.png" 
                   alt="James Hendershott" 
                   fill
-                  className="object-cover"
+                  className="object-cover profile-grayscale"
                   priority
                 />
               </div>

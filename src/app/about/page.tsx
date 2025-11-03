@@ -21,14 +21,14 @@ export default function AboutPage() {
           <div className="max-w-4xl mx-auto">
             {/* Profile Section */}
             <div className="flex flex-col md:flex-row gap-8 items-center mb-12">
-              {/* Profile Photo with fade effect */}
+              {/* Profile Photo with grayscale effect */}
               <div className="relative flex-shrink-0">
-                <div className="w-48 h-48 rounded-2xl overflow-hidden profile-vignette border-2 border-foreground/10">
+                <div className="w-48 h-48 rounded-2xl overflow-hidden border-2 border-foreground/10">
                   <Image 
                     src="/images/profile.png" 
                     alt="James Hendershott" 
                     fill
-                    className="object-cover"
+                    className="object-cover profile-grayscale"
                   />
                 </div>
                 {/* Decorative corner elements */}

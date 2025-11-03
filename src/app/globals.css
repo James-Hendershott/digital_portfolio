@@ -104,21 +104,12 @@ button:hover,
   animation: float-delayed 7s ease-in-out infinite 1s;
 }
 
-/* Profile image with fade-to-background edges */
-.profile-fade {
-  mask-image: radial-gradient(ellipse at center, black 40%, transparent 80%);
-  -webkit-mask-image: radial-gradient(ellipse at center, black 40%, transparent 80%);
+/* Grayscale profile image effect */
+.profile-grayscale {
+  filter: grayscale(100%);
+  transition: filter 0.3s ease;
 }
 
-/* Alternative vignette effect for profile images */
-.profile-vignette {
-  position: relative;
-}
-
-.profile-vignette::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(ellipse at center, transparent 30%, var(--background) 85%);
-  pointer-events: none;
+.profile-grayscale:hover {
+  filter: grayscale(0%);
 }
