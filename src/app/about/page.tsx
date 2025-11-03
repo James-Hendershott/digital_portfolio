@@ -27,8 +27,9 @@ export default function AboutPage() {
                   <Image 
                     src="/images/profile.png" 
                     alt="James Hendershott" 
-                    fill
-                    className="object-cover profile-grayscale"
+                    width={224}
+                    height={224}
+                    className="object-cover profile-grayscale w-full h-full scale-110"
                   />
                 </div>
                 {/* Decorative corner elements */}

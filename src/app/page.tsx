@@ -103,13 +103,14 @@ export default function Home() {
                 <div className="absolute w-80 h-80 border-2 border-yellow-500 dark:border-yellow-400 -rotate-6 opacity-30"></div>
               </div>
               
-              {/* Profile image with grayscale effect - becomes color on hover */}
+              {/* Profile image with grayscale effect - slightly larger than container */}
               <div className="relative z-10 w-72 h-72 rounded-2xl overflow-hidden border-2 border-foreground/10">
                 <Image 
                   src="/images/profile.png" 
                   alt="James Hendershott" 
-                  fill
-                  className="object-cover profile-grayscale"
+                  width={320}
+                  height={320}
+                  className="object-cover profile-grayscale absolute inset-0 w-full h-full scale-110"
                   priority
                 />
               </div>

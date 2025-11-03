@@ -104,12 +104,7 @@ button:hover,
   animation: float-delayed 7s ease-in-out infinite 1s;
 }
 
-/* Grayscale profile image effect */
+/* Grayscale profile image effect (no hover) */
 .profile-grayscale {
   filter: grayscale(100%);
-  transition: filter 0.3s ease;
-}
-
-.profile-grayscale:hover {
-  filter: grayscale(0%);
 }
