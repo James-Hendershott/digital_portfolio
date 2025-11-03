@@ -1,51 +1,54 @@
 ---
 slug: wheres-my-app
-title: Where's My App?
+title: Where’s My App? (Home Storage Tracker)
 date: 2025-10-15
-summary: A web application to help users find and track their applications across different platforms. Built to solve the problem of losing track of app installations across multiple devices.
-tags: ["JavaScript", "Web Development", "Utility"]
-repo: https://github.com/James-Hendershott/wheresMyApp.git
+summary: Full‑stack home inventory system with QR codes, interactive rack maps, photo uploads, and complete movement history.
+tags: ["Next.js", "TypeScript", "PostgreSQL", "Prisma", "Auth.js", "Zod", "QR", "PWA"]
+repo: https://github.com/James-Hendershott/wheresMyApp
 ---
 
 ## Overview
-Where's My App? is a practical utility designed to help users keep track of their application installations across multiple platforms and devices. It addresses the common problem of forgetting where specific apps are installed or which versions are running on different systems.
+Where’s My App? tracks physical storage in your home: racks, containers (totes), and the items inside. Scan QR labels, see an interactive rack grid, check items in/out with photos, and maintain a full movement history.
 
-## Role & Stack
-Solo developer using web technologies to create an intuitive tracking interface.
+## Role & Tech Stack
+Solo developer
+- App: Next.js (App Router) + TypeScript, Tailwind, shadcn/ui
+- Data: PostgreSQL + Prisma ORM
+- Auth: Auth.js (NextAuth v5)
+- Validation/Forms: Zod + React Hook Form
+- QR: ZXing (scan) + qrcode (generate)
+- Storage: S3‑compatible (MinIO/R2) for item photos
+- PWA: installable, offline‑ready via next‑pwa
+- Tests/CI: Vitest + Playwright, GitHub Actions
 
 ## Problem
-In modern computing environments, users often have multiple devices (laptops, desktops, tablets) and lose track of which applications are installed where. This leads to:
-- Duplicate installations
-- Version inconsistencies
-- Wasted time searching for apps
-- Confusion about licensing and installations
+Household storage grows complex across garages, basements, closets, and sheds. You forget which tote holds an item, where the tote sits on the rack, and when items moved. Spreadsheets or notes fall out of date.
 
 ## Solution
-Created a centralized tracking system that allows users to:
-- Log application installations by device
-- Track versions and installation dates
-- Search and filter applications quickly
-- Maintain a personal inventory of software
+- Visual rack maps: SVG grid showing container positions (row/column)
+- QR code system: print labels; scan to deep‑link to container/item pages
+- Item management: photos to S3, tags, quantities, check‑in/out workflows
+- Movement history: complete audit trail for containers and items
+- PWA: mobile‑friendly, add to home screen, camera access for scanning
 
-```javascript
-// Example: Application tracking structure
-const appEntry = {
-  name: "Application Name",
-  device: "Device Identifier",
-  version: "1.0.0",
-  installDate: "2025-10-15",
-  platform: "Windows/Mac/Linux"
+```ts
+// Example: Prisma models excerpt
+model Container {
+  id        String   @id @default(cuid())
+  code      String   @unique
+  name      String
+  location  Location @relation(fields: [locationId], references: [id])
+  locationId String
+  items     Item[]
 }
 ```
 
 ## Results
-- Simplified software inventory management
-- Reduced time spent searching for applications
-- Better awareness of installed software across devices
-- Foundation for future features like update tracking
+- Easy retrieval: scan a tote to instantly see contents and last moves
+- Accurate inventory: photos + tags reduce guesswork
+- Confidence: rack maps and history make storage auditable
 
 ## What I Learned
-- User-focused design for practical everyday problems
-- Importance of clean data structures for tracking applications
-- Building simple, focused tools that solve real pain points
-- The value of personal productivity tools in understanding user needs
+- Designing data models for spatial storage (locations → racks → slots → containers → items)
+- Building QR features end‑to‑end (generation, scanning, deep‑links)
+- Balancing PWA offline needs with secure auth and S3 uploads
