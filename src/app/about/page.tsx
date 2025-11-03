@@ -21,20 +21,21 @@ export default function AboutPage() {
           <div className="max-w-4xl mx-auto">
             {/* Profile Section */}
             <div className="flex flex-col md:flex-row gap-8 items-center mb-12">
-              {/* Profile Photo with grayscale effect */}
+              {/* Profile Photo with decorative corners */}
               <div className="relative flex-shrink-0">
-                <div className="w-48 h-48 rounded-2xl overflow-hidden border-2 border-foreground/10">
+                {/* Photo without border */}
+                <div className="w-48 h-48 rounded-2xl overflow-hidden">
                   <Image 
                     src="/images/profile.png" 
                     alt="James Hendershott" 
-                    width={224}
-                    height={224}
-                    className="object-cover profile-grayscale w-full h-full scale-110"
+                    width={192}
+                    height={192}
+                    className="object-cover profile-grayscale w-full h-full"
                   />
                 </div>
-                {/* Decorative corner elements */}
-                <div className="absolute -top-2 -left-2 w-6 h-6 border-t-2 border-l-2 border-purple-500"></div>
-                <div className="absolute -bottom-2 -right-2 w-6 h-6 border-b-2 border-r-2 border-yellow-500"></div>
+                {/* Decorative corner elements - overlaid on top */}
+                <div className="absolute -top-2 -left-2 w-6 h-6 border-t-2 border-l-2 border-purple-500 pointer-events-none"></div>
+                <div className="absolute -bottom-2 -right-2 w-6 h-6 border-b-2 border-r-2 border-yellow-500 pointer-events-none"></div>
               </div>
 
               {/* Intro Text */}

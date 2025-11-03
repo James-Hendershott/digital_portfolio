@@ -95,24 +95,24 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Right: Profile Image with grayscale effect and Japanese-inspired frame */}
+            {/* Right: Profile Image with decorative frames overlapping */}
             <div className="relative hidden lg:flex items-center justify-center">
-              {/* Decorative frame elements */}
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-80 h-80 border-2 border-purple-400 dark:border-purple-500 rotate-6 opacity-30"></div>
-                <div className="absolute w-80 h-80 border-2 border-yellow-500 dark:border-yellow-400 -rotate-6 opacity-30"></div>
-              </div>
-              
-              {/* Profile image with grayscale effect - slightly larger than container */}
-              <div className="relative z-10 w-72 h-72 rounded-2xl overflow-hidden border-2 border-foreground/10">
+              {/* Profile image - full size, no border */}
+              <div className="relative z-0 w-72 h-72 rounded-2xl overflow-hidden">
                 <Image 
                   src="/images/profile.png" 
                   alt="James Hendershott" 
-                  width={320}
-                  height={320}
-                  className="object-cover profile-grayscale absolute inset-0 w-full h-full scale-110"
+                  width={288}
+                  height={288}
+                  className="object-cover profile-grayscale w-full h-full"
                   priority
                 />
+              </div>
+              
+              {/* Decorative frame elements - overlaid on top */}
+              <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                <div className="w-80 h-80 border-2 border-purple-400 dark:border-purple-500 rotate-6 opacity-40"></div>
+                <div className="absolute w-80 h-80 border-2 border-yellow-500 dark:border-yellow-400 -rotate-6 opacity-40"></div>
               </div>
             </div>
           </div>
