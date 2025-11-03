@@ -11,6 +11,16 @@ export default function AboutPage() {
     <>
       {/* Hero Section */}
       <section className="relative py-20 overflow-hidden">
+        {/* Large background profile image - covers entire left side */}
+        <div className="absolute left-0 top-0 bottom-0 w-1/2 hidden md:block profile-vignette pointer-events-none">
+          <Image 
+            src="/images/profile.png" 
+            alt="James Hendershott with son" 
+            fill
+            className="object-cover object-top profile-grayscale"
+          />
+        </div>
+
         {/* Decorative background elements */}
         <div className="absolute inset-0 opacity-10 pointer-events-none">
           <div className="absolute top-10 right-20 w-40 h-40 border-2 border-purple-400 dark:border-purple-500 rounded-full animate-float"></div>
@@ -21,21 +31,19 @@ export default function AboutPage() {
           <div className="max-w-4xl mx-auto">
             {/* Profile Section */}
             <div className="flex flex-col md:flex-row gap-8 items-center mb-12">
-              {/* Profile Photo larger than frame with vignette */}
-              <div className="relative flex-shrink-0 w-48 h-48">
-                {/* Photo larger than container, behind decorative corners */}
-                <div className="absolute -inset-4 profile-vignette">
+              {/* Profile Photo with decorative corners - visible on mobile */}
+              <div className="relative flex-shrink-0 w-48 h-48 md:hidden">
+                <div className="w-48 h-48 rounded-2xl overflow-hidden">
                   <Image 
-                    src="/images/profile1.png" 
-                    alt="James Hendershott with family" 
-                    width={224}
-                    height={224}
+                    src="/images/profile.png" 
+                    alt="James Hendershott with son" 
+                    width={192}
+                    height={192}
                     className="object-cover object-top profile-grayscale w-full h-full"
                   />
                 </div>
-                {/* Decorative corner elements - overlaid on top */}
-                <div className="absolute -top-2 -left-2 w-6 h-6 border-t-2 border-l-2 border-purple-500 pointer-events-none z-10"></div>
-                <div className="absolute -bottom-2 -right-2 w-6 h-6 border-b-2 border-r-2 border-yellow-500 pointer-events-none z-10"></div>
+                <div className="absolute -top-2 -left-2 w-6 h-6 border-t-2 border-l-2 border-purple-500 pointer-events-none"></div>
+                <div className="absolute -bottom-2 -right-2 w-6 h-6 border-b-2 border-r-2 border-yellow-500 pointer-events-none"></div>
               </div>
 
               {/* Intro Text */}

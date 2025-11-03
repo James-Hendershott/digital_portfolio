@@ -104,24 +104,24 @@ button:hover,
   animation: float-delayed 7s ease-in-out infinite 1s;
 }
 
-/* Grayscale profile image with subtle vignette */
+/* Grayscale profile image with enhanced vignette */
 .profile-grayscale {
   filter: grayscale(100%);
   position: relative;
 }
 
-/* Subtle vignette overlay to blend edges */
+/* Enhanced vignette overlay to blend edges more */
 .profile-vignette::after {
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse at center, transparent 40%, rgba(26, 22, 37, 0.6) 90%);
+  background: radial-gradient(ellipse at center, transparent 30%, rgba(26, 22, 37, 0.8) 85%);
   pointer-events: none;
   border-radius: 1rem;
 }
 
 @media (prefers-color-scheme: light) {
   .profile-vignette::after {
-    background: radial-gradient(ellipse at center, transparent 40%, rgba(250, 249, 246, 0.6) 90%);
+    background: radial-gradient(ellipse at center, transparent 30%, rgba(250, 249, 246, 0.8) 85%);
   }
 }
