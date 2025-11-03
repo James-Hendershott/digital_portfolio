@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Container } from "../components/Container";
 import { GitHubShowcase } from "../components/GitHubShowcase";
 
@@ -94,7 +95,7 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Right: Profile Image Placeholder with Japanese-inspired frame */}
+            {/* Right: Profile Image with fade effect and Japanese-inspired frame */}
             <div className="relative hidden lg:flex items-center justify-center">
               {/* Decorative frame elements */}
               <div className="absolute inset-0 flex items-center justify-center">
@@ -102,9 +103,15 @@ export default function Home() {
                 <div className="absolute w-80 h-80 border-2 border-yellow-500 dark:border-yellow-400 -rotate-6 opacity-30"></div>
               </div>
               
-              {/* Profile image placeholder */}
-              <div className="relative z-10 w-72 h-72 rounded-2xl bg-gradient-to-br from-purple-600/20 to-yellow-500/20 dark:from-purple-400/20 dark:to-yellow-400/20 flex items-center justify-center border-2 border-foreground/10">
-                <span className="text-foreground/40 text-lg font-medium">Profile Photo</span>
+              {/* Profile image with vignette fade effect */}
+              <div className="relative z-10 w-72 h-72 rounded-2xl overflow-hidden profile-vignette">
+                <Image 
+                  src="/images/profile.png" 
+                  alt="James Hendershott" 
+                  fill
+                  className="object-cover"
+                  priority
+                />
               </div>
             </div>
           </div>

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Container } from "../../components/Container";
 
 export const metadata = {
@@ -20,10 +21,15 @@ export default function AboutPage() {
           <div className="max-w-4xl mx-auto">
             {/* Profile Section */}
             <div className="flex flex-col md:flex-row gap-8 items-center mb-12">
-              {/* Profile Photo Placeholder */}
+              {/* Profile Photo with fade effect */}
               <div className="relative flex-shrink-0">
-                <div className="w-48 h-48 rounded-2xl bg-gradient-to-br from-purple-600/20 to-yellow-500/20 dark:from-purple-400/20 dark:to-yellow-400/20 flex items-center justify-center border-2 border-foreground/10">
-                  <span className="text-foreground/40 text-sm font-medium">Profile Photo</span>
+                <div className="w-48 h-48 rounded-2xl overflow-hidden profile-vignette border-2 border-foreground/10">
+                  <Image 
+                    src="/images/profile.png" 
+                    alt="James Hendershott" 
+                    fill
+                    className="object-cover"
+                  />
                 </div>
                 {/* Decorative corner elements */}
                 <div className="absolute -top-2 -left-2 w-6 h-6 border-t-2 border-l-2 border-purple-500"></div>
