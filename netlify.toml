@@ -2,6 +2,10 @@
   command = "npm run build"
   publish = ".next"
 
-# Force prerender Contact for Netlify forms indexing (SSR pages may not be indexed automatically)
+[build.environment]
+  NODE_VERSION = "20"
+  NPM_FLAGS = "--legacy-peer-deps"
+
+# Next.js plugin for Netlify
 [[plugins]]
   package = "@netlify/plugin-nextjs"
