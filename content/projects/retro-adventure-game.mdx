@@ -1,0 +1,75 @@
+---
+slug: retro-adventure-game
+title: Retro Adventure Game
+date: 2025-11-01
+summary: An enhanced version of the original 1980 Style Adventure Game with improved gameplay mechanics, expanded story, and refined command parsing. Public repository actively maintained.
+tags: ["JavaScript", "Game Development", "Interactive Fiction"]
+repo: https://github.com/James-Hendershott/retro_adventure_game.git
+---
+
+## Overview
+Retro Adventure Game is the evolved version of my earlier text adventure project. This iteration builds on the original 1980 Style Adventure Game with enhanced features, better code organization, and more engaging gameplay. It captures the nostalgia of classic text adventures while incorporating modern development practices.
+
+## Role & Stack
+Solo developer building with vanilla JavaScript, focusing on clean architecture and player experience.
+
+## Background
+This project originated from the 1980 Style Adventure Game (https://github.com/James-Hendershott/1980_Style_Adventure-Game.git) and represents a complete refactoring and expansion of the original concept.
+
+## Problem
+The original adventure game was a good start but needed:
+- Better code organization for maintainability
+- More sophisticated command parsing
+- Expanded gameplay and story elements
+- Improved state management
+- Enhanced player feedback
+
+## Solution
+Rebuilt the game from the ground up with:
+- Modular JavaScript architecture
+- Enhanced parser supporting natural language commands
+- Expanded world with multiple locations and puzzles
+- Robust state management system
+- Better error handling and player guidance
+
+```javascript
+// Example: Enhanced command parsing
+function parseCommand(input) {
+  const words = input.toLowerCase().trim().split(/\s+/);
+  const verb = words[0];
+  const noun = words.slice(1).join(" ");
+  
+  return {
+    verb: normalizeVerb(verb),
+    target: noun,
+    raw: input
+  };
+}
+```
+
+## Gameplay Features
+- Multiple interconnected locations to explore
+- Inventory system for collecting and using items
+- Puzzle-solving mechanics
+- Save/load game state
+- Contextual hints and help system
+
+## Results
+- More engaging player experience
+- Cleaner, maintainable codebase
+- Active development with regular improvements
+- Foundation for future adventure game projects
+
+## What I Learned
+- Refactoring vs. rebuilding trade-offs
+- Importance of iterative development
+- Game design principles (pacing, feedback, challenge)
+- Parser design for natural language input
+- State management patterns for interactive applications
+- Value of playtesting and user feedback
+
+## Future Plans
+- Additional chapters and story branches
+- More sophisticated AI for NPCs
+- Achievement system
+- Multiple ending paths

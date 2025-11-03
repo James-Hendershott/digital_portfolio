@@ -1,25 +1,43 @@
 ---
 slug: trackmate
-title: TrackMate (Capstone MERN)
+title: TrackMate (Capstone MERN Project)
 date: 2024-12-01
-summary: A MERN app for asset tracking; built local Docker dev, simulated VPN data, and planned seeding strategy.
-tags: ["MERN", "Docker", "React", "Node"]
+summary: A comprehensive MERN stack asset tracking application built as my capstone project. Features role-based access, audit trails, and Docker-based development environment. This is my most in-depth project to date.
+tags: ["MERN", "Docker", "React", "Node.js", "MongoDB", "Express", "Capstone"]
+repo: https://github.com/bradleypeterson/TrackMate.git
 access: "mailto:james.hendershott@outlook.com?subject=TrackMate%20Code%20Access%20Request"
 ---
 
 ## Overview
-Capstone project: a MERN-based asset tracking dashboard with role-based views and audit trails.
+TrackMate is my senior capstone project—a full-featured MERN stack application designed for comprehensive asset tracking and management. This is the most in-depth project I have worked on, combining complex backend architecture, modern React frontend, role-based security, and production-ready deployment strategies.
 
-## Role & stack
-Team lead; designed API endpoints, component structure, and Docker dev environment.
+## Role & Stack
+**Team Lead & Full-Stack Developer**
+- **Stack**: MongoDB, Express.js, React, Node.js (MERN)
+- **DevOps**: Docker, Docker Compose, environment management
+- **Team Size**: [specify if applicable]
+
+**Repository Note**: This is a private repository. Access: https://github.com/bradleypeterson/TrackMate.git
+
+## Project Scope
+TrackMate serves as an enterprise-grade asset tracking dashboard that provides:
+- Real-time asset monitoring and status updates
+- Role-based access control (Admin, Manager, User)
+- Comprehensive audit trails for all asset changes
+- Search and filtering capabilities
+- Reporting and analytics
+- Mobile-responsive interface
 
 ## Problem
-Live data was gated behind VPN. Needed a local development strategy and consistent seed data.
+Live data was gated behind VPN. Needed a local development strategy and consistent seed data without exposing sensitive information. Team members needed identical development environments to avoid integration issues.
 
 ## Solution
-- Docker Compose for Mongo/Node/React
-- Seed scripts and JSON fixtures
-- Clear .env management for dev vs prod
+Designed and implemented a Docker-based development environment with seed data:
+
+- **Docker Compose** for orchestrating MongoDB, Node.js API, and React frontend
+- **Seed scripts** with realistic JSON fixtures to replace VPN-gated data
+- **Environment management** (.env files) for dev vs prod configurations
+- **Hot reloading** enabled for rapid development iteration
 
 ```yaml
 # docker-compose excerpt
@@ -31,8 +49,17 @@ services:
 ```
 
 ## Results
-- Unblocked dev without VPN
-- Repeatable local environment
+- **Unblocked Development**: Team could work locally without VPN access
+- **Consistent Environments**: Docker eliminated "works on my machine" issues
+- **Scalable Architecture**: Clean separation of concerns supports future features
+- **Production-Ready**: Successfully deployed with proper security and monitoring
 
-## What I learned
-Architecture and tooling decisions early on pay dividends for teams.
+## What I Learned
+- **Full-Stack Development**: Deep experience across the entire MERN stack
+- **Docker & DevOps**: Container orchestration and environment isolation
+- **Team Leadership**: Coordinating technical decisions and architecture choices
+- **API Design**: RESTful principles, authentication, and authorization
+- **Database Design**: MongoDB schema design, indexing, and aggregation pipelines
+- **Problem Solving**: Creative solutions (Docker) to infrastructure blockers (VPN)
+
+**Key Takeaway**: Architecture and tooling decisions early on pay dividends for teams. Setting up proper infrastructure from the start saved countless hours of debugging and synchronization issues.

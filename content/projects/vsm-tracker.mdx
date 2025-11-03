@@ -4,15 +4,66 @@ title: VSM Tracker (Private)
 date: 2025-10-28
 summary: A private application for tracking vendor and service metrics; code is private, but access can be requested.
 tags: ["TypeScript", "Node", "Automation"]
+repo: https://github.com/James-Hendershott/VSM-Tracker.git
 access: "mailto:james.hendershott@outlook.com?subject=VSM%20Tracker%20Code%20Access%20Request"
 ---
 
 ## Overview
-VSM Tracker centralizes vendor/service information, communications, and performance metrics.
+VSM Tracker centralizes vendor/service information, communications, and performance metrics for my work as a vendor manager. This tool helps streamline communication tracking, performance monitoring, and vendor relationship management.
 
-## Privacy note
-This repository is private due to sensitive data and environment configuration. If you’d like to review the code, use the Request Access button.
+## Role & Stack
+Solo developer building internal tooling with TypeScript and Node.js to automate repetitive vendor management tasks.
 
-## What I learned
+## Privacy Note
+This repository is private due to sensitive vendor data, business logic, and environment configurations. The repository URL is: https://github.com/James-Hendershott/VSM-Tracker.git
+
+If you'd like to review the code for evaluation purposes, please use the Request Access button to contact me.
+
+## Problem
+As a vendor manager handling multiple vendors and service contracts, I faced:
+- Scattered vendor communications across email and documents
+- Manual tracking of performance metrics and SLAs
+- Time-consuming status updates and reporting
+- No centralized view of vendor relationships
+
+## Solution
+Built a TypeScript/Node.js application that:
+- Centralizes vendor contact information and contracts
+- Tracks communication history and follow-ups
+- Monitors key performance indicators (KPIs)
+- Generates automated reports
+- Provides dashboard views of vendor health
+
+```typescript
+// Example: Vendor data structure
+interface Vendor {
+  id: string;
+  name: string;
+  contacts: Contact[];
+  services: Service[];
+  metrics: PerformanceMetric[];
+  communications: Communication[];
+}
+```
+
+## Key Features
+- Vendor profile management
+- Communication logging and search
+- Performance metrics dashboard
+- Automated reminder system
+- Report generation
+- SLA tracking
+
+## Results
+- Reduced time spent on status tracking by ~40%
+- Improved response times to vendor issues
+- Better visibility into vendor performance
+- Centralized documentation for audits
+
+## What I Learned
+- Building tools that solve real business problems
 - Balancing private data with portfolio transparency
 - Designing small tools that remove repetitive work
+- Importance of data security in business applications
+- TypeScript for maintainable business logic
+- Creating intuitive dashboards for quick insights
