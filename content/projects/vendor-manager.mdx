@@ -1,34 +1,89 @@
 ---
 slug: vendor-manager
-title: Hendershott Vendor Manager
+title: Vendor Manager Suite
 date: 2024-04-15
-summary: A lightweight HTML/JS tool to generate Outlook deeplinks and templated vendor messages, reducing repetitive emails.
-tags: ["HTML", "JavaScript", "Automation"]
+summary: Production fleet management system with two implementations - a 14,000-line JavaScript dashboard with Smartsheet integration, and a full MERN stack application with Redis caching, BullMQ job processing, and real-time updates.
+tags: ["React", "Vite", "TypeScript", "Node.js", "Express", "MongoDB", "Redis", "BullMQ", "Socket.io", "Smartsheet API", "Chart.js", "Docker"]
 access: "mailto:james_hendershott@outlook.com?subject=Vendor%20Manager%20Code%20Access%20Request"
 ---
 
 ## Overview
-A small browser-based tool to cut down repetitive vendor communication. It generates Outlook deeplinks with prefilled recipients/subject/body and includes quick message generators for common scenarios.
 
-## Role & stack
-I designed and built the tool solo using vanilla HTML/CSS/JS. Deployed as a static page for easy access.
+A suite of tools I built to manage vendor relationships and fleet maintenance at my current job. What started as a simple email utility evolved into two full production applications that replaced manual Smartsheet workflows.
+
+## The Two Implementations
+
+### Vendor Manager Dashboard (vendor-manager-web)
+The original implementation - a single-page HTML/JavaScript application that integrates directly with Smartsheet's API.
+
+**Tech Stack:** Vanilla JavaScript (14,000+ lines), HTML, CSS, Smartsheet API, Chart.js, Claude AI API
+
+**Key Features:**
+- Real-time Smartsheet API integration with in-memory caching
+- Chart.js dashboards for fleet metrics and trends
+- Claude AI integration for document analysis (extracting estimates from PDFs/images)
+- Automated weekly reporting and email generation
+- Mailto deeplink generation for templated vendor communications
+- Local storage for user preferences
+
+### Vendor Manager MERN (vendor-manager-mern)
+A complete rebuild using modern full-stack architecture, designed for team-wide deployment.
+
+**Tech Stack:** React, Vite, TypeScript, Shadcn/ui, Express, MongoDB, Redis, BullMQ, Socket.io, JWT, Docker
+
+**Key Features:**
+- React/Vite/TypeScript frontend with Shadcn/ui components
+- Express/MongoDB backend with 10 Mongoose schemas
+- Redis caching for performance
+- BullMQ async job processing for Smartsheet API sync (dual-write architecture)
+- Socket.io for real-time updates across clients
+- JWT authentication with role-based access control (RBAC)
+- Docker Compose deployment for consistent environments
 
 ## Problem
-Vendor emails were repetitive and error-prone, requiring copy/paste across contacts and message templates.
+
+As a Vendor Service Manager overseeing fleet management across 6 locations, I was spending excessive time on:
+- Repetitive vendor emails with copy/paste across contacts
+- Manual data entry and tracking in Smartsheet
+- No visibility into trends or patterns
+- Difficulty coordinating with team members on unit status
 
 ## Solution
-- Centralized common templates
-- Generated mailto deeplinks with merged contacts
-- Lightweight local storage for user preferences
 
-```js
-// Example: build a mailto deeplink
-const link = `mailto:${to}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
+**Phase 1 - Dashboard:** Built a browser-based tool that connected directly to Smartsheet, providing real-time dashboards, automated reporting, and templated communications. Reduced email drafting time by ~50%.
+
+**Phase 2 - MERN Migration:** Rebuilt as a proper full-stack application with its own database, enabling offline capability, better performance, team collaboration features, and preparation for company-wide rollout.
+
+```typescript
+// Example: BullMQ job for Smartsheet sync
+await smartsheetSyncQueue.add('syncUnit', {
+  unitId: unit._id,
+  operation: 'update',
+  data: unitData
+}, {
+  attempts: 3,
+  backoff: { type: 'exponential', delay: 1000 }
+});
 ```
 
-## Results
-- ~50% faster to draft routine messages
-- Fewer addressing mistakes
+## Architecture Highlights
 
-## What I learned
-Simple tooling + good defaults can remove real friction for teams.
+**Dual-Write Pattern:** Changes write to MongoDB immediately for fast UI response, then queue Smartsheet sync jobs via BullMQ for eventual consistency.
+
+**Caching Strategy:** Redis caches frequently-accessed data (vendor lists, location data) with TTL-based invalidation.
+
+**Real-time Updates:** Socket.io broadcasts changes to all connected clients when unit status changes.
+
+## Results
+
+- ~50% faster vendor communication workflow
+- Real-time visibility into fleet status across all locations
+- Automated weekly reports that previously took hours to compile
+- Preparing for team-wide distribution to replace manual Smartsheet workflows
+
+## What I Learned
+
+- How to design for eventual consistency with async job queues
+- Redis caching patterns and cache invalidation strategies
+- Real-time architecture with WebSockets
+- The value of building tools that solve your own pain points
