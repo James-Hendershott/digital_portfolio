@@ -72,27 +72,26 @@ export default function ResumePage() {
       <section className="prose prose-zinc dark:prose-invert max-w-none">
         <h2>Professional Summary</h2>
         <p>
-          Hands-on software engineering student transitioning from vendor management into full-time engineering. Builds pragmatic web applications with TypeScript, React/Next.js (App Router), and Node/Express, and ships to containerized environments. Comfortable on the command line with Linux (including Arch Linux) and enjoys running a homelab. Experienced leading teams, designing APIs, and maintaining automation. Looking to leverage technical and leadership skills to contribute to innovative software engineering roles.
+          Recent Computer Science graduate with hands-on experience across the full software development lifecycle. Proficient in building production web applications using TypeScript, React, Node/Express, and MongoDB with containerized environments (Docker). Brings 20+ years of progressive leadership experience including U.S. Navy Air Traffic Control, with proven abilities in team leadership, training, process improvement, and making timely decisions under pressure. Strong communicator who designs APIs, implements configuration management practices, and delivers maintainable, high-quality software.
         </p>
 
         <h2>Technical Skills</h2>
         <div className="grid gap-3 not-prose text-sm">
-          <div><strong>Languages:</strong> TypeScript, JavaScript, Python, Java, C#, C++, SQL</div>
-          <div><strong>Frontend:</strong> React, Next.js (App Router), Tailwind CSS, MDX, Bootstrap, responsive design</div>
-          <div><strong>Backend:</strong> Node.js, Express, MongoDB (Mongoose), PostgreSQL/MySQL, .NET basics, Django/Flask</div>
-          <div><strong>DevOps:</strong> Docker & Docker Compose, Nginx Proxy Manager, Netlify, Cloudflare Analytics, GitHub Actions, Jenkins, Kubernetes (basics)</div>
-          <div><strong>Tools:</strong> Git & GitHub, GitLab, ESLint/Prettier, Postman/Insomnia, Figma (basics), Linux/Arch Linux, Bash scripting, NEOVIM, VS Code</div>
-          <div><strong>Concepts:</strong> RESTful API design, JWT authentication, role-based access, CI/CD pipelines, unit & integration testing, Agile methodology</div>
+          <div><strong>Languages:</strong> TypeScript, JavaScript, Python, Java, C#, C++, SQL, Bash</div>
+          <div><strong>Frontend:</strong> React, Vite, Next.js, Tailwind CSS, Shadcn/ui, Chart.js, Zustand, responsive design</div>
+          <div><strong>Backend:</strong> Node.js, Express, MongoDB/Mongoose, Redis, PostgreSQL, BullMQ, Socket.io, JWT authentication</div>
+          <div><strong>DevOps:</strong> Docker & Docker Compose, Git/GitHub, CI/CD pipelines, Nginx, Linux/Bash, Unraid, REST APIs</div>
+          <div><strong>Concepts:</strong> SDLC, API design, RBAC, configuration management, async job processing, caching strategies, real-time systems, Agile</div>
         </div>
 
         <h2>Education</h2>
         <div className="space-y-3">
           <div>
             <h3 className="text-lg font-semibold mb-1">Bachelor of Science in Computer Science</h3>
-            <p className="text-sm text-foreground/80">Weber State University, Ogden, UT • Expected Aug 2026</p>
-            <p className="text-sm">Minor: User Experience Design • GPA: 3.44</p>
+            <p className="text-sm text-foreground/80">Weber State University, Ogden, UT • December 2025</p>
+            <p className="text-sm">Minor: User Experience Design • GPA: 3.56</p>
             <p className="text-sm italic">Relevant Coursework: Advanced Database Programming, Software Engineering, Data Structures, Scripting Languages, Object-Oriented Windows Applications</p>
-            <p className="text-sm italic">Honors: Active member of the National Society of Leadership and Success</p>
+            <p className="text-sm italic">Honors: National Society of Leadership and Success</p>
           </div>
           <div>
             <h3 className="text-lg font-semibold mb-1">Associate of Applied Science in Computer Science</h3>
@@ -123,23 +122,13 @@ export default function ResumePage() {
             </ul>
           </div>
           <div>
-            <h3 className="text-lg font-semibold">VSM Tracker (Fleet Management MERN) — Full Stack</h3>
-            <p className="text-sm text-foreground/70 mb-2">Personal project • 2024</p>
+            <h3 className="text-lg font-semibold">Vendor Manager Suite — Full Stack</h3>
+            <p className="text-sm text-foreground/70 mb-2">2024–Present</p>
             <ul className="text-sm space-y-1">
-              <li>Replaced a cumbersome Smartsheet workflow with a full-stack MERN application that tracks out-of-service vehicles for a nationwide fleet.</li>
-              <li>Implemented a card-based dashboard (Kanban) with visual status indicators, overdue badges, and quick-action buttons to update unit statuses.</li>
-              <li>Built a Node.js/Express API with MongoDB and JWT-based authentication supporting admin and user roles; added routes for units, vendors, locations, notes, file uploads, and quick actions.</li>
-              <li>Integrated email notifications; added file attachment capability and CSV/Excel import scripts to backfill data from Smartsheet exports.</li>
-              <li>Deployed local and cloud environments with Docker Compose and documented Unraid MongoDB setup.</li>
-            </ul>
-          </div>
-          <div>
-            <h3 className="text-lg font-semibold">Hendershott Vendor Manager — Single-Page Utility</h3>
-            <p className="text-sm text-foreground/70 mb-2">2023</p>
-            <ul className="text-sm space-y-1">
-              <li>Created a lightweight HTML/JavaScript tool that generates pre-filled mailto deep links and message templates for routine vendor emails.</li>
-              <li>Reduced drafting time by ~50% and improved accuracy and speed of repetitive communications across teams.</li>
-              <li>Persisted user preferences via local storage and implemented a clean, responsive UI.</li>
+              <li>Built production fleet management system: React/Vite/TypeScript frontend with Shadcn/ui, Express/MongoDB backend, Redis caching.</li>
+              <li>Implemented dual-write architecture with BullMQ async job processing for Smartsheet API sync; Socket.io for real-time updates.</li>
+              <li>Designed 10 Mongoose schemas, JWT authentication with RBAC, and comprehensive REST API; deployed via Docker Compose.</li>
+              <li>Original dashboard: 14,000-line vanilla JS application with Smartsheet API, Chart.js dashboards, and Claude AI document analysis.</li>
             </ul>
           </div>
           <div>
@@ -152,12 +141,19 @@ export default function ResumePage() {
             </ul>
           </div>
           <div>
-            <h3 className="text-lg font-semibold">Portfolio & Community Hub — Next.js + MDX</h3>
+            <h3 className="text-lg font-semibold">Digital Portfolio — Next.js + MDX</h3>
             <p className="text-sm text-foreground/70 mb-2">2023–Present</p>
             <ul className="text-sm space-y-1">
-              <li>Developed a content‑driven portfolio and community hub using Next.js, MDX, React 19, TypeScript, Tailwind CSS v4, and App Router.</li>
-              <li>Implemented case studies, blog posts, GitHub showcases, sitemap/robots, and basic analytics integration.</li>
-              <li>Deployed via Netlify and Nginx with TLS; integrated automation via GitHub Actions.</li>
+              <li>Built content-driven portfolio using Next.js, React, TypeScript, Tailwind, and MDX.</li>
+              <li>Features: MDX case studies, GitHub showcase, Netlify contact form, App Router and static generation.</li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-lg font-semibold">Where&apos;s My App? — Home Storage Tracker</h3>
+            <p className="text-sm text-foreground/70 mb-2">2025</p>
+            <ul className="text-sm space-y-1">
+              <li>Full-stack inventory system with QR scanning/printing, SVG rack maps, item photos, PWA offline support.</li>
+              <li>Built with Next.js, TypeScript, Prisma, PostgreSQL, and Auth.js.</li>
             </ul>
           </div>
           <div>
