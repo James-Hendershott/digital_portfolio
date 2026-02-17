@@ -11,7 +11,7 @@ Recent Computer Science graduate with hands-on experience across the full softwa
 
 - **Languages:** TypeScript, JavaScript, Python, Java, C#, C++, SQL, Bash
 - **Frontend:** React, Vite, Next.js, Tailwind CSS, Shadcn/ui, Chart.js, Zustand, responsive design
-- **Backend:** Node.js, Express, MongoDB/Mongoose, Redis, PostgreSQL, BullMQ, Socket.io, JWT authentication
+- **Backend:** Node.js, Express, MongoDB/Mongoose, Redis, PostgreSQL, BullMQ, Socket.io, Flask, JWT authentication
 - **DevOps & Tools:** Docker & Docker Compose, Git/GitHub, CI/CD pipelines, Nginx, Linux/Bash, Unraid, REST APIs
 - **Concepts:** SDLC, API design, RBAC, configuration management, async job processing, caching strategies, real-time systems, Agile
 
@@ -43,6 +43,10 @@ GPA: 3.75
 
 ### Where's My App? — Home Storage Tracker | 2025
 - Full-stack inventory system with QR scanning/printing, SVG rack maps, item photos, PWA offline support; Auth.js + Prisma + PostgreSQL
+
+### Label Generator — Python/Flask Web App | 2025
+- Built Flask application for generating screw/fastener labels with color-coded sizing system for toolbox organization
+- Canvas API for browser-side label rendering; print-optimized output at 300 DPI
 
 ## Professional Experience
 

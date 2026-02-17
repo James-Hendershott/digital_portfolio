@@ -79,7 +79,7 @@ export default function ResumePage() {
         <div className="grid gap-3 not-prose text-sm">
           <div><strong>Languages:</strong> TypeScript, JavaScript, Python, Java, C#, C++, SQL, Bash</div>
           <div><strong>Frontend:</strong> React, Vite, Next.js, Tailwind CSS, Shadcn/ui, Chart.js, Zustand, responsive design</div>
-          <div><strong>Backend:</strong> Node.js, Express, MongoDB/Mongoose, Redis, PostgreSQL, BullMQ, Socket.io, JWT authentication</div>
+          <div><strong>Backend:</strong> Node.js, Express, MongoDB/Mongoose, Redis, PostgreSQL, BullMQ, Socket.io, Flask, JWT authentication</div>
           <div><strong>DevOps:</strong> Docker & Docker Compose, Git/GitHub, CI/CD pipelines, Nginx, Linux/Bash, Unraid, REST APIs</div>
           <div><strong>Concepts:</strong> SDLC, API design, RBAC, configuration management, async job processing, caching strategies, real-time systems, Agile</div>
         </div>
@@ -154,6 +154,14 @@ export default function ResumePage() {
             <ul className="text-sm space-y-1">
               <li>Full-stack inventory system with QR scanning/printing, SVG rack maps, item photos, PWA offline support.</li>
               <li>Built with Next.js, TypeScript, Prisma, PostgreSQL, and Auth.js.</li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-lg font-semibold">Label Generator — Python/Flask Web App</h3>
+            <p className="text-sm text-foreground/70 mb-2">2025</p>
+            <ul className="text-sm space-y-1">
+              <li>Flask application for generating screw/fastener labels with color-coded sizing system.</li>
+              <li>Canvas API for browser-side rendering; print-optimized output at 300 DPI.</li>
             </ul>
           </div>
           <div>

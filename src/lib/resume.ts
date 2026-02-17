@@ -56,7 +56,7 @@ export const resumeData: ResumeData = {
   skills: {
     languages: ["TypeScript", "JavaScript", "Python", "Java", "C#", "C++", "SQL", "Bash"],
     frontend: ["React", "Vite", "Next.js", "Tailwind CSS", "Shadcn/ui", "Chart.js", "Zustand"],
-    backend: ["Node.js", "Express", "MongoDB/Mongoose", "Redis", "PostgreSQL", "BullMQ", "Socket.io", "JWT"],
+    backend: ["Node.js", "Express", "MongoDB/Mongoose", "Redis", "PostgreSQL", "BullMQ", "Socket.io", "Flask", "JWT"],
     devops: ["Docker & Docker Compose", "Git/GitHub", "CI/CD pipelines", "Nginx", "Linux/Bash", "Unraid"],
     concepts: ["SDLC", "API design", "RBAC", "async job processing", "caching strategies", "real-time systems", "Agile"],
   },
@@ -166,6 +166,15 @@ export const resumeData: ResumeData = {
       bullets: [
         "Full-stack inventory system with QR scanning/printing, SVG rack maps, item photos, PWA offline support.",
         "Auth.js + Prisma + PostgreSQL backend.",
+      ],
+    },
+    {
+      name: "Label Generator",
+      link: "https://github.com/James-Hendershott/Label_Generator",
+      tech: ["Python", "Flask", "JavaScript", "Canvas API"],
+      bullets: [
+        "Flask web app for generating screw/fastener labels with color-coded sizing system.",
+        "Canvas API for browser-side rendering; print-optimized output at 300 DPI.",
       ],
     },
   ],
