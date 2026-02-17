@@ -10,10 +10,10 @@ export type ResumeData = {
   summary: string[];
   skills: {
     languages: string[];
-    frameworks: string[];
+    frontend: string[];
     backend: string[];
     devops: string[];
-    tools: string[];
+    concepts: string[];
   };
   experience: Array<{
     company: string;
@@ -23,6 +23,7 @@ export type ResumeData = {
     end: string;
     bullets: string[];
   }>;
+  careerNote?: string;
   projects: Array<{
     name: string;
     link?: string;
@@ -40,172 +41,145 @@ export type ResumeData = {
 
 export const resumeData: ResumeData = {
   name: "James Hendershott",
-  title: "Software Engineer (Graduating 2026)",
+  title: "Software Engineer",
   location: "Eagle Mountain, UT",
-  email: "",
+  email: "james_hendershott@outlook.com",
+  phone: "385-526-1111",
   website: "https://jameshendershott.org",
   github: "https://github.com/James-Hendershott",
   linkedin: "https://www.linkedin.com/in/james-hendershott-0a2481224/",
   summary: [
-    "Hands-on software engineering student transitioning from vendor management to full-time engineering.",
-    "Builds pragmatic web apps with TypeScript/React/Next.js (App Router) and Node/Express, ships in Docker-backed environments.",
-    "Homelab + systems mindset: Unraid, Nginx Proxy Manager, containers, and automation.",
+    "Recent Computer Science graduate with hands-on experience across the full software development lifecycle.",
+    "Proficient in building production web applications using TypeScript, React, Node/Express, and MongoDB with containerized environments (Docker).",
+    "Brings 20+ years of progressive leadership experience including U.S. Navy Air Traffic Control, with proven abilities in team leadership, training, process improvement, and making timely decisions under pressure.",
   ],
   skills: {
-    languages: ["TypeScript", "JavaScript", "Python", "Java", "C#", "C++", "SQL"],
-    frameworks: ["React", "Next.js 16 (App Router)", "Tailwind CSS v4", "MDX", "Bootstrap"],
-    backend: ["Node.js", "Express", "MongoDB (Mongoose)", "PostgreSQL/MySQL", ".NET basics", "Django/Flask"],
-    devops: ["Docker & Docker Compose", "Nginx Proxy Manager", "Netlify", "Cloudflare Analytics", "GitHub Actions", "Jenkins", "Kubernetes (basics)"],
-    tools: ["Git & GitHub/GitLab", "ESLint/Prettier", "Postman/Insomnia", "Linux/Arch Linux", "Bash scripting", "Neovim", "VS Code", "Figma (basics)"]
+    languages: ["TypeScript", "JavaScript", "Python", "Java", "C#", "C++", "SQL", "Bash"],
+    frontend: ["React", "Vite", "Next.js", "Tailwind CSS", "Shadcn/ui", "Chart.js", "Zustand"],
+    backend: ["Node.js", "Express", "MongoDB/Mongoose", "Redis", "PostgreSQL", "BullMQ", "Socket.io", "JWT"],
+    devops: ["Docker & Docker Compose", "Git/GitHub", "CI/CD pipelines", "Nginx", "Linux/Bash", "Unraid"],
+    concepts: ["SDLC", "API design", "RBAC", "async job processing", "caching strategies", "real-time systems", "Agile"],
   },
   experience: [
     {
       company: "Amerit Fleet Solutions",
       location: "UT (Remote/Hybrid)",
-      title: "Vendor Manager",
-      start: "2022",
+      title: "Vendor Service Manager",
+      start: "April 2022",
       end: "Present",
       bullets: [
-        "Built internal tooling (including VSM Tracker) to centralize maintenance tracking and dashboards, improving decision-making efficiency.",
-        "Streamlined vendor communication with a custom HTML/JS utility (Outlook deeplinks and templates), reducing drafting time by ~50%.",
-        "Partnered with operations and IT to improve turnaround time on vendor-related tasks and data quality.",
+        "Oversee fleet management across 6 locations; lead status meetings and analyze trends for proactive issue resolution.",
+        "Built and deployed Vendor Manager applications (dashboard + MERN stack) to replace manual Smartsheet workflows; preparing for team-wide distribution.",
       ],
     },
     {
       company: "Aaron's Auto Pro",
       location: "UT",
       title: "Service Manager",
-      start: "2020",
-      end: "2022",
+      start: "September 2020",
+      end: "April 2022",
       bullets: [
-        "Managed daily operations, scheduling, and training; improved workflow transparency with digital job tracking.",
-        "Analyzed repair data to implement process improvements that reduced turnaround time by ~15%.",
+        "Managed automotive repair operations; implemented digital job tracking reducing turnaround ~15%.",
       ],
     },
     {
       company: "MJK Custom Fabrication and Coatings",
       location: "UT",
       title: "Project Manager",
-      start: "2015",
-      end: "2019",
+      start: "January 2015",
+      end: "November 2019",
       bullets: [
-        "Directed end-to-end custom fabrication projects; coordinated cross-functional teams and vendor negotiations.",
-        "Introduced project management tools to track milestones and budgets, improving on-time delivery.",
+        "Directed custom fabrication projects within budget/deadlines; managed production teams and negotiated vendor terms.",
       ],
     },
     {
       company: "MattressFirm",
       location: "UT",
       title: "Multi-Channel Sales Manager",
-      start: "2012",
-      end: "2014",
+      start: "January 2012",
+      end: "December 2014",
       bullets: [
-        "Led sales initiatives across channels; developed leadership and communication skills.",
+        "Led sales teams at national events; set performance goals and refined sales processes.",
       ],
     },
     {
       company: "Sizzling Platter",
       location: "UT",
-      title: "Training Manager & General Manager",
-      start: "2008",
-      end: "2012",
+      title: "Training Manager → General Manager",
+      start: "January 2008",
+      end: "January 2012",
       bullets: [
-        "Managed teams and operations; built training programs and drove performance metrics.",
+        "Led new store openings, updated training materials, mentored employees; managed operations and team development.",
       ],
     },
     {
-      company: "United States Navy",
-      location: "",
+      company: "United States Navy, NAS Kingsville",
       title: "Air Traffic Controller",
-      start: "2003",
-      end: "2007",
+      start: "January 2003",
+      end: "January 2007",
       bullets: [
-        "Cultivated discipline, precision, and the ability to perform under pressure.",
+        "Managed aircraft routing and flight planning; ensured air traffic safety; excelled in high-pressure decision-making.",
       ],
     },
   ],
   projects: [
     {
-      name: "TrackMate (Capstone MERN)",
+      name: "Vendor Manager",
+      link: "https://github.com/James-Hendershott/vendor-manager-web",
+      tech: ["React", "Vite", "TypeScript", "Shadcn/ui", "Express", "MongoDB", "Redis", "BullMQ", "Socket.io", "Docker"],
+      bullets: [
+        "Built production fleet management system: React/Vite/TypeScript frontend with Shadcn/ui, Express/MongoDB backend, Redis caching.",
+        "Implemented dual-write architecture with BullMQ async job processing for Smartsheet API sync; Socket.io for real-time updates.",
+        "Designed 10 Mongoose schemas, JWT authentication with RBAC, and comprehensive REST API; deployed via Docker Compose.",
+      ],
+    },
+    {
+      name: "Vendor Manager Dashboard",
+      tech: ["JavaScript", "Smartsheet API", "Chart.js", "Claude AI"],
+      bullets: [
+        "Developed 12,000-line vanilla JS application with real-time Smartsheet API integration, Chart.js dashboards, and in-memory caching.",
+        "Integrated Claude AI for document analysis (estimates from PDF/images); built automated weekly reporting and email generation.",
+      ],
+    },
+    {
+      name: "TrackMate",
       link: "https://github.com/bradleypeterson/TrackMate",
       tech: ["MongoDB", "Express", "React", "Node.js", "Docker"],
       bullets: [
-        "Team lead: designed API endpoints, React component structure, and Docker-based local dev.",
-        "Solved VPN-gated data by using seed scripts and JSON fixtures for repeatable, offline development.",
+        "Led 4-person team through full SDLC; designed RESTful APIs and React architecture with RBAC and audit trails.",
+        "Docker Compose deployment with seed scripts for offline development.",
       ],
     },
     {
-      name: "VSM Tracker (Fleet Management MERN)",
-      link: "https://github.com/James-Hendershott/VSM-Tracker",
-      tech: ["MongoDB", "Express", "React", "Node.js", "JWT"],
-      bullets: [
-        "Replaced Smartsheet with a full-stack app to track out-of-service units; added Kanban dashboards and notifications.",
-      ],
-    },
-    {
-      name: "Hendershott Vendor Manager",
-      link: "",
-      tech: ["HTML", "JavaScript", "LocalStorage"],
-      bullets: [
-        "Single-page utility that builds pre-filled mailto deeplinks and message templates for routine vendor emails.",
-        "Improved accuracy and speed of repetitive communications across teams.",
-      ],
-    },
-    {
-      name: "BoomPortal (Pi 5 + Sunshine/Moonlight)",
-      link: "",
-      tech: ["Raspberry Pi", "Docker", "Nginx Proxy Manager"],
-      bullets: [
-        "Configured Sunshine on a Raspberry Pi 5 with reverse proxy and controller mapping for low-latency streaming.",
-        "Observed ~12–18ms wired latency and ~25–35ms over Wi‑Fi 6 in home network.",
-      ],
-    },
-    {
-      name: "Digital Portfolio (Next.js + MDX)",
+      name: "Digital Portfolio",
       link: "https://github.com/James-Hendershott/digital_portfolio",
-      tech: ["Next.js 16", "React 19", "TypeScript", "Tailwind v4", "MDX"],
+      tech: ["Next.js", "React", "TypeScript", "Tailwind CSS", "MDX"],
       bullets: [
-        "Content-driven project case studies, GitHub showcase, sitemap/robots, and basic analytics integration.",
-        "Deployed via Netlify or Nginx behind TLS; uses App Router and MDX content files.",
+        "Built content-driven portfolio using Next.js, React, TypeScript, Tailwind, and MDX.",
+        "Features: MDX case studies, GitHub showcase, Netlify contact form, App Router and static generation.",
       ],
     },
     {
-      name: "Retro Adventure Game",
-      link: "https://github.com/James-Hendershott/retro_adventure_game",
-      tech: ["Python", "Django", "PostgreSQL"],
-      bullets: [
-        "Django-powered web version with database-backed progress, parser improvements, and retro CRT theme.",
-      ],
-    },
-    {
-      name: "Where’s My App?",
+      name: "Where's My App?",
       link: "https://github.com/James-Hendershott/wheresMyApp",
-      tech: ["Next.js", "TypeScript", "PostgreSQL", "Prisma", "Auth.js", "Zod", "PWA", "QR"],
+      tech: ["Next.js", "TypeScript", "PostgreSQL", "Prisma", "Auth.js"],
       bullets: [
-        "Home storage tracker with QR scanning, interactive rack maps (SVG), item photos to S3, and full movement history.",
+        "Full-stack inventory system with QR scanning/printing, SVG rack maps, item photos, PWA offline support.",
+        "Auth.js + Prisma + PostgreSQL backend.",
       ],
     },
   ],
   education: [
     {
       school: "Weber State University",
-      degree: "B.S. in Computer Science — Expected Aug 2026; Minor: User Experience Design",
+      degree: "B.S. in Computer Science — December 2025 (GPA 3.56)",
       bullets: [
-        "Relevant coursework: Advanced Database Programming, Software Engineering, Data Structures, Scripting Languages, Object-Oriented Windows Applications.",
+        "Minor: User Experience Design | National Society of Leadership and Success",
       ],
     },
     {
       school: "Weber State University",
-      degree: "A.A.S. in Computer Science — Dec 2023 (GPA 3.75)",
-      bullets: ["Programming I & II, Network Fundamentals, Database Design & SQL, Data Structures"],
-    },
-    {
-      school: "Weber State University",
-      degree: "Certificate of Proficiency in Programming Essentials — Aug 2023 (GPA 3.75)",
-    },
-    {
-      school: "Weber State University",
-      degree: "A.S. in General Studies — Aug 2019 (GPA 3.05)",
+      degree: "A.A.S. in Computer Science — December 2023 (GPA 3.75)",
     },
   ],
 };

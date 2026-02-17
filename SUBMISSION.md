@@ -157,7 +157,7 @@ Before submitting:
 - [ ] Submission includes live URL + zip file
 
 ### 📧 Contact Information
-- **Email**: james.hendershott@outlook.com
+- **Email**: james_hendershott@outlook.com
 - **GitHub**: https://github.com/James-Hendershott
 - **LinkedIn**: https://www.linkedin.com/in/james-hendershott-0a2481224/
 

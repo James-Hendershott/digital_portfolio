@@ -54,8 +54,8 @@ export async function GET() {
     .font("Helvetica-Bold").fontSize(10).fillColor("#000").text("Languages: ", { continued: true })
     .font("Helvetica").text(r.skills.languages.join(", "));
   doc
-    .font("Helvetica-Bold").text("Frameworks: ", { continued: true })
-    .font("Helvetica").text(r.skills.frameworks.join(", "));
+    .font("Helvetica-Bold").text("Frontend: ", { continued: true })
+    .font("Helvetica").text(r.skills.frontend.join(", "));
   doc
     .font("Helvetica-Bold").text("Backend: ", { continued: true })
     .font("Helvetica").text(r.skills.backend.join(", "));
@@ -63,8 +63,8 @@ export async function GET() {
     .font("Helvetica-Bold").text("DevOps: ", { continued: true })
     .font("Helvetica").text(r.skills.devops.join(", "));
   doc
-    .font("Helvetica-Bold").text("Tools: ", { continued: true })
-    .font("Helvetica").text(r.skills.tools.join(", "));
+    .font("Helvetica-Bold").text("Concepts: ", { continued: true })
+    .font("Helvetica").text(r.skills.concepts.join(", "));
 
   // Experience
   addSection(doc, "Experience");
