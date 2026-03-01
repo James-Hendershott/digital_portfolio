@@ -169,6 +169,21 @@ export default function ResumePage() {
             </ul>
           </div>
           <div>
+            <h3 className="text-lg font-semibold">Property Comparison Dashboard — Full Stack</h3>
+            <p className="text-sm text-foreground/70 mb-2">2025–Present</p>
+            <ul className="text-sm space-y-1">
+              <li>Built full-stack family real estate comparison dashboard: 50 property cards across 7 states with voting, rankings, notes, and 30-second real-time polling.</li>
+              <li>Express backend with sql.js (WASM SQLite), 13 REST API endpoints, 5 database tables; Docker Compose deployment on Unraid.</li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-lg font-semibold">Shed Gravel Pad Guide — Interactive HTML App</h3>
+            <p className="text-sm text-foreground/70 mb-2">2025</p>
+            <ul className="text-sm space-y-1">
+              <li>Built 2,065-line zero-dependency interactive guide with 7-step setup wizard, Canvas satellite mapping tool, 7 inline SVG technical diagrams, and live cost calculator.</li>
+            </ul>
+          </div>
+          <div>
             <h3 className="text-lg font-semibold">E‑Commerce Microservices (Java) — Personal Project</h3>
             <p className="text-sm text-foreground/70 mb-2">2023</p>
             <ul className="text-sm space-y-1">

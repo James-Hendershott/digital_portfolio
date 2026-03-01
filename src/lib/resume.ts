@@ -177,6 +177,23 @@ export const resumeData: ResumeData = {
         "Canvas API for browser-side rendering; print-optimized output at 300 DPI.",
       ],
     },
+    {
+      name: "Property Comparison Dashboard",
+      link: "https://github.com/James-Hendershott/property-comparison",
+      tech: ["Node.js", "Express", "SQLite", "JavaScript", "Docker"],
+      bullets: [
+        "Built full-stack family real estate comparison dashboard: 50 property cards across 7 states with voting, rankings, notes, and 30-second real-time polling.",
+        "Express backend with sql.js (WASM SQLite), 13 REST API endpoints, 5 database tables; Docker Compose deployment on Unraid.",
+      ],
+    },
+    {
+      name: "Shed Gravel Pad Guide",
+      link: "https://github.com/James-Hendershott/shed_generator",
+      tech: ["HTML", "CSS", "JavaScript", "Canvas API", "SVG"],
+      bullets: [
+        "Built 2,065-line zero-dependency interactive guide with 7-step setup wizard, Canvas satellite mapping tool, 7 inline SVG technical diagrams, and live cost calculator.",
+      ],
+    },
   ],
   education: [
     {

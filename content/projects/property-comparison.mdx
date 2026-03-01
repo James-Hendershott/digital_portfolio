@@ -1,0 +1,53 @@
+---
+slug: property-comparison
+title: Property Comparison Dashboard
+date: 2025-12-01
+summary: Full-stack family real estate comparison dashboard with voting system, rankings, notes, and 50 property cards across 7 states. Express + SQLite backend, vanilla JS frontend.
+tags: ["JavaScript", "Express", "SQLite", "Node.js", "Docker"]
+repo: https://github.com/James-Hendershott/property-comparison
+live: https://homes.shottsserver.com
+---
+
+## Overview
+
+A full-stack family real estate comparison dashboard built for the Hendershott family's 2026 house hunt across 7 states (Washington, Idaho, Montana, Wyoming, Colorado, Oregon, North Carolina). Features 50 active property cards with a collaborative voting system, discussion notes, and live rankings — used daily by the family to evaluate and compare properties.
+
+## Key Features
+
+- **50 Property Cards**: Each card includes price, acreage, address, proximity grid (distances to key locations), pros/cons lists, "MUST DO" checklists, color-coded environmental hazard pills (low/moderate/high/severe/special), monthly cost breakdowns (FHA mortgage at 6.5%/30yr/3.5% down), and scoring rows.
+- **Family Voting System**: Modal-based user identification with 1–5 star ratings per property per user. Displays individual votes, averages, and vote counts with upsert support.
+- **Rankings Table**: Auto-generated leaderboard sorted by average family rating with per-user vote breakdowns.
+- **Overview Table**: Summary comparison of all properties with dynamically-injected family rating column.
+- **Notes System**: Per-property family discussion notes with author attribution, timestamps, and user-scoped deletion.
+- **Property Nicknames**: User-assignable custom names that propagate across nav links, rankings, and all UI elements.
+- **Graveyard System**: Soft-delete properties with reason tracking (off-market, failed inspection, etc.); hidden from active views, displayed in graveyard section, restorable.
+- **Real-time Polling**: All data auto-refreshes every 30 seconds for multi-user collaboration.
+- **Print & Mobile Support**: Print stylesheets for clean output; responsive design for mobile voting and note entry.
+
+## Tech Stack
+
+| Layer | Technology |
+|-------|-----------|
+| Backend | Node.js 20, Express 4.21 |
+| Database | SQLite via sql.js (WASM — no native bindings) |
+| Frontend | Vanilla JavaScript, CSS, HTML |
+| Icons | Bootstrap Icons (CDN) |
+| Fonts | Google Fonts (Lora, DM Sans) |
+| Deployment | Docker + Docker Compose on Unraid |
+| Proxy | Nginx Proxy Manager → `homes.shottsserver.com` |
+
+## Architecture
+
+The backend is a lean Express server (168 lines) with a SQLite database layer (253 lines) exposing 13 REST API endpoints. The database uses sql.js (WASM) for zero-dependency SQLite with 5 tables: `users`, `votes`, `notes`, `property_names`, and `graveyard`. Every mutation triggers a synchronous write to the `data/votes.db` file for persistence.
+
+The frontend is a single-page application — one `index.html` file (10,283 lines) with anchor-based navigation (`#p1` through `#p54`, `#overview`, `#rankings`, `#graveyard`). Client-side JavaScript (756 lines) handles voting modals, note submission, nickname editing, and 30-second polling for real-time collaboration.
+
+**Production code: ~12,000 lines** (421 backend + 11,513 frontend).
+
+## What I Learned
+
+- Building collaborative multi-user tools with real-time polling
+- SQLite via WASM (sql.js) for serverless-style database without native bindings
+- Designing data-dense property cards with environmental and financial analysis
+- Anchor-based SPA navigation for single-file applications
+- Docker deployment with volume-mounted SQLite persistence

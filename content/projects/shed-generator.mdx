@@ -2,34 +2,43 @@
 slug: shed-generator
 title: Shed Gravel Pad Guide
 date: 2025-02-14
-summary: Interactive single-page HTML guide for building a shed gravel pad with material calculations, cost estimates, and step-by-step instructions.
-tags: ["HTML", "CSS", "JavaScript", "Documentation"]
+summary: Interactive 2,000-line single-page HTML guide with setup wizard, Canvas satellite mapping tool, SVG technical diagrams, and real-time cost calculator for shed pad construction.
+tags: ["HTML", "CSS", "JavaScript", "Canvas API", "SVG"]
 repo: https://github.com/James-Hendershott/shed_generator
 ---
 
 ## Overview
 
-A comprehensive, interactive guide for planning and building a gravel pad foundation for a backyard shed in Farmington, UT. Includes everything from permits to material calculations to step-by-step construction instructions.
+A comprehensive, interactive 2,065-line single-page HTML application for planning and building a gravel pad foundation for a backyard shed. Built as a "Dad & James DIY Project" with zero external dependencies — no frameworks, no build tools, no npm. The entire application is a single self-contained HTML file.
 
-## Features
+## Key Features
 
-- **Material Calculator**: Automatic calculations for gravel, landscape fabric, and edging
-- **Cost Estimates**: Real-time cost breakdowns based on local supplier pricing
-- **Step-by-Step Guide**: Detailed instructions with tips for each phase
-- **Local Resources**: Links to nearby suppliers and rental equipment
-- **Mobile-Friendly**: Responsive design for on-site reference
+- **7-Step Setup Wizard**: Customizes the entire guide based on pad size, gravel depth, sprinkler detection, drainage assessment, equipment choice, and existing tool inventory. Conditionally shows/hides relevant steps throughout all phases.
+- **Satellite Property View**: Canvas 2D-based interactive tool that loads a property satellite image with distance measurement (2-click), area measurement (polygon drawing), adjustable scale calibration, and custom image upload support.
+- **8 Construction Phases**: Detailed step-by-step guides (Planning → Prep → Mark → Excavate → Compact → Gravel → Move Shed → Final Setup) with interactive checklists, per-phase print buttons, and conditional content based on wizard answers.
+- **7 Inline SVG Diagrams**: Hand-coded technical diagrams including 3-4-5 triangle layout, diagonal check, excavation cross-section, layer cross-section, deck block layout, shed-on-rollers side view, and skid build sheet.
+- **Cost Calculator**: Live-updating calculator with cubic yard/tonnage calculations including waste factor, itemized breakdown (road base, top gravel, fabric, deck blocks, skids, rentals, tools), and KPI dashboard.
+- **Materials & Where to Buy**: Tables with direct purchase links to Home Depot, Lowe's, and Amazon.
+- **Print Support**: Full-page print stylesheet plus per-phase isolation printing with empty checkboxes.
 
 ## Tech Stack
 
-Single-page HTML application with:
-- CSS custom properties for theming
-- Vanilla JavaScript for calculations
-- No build process or dependencies
-- Dark mode UI
+| Layer | Technology |
+|-------|-----------|
+| Language | HTML5, CSS3, Vanilla JavaScript (ES6+) |
+| Graphics | Canvas 2D API, inline SVG |
+| Styling | CSS custom properties, responsive media queries, print stylesheets |
+| Dependencies | **Zero** — no npm, no CDN, no external scripts |
+| Files | **1** — entire app in a single HTML file |
+
+## Architecture
+
+The application is a zero-dependency monolith by design. All 2,065 lines live in one file — 267 lines of CSS, 474 lines of JavaScript, and 1,324 lines of HTML with inline SVG. The wizard state drives conditional rendering across all 8 phases, and the cost calculator recalculates live as inputs change. No state is persisted — everything runs in-memory during the session.
 
 ## What I Learned
 
-- Creating useful documentation as an interactive tool
-- Calculating construction materials programmatically
-- Designing for mobile on-site reference
-- Self-contained HTML applications
+- Building interactive tools as self-contained documentation
+- Canvas 2D API for measurement and mapping tools
+- Hand-coding SVG technical diagrams for construction reference
+- Designing wizard-driven conditional content without a framework
+- Print stylesheet engineering for phase-specific output

@@ -50,6 +50,13 @@ GPA: 3.75
 - Built Flask application for generating screw/fastener labels with color-coded sizing system for toolbox organization
 - Canvas API for browser-side label rendering; print-optimized output at 300 DPI
 
+### Property Comparison Dashboard — Full-Stack Application | 2025–Present
+- Built full-stack family real estate comparison dashboard: 50 property cards across 7 states with voting, rankings, notes, and 30-second real-time polling
+- Express backend with sql.js (WASM SQLite), 13 REST API endpoints, 5 database tables; Docker Compose deployment on Unraid
+
+### Shed Gravel Pad Guide — Interactive HTML App | 2025
+- Built 2,065-line zero-dependency interactive guide with 7-step setup wizard, Canvas satellite mapping tool, 7 inline SVG technical diagrams, and live cost calculator
+
 ## Professional Experience
 
 **Vendor Service Manager** — Amerit Fleet Solutions | Apr 2022–Present
