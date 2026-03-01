@@ -2,21 +2,51 @@
 slug: digital-portfolio
 title: Digital Portfolio (This Site)
 date: 2025-10-30
-summary: Personal portfolio built with Next.js 16, TypeScript, Tailwind v4, and MDX. Includes private project access and a detailed projects section.
-tags: ["Next.js", "TypeScript", "Tailwind", "MDX"]
+summary: Personal portfolio built with Next.js 16, TypeScript, Tailwind v4, and MDX. Features an MDX content pipeline, server-side PDF resume generation, and 12 project case studies.
+tags: ["Next.js", "TypeScript", "Tailwind", "MDX", "React", "Netlify"]
 repo: https://github.com/James-Hendershott/digital_portfolio
 ---
 
 ## Overview
-This website serves as my living portfolio with case studies, a contact form, and a resume download.
 
-## Highlights
-- App Router (Next.js 16), React 19, TypeScript
-- MDX content pipeline for project pages
-- Private project access flow (request instead of public repo)
-- Netlify-friendly contact form
+This website is my living portfolio — a statically generated Next.js site where each project is an MDX case study. It includes a contact form, downloadable PDF resume, GitHub activity showcase, and a private project access flow for work under NDA.
 
-## What I learned
-- Ergonomic content loading with MDX
-- Clean, accessible UI components with Tailwind v4
-- Clear branching and PR workflow for small, focused changes
+## Tech Stack
+
+- **Framework**: Next.js 16 (App Router) with React 19
+- **Language**: TypeScript throughout
+- **Styling**: Tailwind CSS v4 with CSS custom properties
+- **Content**: MDX via `next-mdx-remote` + `gray-matter` for frontmatter
+- **Resume**: Server-side PDF generation with PDFKit (API route)
+- **Deployment**: Netlify with automatic builds from GitHub
+- **SEO**: Dynamic sitemap, robots.txt, Open Graph, Twitter Cards
+
+## Content Pipeline
+
+Project pages are authored as `.mdx` files in a `content/projects/` directory. At build time, `gray-matter` extracts frontmatter metadata (title, date, tags, repo URL, access link) and `next-mdx-remote` compiles the MDX body. This approach keeps content portable, version-controlled, and easy to add to — just drop in a new `.mdx` file.
+
+```typescript
+// Simplified content loading
+const { data, content } = matter(raw);     // extract frontmatter
+const mdx = await compileMDX({ source: content }); // compile MDX
+```
+
+## Key Features
+
+- **12 Project Case Studies**: Each with problem/solution structure, code samples, and results
+- **Private Project Access**: Projects under NDA show a "Request Access" button (mailto link) instead of a repo link
+- **PDF Resume**: Generated server-side via PDFKit — structured resume data rendered to a downloadable PDF on demand
+- **Contact Form**: Netlify Forms integration with honeypot spam protection
+- **Responsive Design**: Clean, minimal UI with dark mode defaults
+
+## Design
+
+The site uses a minimal dark theme with Geist Sans/Mono fonts, purple-to-gold gradient accents, and generous whitespace. The design prioritizes readability and fast navigation — no animations or heavy assets.
+
+## What I Learned
+
+- MDX content pipelines: frontmatter parsing, dynamic routing, and static generation
+- Server-side PDF generation with PDFKit (fonts, layout, streaming response)
+- SEO fundamentals: canonical URLs, structured metadata, sitemaps
+- Netlify deployment workflows and form handling
+- Tailwind v4 migration from utility classes to CSS-first configuration

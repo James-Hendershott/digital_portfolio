@@ -2,18 +2,74 @@
 slug: home-server
 title: Home Server (Homelab)
 date: 2025-10-20
-summary: Personal homelab for services and experimentation — Dockerized apps behind Nginx Proxy Manager, with backups and monitoring.
-tags: ["Homelab", "Docker", "Nginx Proxy Manager", "Networking"]
+summary: Enterprise-grade homelab running 30+ Docker containers on a Dell R730 with 130TB storage, dual parity, reverse proxy, and automated monitoring.
+tags: ["Homelab", "Docker", "Nginx Proxy Manager", "Networking", "Unraid", "Linux"]
 ---
 
 ## Overview
-A consolidated home server environment hosting personal services, experiments, and dashboards. Emphasis on maintainability, backups, and low-friction access.
 
-## Highlights
-- Reverse proxy and TLS via Nginx Proxy Manager (NPM)
-- Containerized services (media, monitoring, utilities)
-- Automated backups and update cadence
-- Network segmentation where practical
+A production homelab built on enterprise hardware, running 30+ Docker containers behind Nginx Proxy Manager with automated TLS, dual-parity storage, and comprehensive monitoring. What started as a media server has grown into a self-hosted platform for media management, password vaulting, dashboards, game streaming, and development tools.
+
+## Hardware
+
+| Component | Spec |
+|-----------|------|
+| **Server** | Dell PowerEdge R730 |
+| **CPU** | 2x Intel Xeon E5-2690 v3 (48 threads) |
+| **RAM** | 128GB ECC DDR4 |
+| **GPU** | NVIDIA Quadro P2000 (hardware transcoding) |
+| **Storage** | ~130TB raw across 10 data disks + dual parity |
+| **Cache** | 1TB NVMe (appdata, Docker, VMs) |
+| **OS** | Unraid 7.x |
+
+## Architecture
+
+All services run as Docker containers on an isolated bridge network (`shottsproxy`), routed through Nginx Proxy Manager for TLS termination and subdomain routing. External access uses Cloudflare DNS with proxy entries for each service.
+
+```text
+Internet → Cloudflare DNS → Router (port forward)
+  → Nginx Proxy Manager (TLS + subdomain routing)
+    → Container network (shottsproxy)
+      → Individual services (Plex, Vaultwarden, *Arr stack, etc.)
+```
+
+## Services (30+ Containers)
+
+**Media Management (Arr Stack):** Radarr, Sonarr, Lidarr, Readarr, Speakarr — automated media acquisition with hardlink-compatible mount configuration and TRaSH Guides quality profiles.
+
+**Media Servers:** Plex (hardware transcoding via P2000), Audiobookshelf, Kavita, BookLore, RomM.
+
+**Download Clients:** qBittorrent with VPN routing, NZBGet for Usenet.
+
+**Request Management:** Seerr for user-facing media requests with approval workflows.
+
+**Infrastructure:** Nginx Proxy Manager (reverse proxy + TLS), Vaultwarden (password management), Homarr (dashboard), Tailscale (VPN mesh).
+
+**Monitoring:** Netdata for real-time system metrics, Tautulli for Plex analytics, Notifiarr for notifications.
+
+**Utilities:** Flaresolverr (CAPTCHA solving for indexers), Recyclarr (TRaSH profile sync), rreading-glasses (Readarr metadata).
+
+## Storage Design
+
+Unraid's array provides dual-parity protection (can survive 2 simultaneous disk failures). A dedicated NVMe cache pool handles Docker appdata and VM storage for fast I/O. User shares (`data`, `backups`, `appdata`) are organized for hardlink compatibility — critical for the Arr stack to avoid duplicate copies.
+
+## Key Engineering Decisions
+
+- **Single `/data` mount pattern** for all Arr containers to preserve hardlinks and save storage
+- **Dual parity** over RAID for flexibility (mixed disk sizes, easy expansion)
+- **Subdomain routing** (`*.shottsserver.com`) instead of port-based access
+- **Automated container updates** with backup-first approach
+- **Network isolation** via Docker bridge network rather than host networking
+
+## What I Learned
+
+- Linux system administration and Docker orchestration at scale
+- Reverse proxy configuration with TLS automation (Let's Encrypt)
+- Storage architecture: parity, cache tiers, and hardlink strategies
+- Network security: VPN routing, firewall rules, DNS management
+- Infrastructure documentation as a first-class practice
+- Debugging container networking, permission issues, and resource contention
 
 ## Notes
-This is an infrastructure/ops project without a public repository.
+
+This is an infrastructure/ops project without a public repository. Detailed setup documentation is maintained privately in Obsidian.

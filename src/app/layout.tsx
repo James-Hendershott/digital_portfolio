@@ -15,13 +15,13 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://portfolio.shottsserver.com"),
+  metadataBase: new URL("https://jameshendershott.org"),
   title: {
     default: "James Hendershott — Portfolio",
     template: "%s | James Hendershott",
   },
   description:
-    "Portfolio of James Hendershott — software engineering student, MERN/.NET projects, homelab & DevOps.",
+    "Portfolio of James Hendershott — software engineer, MERN/.NET projects, homelab & DevOps.",
   openGraph: {
   title: "James Hendershott — Portfolio",
     description:

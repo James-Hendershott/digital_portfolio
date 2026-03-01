@@ -2,31 +2,58 @@
 slug: boomportal
 title: BoomPortal (Pi 5 + Sunshine/Moonlight)
 date: 2025-02-10
-summary: Turned a Raspberry Pi 5 into a game streaming portal with Sunshine/Moonlight; focused on latency and controller mapping.
-tags: ["Raspberry Pi", "Docker", "Networking"]
+summary: Raspberry Pi 5 game streaming portal using Sunshine/Moonlight with a Pironman 5 NVMe case, controller mapping, and reverse proxy access.
+tags: ["Raspberry Pi", "Docker", "Networking", "Game Streaming"]
 ---
 
 ## Overview
-A home‑lab project to stream games to thin clients using Sunshine on a Pi 5 and Moonlight clients.
 
-## Role & stack
-Configured Docker containers, Nginx reverse proxy via NPM, and controller remapping.
+BoomPortal turns a Raspberry Pi 5 into a dedicated game streaming host using Sunshine (server) and Moonlight (client). Housed in a Pironman 5 case with NVMe storage and active cooling, it streams games to TVs, laptops, and tablets across the home network with minimal latency.
+
+## Role & Stack
+
+Solo project — hardware assembly, Docker configuration, Nginx reverse proxy routing, and controller input mapping.
+
+- **Hardware**: Raspberry Pi 5 (8GB) in Pironman 5 case (NVMe SSD, OLED status display, RGB fan)
+- **Streaming**: Sunshine (host) → Moonlight (clients)
+- **Proxy**: Nginx Proxy Manager for TLS and subdomain routing
+- **Containers**: Docker Compose for Sunshine and supporting services
 
 ## Problem
-Needed smooth streaming with low latency across the LAN with multiple device types.
+
+Wanted to play games on any screen in the house without moving hardware or running HDMI cables. Off-the-shelf solutions (Steam Link, Parsec) had limitations with non-Steam games and controller compatibility across different client devices.
 
 ## Solution
-- Sunshine container on Pi 5
-- NPM (Nginx Proxy Manager) for TLS and routing
-- Gamepad mapping profiles
+
+Set up a dedicated streaming host on the Pi 5 that acts as a central game server:
+
+- **Sunshine** runs as a Docker container, encoding the Pi's display output via hardware encoder
+- **Moonlight clients** on TVs (Android), laptops, and tablets connect over LAN
+- **Nginx Proxy Manager** provides TLS-secured access via subdomain (`boom.shottsserver.com`)
+- **Controller profiles** mapped per-device to handle different gamepads (Xbox, PS5, 8BitDo)
 
 ```text
-Latency ~12–18ms over wired; ~25–35ms over Wi‑Fi 6 (observed).
+Performance (measured):
+  Wired (Ethernet):  ~12–18ms latency, 1080p60 stable
+  Wi-Fi 6 (5GHz):    ~25–35ms latency, 1080p60 with occasional frame drops
+  Encoding:          Hardware H.264 via Pi 5's VideoCore VII
 ```
 
-## Results
-- Smooth 1080p60 streaming
-- One‑click access through reverse proxy
+## Pironman 5 Case
 
-## What I learned
-Profiling bottlenecks and mapping inputs are key for perceived performance.
+The Pironman 5 case was a key part of the build — it adds NVMe M.2 storage, an active cooling fan with PWM control, an OLED status display (showing IP, CPU temp, usage), and RGB lighting. The NVMe drive holds game data and container volumes, keeping the microSD free for the OS.
+
+## Results
+
+- 1080p60 streaming to any device in the house with one-click Moonlight connection
+- Controller mapping profiles eliminate input issues across device types
+- Reverse proxy access means no port memorization — just a clean URL
+- OLED display provides at-a-glance system health without SSH
+
+## What I Learned
+
+- Hardware encoding capabilities and limitations of the Pi 5's VideoCore VII
+- Profiling streaming bottlenecks (encode time vs. network latency vs. decode time)
+- Controller input mapping across platforms (evdev, SDL, Moonlight profiles)
+- Docker networking on ARM64 — bridge mode vs. host mode trade-offs for low-latency streaming
+- Physical build considerations: thermal management, NVMe compatibility, case airflow

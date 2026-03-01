@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 import { getAllProjectsMeta } from "../lib/projects";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = process.env.SITE_URL || "https://portfolio.example.com";
+  const baseUrl = process.env.SITE_URL || "https://jameshendershott.org";
   const staticRoutes = ["", "/about", "/projects", "/contact", "/resume", "/now"].map((p) => ({
     url: `${baseUrl}${p}`,
     lastModified: new Date(),

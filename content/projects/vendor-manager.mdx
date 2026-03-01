@@ -2,60 +2,78 @@
 slug: vendor-manager
 title: Vendor Manager Suite
 date: 2024-04-15
-summary: Production fleet management system with two implementations - a 14,000-line JavaScript dashboard with Smartsheet integration, and a full MERN stack application with Redis caching, BullMQ job processing, and real-time updates.
-tags: ["React", "Vite", "TypeScript", "Node.js", "Express", "MongoDB", "Redis", "BullMQ", "Socket.io", "Smartsheet API", "Chart.js", "Docker"]
+summary: Production fleet management system with two implementations — a 17,600-line JavaScript dashboard used daily at work, and a MERN stack rebuild with Redis, BullMQ, Socket.io, and role-based access control.
+tags: ["React", "Vite", "TypeScript", "Node.js", "Express", "MongoDB", "Redis", "BullMQ", "Socket.io", "Smartsheet API", "Chart.js", "Docker", "Claude AI API"]
 access: "mailto:james_hendershott@outlook.com?subject=Vendor%20Manager%20Code%20Access%20Request"
 ---
 
 ## Overview
 
-A suite of tools I built to manage vendor relationships and fleet maintenance at my current job. What started as a simple email utility evolved into two full production applications that replaced manual Smartsheet workflows.
+A suite of tools I built to manage vendor relationships and fleet maintenance at my current job as a Vendor Service Manager at Amerit Fleet Solutions. What started as a simple email utility evolved into two full production applications — a 17,600-line JavaScript dashboard used daily, and a MERN stack rebuild designed for team-wide deployment.
 
 ## The Two Implementations
 
 ### Vendor Manager Dashboard (vendor-manager-web)
-The original implementation - a single-page HTML/JavaScript application that integrates directly with Smartsheet's API.
 
-**Tech Stack:** Vanilla JavaScript (14,000+ lines), HTML, CSS, Smartsheet API, Chart.js, Claude AI API
+The original implementation — a client-side web application with no backend, integrating directly with Smartsheet's API. This is my largest single codebase and the tool I use every day at work.
+
+**Tech Stack:** Vanilla JavaScript (17,600 LOC), HTML, CSS, Smartsheet API, Chart.js, Claude AI API
+
+**Scale:**
+- `app.js`: ~13,930 lines with 236+ functions
+- `styles.css`: 3,172 lines (full dark/light/auto theme system)
+- `index.html`: 527 lines (three-view layout with modals)
+- 9 PowerShell admin utility scripts
 
 **Key Features:**
-- Real-time Smartsheet API integration with in-memory caching
-- Chart.js dashboards for fleet metrics and trends
-- Claude AI integration for document analysis (extracting estimates from PDFs/images)
-- Automated weekly reporting and email generation
-- Mailto deeplink generation for templated vendor communications
-- Local storage for user preferences
+- **Three-View Architecture**: Dashboard (summary cards, charts, grouped tables), Workflow (unit update forms), History (conversation threads per unit)
+- **9 Workflow Input Types**: Generic Update, New Unit, Received Estimate, Send to Target, Updated Estimate, Estimate Approved, Transportation (3 action types), Vendor Completed, Returned to Service
+- **Smartsheet Integration**: Full CRUD with paginated fetches, in-memory caching, 10-minute auto-refresh
+- **Claude AI Integration**: Estimate document analysis (extracts line items from PDF/image uploads), text improvement with side-by-side preview
+- **Email Generation**: `mailto:` deeplinks with per-vendor contact picker, Fleet Manager CC, templated bodies
+- **Fleet Intelligence**: Auto-detects returned units against OSV sheets, "Not on OSV" badges, ETC past-due tracking, Fleet Perform vendor detection for PO workflows
 
 ### Vendor Manager MERN (vendor-manager-mern)
-A complete rebuild using modern full-stack architecture, designed for team-wide deployment.
 
-**Tech Stack:** React, Vite, TypeScript, Shadcn/ui, Express, MongoDB, Redis, BullMQ, Socket.io, JWT, Docker
+A complete rebuild using modern full-stack architecture, designed for team-wide deployment. Currently at ~60% feature parity (24 of 76 features complete, 19 partial).
 
-**Key Features:**
-- React/Vite/TypeScript frontend with Shadcn/ui components
+**Tech Stack:** React, Vite, TypeScript, Shadcn/ui, Express, MongoDB (10 Mongoose schemas), Redis, BullMQ, Socket.io, JWT, Docker
+
+**Codebase:** 71 TypeScript files, ~6,700 LOC
+
+**Working Features:**
+- React/Vite/TypeScript frontend with Shadcn/ui components and Recharts
 - Express/MongoDB backend with 10 Mongoose schemas
-- Redis caching for performance
-- BullMQ async job processing for Smartsheet API sync (dual-write architecture)
-- Socket.io for real-time updates across clients
-- JWT authentication with role-based access control (RBAC)
-- Docker Compose deployment for consistent environments
+- Redis caching with tiered TTLs (dashboard 2min, units 5min, contacts 10min, locations 30min)
+- BullMQ async job processing for Smartsheet sync (dual-write with retry + exponential backoff)
+- Socket.io real-time events (`unit:created`, `unit:updated`) broadcast to all clients
+- JWT authentication with RBAC (admin/user/guest) + location-scoped access
+- Docker Compose deployment (MongoDB + Redis containers)
+- Dashboard with summary cards, charts, and grouped unit table
+- Generic Update + New Unit workflow forms
+
+**Remaining:**
+- 7 of 9 workflow forms (placeholders exist)
+- History View tab, email generation system, chart drill-down reports
+- File upload sync to Smartsheet
 
 ## Problem
 
-As a Vendor Service Manager overseeing fleet management across 6 locations, I was spending excessive time on:
+As a Vendor Service Manager overseeing fleet maintenance across 6 locations (Ohio, Maryland, Florida, Texas, Iowa), I was spending excessive time on:
 - Repetitive vendor emails with copy/paste across contacts
 - Manual data entry and tracking in Smartsheet
-- No visibility into trends or patterns
+- No visibility into trends, aging units, or cost patterns
 - Difficulty coordinating with team members on unit status
+- No way to quickly detect units returned to service or past-due estimates
 
 ## Solution
 
-**Phase 1 - Dashboard:** Built a browser-based tool that connected directly to Smartsheet, providing real-time dashboards, automated reporting, and templated communications. Reduced email drafting time by ~50%.
+**Phase 1 — Dashboard:** Built a browser-based tool that connected directly to Smartsheet, providing real-time dashboards, automated reporting, and templated communications. This became my daily driver at work — every vendor interaction flows through it.
 
-**Phase 2 - MERN Migration:** Rebuilt as a proper full-stack application with its own database, enabling offline capability, better performance, team collaboration features, and preparation for company-wide rollout.
+**Phase 2 — MERN Rebuild:** Rebuilt as a proper full-stack application with its own database, enabling offline capability, better performance, team collaboration features, and preparation for company-wide rollout.
 
 ```typescript
-// Example: BullMQ job for Smartsheet sync
+// BullMQ job for Smartsheet sync (dual-write pattern)
 await smartsheetSyncQueue.add('syncUnit', {
   unitId: unit._id,
   operation: 'update',
@@ -68,22 +86,33 @@ await smartsheetSyncQueue.add('syncUnit', {
 
 ## Architecture Highlights
 
-**Dual-Write Pattern:** Changes write to MongoDB immediately for fast UI response, then queue Smartsheet sync jobs via BullMQ for eventual consistency.
+**Dual-Write Pattern:** Changes write to MongoDB immediately for fast UI response, then BullMQ queues Smartsheet sync jobs for eventual consistency. Failed syncs retry with exponential backoff.
 
-**Caching Strategy:** Redis caches frequently-accessed data (vendor lists, location data) with TTL-based invalidation.
+**Tiered Caching:** Redis caches at different TTLs based on data volatility — dashboard summaries refresh every 2 minutes, while location data persists for 30 minutes.
 
-**Real-time Updates:** Socket.io broadcasts changes to all connected clients when unit status changes.
+**Real-time Updates:** Socket.io broadcasts unit changes to all connected clients, so multiple team members see live status without refreshing.
+
+**AI-Assisted Workflows:** Claude API analyzes vendor estimate documents (PDFs, images) and extracts structured line items, reducing manual data entry for estimate processing.
 
 ## Results
 
 - ~50% faster vendor communication workflow
-- Real-time visibility into fleet status across all locations
+- Real-time visibility into fleet status across all 6 locations
 - Automated weekly reports that previously took hours to compile
-- Preparing for team-wide distribution to replace manual Smartsheet workflows
+- AI-powered estimate extraction eliminates manual data entry for repair documents
+- Used daily in production — every vendor interaction flows through the dashboard
 
 ## What I Learned
 
-- How to design for eventual consistency with async job queues
-- Redis caching patterns and cache invalidation strategies
-- Real-time architecture with WebSockets
-- The value of building tools that solve your own pain points
+- Building production tools that solve real business problems at scale (17,600 LOC)
+- Eventual consistency patterns with async job queues (BullMQ)
+- Redis caching strategies with tiered TTL invalidation
+- Real-time architecture with WebSockets (Socket.io)
+- Integrating LLM APIs (Claude) for practical document analysis
+- Managing a large vanilla JavaScript codebase and planning its migration to a modern stack
+
+## Next Steps
+
+- Complete MERN feature parity (7 workflow forms, History View, email generation)
+- Python/Flask rebuild of the web dashboard — a no-AI-assistance learning exercise
+- Team deployment and training materials for the MERN version

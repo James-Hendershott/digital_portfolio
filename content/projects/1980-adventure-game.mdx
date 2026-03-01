@@ -2,18 +2,59 @@
 slug: 1980-adventure-game
 title: 1980 Style Adventure Game
 date: 2025-10-25
-summary: A retro text adventure built in Python with a simple command parser and state management.
-tags: ["Python", "Text Adventure"]
+summary: A Python console text adventure with a custom command parser, room/item system, inventory management, and save/load — the foundation for my Django-based Retro Adventure Game.
+tags: ["Python", "Text Adventure", "Game Development"]
 repo: https://github.com/James-Hendershott/1980_Style_Adventure-Game
 ---
 
 ## Overview
-A nostalgic text adventure inspired by classic 1980s titles, implemented in Python as a console/terminal experience.
 
-## Role & stack
-Solo project using Python. Focus areas: command parsing, world state, inventory, and save/load.
+A terminal-based text adventure inspired by classics like Zork and Colossal Cave Adventure, built entirely in Python. Players explore interconnected rooms, collect items, solve puzzles, and manage inventory through a natural-language command parser. This project later evolved into the web-based Retro Adventure Game (Django).
 
-## What I learned
-- Designing a robust yet simple parser for text commands
-- Modeling rooms, items, and inventory in plain Python
-- Iterative design through playtesting and feedback
+## Role & Stack
+
+Solo project using Python (standard library only — no external dependencies).
+
+## Problem
+
+Wanted to build something from scratch that combined creative writing with programming fundamentals — data modeling, state machines, and input parsing — without relying on frameworks or game engines.
+
+## Solution
+
+Designed a text adventure engine with:
+
+- **Command parser**: Handles verb-noun patterns (`take key`, `go north`, `use lamp on door`) with synonym support and error feedback
+- **Room graph**: Rooms as dictionary-based nodes with directional connections, descriptions, and item lists
+- **Inventory system**: Pick up, drop, use, and examine items with weight/capacity constraints
+- **State machine**: Tracks puzzle progress, locked doors, NPC interactions, and win conditions
+- **Save/load**: Serialize game state to JSON for session persistence
+
+```python
+# Room definition example
+rooms = {
+    "entrance": {
+        "description": "A dimly lit cave entrance. Passages lead north and east.",
+        "exits": {"north": "hallway", "east": "storage"},
+        "items": ["torch", "note"],
+    }
+}
+```
+
+## Design Decisions
+
+- **No dependencies**: Keeps the project portable and focused on core Python
+- **Data-driven rooms**: Adding new rooms and items means editing dictionaries, not code logic
+- **Forgiving parser**: Accepts abbreviations (`n` for `north`), ignores articles (`the`, `a`), and suggests corrections for typos
+
+## Results
+
+- Playable adventure with multiple rooms, puzzles, and an ending
+- Clean enough codebase to serve as the foundation for a full Django rebuild (see Retro Adventure Game)
+- Good exercise in separation of concerns: parser, game logic, and world data are independent modules
+
+## What I Learned
+
+- Designing a text parser that feels natural without NLP libraries
+- Modeling game state as serializable data structures
+- Iterative game design through playtesting and feedback loops
+- The value of building a prototype before committing to a framework
