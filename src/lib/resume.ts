@@ -49,15 +49,15 @@ export const resumeData: ResumeData = {
   github: "https://github.com/James-Hendershott",
   linkedin: "https://www.linkedin.com/in/james-hendershott-0a2481224/",
   summary: [
-    "Recent Computer Science graduate with hands-on experience across the full software development lifecycle.",
-    "Proficient in building production web applications using TypeScript, React, Node/Express, and MongoDB with containerized environments (Docker).",
-    "Brings 20+ years of progressive leadership experience including U.S. Navy Air Traffic Control, with proven abilities in team leadership, training, process improvement, and making timely decisions under pressure.",
+    "Full-stack software engineer with production experience in TypeScript, React, Node.js, and Python.",
+    "Builds and owns complete applications from problem definition through architecture, deployment, and production support.",
+    "Brings 20+ years of professional leadership experience including U.S. Navy Air Traffic Control, with proven abilities in team leadership, process improvement, and clear communication across distributed teams.",
   ],
   skills: {
     languages: ["TypeScript", "JavaScript", "Python", "Java", "C#", "C++", "SQL", "Bash"],
-    frontend: ["React", "Vite", "Next.js", "Tailwind CSS", "Shadcn/ui", "Chart.js", "Zustand"],
-    backend: ["Node.js", "Express", "MongoDB/Mongoose", "Redis", "PostgreSQL", "BullMQ", "Socket.io", "Flask", "JWT"],
-    devops: ["Docker & Docker Compose", "Git/GitHub", "CI/CD pipelines", "Nginx", "Linux/Bash", "Unraid"],
+    frontend: ["React", "Vite", "Next.js", "Tailwind CSS", "Shadcn/ui", "Chart.js", "Recharts"],
+    backend: ["Node.js", "Express", "MongoDB/Mongoose", "PostgreSQL", "Prisma", "Flask", "Django", "Redis", "BullMQ", "Socket.io", "JWT/RBAC"],
+    devops: ["Docker & Docker Compose", "Git/GitHub", "CI/CD pipelines", "Nginx", "Linux/Bash"],
     concepts: ["SDLC", "API design", "RBAC", "async job processing", "caching strategies", "real-time systems", "Agile"],
   },
   experience: [
@@ -137,7 +137,7 @@ export const resumeData: ResumeData = {
       name: "Vendor Manager Dashboard",
       tech: ["JavaScript", "Smartsheet API", "Chart.js", "Claude AI"],
       bullets: [
-        "Developed 12,000-line vanilla JS application with real-time Smartsheet API integration, Chart.js dashboards, and in-memory caching.",
+        "Built 17,600-line vanilla JS application (236+ functions) with real-time Smartsheet API integration, Chart.js dashboards, and in-memory caching with auto-refresh across 6 locations.",
         "Integrated Claude AI for document analysis (estimates from PDF/images); built automated weekly reporting and email generation.",
       ],
     },
