@@ -49,9 +49,9 @@ export const resumeData: ResumeData = {
   github: "https://github.com/James-Hendershott",
   linkedin: "https://www.linkedin.com/in/james-hendershott-0a2481224/",
   summary: [
-    "Full-stack software engineer with production experience in TypeScript, React, Node.js, and Python.",
+    "Recent Computer Science graduate with production experience in TypeScript, React, Node.js, and Python across the full software development lifecycle.",
     "Builds and owns complete applications from problem definition through architecture, deployment, and production support.",
-    "Brings 20+ years of professional leadership experience including U.S. Navy Air Traffic Control, with proven abilities in team leadership, process improvement, and clear communication across distributed teams.",
+    "Brings 20+ years of progressive leadership experience including U.S. Navy Air Traffic Control, with proven abilities in team leadership, training, process improvement, and making timely decisions under pressure.",
   ],
   skills: {
     languages: ["TypeScript", "JavaScript", "Python", "Java", "C#", "C++", "SQL", "Bash"],
@@ -179,6 +179,10 @@ export const resumeData: ResumeData = {
     },
   ],
   education: [
+    {
+      school: "Georgia Institute of Technology (Online)",
+      degree: "M.S. in Computer Science — Applied, Fall 2026",
+    },
     {
       school: "Weber State University",
       degree: "B.S. in Computer Science — December 2025 (GPA 3.56)",
