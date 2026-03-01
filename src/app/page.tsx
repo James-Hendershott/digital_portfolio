@@ -37,8 +37,8 @@ export default function Home() {
               </p>
 
               <p className="max-w-xl text-foreground/60 leading-relaxed">
-                Full-stack developer specializing in MERN, .NET, and Python. 
-                I create robust applications, maintain production homelabs, and 
+                Full-stack developer specializing in MERN, Next.js, and Python.
+                I create robust applications, maintain production homelabs, and
                 bring ideas to life through code and maker projects.
               </p>
 

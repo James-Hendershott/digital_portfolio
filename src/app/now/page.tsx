@@ -9,13 +9,14 @@ export default function NowPage() {
     <Container className="prose prose-zinc max-w-3xl py-12 dark:prose-invert">
       <h1>Now</h1>
       <p>
-        What I’m currently learning/working on. Update this page periodically
-        to show currency.
+        What I&apos;m currently focused on — updated February 2026.
       </p>
       <ul>
-        <li>Improving my Next.js + MDX content pipeline</li>
-        <li>Hardening Unraid reverse proxy and TLS automation</li>
-        <li>Small Python automation for Readarr</li>
+        <li>Applied to Georgia Tech OMSCS for Fall 2026</li>
+        <li>Completing MERN feature parity on the Vendor Manager Suite (7 workflow forms remaining)</li>
+        <li>Building out Where&apos;s My App — home inventory tracker with QR codes and rack maps</li>
+        <li>Maintaining 30+ Docker containers on my Dell R730 homelab</li>
+        <li>Expanding portfolio project case studies and documentation</li>
       </ul>
     </Container>
   );

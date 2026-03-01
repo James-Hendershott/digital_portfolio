@@ -72,20 +72,24 @@ export default function ResumePage() {
       <section className="prose prose-zinc dark:prose-invert max-w-none">
         <h2>Professional Summary</h2>
         <p>
-          Recent Computer Science graduate with hands-on experience across the full software development lifecycle. Proficient in building production web applications using TypeScript, React, Node/Express, and MongoDB with containerized environments (Docker). Brings 20+ years of progressive leadership experience including U.S. Navy Air Traffic Control, with proven abilities in team leadership, training, process improvement, and making timely decisions under pressure. Strong communicator who designs APIs, implements configuration management practices, and delivers maintainable, high-quality software.
+          Recent Computer Science graduate with production experience in TypeScript, React, Node.js, and Python across the full software development lifecycle. Builds and owns complete applications from problem definition through architecture, deployment, and production support. Brings 20+ years of progressive leadership experience including U.S. Navy Air Traffic Control, with proven abilities in team leadership, training, process improvement, and making timely decisions under pressure.
         </p>
 
         <h2>Technical Skills</h2>
         <div className="grid gap-3 not-prose text-sm">
           <div><strong>Languages:</strong> TypeScript, JavaScript, Python, Java, C#, C++, SQL, Bash</div>
-          <div><strong>Frontend:</strong> React, Vite, Next.js, Tailwind CSS, Shadcn/ui, Chart.js, Zustand, responsive design</div>
-          <div><strong>Backend:</strong> Node.js, Express, MongoDB/Mongoose, Redis, PostgreSQL, BullMQ, Socket.io, Flask, JWT authentication</div>
-          <div><strong>DevOps:</strong> Docker & Docker Compose, Git/GitHub, CI/CD pipelines, Nginx, Linux/Bash, Unraid, REST APIs</div>
+          <div><strong>Frontend:</strong> React, Vite, Next.js, Tailwind CSS, Shadcn/ui, Chart.js, Recharts, responsive design</div>
+          <div><strong>Backend:</strong> Node.js, Express, MongoDB/Mongoose, PostgreSQL, Prisma, Flask, Django, Redis, BullMQ, Socket.io, JWT/RBAC</div>
+          <div><strong>DevOps:</strong> Docker & Docker Compose, Git/GitHub, CI/CD pipelines, Nginx, Linux/Bash, REST APIs</div>
           <div><strong>Concepts:</strong> SDLC, API design, RBAC, configuration management, async job processing, caching strategies, real-time systems, Agile</div>
         </div>
 
         <h2>Education</h2>
         <div className="space-y-3">
+          <div>
+            <h3 className="text-lg font-semibold mb-1">Master of Science in Computer Science</h3>
+            <p className="text-sm text-foreground/80">Georgia Institute of Technology (Online) • Applied, Fall 2026</p>
+          </div>
           <div>
             <h3 className="text-lg font-semibold mb-1">Bachelor of Science in Computer Science</h3>
             <p className="text-sm text-foreground/80">Weber State University, Ogden, UT • December 2025</p>
@@ -128,7 +132,7 @@ export default function ResumePage() {
               <li>Built production fleet management system: React/Vite/TypeScript frontend with Shadcn/ui, Express/MongoDB backend, Redis caching.</li>
               <li>Implemented dual-write architecture with BullMQ async job processing for Smartsheet API sync; Socket.io for real-time updates.</li>
               <li>Designed 10 Mongoose schemas, JWT authentication with RBAC, and comprehensive REST API; deployed via Docker Compose.</li>
-              <li>Original dashboard: 14,000-line vanilla JS application with Smartsheet API, Chart.js dashboards, and Claude AI document analysis.</li>
+              <li>Original dashboard: 17,600-line vanilla JS application (236+ functions) with Smartsheet API, Chart.js dashboards, and Claude AI document analysis across 6 locations.</li>
             </ul>
           </div>
           <div>

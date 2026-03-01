@@ -56,12 +56,12 @@ export default function AboutPage() {
                   </span>
                 </h1>
                 <p className="text-xl text-foreground/70 mb-4">
-                  Aspiring Software Engineer & Maker based in Eagle Mountain, Utah
+                  Software Engineer & Maker based in Eagle Mountain, Utah
                 </p>
                 <p className="text-foreground/60 leading-relaxed">
-                  I&apos;m James Hendershott, currently a vendor manager at Amerit while completing my software engineering degree. 
-                  I live with my wife Savanah and our kids Theo and Sophie. 
-                  When I&apos;m not coding or learning new software, you&apos;ll find me playing with my kids, building things, exploring the outdoors, or tinkering with technology.
+                  I&apos;m James Hendershott — software engineer with a B.S. in Computer Science from Weber State University and currently a vendor manager at Amerit Fleet Solutions.
+                  I live with my wife Savanah and our kids Theo and Sophie.
+                  When I&apos;m not coding or building software, you&apos;ll find me playing with my kids, building things, exploring the outdoors, or tinkering with technology.
                 </p>
               </div>
             </div>
@@ -81,7 +81,7 @@ export default function AboutPage() {
                 <div className="text-sm text-foreground/60">Technologies</div>
               </div>
               <div className="p-6 rounded-xl border-2 border-yellow-500/20 hover:border-yellow-500/40 transition-colors bg-black/5 dark:bg-white/5">
-                <div className="text-3xl font-bold text-yellow-600 dark:text-yellow-400 mb-1">20+</div>
+                <div className="text-3xl font-bold text-yellow-600 dark:text-yellow-400 mb-1">30+</div>
                 <div className="text-sm text-foreground/60">Docker Containers</div>
               </div>
             </div>
@@ -107,7 +107,7 @@ export default function AboutPage() {
               <div className="p-6 rounded-xl border border-foreground/10 bg-background hover:border-yellow-500/30 transition-colors">
                 <h3 className="font-semibold text-lg mb-3 text-yellow-600 dark:text-yellow-400">Frameworks</h3>
                 <p className="text-foreground/70 text-sm leading-relaxed">
-                  Next.js 16 (App Router), React 19, Django, .NET
+                  Next.js 16 (App Router), React 19, Django, Flask, Express
                 </p>
               </div>
               <div className="p-6 rounded-xl border border-foreground/10 bg-background hover:border-purple-500/30 transition-colors">
@@ -133,7 +133,7 @@ export default function AboutPage() {
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl font-bold mb-8 flex items-center gap-3">
               <span className="w-12 h-1 bg-gradient-to-r from-yellow-500 to-purple-600 dark:from-yellow-400 dark:to-purple-400"></span>
-              What I&apos;m Building (November 2025)
+              What I&apos;m Working On
             </h2>
             <div className="space-y-4">
               <Link href="/projects/wheres-my-app" className="block p-5 rounded-xl border-l-4 border-purple-500 bg-black/5 dark:bg-white/5 hover:bg-black/10 dark:hover:bg-white/10 hover:border-purple-600 transition-all group">
@@ -152,10 +152,10 @@ export default function AboutPage() {
                 <h3 className="font-semibold text-lg mb-2 group-hover:text-yellow-600 dark:group-hover:text-yellow-400 transition-colors">VSM Tracker →</h3>
                 <p className="text-foreground/70 text-sm">Internal fleet management tool replacing Smartsheet workflows</p>
               </Link>
-              <div className="p-5 rounded-xl border-l-4 border-purple-500 bg-black/5 dark:bg-white/5">
-                <h3 className="font-semibold text-lg mb-2">Off-Grid Home Assistant</h3>
-                <p className="text-foreground/70 text-sm">Building a self-contained smart home system for my new camper</p>
-              </div>
+              <Link href="/projects/vendor-manager" className="block p-5 rounded-xl border-l-4 border-purple-500 bg-black/5 dark:bg-white/5 hover:bg-black/10 dark:hover:bg-white/10 hover:border-purple-600 transition-all group">
+                <h3 className="font-semibold text-lg mb-2 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors">Vendor Manager Suite →</h3>
+                <p className="text-foreground/70 text-sm">17,600-line production fleet management system with MERN stack rebuild</p>
+              </Link>
             </div>
           </div>
         </Container>
@@ -188,7 +188,7 @@ export default function AboutPage() {
                   </div>
                   <div className="p-4 rounded-lg bg-background border border-foreground/10">
                     <div className="font-medium mb-1">🖥️ Homelab</div>
-                    <p className="text-sm text-foreground/60">Unraid NAS with 20+ Docker containers</p>
+                    <p className="text-sm text-foreground/60">Dell R730 running Unraid with 30+ Docker containers</p>
                   </div>
                   <div className="p-4 rounded-lg bg-background border border-foreground/10">
                     <div className="font-medium mb-1">🖌️ Miniature Painting</div>

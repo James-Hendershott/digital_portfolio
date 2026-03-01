@@ -5,17 +5,19 @@ GitHub: https://github.com/James-Hendershott | LinkedIn: https://www.linkedin.co
 
 ## Professional Summary
 
-Recent Computer Science graduate with hands-on experience across the full software development lifecycle. Proficient in building production web applications using TypeScript, React, Node/Express, and MongoDB with containerized environments (Docker). Brings 20+ years of progressive leadership experience including U.S. Navy Air Traffic Control, with proven abilities in team leadership, training, process improvement, and making timely decisions under pressure. Strong communicator who designs APIs, implements configuration management practices, and delivers maintainable, high-quality software.
+Recent Computer Science graduate with production experience in TypeScript, React, Node.js, and Python across the full software development lifecycle. Builds and owns complete applications from problem definition through architecture, deployment, and production support. Brings 20+ years of progressive leadership experience including U.S. Navy Air Traffic Control, with proven abilities in team leadership, training, process improvement, and making timely decisions under pressure.
 
 ## Technical Skills
 
 - **Languages:** TypeScript, JavaScript, Python, Java, C#, C++, SQL, Bash
-- **Frontend:** React, Vite, Next.js, Tailwind CSS, Shadcn/ui, Chart.js, Zustand, responsive design
-- **Backend:** Node.js, Express, MongoDB/Mongoose, Redis, PostgreSQL, BullMQ, Socket.io, Flask, JWT authentication
-- **DevOps & Tools:** Docker & Docker Compose, Git/GitHub, CI/CD pipelines, Nginx, Linux/Bash, Unraid, REST APIs
+- **Frontend:** React, Vite, Next.js, Tailwind CSS, Shadcn/ui, Chart.js, Recharts, responsive design
+- **Backend:** Node.js, Express, MongoDB/Mongoose, PostgreSQL, Prisma, Flask, Django, Redis, BullMQ, Socket.io, JWT/RBAC
+- **DevOps & Tools:** Docker & Docker Compose, Git/GitHub, CI/CD pipelines, Nginx, Linux/Bash, REST APIs
 - **Concepts:** SDLC, API design, RBAC, configuration management, async job processing, caching strategies, real-time systems, Agile
 
 ## Education
+
+**Master of Science in Computer Science** — Georgia Institute of Technology (Online) | Applied, Fall 2026
 
 **Bachelor of Science in Computer Science** — Weber State University | December 2025
 Minor: User Experience Design | GPA: 3.56 | National Society of Leadership and Success
@@ -31,7 +33,7 @@ GPA: 3.75
 - Designed 10 Mongoose schemas, JWT authentication with RBAC, and comprehensive REST API; deployed via Docker Compose
 
 ### Vendor Manager Dashboard — Client-Side Application | 2024–Present
-- Developed 12,000-line vanilla JS application with real-time Smartsheet API integration, Chart.js dashboards, and in-memory caching
+- Built 17,600-line vanilla JS application (236+ functions) with real-time Smartsheet API integration, Chart.js dashboards, and in-memory caching across 6 locations
 - Integrated Claude AI for document analysis (estimates from PDF/images); built automated weekly reporting and email generation
 
 ### TrackMate (Capstone MERN Application) — Team Lead | 2025
