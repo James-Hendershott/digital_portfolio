@@ -78,7 +78,7 @@ export default function ResumePage() {
         <h2>Technical Skills</h2>
         <div className="grid gap-3 not-prose text-sm">
           <div><strong>Languages:</strong> TypeScript, JavaScript, Python, Java, C#, C++, SQL, Bash</div>
-          <div><strong>Frontend:</strong> React, Vite, Next.js, Tailwind CSS, Shadcn/ui, Chart.js, Recharts, responsive design</div>
+          <div><strong>Frontend:</strong> React, Vite, Next.js, Tailwind CSS, Shadcn/ui, Chart.js, Recharts, Zustand, React Hook Form</div>
           <div><strong>Backend:</strong> Node.js, Express, MongoDB/Mongoose, PostgreSQL, Prisma, Flask, Django, Redis, BullMQ, Socket.io, JWT/RBAC</div>
           <div><strong>DevOps:</strong> Docker & Docker Compose, Git/GitHub, CI/CD pipelines, Nginx, Linux/Bash, REST APIs</div>
           <div><strong>Concepts:</strong> SDLC, API design, RBAC, configuration management, async job processing, caching strategies, real-time systems, Agile</div>
@@ -132,7 +132,7 @@ export default function ResumePage() {
               <li>Built production fleet management system: React/Vite/TypeScript frontend with Shadcn/ui, Express/MongoDB backend, Redis caching.</li>
               <li>Implemented dual-write architecture with BullMQ async job processing for Smartsheet API sync; Socket.io for real-time updates.</li>
               <li>Designed 10 Mongoose schemas, JWT authentication with RBAC, and comprehensive REST API; deployed via Docker Compose.</li>
-              <li>Original dashboard: 17,600-line vanilla JS application (236+ functions) with Smartsheet API, Chart.js dashboards, and Claude AI document analysis across 6 locations.</li>
+              <li>Original dashboard: 20,000-line vanilla JS application (354 functions, 10 modals) with Smartsheet API, Chart.js dashboards, Claude AI document analysis, 9 workflow types, and 3 report generators — used daily in production for 2 years across 6 locations.</li>
             </ul>
           </div>
           <div>

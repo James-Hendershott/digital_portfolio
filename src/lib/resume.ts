@@ -55,7 +55,7 @@ export const resumeData: ResumeData = {
   ],
   skills: {
     languages: ["TypeScript", "JavaScript", "Python", "Java", "C#", "C++", "SQL", "Bash"],
-    frontend: ["React", "Vite", "Next.js", "Tailwind CSS", "Shadcn/ui", "Chart.js", "Recharts"],
+    frontend: ["React", "Vite", "Next.js", "Tailwind CSS", "Shadcn/ui", "Chart.js", "Recharts", "Zustand", "React Hook Form"],
     backend: ["Node.js", "Express", "MongoDB/Mongoose", "PostgreSQL", "Prisma", "Flask", "Django", "Redis", "BullMQ", "Socket.io", "JWT/RBAC"],
     devops: ["Docker & Docker Compose", "Git/GitHub", "CI/CD pipelines", "Nginx", "Linux/Bash"],
     concepts: ["SDLC", "API design", "RBAC", "async job processing", "caching strategies", "real-time systems", "Agile"],
@@ -137,8 +137,8 @@ export const resumeData: ResumeData = {
       name: "Vendor Manager Dashboard",
       tech: ["JavaScript", "Smartsheet API", "Chart.js", "Claude AI"],
       bullets: [
-        "Built 17,600-line vanilla JS application (236+ functions) with real-time Smartsheet API integration, Chart.js dashboards, and in-memory caching with auto-refresh across 6 locations.",
-        "Integrated Claude AI for document analysis (estimates from PDF/images); built automated weekly reporting and email generation.",
+        "Built 20,000-line vanilla JS application (354 functions, 10 modals, 3 report types) with real-time Smartsheet API integration, Chart.js dashboards, and in-memory caching across 6 locations. Used daily in production for 2 years.",
+        "Integrated Claude AI (Sonnet + Haiku) for estimate document analysis and 4-mode text improvement; built 9 workflow input types, 6 chart drill-down reports, and automated email generation.",
       ],
     },
     {

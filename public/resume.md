@@ -10,7 +10,7 @@ Recent Computer Science graduate with production experience in TypeScript, React
 ## Technical Skills
 
 - **Languages:** TypeScript, JavaScript, Python, Java, C#, C++, SQL, Bash
-- **Frontend:** React, Vite, Next.js, Tailwind CSS, Shadcn/ui, Chart.js, Recharts, responsive design
+- **Frontend:** React, Vite, Next.js, Tailwind CSS, Shadcn/ui, Chart.js, Recharts, Zustand, React Hook Form
 - **Backend:** Node.js, Express, MongoDB/Mongoose, PostgreSQL, Prisma, Flask, Django, Redis, BullMQ, Socket.io, JWT/RBAC
 - **DevOps & Tools:** Docker & Docker Compose, Git/GitHub, CI/CD pipelines, Nginx, Linux/Bash, REST APIs
 - **Concepts:** SDLC, API design, RBAC, configuration management, async job processing, caching strategies, real-time systems, Agile
@@ -33,7 +33,7 @@ GPA: 3.75
 - Designed 10 Mongoose schemas, JWT authentication with RBAC, and comprehensive REST API; deployed via Docker Compose
 
 ### Vendor Manager Dashboard — Client-Side Application | 2024–Present
-- Built 17,600-line vanilla JS application (236+ functions) with real-time Smartsheet API integration, Chart.js dashboards, and in-memory caching across 6 locations
+- Built 20,000-line vanilla JS application (354 functions, 10 modals, 3 report types) with real-time Smartsheet API integration, Chart.js dashboards, and in-memory caching — used daily in production for 2 years across 6 locations
 - Integrated Claude AI for document analysis (estimates from PDF/images); built automated weekly reporting and email generation
 
 ### TrackMate (Capstone MERN Application) — Team Lead | 2025
