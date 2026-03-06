@@ -15,6 +15,7 @@ export type ProjectMeta = {
   repo?: string;
   live?: string;
   access?: string; // e.g., mailto: link for private repo access requests
+  thumbnail?: string;
 };
 
 export function getProjectSlugs(): string[] {
@@ -50,6 +51,7 @@ export function getAllProjectsMeta(): ProjectMeta[] {
         repo: data.repo ?? undefined,
         live: data.live ?? undefined,
         access: data.access ?? undefined,
+        thumbnail: data.thumbnail ?? undefined,
       };
       return meta;
     })
@@ -79,6 +81,7 @@ export async function getProjectContent(slug: string) {
     repo: data.repo ?? undefined,
     live: data.live ?? undefined,
     access: data.access ?? undefined,
+    thumbnail: data.thumbnail ?? undefined,
   };
   return { meta, mdx };
 }

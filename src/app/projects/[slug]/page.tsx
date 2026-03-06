@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+import Image from "next/image";
 import { Container } from "../../../components/Container";
 import { getProjectSlugs, getProjectContent } from "../../../lib/projects";
 
@@ -30,6 +31,18 @@ export default async function ProjectPage({ params }: Params) {
       <p className="mb-2 text-sm text-foreground/60">Case study</p>
       <h1 className="mb-2 text-3xl font-semibold tracking-tight">{meta.title}</h1>
       <p className="mb-6 text-foreground/70">{meta.summary}</p>
+      {meta.thumbnail && (
+        <div className="not-prose relative mb-8 aspect-video overflow-hidden rounded-lg border border-foreground/10">
+          <Image
+            src={meta.thumbnail}
+            alt={`${meta.title} screenshot`}
+            fill
+            className="object-cover"
+            sizes="(max-width: 768px) 100vw, 768px"
+            priority
+          />
+        </div>
+      )}
       <div className="mb-6 flex flex-wrap gap-2 text-xs text-foreground/60">
         {meta.tags?.map((t) => (
           <span key={t} className="rounded bg-black/5 px-2 py-0.5 dark:bg-white/10">

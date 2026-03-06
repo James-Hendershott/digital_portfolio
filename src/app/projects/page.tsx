@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Container } from "../../components/Container";
 import { getAllProjectsMeta } from "../../lib/projects";
 
@@ -9,7 +10,7 @@ export const metadata = {
 
 export default function ProjectsPage() {
   const projects = getAllProjectsMeta();
-  
+
   // Featured projects (based on your current focus)
   const featuredSlugs = ["home-server", "trackmate", "banking-system"];
   const featured = projects.filter((p) => featuredSlugs.includes(p.slug));
@@ -55,27 +56,31 @@ export default function ProjectsPage() {
                   href={`/projects/${p.slug}`}
                   className="group relative rounded-xl border-2 border-purple-500/20 hover:border-purple-500/40 p-6 bg-background transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-purple-500/10 overflow-hidden"
                 >
-                  {/* Project thumbnail with hover effect */}
                   <div className="relative aspect-video mb-4 rounded-lg overflow-hidden border border-foreground/10">
-                    {/* Placeholder background */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-purple-600/20 to-yellow-500/20 dark:from-purple-400/20 dark:to-yellow-400/20 flex items-center justify-center">
-                      <span className="text-foreground/40 text-xs font-medium">Project Screenshot</span>
-                    </div>
-                    
-                    {/* Screenshot overlay - fades in on hover */}
-                    <div className="absolute inset-0 opacity-0 group-hover:opacity-70 transition-opacity duration-500">
-                      <div className="w-full h-full bg-gradient-to-br from-purple-600/30 to-yellow-500/30 dark:from-purple-400/30 dark:to-yellow-400/30 backdrop-blur-sm flex items-center justify-center">
-                        <span className="text-white text-sm font-medium">View Project →</span>
+                    {p.thumbnail ? (
+                      <Image
+                        src={p.thumbnail}
+                        alt={`${p.title} screenshot`}
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      />
+                    ) : (
+                      <div className="absolute inset-0 bg-gradient-to-br from-purple-600/20 to-yellow-500/20 dark:from-purple-400/20 dark:to-yellow-400/20 flex items-center justify-center">
+                        <span className="text-foreground/40 text-xs font-medium">Project Screenshot</span>
                       </div>
+                    )}
+
+                    <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/40 flex items-center justify-center">
+                      <span className="text-white text-sm font-medium">View Project &rarr;</span>
                     </div>
                   </div>
-                  
+
                   <h3 className="text-xl font-bold mb-2 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors">
                     {p.title}
                   </h3>
                   <p className="text-sm text-foreground/70 mb-4 line-clamp-2">{p.summary}</p>
-                  
-                  {/* Tags */}
+
                   <div className="flex flex-wrap gap-2 mb-4">
                     {p.tags?.slice(0, 3).map((t) => (
                       <span
@@ -87,7 +92,6 @@ export default function ProjectsPage() {
                     ))}
                   </div>
 
-                  {/* Status badges */}
                   <div className="flex gap-2 text-xs">
                     {p.access && (
                       <span className="px-2 py-1 rounded bg-yellow-500/10 text-yellow-700 dark:text-yellow-300 border border-yellow-500/20">
@@ -101,7 +105,6 @@ export default function ProjectsPage() {
                     )}
                   </div>
 
-                  {/* Decorative corner */}
                   <div className="absolute -top-1 -right-1 w-6 h-6 border-t-2 border-r-2 border-purple-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
                 </Link>
               ))}
@@ -123,32 +126,36 @@ export default function ProjectsPage() {
                 key={p.slug}
                 className="group relative rounded-xl border-2 border-foreground/10 hover:border-yellow-500/40 p-6 bg-background transition-all duration-300 hover:-translate-y-1 hover:shadow-lg overflow-hidden"
               >
-                {/* Project thumbnail with hover effect */}
                 <div className="relative aspect-video mb-4 rounded-lg overflow-hidden border border-foreground/10">
-                  {/* Placeholder background */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-yellow-600/20 to-purple-500/20 dark:from-yellow-400/20 dark:to-purple-400/20 flex items-center justify-center">
-                    <span className="text-foreground/40 text-xs font-medium">Screenshot</span>
-                  </div>
-                  
-                  {/* Screenshot overlay - fades in on hover */}
-                  <div className="absolute inset-0 opacity-0 group-hover:opacity-70 transition-opacity duration-500">
-                    <div className="w-full h-full bg-gradient-to-br from-yellow-600/30 to-purple-500/30 dark:from-yellow-400/30 dark:to-purple-400/30 backdrop-blur-sm flex items-center justify-center">
-                      <span className="text-white text-sm font-medium">View Details →</span>
+                  {p.thumbnail ? (
+                    <Image
+                      src={p.thumbnail}
+                      alt={`${p.title} screenshot`}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    />
+                  ) : (
+                    <div className="absolute inset-0 bg-gradient-to-br from-yellow-600/20 to-purple-500/20 dark:from-yellow-400/20 dark:to-purple-400/20 flex items-center justify-center">
+                      <span className="text-foreground/40 text-xs font-medium">Screenshot</span>
                     </div>
+                  )}
+
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/40 flex items-center justify-center">
+                    <span className="text-white text-sm font-medium">View Details &rarr;</span>
                   </div>
                 </div>
 
                 <h3 className="text-lg font-bold mb-2">
-                  <Link 
-                    href={`/projects/${p.slug}`} 
+                  <Link
+                    href={`/projects/${p.slug}`}
                     className="group-hover:text-yellow-600 dark:group-hover:text-yellow-400 transition-colors"
                   >
                     {p.title}
                   </Link>
                 </h3>
                 <p className="text-sm text-foreground/70 mb-4 line-clamp-2">{p.summary}</p>
-                
-                {/* Tags */}
+
                 <div className="flex flex-wrap gap-2 mb-4">
                   {p.tags?.slice(0, 3).map((t) => (
                     <span
@@ -165,7 +172,6 @@ export default function ProjectsPage() {
                   )}
                 </div>
 
-                {/* Action buttons */}
                 <div className="flex flex-wrap gap-2">
                   {p.repo && (
                     <a
@@ -205,7 +211,6 @@ export default function ProjectsPage() {
                   )}
                 </div>
 
-                {/* Decorative corner */}
                 <div className="absolute -bottom-1 -left-1 w-6 h-6 border-b-2 border-l-2 border-yellow-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
               </div>
             ))}
