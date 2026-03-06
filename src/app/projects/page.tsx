@@ -11,7 +11,7 @@ export default function ProjectsPage() {
   const projects = getAllProjectsMeta();
   
   // Featured projects (based on your current focus)
-  const featuredSlugs = ["home-server", "trackmate", "retro-adventure-game"];
+  const featuredSlugs = ["home-server", "trackmate", "banking-system"];
   const featured = projects.filter((p) => featuredSlugs.includes(p.slug));
   const allProjects = projects;
 

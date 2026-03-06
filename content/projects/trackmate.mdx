@@ -1,61 +1,52 @@
 ---
 slug: trackmate
-title: TrackMate (Capstone MERN Project)
+title: TrackMate
 date: 2024-12-01
-summary: MERN stack asset tracking app built as a 4-person capstone team. I was team lead, wrote API endpoints and React components alongside one core teammate, and set up the Docker dev environment. CS 4760, grade A.
-tags: ["MERN", "Docker", "React", "Node.js", "MongoDB", "Express", "Capstone"]
+summary: MERN stack university scheduling and room tracking app. 39 commits on the develop branch — built professor cards with QR codes, refactored office hours components, fixed room tracker bugs, and wrote handoff docs. 4-person team, Fall 2025.
+tags: ["MERN", "Docker", "React", "Node.js", "MongoDB", "Express"]
 repo: https://github.com/bradleypeterson/TrackMate.git
 access: "mailto:james_hendershott@outlook.com?subject=TrackMate%20Code%20Access%20Request"
 ---
 
 ## Overview
-TrackMate is my senior capstone project — a MERN stack application for asset tracking and management. This was a 4-person team project for CS 4760. I was team lead. Grade: A.
+TrackMate is a multi-semester university project maintained by Professor Peterson's capstone teams. My team worked on it Fall 2025 for CS 4760. Our commits are on the `develop` branch (not main — develop was our working branch before pushing to the live server).
 
-## My Role
-**Team Lead** — I wrote API endpoints and React components alongside one teammate who shared the bulk of the development work. Two other team members contributed less. I also set up the Docker Compose development environment and the seed data solution, which was my idea.
+## My Contribution — 39 Commits on Develop
 
-I did not build this solo. It was a team project and I want to be clear about that.
+I have **39 commits** on the develop branch from Oct 17 – Dec 9, 2025. My main contributing teammate was Luke Davis. We were the two people actually pushing the project forward. Other team members contributed less or caused integration issues that we had to fix.
 
+**Features I built:**
+- **TM-006: Professor cards with QR codes** — Added QR code generation, courses taught display, and selective printing for professor directory cards
+- **TM-009: Card UI improvements** — Redesigned card layout and readability
+- **Office Hours refactoring** — Extracted components and utilities following BEM naming and architecture standards (PR #197)
+- **Admin room dropdown** — New feature for room management (PR #216)
+- **About page with contributor credits** (PR #213)
+
+**Bugs I fixed:**
+- Room tracker appointment link validation and sanitization
+- Location parsing edge cases for hybrid locations
+- Office hours edit bugs (PR #218)
+- Multiple sprint bug fixes (PRs #210, #215)
+- Semester sort comparison using lowercase values
+
+**Infrastructure & docs:**
+- Set up my local Docker development environment
+- Configured `dev.env` and `.gitignore`
+- Wrote comprehensive developer handoff documentation for the next team
+
+## What I Didn't Do
+I didn't build TrackMate from scratch. It's a multi-semester project with 830+ total commits across many teams. My team inherited the codebase and added features for one semester. I'm not claiming I built the whole thing.
+
+## Tech Stack
 - **Stack**: MongoDB, Express.js, React, Node.js (MERN)
-- **DevOps**: Docker, Docker Compose, environment management
-- **Team Size**: 4 developers
+- **DevOps**: Docker, Docker Compose
+- **Team Size**: 4 developers (2 core contributors + 2 supporting)
 
-**Repository Note**: This is a private repository under our professor's GitHub. Access: https://github.com/bradleypeterson/TrackMate.git
-
-## What TrackMate Does
-- Asset tracking dashboard with status updates
-- Role-based access control (Admin, Manager, User)
-- Audit trails for asset changes
-- Search and filtering
-- Mobile-responsive interface
-
-## Problem
-Live data was gated behind VPN. We needed a way to develop locally without VPN access, and team members needed identical environments to avoid integration issues.
-
-## What I Built
-- **Docker Compose** setup for orchestrating MongoDB, Node.js API, and React frontend
-- **Seed scripts** with realistic JSON fixtures to replace VPN-gated data
-- **Environment management** (.env files) for dev vs prod configurations
-- API endpoints and React components (shared work with one teammate)
-- Managed code reviews and sprint coordination via GitHub
-
-```yaml
-# docker-compose excerpt
-services:
-  api:
-    build: ./api
-    environment:
-      - MONGO_URL=mongodb://db:27017/trackmate
-```
-
-## Results
-- Team could work locally without VPN access
-- Docker eliminated "works on my machine" issues
-- Successfully deployed with proper security
+**Repository Note**: Private repo under professor's GitHub. All my work is on the `develop` branch.
 
 ## What I Learned
-- Leading a team through a full development cycle
-- Docker and container orchestration for team development
-- RESTful API design with authentication and authorization
-- MongoDB schema design
-- The value of setting up good infrastructure early — it saved the team a lot of time
+- Working in an inherited codebase with years of accumulated decisions
+- Git branching workflow with PR-based code review
+- React component extraction and refactoring
+- Writing handoff documentation for the next team
+- QR code generation and printing workflows in React

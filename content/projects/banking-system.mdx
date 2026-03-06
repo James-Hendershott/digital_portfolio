@@ -1,0 +1,54 @@
+---
+slug: banking-system
+title: Banking System
+date: 2024-11-06
+summary: Full-stack banking app with Node.js, Express, EJS, and MySQL. 119 commits of genuine struggle — stored procedures, role-based auth, financial transactions with overdraft protection. This is my code, no AI.
+tags: ["Node.js", "Express", "MySQL", "JavaScript", "EJS"]
+access: "mailto:james_hendershott@outlook.com?subject=Banking%20System%20Code%20Access%20Request"
+---
+
+## Overview
+
+A full-stack banking application built for CS 3650 (Advanced Database Programming). 119 commits over two months. This is probably the project where my commit history is most honest about what learning actually looks like — commit messages include "still trying to save myself", "that was embarrassing", and "Holy crap, I have been coding for 4 hours and have not committed once."
+
+**No AI wrote this code.** This was me learning Node.js, Express, and MySQL stored procedures through struggle, mistakes, and persistence.
+
+## What I Built
+
+- **MySQL stored procedures** for all data operations — not just raw queries, but actual database-side logic for account creation, transactions, and balance management
+- **JWT and session-based authentication** with role-based access (admin, employee, customer)
+- **Password hashing** with salt + SHA-256 (refactored from client-side to server-side mid-project after realizing the security issue)
+- **Financial transactions**: deposits, withdrawals, transfers with overdraft protection
+- **Customer registration** with validation
+- **Employee dashboard** with customer management and admin promotion
+- **Transaction history** with audit trails
+- **Bootstrap modals** for notifications and confirmations
+- **Flash messaging** for user feedback
+
+## Tech Stack
+
+- **Backend**: Node.js, Express
+- **Database**: MySQL with stored procedures
+- **Frontend**: EJS templates, Bootstrap, JavaScript
+- **Auth**: JWT + sessions, salt/SHA-256 password hashing
+
+## The Honest Commit History
+
+119 commits from November 6, 2024 to January 4, 2025. Some highlights from the git log that show what this process actually looked like:
+
+- Early commits setting up stored procedures, getting them wrong, fixing them
+- "FINALLY! I got admin to work" — after hours of debugging password hashing
+- Realizing I was hashing passwords client-side and refactoring to server-side
+- Multiple commits just titled "still trying" or "done trying"
+- Eventually getting transactions, overdraft protection, and role-based views all working
+
+This isn't clean, polished work. It's what learning looks like when you're actually writing the code yourself.
+
+## What I Learned
+
+- MySQL stored procedures for complex data operations
+- Server-side authentication and session management
+- Why you hash passwords server-side, not client-side (learned the hard way)
+- EJS templating with Express
+- Financial transaction logic with proper validation
+- The value of committing more often (learned that the hard way too)

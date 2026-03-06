@@ -148,7 +148,11 @@ export default function AboutPage() {
               </Link>
               <Link href="/projects/vendor-manager" className="block p-5 rounded-xl border-l-4 border-yellow-500 bg-black/5 dark:bg-white/5 hover:bg-black/10 dark:hover:bg-white/10 hover:border-yellow-600 transition-all group">
                 <h3 className="font-semibold text-lg mb-2 group-hover:text-yellow-600 dark:group-hover:text-yellow-400 transition-colors">Vendor Manager Dashboard &rarr;</h3>
-                <p className="text-foreground/70 text-sm">Work tool I designed and built with AI assistance &mdash; used daily for 2+ years</p>
+                <p className="text-foreground/70 text-sm">3-phase evolution: hand-coded HTML &rarr; my own MERN app (87 commits) &rarr; AI-expanded features. Used daily 2+ years.</p>
+              </Link>
+              <Link href="/projects/banking-system" className="block p-5 rounded-xl border-l-4 border-purple-500 bg-black/5 dark:bg-white/5 hover:bg-black/10 dark:hover:bg-white/10 hover:border-purple-600 transition-all group">
+                <h3 className="font-semibold text-lg mb-2 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors">Banking System &rarr;</h3>
+                <p className="text-foreground/70 text-sm">119 commits of my own code &mdash; Node.js, MySQL stored procedures, no AI. My most honest commit history.</p>
               </Link>
             </div>
           </div>

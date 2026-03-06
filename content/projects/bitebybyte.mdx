@@ -1,0 +1,58 @@
+---
+slug: bitebybyte
+title: BiteByByte
+date: 2025-09-03
+summary: ASP.NET Core food ordering app with Stripe payments, Identity auth, and shopping cart. 109 commits following a tutorial course — I did the work, made mistakes, and extended beyond the base material. Honest about the tutorial origin.
+tags: ["C#", "ASP.NET Core", "Razor Pages", "Stripe", "SQL Server"]
+access: "mailto:james_hendershott@outlook.com?subject=BiteByByte%20Code%20Access%20Request"
+---
+
+## Overview
+
+BiteByByte is a food delivery/ordering web application built with ASP.NET Core Razor Pages. 109 commits over about a month.
+
+**What's honest here:** This started as a tutorial-guided project (likely Udemy or similar). My commit messages are transparent about this — "Finished the tutorials", "Added provided code for...", "Imported starter code." But I didn't just copy-paste. I worked through every step, hit real bugs, extended features beyond the tutorial, and debugged my own mistakes. The commit history proves that.
+
+## What I Built (Following Tutorial + My Extensions)
+
+- **Generic Repository Pattern with Unit of Work** — data access layer
+- **Category, food type, and menu item CRUD** with DataTables (server-side processing)
+- **ASP.NET Identity** with user roles (admin, customer)
+- **TinyMCE rich text editor** for menu item descriptions
+- **Image upload** for food items
+- **Shopping cart** with session management
+- **Stripe payment integration** for checkout
+- **Order management** with status tracking
+- **Database seeding** for initial data
+
+## Tech Stack
+
+- **Framework**: ASP.NET Core with Razor Pages
+- **Language**: C#
+- **Database**: SQL Server with Entity Framework Core
+- **Auth**: ASP.NET Identity with role-based access
+- **Payments**: Stripe API
+- **UI**: Bootstrap, jQuery, DataTables
+- **Deployment**: SmarterASP.NET
+
+## My Actual Struggles (From the Git Log)
+
+The commit history shows genuine work, not just tutorial following:
+- "Holy cow... I forgot to add the orderHeader" — real debugging
+- "Thank the lord! I had to drop my whole schema" — migration issues
+- Implementing DataTables with server-side processing beyond what the tutorial covered
+- Custom jQuery for UI interactions
+- Fixing my own bugs that the tutorial didn't create
+
+## Why I'm Including This
+
+It shows I can work with C# and .NET — a skill set separate from my Python/JavaScript work. I'm honest that it's tutorial-guided, but I genuinely did the work and learned from it. A tutorial you actually complete and debug is worth more than one you just watch.
+
+## What I Learned
+
+- ASP.NET Core Razor Pages architecture
+- Entity Framework Core with migrations
+- Repository and Unit of Work patterns
+- Stripe payment API integration
+- ASP.NET Identity for auth and role management
+- The difference between following a tutorial and understanding the code (debugging forced understanding)

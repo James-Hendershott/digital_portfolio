@@ -31,9 +31,12 @@ Key courses: Data Structures & Algorithms (A), Operating Systems, Server-Side We
 
 ## Projects
 
-### TrackMate — MERN Stack | Capstone Team Lead | CS 4760 (A)
-- Led 4-person Agile team building an asset tracking application; personally wrote API endpoints and React components alongside one other core contributor
-- Designed Docker Compose environment with seed data to solve VPN-gated data access; managed code reviews and sprint coordination via GitHub
+### TrackMate — MERN Stack | Capstone Team | CS 4760 (A)
+- 39 commits on the develop branch for a 4-person capstone team; built professor cards with QR codes, refactored office hours components, fixed room tracker bugs, and wrote handoff documentation
+- Managed code reviews and sprint coordination via GitHub PRs. One of two core contributors.
+
+### Banking System — Node.js/Express/MySQL | CS 3650
+- 119 commits of my own code (no AI). Full-stack banking app with MySQL stored procedures, role-based auth (admin/employee/customer), and financial transactions with overdraft protection.
 
 ### Adventure Game — Python | CS 3620 Server-Side Web Architecture (A)
 - Wrote a text adventure game engine from scratch: OOP scene graph, inventory system, Tkinter GUI, file-based outcomes logging, and riddle mechanics with progressive hints

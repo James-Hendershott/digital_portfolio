@@ -2,8 +2,8 @@
 slug: vendor-manager
 title: Vendor Manager Dashboard
 date: 2024-04-15
-summary: Work tool I designed and built to solve real workflow problems at my job. Started with hand-coded HTML, expanded with AI-assisted development. Used daily for 2+ years. The MERN rebuild is a separate AI-scaffolded project.
-tags: ["JavaScript", "HTML", "Smartsheet API", "Chart.js"]
+summary: Work tool I designed and evolved through 3 phases to solve real workflow problems at my job. Started with hand-coded HTML, built a MERN version myself (87 commits), then expanded features with AI assistance. Used daily for 2+ years.
+tags: ["JavaScript", "HTML", "Node.js", "Express", "MongoDB", "Smartsheet API", "Chart.js", "Docker"]
 access: "mailto:james_hendershott@outlook.com?subject=Vendor%20Manager%20Code%20Access%20Request"
 ---
 
@@ -11,72 +11,67 @@ access: "mailto:james_hendershott@outlook.com?subject=Vendor%20Manager%20Code%20
 
 This is a tool I built to fix real problems at my job as a Vendor Service Manager at Amerit Fleet Solutions. I track 40-100 fleet units across 6 food distribution centers, and the existing Smartsheet workflows were slow and manual. Nobody was going to fix that for me, so I started building something myself.
 
-**What's honest here:** I designed the solution and identified every problem it solves. I built the early versions with hand-coded HTML forms. As it grew more complex — Smartsheet API integration, chart dashboards, AI document analysis, modals — I used Claude Code as my senior developer. I directed the architecture, verified the code, tested everything, and learned along the way. But I did not write most of the advanced features from scratch.
+This tool has gone through three distinct phases — each one more capable, and each one more honest about who wrote what.
 
-I use this tool every single day at work.
+## Phase 1 — Hand-Coded HTML Forms (Early 2024)
 
-## The Dashboard (vendor-manager-web repo)
+I started simple. Hand-coded HTML forms to speed up email generation and unit tracking. No frameworks, no APIs. Just me solving an immediate problem at my desk.
 
-The original implementation. A browser-based tool that connects to Smartsheet's API, providing dashboards, workflow forms, and vendor communications.
+**This was 100% my work.**
 
-**What I did:**
-- Identified every workflow problem and designed the solution
-- Built initial HTML forms and basic functionality by hand
-- Directed all feature development and architecture decisions
-- Tested everything against real work data daily for 2+ years
-- Iterated based on actual workflow needs — this wasn't a school exercise
+## Phase 2 — VSM-Tracker: Full-Stack MERN App (Oct–Nov 2025)
 
-**What AI built (with my direction):**
-- Smartsheet API integration with CORS proxy and caching
-- Chart.js dashboards and drill-down reports
-- Claude AI integration for estimate document analysis
-- Complex modal systems and workflow form logic
-- Email generation templates
+Built a proper full-stack application from the skills I was learning in school. **87 commits over 25 days**, all mine, in the `vendor-manager-web` repo's predecessor (`VSM-Tracker` repo).
+
+**What I built myself:**
+- Node.js/Express backend with MongoDB
+- JWT authentication with role-based access (admin/user)
+- Email generation via Nodemailer with vendor contact management
+- CSV import from Smartsheet and Maximo data sources
+- Kanban-style dashboard for unit tracking
+- Docker deployment on my Unraid homelab
 - Dark/light theme system
+- Analytics dashboard with charts
 
-**Scale:**
-- ~20,000 lines across app.js, styles.css, and index.html
-- 9 workflow input types, 3 report types, 6 chart drill-down reports
-- Real-time Smartsheet sync with in-memory caching
+The commit history shows real development — setting up auth, debugging email integration, fixing duplicate unit merging, refining the UI over daily use. This was my code, written while I was taking CS courses and learning these technologies.
 
-## The MERN Rebuild (vendor-manager-mern repo — separate project)
+## Phase 3 — AI-Expanded Dashboard (Jan–Mar 2026)
 
-I had AI scaffold a MERN stack rebuild of this tool, designed for team-wide deployment. This is a separate project from the dashboard. The backend architecture is substantially complete but the frontend is mostly placeholders. I plan to learn from this scaffold and eventually build a working version myself.
+As I needed more advanced features, I started using Claude Code as a development partner. **56 commits** in the `vendor-manager-web` repo.
 
-I'm not claiming I wrote the MERN codebase. It exists as a reference architecture that AI built to my specifications.
+**What I directed and AI helped build:**
+- Smartsheet API integration with CORS proxy and caching
+- Chart.js dashboards with 6 drill-down report types
+- Claude AI integration for estimate document analysis (PDF/image extraction)
+- 9 workflow input types with dynamic forms
+- 3 report generators (weekly Teams summary, site email, customer update)
+- Email generation with per-vendor contact picker
+- User authentication backed by Smartsheet user store
+- Vendor scorecard ranking system
+- PDF analyzer tool and local file save utility
 
-## Problem
+**What's honest:** I identified every problem, designed every solution, tested everything against real work data, and iterated daily. But AI wrote most of the advanced code. I directed the architecture, verified the output, and learned from the process.
 
-As a Vendor Service Manager overseeing fleet maintenance across 6 locations, I was spending too much time on:
-- Repetitive vendor emails with copy/paste across 40+ contacts
-- Manual data entry and tracking across a 40-column Smartsheet
-- No visibility into trends, aging units, or cost patterns
-- No way to quickly detect units returned to service or past-due estimates
+## The MERN Rebuild (Separate Project)
 
-## How It Evolved
-
-1. **Hand-coded HTML forms** — started simple, just trying to speed up email generation
-2. **Added Smartsheet API** — connected to live data instead of manual entry (AI-assisted)
-3. **Built dashboards** — Chart.js visualizations of fleet metrics (AI-assisted)
-4. **Added AI features** — Claude API for document analysis and text improvement (AI-assisted)
-5. **Daily iteration** — 2+ years of adding features based on real workflow pain points
+I also had AI scaffold a modern MERN stack rebuild (`vendor-manager-mern` repo, 4 commits). It's a reference architecture for eventual team-wide deployment. I'm not claiming I wrote that codebase.
 
 ## Results
 
-- Used daily in production for 2+ years
+- Used daily at work for 2+ years
 - Every vendor interaction at my job flows through this tool
-- Reduced time spent on repetitive communications
-- Gave me visibility into fleet trends I didn't have before
+- Reduced active out-of-service units from 150+ to manageable levels
+- Automated reports that previously took hours
 
 ## What I Learned
 
-- How to identify real workflow problems and design solutions
-- Working with APIs (Smartsheet, Claude) even when I didn't write every integration myself
-- How a large codebase grows over time through daily iteration
+- How to identify real workflow problems and design solutions iteratively
+- Full-stack MERN development (Phase 2 was my code)
+- Working with APIs (Smartsheet, Claude) at increasing levels of complexity
 - The difference between directing software development and writing every line yourself
-- I'm planning to rebuild the dashboard from scratch in Python/Flask without AI as a learning exercise
+- Docker deployment and homelab hosting for real daily-use tools
 
 ## Next Steps
 
-- Python/Flask rebuild of the web dashboard — no AI assistance, as a learning exercise
+- Python/Flask rebuild of the dashboard without AI assistance, as a learning exercise
 - Complete the MERN version's frontend to learn React patterns hands-on

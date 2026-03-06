@@ -105,10 +105,16 @@ export default function ResumePage() {
         <h2>Projects</h2>
         <div className="space-y-4">
           <div>
-            <h3 className="text-lg font-semibold">TrackMate &mdash; MERN Stack | Capstone Team Lead | CS 4760 (A)</h3>
+            <h3 className="text-lg font-semibold">TrackMate &mdash; MERN Stack | Capstone Team | CS 4760 (A)</h3>
             <ul className="text-sm space-y-1">
-              <li>Led 4-person Agile team building an asset tracking application; personally wrote API endpoints and React components alongside one other core contributor.</li>
-              <li>Designed Docker Compose environment with seed data to solve VPN-gated data access; managed code reviews and sprint coordination via GitHub.</li>
+              <li>39 commits on the develop branch for a 4-person capstone team; built professor cards with QR codes, refactored office hours components, fixed room tracker bugs, and wrote handoff documentation.</li>
+              <li>Managed code reviews and sprint coordination via GitHub PRs. One of two core contributors.</li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-lg font-semibold">Banking System &mdash; Node.js/Express/MySQL | CS 3650</h3>
+            <ul className="text-sm space-y-1">
+              <li>119 commits of my own code (no AI). Full-stack banking app with MySQL stored procedures, role-based auth (admin/employee/customer), and financial transactions with overdraft protection.</li>
             </ul>
           </div>
           <div>

@@ -131,8 +131,15 @@ export const resumeData: ResumeData = {
       link: "https://github.com/bradleypeterson/TrackMate",
       tech: ["MERN Stack"],
       bullets: [
-        "Led 4-person Agile team building an asset tracking application; personally wrote API endpoints and React components alongside one other core contributor.",
-        "Designed Docker Compose environment with seed data to solve VPN-gated data access; managed code reviews and sprint coordination via GitHub.",
+        "39 commits on the develop branch for a 4-person capstone team; built professor cards with QR codes, refactored office hours components, fixed room tracker bugs, and wrote handoff documentation.",
+        "Managed code reviews and sprint coordination via GitHub PRs. One of two core contributors alongside one teammate.",
+      ],
+    },
+    {
+      name: "Banking System",
+      tech: ["Node.js", "Express", "MySQL", "EJS"],
+      bullets: [
+        "119 commits of my own code (no AI). Full-stack banking app with MySQL stored procedures, role-based auth (admin/employee/customer), and financial transactions with overdraft protection. CS 3650.",
       ],
     },
     {
