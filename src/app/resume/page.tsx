@@ -12,7 +12,7 @@ export default function ResumePage() {
       <p className="text-foreground/70 mb-6">
         Download my resume in your preferred format or view a summary below.
       </p>
-      
+
       <div className="mb-8 rounded-lg border border-foreground/10 bg-black/5 p-6 dark:bg-white/5">
         <h2 className="mb-4 text-lg font-semibold">Download Resume</h2>
         <div className="flex flex-wrap gap-3">
@@ -70,126 +70,63 @@ export default function ResumePage() {
       </div>
 
       <section className="prose prose-zinc dark:prose-invert max-w-none">
-        <h2>Professional Summary</h2>
-        <p>
-          Recent Computer Science graduate with production experience in TypeScript, React, Node.js, and Python across the full software development lifecycle. Builds and owns complete applications from problem definition through architecture, deployment, and production support. Brings 20+ years of progressive leadership experience including U.S. Navy Air Traffic Control, with proven abilities in team leadership, training, process improvement, and making timely decisions under pressure.
-        </p>
-
-        <h2>Technical Skills</h2>
-        <div className="grid gap-3 not-prose text-sm">
-          <div><strong>Languages:</strong> TypeScript, JavaScript, Python, Java, C#, C++, SQL, Bash</div>
-          <div><strong>Frontend:</strong> React, Vite, Next.js, Tailwind CSS, Shadcn/ui, Chart.js, Recharts, Zustand, React Hook Form</div>
-          <div><strong>Backend:</strong> Node.js, Express, MongoDB/Mongoose, PostgreSQL, Prisma, Flask, Django, Redis, BullMQ, Socket.io, JWT/RBAC</div>
-          <div><strong>DevOps:</strong> Docker & Docker Compose, Git/GitHub, CI/CD pipelines, Nginx, Linux/Bash, REST APIs</div>
-          <div><strong>Concepts:</strong> SDLC, API design, RBAC, configuration management, async job processing, caching strategies, real-time systems, Agile</div>
-        </div>
-
         <h2>Education</h2>
         <div className="space-y-3">
           <div>
-            <h3 className="text-lg font-semibold mb-1">Master of Science in Computer Science</h3>
-            <p className="text-sm text-foreground/80">Georgia Institute of Technology (Online) • Applied, Fall 2026</p>
-          </div>
-          <div>
             <h3 className="text-lg font-semibold mb-1">Bachelor of Science in Computer Science</h3>
-            <p className="text-sm text-foreground/80">Weber State University, Ogden, UT • December 2025</p>
-            <p className="text-sm">Minor: User Experience Design • GPA: 3.56</p>
-            <p className="text-sm italic">Relevant Coursework: Advanced Database Programming, Software Engineering, Data Structures, Scripting Languages, Object-Oriented Windows Applications</p>
-            <p className="text-sm italic">Honors: National Society of Leadership and Success</p>
+            <p className="text-sm text-foreground/80">Weber State University &bull; December 2025</p>
+            <p className="text-sm">GPA: 3.56 overall (3.87 in CS coursework) | Applied to Georgia Tech OMSCS</p>
+            <p className="text-sm italic">Key courses: Data Structures &amp; Algorithms (A), Operating Systems, Server-Side Web Architecture (Django/Python, A), Software Engineering I &amp; II (A, A), Database Design &amp; SQL (A), Advanced Database Programming (A), Computer Architecture, Formal Languages &amp; Algorithms</p>
           </div>
           <div>
             <h3 className="text-lg font-semibold mb-1">Associate of Applied Science in Computer Science</h3>
-            <p className="text-sm text-foreground/80">Weber State University • Dec 2023 • GPA: 3.75</p>
-            <p className="text-sm italic">Course Highlights: Programming I & II, Network Fundamentals, Database Design & SQL, Data Structures</p>
-          </div>
-          <div>
-            <h3 className="text-lg font-semibold mb-1">Certificate of Proficiency in Programming Essentials</h3>
-            <p className="text-sm text-foreground/80">Weber State University • Aug 2023 • GPA: 3.75</p>
-            <p className="text-sm italic">Focus on programming languages, database design, software engineering principles and network fundamentals</p>
-          </div>
-          <div>
-            <h3 className="text-lg font-semibold mb-1">Associate of Science in General Studies</h3>
-            <p className="text-sm text-foreground/80">Weber State University • Aug 2019 • GPA: 3.05</p>
+            <p className="text-sm text-foreground/80">Weber State University &bull; December 2023</p>
           </div>
         </div>
 
-        <h2>Projects & Software Development Experience</h2>
+        <h2>Technical Skills</h2>
+        <div className="grid gap-3 not-prose text-sm">
+          <div><strong>Languages:</strong> Python, JavaScript, TypeScript, SQL, HTML/CSS, Bash, Java, C#, C++</div>
+          <div><strong>Frameworks &amp; Tools:</strong> Django, Flask, React, Next.js, Node.js, Express, Tailwind CSS, Bootstrap</div>
+          <div><strong>Databases:</strong> PostgreSQL, MongoDB, MariaDB, SQLite, Prisma ORM, database design and SQL querying</div>
+          <div><strong>Infrastructure:</strong> Docker (44-container homelab), Nginx reverse proxy, Linux server administration, Git/GitHub, CI/CD concepts, DNS/VPN/SSL configuration</div>
+          <div><strong>Concepts:</strong> OOP, data structures and algorithms, REST API design, MVC/MVT patterns, Agile/Scrum, unit testing, code reviews, AI-assisted development</div>
+        </div>
+
+        <h2>Home Server Infrastructure &mdash; Self-Built &amp; Self-Maintained (2+ Years)</h2>
+        <ul className="text-sm space-y-1">
+          <li>Built and maintain a 24/7 Linux server (Unraid) running 44 Docker containers across 4 isolated networks with 128 TB storage, GPU-accelerated processing, and enterprise-grade hardware (Dell PowerEdge R730, 128 GB ECC RAM).</li>
+          <li>Configured Nginx reverse proxy managing 23 HTTPS subdomains with automated Let&apos;s Encrypt SSL, local DNS server (dnsmasq), and WireGuard/Tailscale VPN for secure remote access.</li>
+          <li>Administer 5 database instances across MariaDB, PostgreSQL, and MongoDB; perform SQL queries, data cleanup, and cross-database audits.</li>
+          <li>Write and maintain 20+ Bash/Python automation scripts on cron schedules for health monitoring, data pipelines, library management, and backup automation.</li>
+          <li>Diagnose and resolve complex infrastructure issues: hairpin NAT, SSL certificate chain compatibility, ISP bridge mode, Docker networking, and GPU driver configuration.</li>
+        </ul>
+
+        <h2>Projects</h2>
         <div className="space-y-4">
           <div>
-            <h3 className="text-lg font-semibold">TrackMate (Capstone MERN) — Team Lead</h3>
-            <p className="text-sm text-foreground/70 mb-2">2025</p>
+            <h3 className="text-lg font-semibold">TrackMate &mdash; MERN Stack | Capstone Team Lead | CS 4760 (A)</h3>
             <ul className="text-sm space-y-1">
-              <li>Led a team to build TrackMate, a MERN-based asset-tracking dashboard with role-based views and audit trails.</li>
-              <li>Designed API endpoints and React component architecture; built a local development environment using Docker Compose to run MongoDB, Node, and React containers.</li>
-              <li>Developed seed scripts and JSON fixtures to simulate VPN-gated data for offline development; managed .env configuration for dev vs production.</li>
-              <li>Outcome: unblocked development without VPN and created a repeatable, self-contained environment; emphasized that early architecture and tooling decisions pay dividends for teams.</li>
+              <li>Led 4-person Agile team building an asset tracking application; personally wrote API endpoints and React components alongside one other core contributor.</li>
+              <li>Designed Docker Compose environment with seed data to solve VPN-gated data access; managed code reviews and sprint coordination via GitHub.</li>
             </ul>
           </div>
           <div>
-            <h3 className="text-lg font-semibold">Vendor Manager Suite — Full Stack</h3>
-            <p className="text-sm text-foreground/70 mb-2">2024–Present</p>
+            <h3 className="text-lg font-semibold">Adventure Game &mdash; Python | CS 3620 Server-Side Web Architecture (A)</h3>
             <ul className="text-sm space-y-1">
-              <li>Built production fleet management system: React/Vite/TypeScript frontend with Shadcn/ui, Express/MongoDB backend, Redis caching.</li>
-              <li>Implemented dual-write architecture with BullMQ async job processing for Smartsheet API sync; Socket.io for real-time updates.</li>
-              <li>Designed 10 Mongoose schemas, JWT authentication with RBAC, and comprehensive REST API; deployed via Docker Compose.</li>
-              <li>Original dashboard: 20,000-line vanilla JS application (354 functions, 10 modals) with Smartsheet API, Chart.js dashboards, Claude AI document analysis, 9 workflow types, and 3 report generators — used daily in production for 2 years across 6 locations.</li>
+              <li>Wrote a text adventure game engine from scratch: OOP scene graph, inventory system, Tkinter GUI, file-based outcomes logging, and riddle mechanics with progressive hints.</li>
             </ul>
           </div>
           <div>
-            <h3 className="text-lg font-semibold">BoomPortal (Pi 5 + Sunshine/Moonlight) — Homelab Project</h3>
-            <p className="text-sm text-foreground/70 mb-2">2023</p>
+            <h3 className="text-lg font-semibold">Community Hub &mdash; Django/PostgreSQL | CS 3620 (A)</h3>
             <ul className="text-sm space-y-1">
-              <li>Configured a Raspberry Pi 5 as a low-latency game-streaming server using Sunshine and Moonlight with controller mapping and Nginx Proxy Manager.</li>
-              <li>Deployed services in Docker containers, set up reverse proxy with TLS certificates, and measured network performance (~12–18ms wired latency, ~25–35ms over Wi‑Fi 6).</li>
-              <li>Documented configuration steps and automated updates for personal homelab operations.</li>
+              <li>Built and deployed a Django web app for community event management with models, forms, views, admin panel, and Render deployment.</li>
             </ul>
           </div>
           <div>
-            <h3 className="text-lg font-semibold">Digital Portfolio — Next.js + MDX</h3>
-            <p className="text-sm text-foreground/70 mb-2">2023–Present</p>
+            <h3 className="text-lg font-semibold">Vendor Manager Dashboard &mdash; HTML/JavaScript | 2024&ndash;Present</h3>
             <ul className="text-sm space-y-1">
-              <li>Built content-driven portfolio using Next.js, React, TypeScript, Tailwind, and MDX.</li>
-              <li>Features: MDX case studies, GitHub showcase, Netlify contact form, App Router and static generation.</li>
-            </ul>
-          </div>
-          <div>
-            <h3 className="text-lg font-semibold">Where&apos;s My App? — Home Storage Tracker</h3>
-            <p className="text-sm text-foreground/70 mb-2">2025</p>
-            <ul className="text-sm space-y-1">
-              <li>Full-stack inventory system with QR scanning/printing, SVG rack maps, item photos, PWA offline support.</li>
-              <li>Built with Next.js, TypeScript, Prisma, PostgreSQL, and Auth.js.</li>
-            </ul>
-          </div>
-          <div>
-            <h3 className="text-lg font-semibold">Label Generator — Python/Flask Web App</h3>
-            <p className="text-sm text-foreground/70 mb-2">2025</p>
-            <ul className="text-sm space-y-1">
-              <li>Flask application for generating screw/fastener labels with color-coded sizing system.</li>
-              <li>Canvas API for browser-side rendering; print-optimized output at 300 DPI.</li>
-            </ul>
-          </div>
-          <div>
-            <h3 className="text-lg font-semibold">Property Comparison Dashboard — Full Stack</h3>
-            <p className="text-sm text-foreground/70 mb-2">2025–Present</p>
-            <ul className="text-sm space-y-1">
-              <li>Built full-stack family real estate comparison dashboard: 50 property cards across 7 states with voting, rankings, notes, and 30-second real-time polling.</li>
-              <li>Express backend with sql.js (WASM SQLite), 13 REST API endpoints, 5 database tables; Docker Compose deployment on Unraid.</li>
-            </ul>
-          </div>
-          <div>
-            <h3 className="text-lg font-semibold">Shed Gravel Pad Guide — Interactive HTML App</h3>
-            <p className="text-sm text-foreground/70 mb-2">2025</p>
-            <ul className="text-sm space-y-1">
-              <li>Built 2,065-line zero-dependency interactive guide with 7-step setup wizard, Canvas satellite mapping tool, 7 inline SVG technical diagrams, and live cost calculator.</li>
-            </ul>
-          </div>
-          <div>
-            <h3 className="text-lg font-semibold">E‑Commerce Microservices (Java) — Personal Project</h3>
-            <p className="text-sm text-foreground/70 mb-2">2023</p>
-            <ul className="text-sm space-y-1">
-              <li>Built a Spring Boot microservice to manage product inventory and order processing for a mock e‑commerce platform.</li>
-              <li>Exposed REST APIs and used MySQL for persistent storage; configured NGINX as a reverse proxy.</li>
-              <li>Built a Jenkins pipeline to automate testing and deployment to Kubernetes; collaborated via GitLab.</li>
+              <li>Identified workflow inefficiencies at current job and designed a tool to centralize unit tracking, automate vendor communications, and generate reports; started with hand-coded HTML forms and progressively added features using AI-assisted development.</li>
             </ul>
           </div>
         </div>
@@ -198,44 +135,30 @@ export default function ResumePage() {
         <div className="space-y-4">
           <div>
             <h3 className="text-lg font-semibold">Vendor Service Manager</h3>
-            <p className="text-sm text-foreground/70 mb-2">Amerit Fleet Solutions • Apr 2022 – Present</p>
+            <p className="text-sm text-foreground/70 mb-2">Amerit Fleet Solutions &bull; Apr 2022 &ndash; Present</p>
             <ul className="text-sm space-y-1">
-              <li>Oversee fleet management operations across multiple locations, leading status meetings and analysing trend data for proactive issue resolution and cost‑reduction strategies.</li>
-              <li>Build strong relationships with site leadership and vendors, ensuring high availability of services and rapid response to operational issues.</li>
-              <li>Leverage programming skills to develop internal tools (including VSM Tracker) for maintenance tracking and data dashboards, improving decision‑making efficiency.</li>
-              <li>Use Git and collaborative tools to manage codebases and train colleagues on version‑control best practices.</li>
+              <li>Track 40&ndash;100 fleet units simultaneously across multiple food distribution centers; manage full repair lifecycle from damage report through vendor negotiation, estimate approval, and return to service.</li>
+              <li>Reduced active out-of-service units from 150+ to manageable levels through improved communication systems and tracking tools built during CS coursework.</li>
+              <li>Coordinate across 6 distributed locations; influence fleet managers without direct authority; deliver weekly client reports.</li>
             </ul>
           </div>
           <div>
             <h3 className="text-lg font-semibold">Service Manager</h3>
-            <p className="text-sm text-foreground/70 mb-2">Aaron&apos;s Auto Pro • Sept 2020 – Apr 2022</p>
+            <p className="text-sm text-foreground/70 mb-2">Aaron&apos;s Auto Pro &bull; Sept 2020 &ndash; Apr 2022</p>
             <ul className="text-sm space-y-1">
-              <li>Managed daily operations for an automotive repair facility, ensuring customer satisfaction and overseeing scheduling and training.</li>
-              <li>Analysed repair data to identify patterns and implemented process improvements that reduced service turnaround time by 15%.</li>
-              <li>Introduced digital tools for job tracking and reporting, improving workflow transparency.</li>
+              <li>Managed shop operations, technicians, scheduling, customer relations, and warranty resolution; improved scheduling to reduce overbooking.</li>
             </ul>
           </div>
           <div>
-            <h3 className="text-lg font-semibold">Project Manager</h3>
-            <p className="text-sm text-foreground/70 mb-2">MJK Custom Fabrication and Coatings • Jan 2015 – Nov 2019</p>
+            <h3 className="text-lg font-semibold">Earlier Career | 2003&ndash;2019</h3>
             <ul className="text-sm space-y-1">
-              <li>Directed custom fabrication projects from planning through delivery, coordinating cross-functional teams and negotiating vendor terms</li>
-              <li>Implemented project management software to track milestones and budgets, improving on-time delivery rates</li>
-              <li>Communicated complex technical requirements between clients, engineers and production staff</li>
+              <li><strong>Project Manager</strong> &mdash; MJK Custom Fabrication (2015&ndash;2019): Managed production of 60+ employees across 3 shifts; brokered multi-million dollar steel procurement with Nucor; oversaw projects for Exxon Mobil. Earned NACE Level 2 and Six Sigma Green Belt.</li>
+              <li><strong>Multi-Channel Sales Manager</strong> &mdash; MattressFirm (2012&ndash;2014): Managed sales teams of 6&ndash;25 at state fairs and events; largest events: 9 booths, 200 people.</li>
+              <li><strong>GM &amp; Training Manager</strong> &mdash; Sizzling Platter (2008&ndash;2012): Promoted from busboy to GM within one year. Managed 45 employees, full P&amp;L responsibility. Moved to corporate training team leading Little Caesar&apos;s store openings.</li>
+              <li><strong>Air Traffic Controller</strong> &mdash; U.S. Navy (2003&ndash;2007)</li>
             </ul>
-          </div>
-          <div>
-            <h3 className="text-lg font-semibold">Additional Experience</h3>
-            <p className="text-sm">Multi-Channel Sales Manager, MattressFirm (2012–2014) • Training Manager & General Manager, Sizzling Platter (2008–2012) • Air Traffic Controller, United States Navy (2003–2007). Developed strong leadership, communication and teamwork skills.</p>
           </div>
         </div>
-
-        <h2>Leadership & Activities</h2>
-        <ul className="text-sm space-y-1">
-          <li>Member, National Society of Leadership and Success</li>
-          <li>Served in U.S. Navy (2003-2007) – cultivated discipline, attention to detail and the ability to perform under pressure</li>
-          <li>Maintain an active digital portfolio of projects and technical notes to document learning and showcase work</li>
-        </ul>
       </section>
 
       {null}

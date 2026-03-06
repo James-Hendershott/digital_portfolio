@@ -1,54 +1,34 @@
 ---
 slug: wheres-my-app
-title: Where’s My App? (Home Storage Tracker)
+title: Where's My App? (Home Storage Tracker)
 date: 2025-10-15
-summary: Full‑stack home inventory system with QR codes, interactive rack maps, photo uploads, and complete movement history.
-tags: ["Next.js", "TypeScript", "PostgreSQL", "Prisma", "Auth.js", "Zod", "QR", "PWA"]
+summary: Incomplete personal project for home inventory tracking with QR codes and rack maps. I came up with the concept, but AI wrote most of the code. Work in progress.
+tags: ["Next.js", "TypeScript", "PostgreSQL", "Prisma", "Auth.js"]
 repo: https://github.com/James-Hendershott/wheresMyApp
 ---
 
 ## Overview
-Where’s My App? tracks physical storage in your home: racks, containers (totes), and the items inside. Scan QR labels, see an interactive rack grid, check items in/out with photos, and maintain a full movement history.
+Where's My App? is a concept for tracking physical storage in your home — racks, containers, and items. Scan QR labels, see an interactive rack grid, check items in/out with photos, and maintain movement history.
 
-## Role & Tech Stack
-Solo developer
-- App: Next.js (App Router) + TypeScript, Tailwind, shadcn/ui
-- Data: PostgreSQL + Prisma ORM
-- Auth: Auth.js (NextAuth v5)
-- Validation/Forms: Zod + React Hook Form
-- QR: ZXing (scan) + qrcode (generate)
-- Storage: S3‑compatible (MinIO/R2) for item photos
-- PWA: installable, offline‑ready via next‑pwa
-- Tests/CI: Vitest + Playwright, GitHub Actions
+**Honest assessment:** This is an incomplete personal project. I came up with the concept and the feature requirements, but AI wrote most of the code. I haven't finished it.
 
-## Problem
-Household storage grows complex across garages, basements, closets, and sheds. You forget which tote holds an item, where the tote sits on the rack, and when items moved. Spreadsheets or notes fall out of date.
+## The Idea
+- Visual rack maps showing container positions
+- QR code system for scanning and deep-linking to items
+- Item management with photos, tags, and quantities
+- Movement history as an audit trail
+- PWA for mobile use
 
-## Solution
-- Visual rack maps: SVG grid showing container positions (row/column)
-- QR code system: print labels; scan to deep‑link to container/item pages
-- Item management: photos to S3, tags, quantities, check‑in/out workflows
-- Movement history: complete audit trail for containers and items
-- PWA: mobile‑friendly, add to home screen, camera access for scanning
+## Tech Stack
+- Next.js (App Router) + TypeScript
+- PostgreSQL + Prisma ORM
+- Auth.js (NextAuth v5)
+- Zod + React Hook Form
 
-```ts
-// Example: Prisma models excerpt
-model Container {
-  id        String   @id @default(cuid())
-  code      String   @unique
-  name      String
-  location  Location @relation(fields: [locationId], references: [id])
-  locationId String
-  items     Item[]
-}
-```
-
-## Results
-- Easy retrieval: scan a tote to instantly see contents and last moves
-- Accurate inventory: photos + tags reduce guesswork
-- Confidence: rack maps and history make storage auditable
+## Status
+This is a work-in-progress concept project. The core data models exist but the app isn't feature-complete or in daily use. I'm keeping it here because I think the concept is good and I plan to come back to it.
 
 ## What I Learned
-- Designing data models for spatial storage (locations → racks → slots → containers → items)
-- Building QR features end‑to‑end (generation, scanning, deep‑links)
-- Balancing PWA offline needs with secure auth and S3 uploads
+- Thinking through data models for spatial storage (locations, racks, slots, containers, items)
+- QR code generation and scanning workflows
+- The gap between having a good idea and shipping a finished product

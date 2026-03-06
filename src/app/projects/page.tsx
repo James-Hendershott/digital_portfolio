@@ -11,7 +11,7 @@ export default function ProjectsPage() {
   const projects = getAllProjectsMeta();
   
   // Featured projects (based on your current focus)
-  const featuredSlugs = ["trackmate", "wheres-my-app", "retro-adventure-game"];
+  const featuredSlugs = ["home-server", "trackmate", "retro-adventure-game"];
   const featured = projects.filter((p) => featuredSlugs.includes(p.slug));
   const allProjects = projects;
 
@@ -33,8 +33,8 @@ export default function ProjectsPage() {
               </span>
             </h1>
             <p className="text-xl text-foreground/70 max-w-2xl mx-auto">
-              A collection of full-stack applications, tools, and experiments. From MERN stacks to Django backends, 
-              these projects showcase problem-solving and hands-on development.
+              Course projects, work tools, and personal builds. Each page explains what I built,
+              what I learned, and where AI helped.
             </p>
           </div>
         </Container>

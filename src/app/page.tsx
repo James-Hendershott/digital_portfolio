@@ -22,9 +22,9 @@ export default function Home() {
             <div className="flex flex-col gap-6">
               <div className="inline-flex items-center gap-2 text-sm uppercase tracking-wider text-purple-600 dark:text-purple-400 font-medium">
                 <span className="w-8 h-0.5 bg-yellow-500"></span>
-                Software Engineer
+                CS Graduate
               </div>
-              
+
               <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight leading-tight">
                 <span className="block text-foreground">James</span>
                 <span className="block bg-gradient-to-r from-purple-600 to-yellow-500 dark:from-purple-400 dark:to-yellow-400 bg-clip-text text-transparent">
@@ -33,13 +33,13 @@ export default function Home() {
               </h1>
 
               <p className="text-xl sm:text-2xl text-foreground/70 font-light leading-relaxed">
-                Building practical software & reliable homelab infrastructure
+                Recent CS graduate building toward a software engineering career
               </p>
 
               <p className="max-w-xl text-foreground/60 leading-relaxed">
-                Full-stack developer specializing in MERN, Next.js, and Python.
-                I create robust applications, maintain production homelabs, and
-                bring ideas to life through code and maker projects.
+                I build projects to solve real problems, run a 44-container homelab,
+                and I&apos;m actively growing my coding skills. 20 years of leadership
+                experience, now learning to write the software I wish existed.
               </p>
 
               {/* Social Links */}

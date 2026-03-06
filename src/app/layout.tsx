@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     template: "%s | James Hendershott",
   },
   description:
-    "Portfolio of James Hendershott — software engineer, MERN/.NET projects, homelab & DevOps.",
+    "Portfolio of James Hendershott — CS graduate, projects, homelab, and career journey.",
   openGraph: {
   title: "James Hendershott — Portfolio",
     description:

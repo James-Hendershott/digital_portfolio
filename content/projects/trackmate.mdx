@@ -2,42 +2,42 @@
 slug: trackmate
 title: TrackMate (Capstone MERN Project)
 date: 2024-12-01
-summary: A comprehensive MERN stack asset tracking application built as my capstone project. Features role-based access, audit trails, and Docker-based development environment. This is my most in-depth project to date.
+summary: MERN stack asset tracking app built as a 4-person capstone team. I was team lead, wrote API endpoints and React components alongside one core teammate, and set up the Docker dev environment. CS 4760, grade A.
 tags: ["MERN", "Docker", "React", "Node.js", "MongoDB", "Express", "Capstone"]
 repo: https://github.com/bradleypeterson/TrackMate.git
 access: "mailto:james_hendershott@outlook.com?subject=TrackMate%20Code%20Access%20Request"
 ---
 
 ## Overview
-TrackMate is my senior capstone project—a full-featured MERN stack application designed for comprehensive asset tracking and management. This is the most in-depth project I have worked on, combining complex backend architecture, modern React frontend, role-based security, and production-ready deployment strategies.
+TrackMate is my senior capstone project — a MERN stack application for asset tracking and management. This was a 4-person team project for CS 4760. I was team lead. Grade: A.
 
-## Role & Stack
-**Team Lead & Full-Stack Developer**
+## My Role
+**Team Lead** — I wrote API endpoints and React components alongside one teammate who shared the bulk of the development work. Two other team members contributed less. I also set up the Docker Compose development environment and the seed data solution, which was my idea.
+
+I did not build this solo. It was a team project and I want to be clear about that.
+
 - **Stack**: MongoDB, Express.js, React, Node.js (MERN)
 - **DevOps**: Docker, Docker Compose, environment management
 - **Team Size**: 4 developers
 
-**Repository Note**: This is a private repository. Access: https://github.com/bradleypeterson/TrackMate.git
+**Repository Note**: This is a private repository under our professor's GitHub. Access: https://github.com/bradleypeterson/TrackMate.git
 
-## Project Scope
-TrackMate serves as an enterprise-grade asset tracking dashboard that provides:
-- Real-time asset monitoring and status updates
+## What TrackMate Does
+- Asset tracking dashboard with status updates
 - Role-based access control (Admin, Manager, User)
-- Comprehensive audit trails for all asset changes
-- Search and filtering capabilities
-- Reporting and analytics
+- Audit trails for asset changes
+- Search and filtering
 - Mobile-responsive interface
 
 ## Problem
-Live data was gated behind VPN. Needed a local development strategy and consistent seed data without exposing sensitive information. Team members needed identical development environments to avoid integration issues.
+Live data was gated behind VPN. We needed a way to develop locally without VPN access, and team members needed identical environments to avoid integration issues.
 
-## Solution
-Designed and implemented a Docker-based development environment with seed data:
-
-- **Docker Compose** for orchestrating MongoDB, Node.js API, and React frontend
+## What I Built
+- **Docker Compose** setup for orchestrating MongoDB, Node.js API, and React frontend
 - **Seed scripts** with realistic JSON fixtures to replace VPN-gated data
 - **Environment management** (.env files) for dev vs prod configurations
-- **Hot reloading** enabled for rapid development iteration
+- API endpoints and React components (shared work with one teammate)
+- Managed code reviews and sprint coordination via GitHub
 
 ```yaml
 # docker-compose excerpt
@@ -49,17 +49,13 @@ services:
 ```
 
 ## Results
-- **Unblocked Development**: Team could work locally without VPN access
-- **Consistent Environments**: Docker eliminated "works on my machine" issues
-- **Scalable Architecture**: Clean separation of concerns supports future features
-- **Production-Ready**: Successfully deployed with proper security and monitoring
+- Team could work locally without VPN access
+- Docker eliminated "works on my machine" issues
+- Successfully deployed with proper security
 
 ## What I Learned
-- **Full-Stack Development**: Deep experience across the entire MERN stack
-- **Docker & DevOps**: Container orchestration and environment isolation
-- **Team Leadership**: Coordinating technical decisions and architecture choices
-- **API Design**: RESTful principles, authentication, and authorization
-- **Database Design**: MongoDB schema design, indexing, and aggregation pipelines
-- **Problem Solving**: Creative solutions (Docker) to infrastructure blockers (VPN)
-
-**Key Takeaway**: Architecture and tooling decisions early on pay dividends for teams. Setting up proper infrastructure from the start saved countless hours of debugging and synchronization issues.
+- Leading a team through a full development cycle
+- Docker and container orchestration for team development
+- RESTful API design with authentication and authorization
+- MongoDB schema design
+- The value of setting up good infrastructure early — it saved the team a lot of time

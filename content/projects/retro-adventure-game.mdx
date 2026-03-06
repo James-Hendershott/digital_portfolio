@@ -1,68 +1,46 @@
 ---
 slug: retro-adventure-game
-title: Retro Adventure Game
+title: Adventure Game
 date: 2025-11-01
-summary: A Django‑powered web version of my 1980s‑style text adventure with database‑backed progress and session‑based gameplay.
+summary: Text adventure game I wrote for CS 3620 Server-Side Web Architecture. OOP scene graph, inventory system, Tkinter GUI, and riddle mechanics. The original Python version is my code. The Django web rebuild is an incomplete AI-expanded version.
 tags: ["Python", "Django", "PostgreSQL", "Interactive Fiction"]
-repo: https://github.com/James-Hendershott/retro_adventure_game.git
+repo: https://github.com/James-Hendershott/1980_Style_Adventure-Game.git
 ---
 
 ## Overview
-Retro Adventure Game is the evolved version of my earlier text adventure project, rebuilt as a Python/Django app with persistent game state. It captures the nostalgia of classic text adventures while adding web interactivity and a retro CRT‑style theme.
+A text adventure game inspired by classics like Zork, built for CS 3620 Server-Side Web Architecture. Grade: A. I wrote the code myself. I used AI to research concepts and look things up, but the code is mine.
 
-## Role & Stack
-Solo developer using Python, Django, and PostgreSQL.
+There are two repos:
+- **1980_Style_Adventure-Game** — the original Python version. This is my code.
+- **retro_adventure_game** — an AI-expanded Django web version that's incomplete. I'm honest about that distinction.
 
-## Background
-This project originated from the 1980 Style Adventure Game (https://github.com/James-Hendershott/1980_Style_Adventure-Game.git) and represents a complete refactoring and expansion of the original concept.
+## What I Built (Original Python Version)
+Course project using Python (standard library + Tkinter). No frameworks, no external dependencies beyond the standard library.
 
-## Problem
-The original adventure game was a good start but needed:
-- Better code organization for maintainability
-- More sophisticated command parsing
-- Expanded gameplay and story elements
-- Improved state management
-- Enhanced player feedback
+- **OOP scene graph**: Rooms as objects with directional connections, descriptions, and item lists
+- **Inventory system**: Pick up, drop, use, and examine items
+- **Tkinter GUI**: Graphical interface for the text adventure
+- **File-based outcomes logging**: Game events written to file
+- **Riddle mechanics**: Puzzles with progressive hints
+- **Command parser**: Handles verb-noun patterns with synonym support
+- **Save/load**: Serialize game state to JSON
 
-## Solution
-Rebuilt the game from the ground up with:
-- Django project structure (apps, models, views) + PostgreSQL persistence
-- Enhanced parser supporting more natural command patterns
-- Expanded world with multiple locations and puzzles
-- Session‑based progress tracking and save/load
-- Retro CRT visual style (templates/static files)
-
-```py
-# Example: Django view handling a command (simplified)
-def submit_command(request):
-    cmd = request.POST.get("command", "").strip()
-    game = get_game_for_session(request)
-    result = game.process(cmd)  # updates state, returns messages
-    return render(request, "game/play.html", {"game": game, "result": result})
+```python
+# Room definition example
+rooms = {
+    "entrance": {
+        "description": "A dimly lit cave entrance. Passages lead north and east.",
+        "exits": {"north": "hallway", "east": "storage"},
+        "items": ["torch", "note"],
+    }
+}
 ```
 
-## Gameplay Features
-- Multiple interconnected locations to explore
-- Inventory system for collecting and using items
-- Puzzle-solving mechanics
-- Save/load game state
-- Contextual hints and help system
-
-## Results
-- More engaging player experience
-- Cleaner, maintainable codebase
-- Active development with regular improvements
-- Foundation for future adventure game projects
+## Django Web Rebuild (Incomplete)
+I started rebuilding this as a Django/PostgreSQL web app with session-based game state and a retro CRT visual style. That version uses AI-generated code more heavily and is not finished. The original Python version is the one I'm proud of.
 
 ## What I Learned
-- Moving from a CLI prototype to a web app with Django
-- Database‑backed state and session management
-- Parser design for natural language input
-- Game design principles (pacing, feedback, challenge)
-- Value of playtesting and user feedback
-
-## Future Plans
-- Additional chapters and story branches
-- More sophisticated AI for NPCs
-- Achievement system
-- Multiple ending paths
+- Designing a text parser that feels natural without NLP libraries
+- Modeling game state as serializable data structures
+- OOP design patterns for game entities
+- Moving from a CLI prototype to thinking about web architecture

@@ -1,14 +1,14 @@
 ---
 slug: home-server
-title: Home Server (Homelab)
+title: Home Server Infrastructure
 date: 2025-10-20
-summary: Enterprise-grade homelab running 30+ Docker containers on a Dell R730 with 130TB storage, dual parity, reverse proxy, and automated monitoring.
-tags: ["Homelab", "Docker", "Nginx Proxy Manager", "Networking", "Unraid", "Linux"]
+summary: 44 Docker containers, 4 networks, 128 TB storage, 5 database instances, 23 HTTPS subdomains, 20+ automation scripts. Self-built and self-maintained for 2+ years. This is all my work.
+tags: ["Docker", "Nginx", "Linux", "Unraid", "Bash", "Networking", "MariaDB", "PostgreSQL", "MongoDB"]
 ---
 
 ## Overview
 
-A production homelab built on enterprise hardware, running 30+ Docker containers behind Nginx Proxy Manager with automated TLS, dual-parity storage, and comprehensive monitoring. What started as a media server has grown into a self-hosted platform for media management, password vaulting, dashboards, game streaming, and development tools.
+This is my strongest technical asset. I built and maintain a production homelab on enterprise hardware, running 44 Docker containers across 4 isolated networks. Everything here is my work — learned through documentation, YouTube, Google, and trial and error over 2+ years. No AI built this.
 
 ## Hardware
 
@@ -16,15 +16,27 @@ A production homelab built on enterprise hardware, running 30+ Docker containers
 |-----------|------|
 | **Server** | Dell PowerEdge R730 |
 | **CPU** | 2x Intel Xeon E5-2690 v3 (48 threads) |
-| **RAM** | 128GB ECC DDR4 |
+| **RAM** | 128 GB ECC DDR4 |
 | **GPU** | NVIDIA Quadro P2000 (hardware transcoding) |
-| **Storage** | ~130TB raw across 10 data disks + dual parity |
-| **Cache** | 1TB NVMe (appdata, Docker, VMs) |
+| **Storage** | ~128 TB raw across 10 data disks + dual parity |
+| **Cache** | 1 TB NVMe (appdata, Docker, VMs) |
 | **OS** | Unraid 7.x |
+
+## What I Built and Maintain
+
+**Nginx Reverse Proxy**: Managing 23 HTTPS subdomains with automated Let's Encrypt SSL certificates, local DNS server (dnsmasq), and proper certificate chain configuration.
+
+**VPN Access**: WireGuard and Tailscale for secure remote access from anywhere.
+
+**5 Database Instances**: MariaDB, PostgreSQL, and MongoDB. I perform SQL queries, data cleanup, and cross-database audits.
+
+**20+ Automation Scripts**: Bash and Python scripts on cron schedules for health monitoring, data pipelines, library management, and backup automation.
+
+**4 Docker Networks**: Isolated bridge networks for service separation and security.
 
 ## Architecture
 
-All services run as Docker containers on an isolated bridge network (`shottsproxy`), routed through Nginx Proxy Manager for TLS termination and subdomain routing. External access uses Cloudflare DNS with proxy entries for each service.
+All services run as Docker containers on isolated bridge networks, routed through Nginx Proxy Manager for TLS termination and subdomain routing. External access uses Cloudflare DNS with proxy entries for each service.
 
 ```text
 Internet → Cloudflare DNS → Router (port forward)
@@ -33,7 +45,7 @@ Internet → Cloudflare DNS → Router (port forward)
       → Individual services (Plex, Vaultwarden, *Arr stack, etc.)
 ```
 
-## Services (30+ Containers)
+## Services (44 Containers)
 
 **Media Management (Arr Stack):** Radarr, Sonarr, Lidarr, Readarr, Speakarr — automated media acquisition with hardlink-compatible mount configuration and TRaSH Guides quality profiles.
 
@@ -47,29 +59,40 @@ Internet → Cloudflare DNS → Router (port forward)
 
 **Monitoring:** Netdata for real-time system metrics, Tautulli for Plex analytics, Notifiarr for notifications.
 
-**Utilities:** Flaresolverr (CAPTCHA solving for indexers), Recyclarr (TRaSH profile sync), rreading-glasses (Readarr metadata).
+**Utilities:** Flaresolverr (CAPTCHA solving for indexers), Recyclarr (TRaSH profile sync).
+
+## Problems I've Solved
+
+These are real infrastructure issues I diagnosed and fixed myself:
+
+- **Hairpin NAT**: Local devices couldn't reach services through the public domain. Configured split-DNS with dnsmasq to resolve internally.
+- **SSL certificate chain compatibility**: Some clients rejected Let's Encrypt certs. Debugged the chain and configured proper intermediate certificate delivery.
+- **ISP bridge mode**: Needed to bypass ISP router for proper port forwarding. Configured bridge mode and set up my own router.
+- **Docker networking**: Containers on different bridge networks couldn't communicate. Set up proper network attachments and routing.
+- **GPU driver configuration**: Getting the Quadro P2000 working for hardware transcoding in Docker required driver installation, device passthrough, and container configuration.
 
 ## Storage Design
 
-Unraid's array provides dual-parity protection (can survive 2 simultaneous disk failures). A dedicated NVMe cache pool handles Docker appdata and VM storage for fast I/O. User shares (`data`, `backups`, `appdata`) are organized for hardlink compatibility — critical for the Arr stack to avoid duplicate copies.
+Unraid's array provides dual-parity protection (survives 2 simultaneous disk failures). NVMe cache pool handles Docker appdata and VM storage. User shares organized for hardlink compatibility — critical for the Arr stack to avoid duplicate copies.
 
-## Key Engineering Decisions
+## Key Decisions
 
-- **Single `/data` mount pattern** for all Arr containers to preserve hardlinks and save storage
-- **Dual parity** over RAID for flexibility (mixed disk sizes, easy expansion)
+- **Single `/data` mount pattern** for all Arr containers to preserve hardlinks
+- **Dual parity** over RAID for flexibility with mixed disk sizes
 - **Subdomain routing** (`*.shottsserver.com`) instead of port-based access
-- **Automated container updates** with backup-first approach
-- **Network isolation** via Docker bridge network rather than host networking
+- **Network isolation** via Docker bridge networks rather than host networking
 
 ## What I Learned
 
-- Linux system administration and Docker orchestration at scale
-- Reverse proxy configuration with TLS automation (Let's Encrypt)
+- Linux system administration from scratch
+- Docker orchestration at scale (44 containers, 4 networks)
+- Reverse proxy configuration with automated TLS
 - Storage architecture: parity, cache tiers, and hardlink strategies
 - Network security: VPN routing, firewall rules, DNS management
-- Infrastructure documentation as a first-class practice
-- Debugging container networking, permission issues, and resource contention
+- Database administration across multiple engines
+- Bash scripting for automation
+- Debugging complex infrastructure issues without a team to ask
 
 ## Notes
 
-This is an infrastructure/ops project without a public repository. Detailed setup documentation is maintained privately in Obsidian.
+This is an infrastructure project without a public repository. Configuration and documentation are maintained privately.

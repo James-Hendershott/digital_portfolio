@@ -3,81 +3,59 @@ Eagle Mountain, UT
 Email: James_Hendershott@Outlook.com | Phone: 385-526-1111
 GitHub: https://github.com/James-Hendershott | LinkedIn: https://www.linkedin.com/in/james-hendershott-0a2481224/ | Portfolio: https://jameshendershott.org
 
-## Professional Summary
-
-Recent Computer Science graduate with production experience in TypeScript, React, Node.js, and Python across the full software development lifecycle. Builds and owns complete applications from problem definition through architecture, deployment, and production support. Brings 20+ years of progressive leadership experience including U.S. Navy Air Traffic Control, with proven abilities in team leadership, training, process improvement, and making timely decisions under pressure.
-
-## Technical Skills
-
-- **Languages:** TypeScript, JavaScript, Python, Java, C#, C++, SQL, Bash
-- **Frontend:** React, Vite, Next.js, Tailwind CSS, Shadcn/ui, Chart.js, Recharts, Zustand, React Hook Form
-- **Backend:** Node.js, Express, MongoDB/Mongoose, PostgreSQL, Prisma, Flask, Django, Redis, BullMQ, Socket.io, JWT/RBAC
-- **DevOps & Tools:** Docker & Docker Compose, Git/GitHub, CI/CD pipelines, Nginx, Linux/Bash, REST APIs
-- **Concepts:** SDLC, API design, RBAC, configuration management, async job processing, caching strategies, real-time systems, Agile
+Software Engineer | Recent CS Graduate | Python · JavaScript · Django · React · Docker · Linux
 
 ## Education
 
-**Master of Science in Computer Science** — Georgia Institute of Technology (Online) | Applied, Fall 2026
-
 **Bachelor of Science in Computer Science** — Weber State University | December 2025
-Minor: User Experience Design | GPA: 3.56 | National Society of Leadership and Success
+GPA: 3.56 overall (3.87 in CS coursework) | Applied to Georgia Tech OMSCS
+Key courses: Data Structures & Algorithms (A), Operating Systems, Server-Side Web Architecture (Django/Python, A), Software Engineering I & II (A, A), Database Design & SQL (A), Advanced Database Programming (A), Computer Architecture, Formal Languages & Algorithms
 
 **Associate of Applied Science in Computer Science** — Weber State University | December 2023
-GPA: 3.75
+
+## Technical Skills
+
+- **Languages:** Python, JavaScript, TypeScript, SQL, HTML/CSS, Bash, Java, C#, C++
+- **Frameworks & Tools:** Django, Flask, React, Next.js, Node.js, Express, Tailwind CSS, Bootstrap
+- **Databases:** PostgreSQL, MongoDB, MariaDB, SQLite, Prisma ORM, database design and SQL querying
+- **Infrastructure:** Docker (44-container homelab), Nginx reverse proxy, Linux server administration, Git/GitHub, CI/CD concepts, DNS/VPN/SSL configuration
+- **Concepts:** OOP, data structures and algorithms, REST API design, MVC/MVT patterns, Agile/Scrum, unit testing, code reviews, AI-assisted development
+
+## Home Server Infrastructure — Self-Built & Self-Maintained (2+ Years)
+
+- Built and maintain a 24/7 Linux server (Unraid) running 44 Docker containers across 4 isolated networks with 128 TB storage, GPU-accelerated processing, and enterprise-grade hardware (Dell PowerEdge R730, 128 GB ECC RAM)
+- Configured Nginx reverse proxy managing 23 HTTPS subdomains with automated Let's Encrypt SSL, local DNS server (dnsmasq), and WireGuard/Tailscale VPN for secure remote access
+- Administer 5 database instances across MariaDB, PostgreSQL, and MongoDB; perform SQL queries, data cleanup, and cross-database audits
+- Write and maintain 20+ Bash/Python automation scripts on cron schedules for health monitoring, data pipelines, library management, and backup automation
+- Diagnose and resolve complex infrastructure issues: hairpin NAT, SSL certificate chain compatibility, ISP bridge mode, Docker networking, and GPU driver configuration
 
 ## Projects
 
-### Vendor Manager — Full-Stack MERN Application | 2024–Present
-- Built production fleet management system: React/Vite/TypeScript frontend with Shadcn/ui, Express/MongoDB backend, Redis caching
-- Implemented dual-write architecture with BullMQ async job processing for Smartsheet API sync; Socket.io for real-time updates
-- Designed 10 Mongoose schemas, JWT authentication with RBAC, and comprehensive REST API; deployed via Docker Compose
+### TrackMate — MERN Stack | Capstone Team Lead | CS 4760 (A)
+- Led 4-person Agile team building an asset tracking application; personally wrote API endpoints and React components alongside one other core contributor
+- Designed Docker Compose environment with seed data to solve VPN-gated data access; managed code reviews and sprint coordination via GitHub
 
-### Vendor Manager Dashboard — Client-Side Application | 2024–Present
-- Built 20,000-line vanilla JS application (354 functions, 10 modals, 3 report types) with real-time Smartsheet API integration, Chart.js dashboards, and in-memory caching — used daily in production for 2 years across 6 locations
-- Integrated Claude AI for document analysis (estimates from PDF/images); built automated weekly reporting and email generation
+### Adventure Game — Python | CS 3620 Server-Side Web Architecture (A)
+- Wrote a text adventure game engine from scratch: OOP scene graph, inventory system, Tkinter GUI, file-based outcomes logging, and riddle mechanics with progressive hints
 
-### TrackMate (Capstone MERN Application) — Team Lead | 2025
-- Led 4-person team through full SDLC; designed RESTful APIs and React architecture with RBAC and audit trails; Docker Compose deployment
+### Community Hub — Django/PostgreSQL | CS 3620 (A)
+- Built and deployed a Django web app for community event management with models, forms, views, admin panel, and Render deployment
 
-### Digital Portfolio — Next.js + MDX | 2023–Present
-- Built content-driven portfolio using Next.js, React, TypeScript, Tailwind, and MDX
-- Features: MDX case studies, GitHub showcase, sitemap/robots, Netlify contact form, App Router and static generation
-
-### Where's My App? — Home Storage Tracker | 2025
-- Full-stack inventory system with QR scanning/printing, SVG rack maps, item photos, PWA offline support; Auth.js + Prisma + PostgreSQL
-
-### Label Generator — Python/Flask Web App | 2025
-- Built Flask application for generating screw/fastener labels with color-coded sizing system for toolbox organization
-- Canvas API for browser-side label rendering; print-optimized output at 300 DPI
-
-### Property Comparison Dashboard — Full-Stack Application | 2025–Present
-- Built full-stack family real estate comparison dashboard: 50 property cards across 7 states with voting, rankings, notes, and 30-second real-time polling
-- Express backend with sql.js (WASM SQLite), 13 REST API endpoints, 5 database tables; Docker Compose deployment on Unraid
-
-### Shed Gravel Pad Guide — Interactive HTML App | 2025
-- Built 2,065-line zero-dependency interactive guide with 7-step setup wizard, Canvas satellite mapping tool, 7 inline SVG technical diagrams, and live cost calculator
+### Vendor Manager Dashboard — HTML/JavaScript | 2024–Present
+- Identified workflow inefficiencies at current job and designed a tool to centralize unit tracking, automate vendor communications, and generate reports; started with hand-coded HTML forms and progressively added features using AI-assisted development
 
 ## Professional Experience
 
 **Vendor Service Manager** — Amerit Fleet Solutions | Apr 2022–Present
-- Oversee fleet management across 6 locations; lead status meetings and analyze trends for proactive issue resolution
-- Built and deployed Vendor Manager applications (dashboard + MERN stack) to replace manual Smartsheet workflows; preparing for team-wide distribution
+- Track 40–100 fleet units simultaneously across multiple food distribution centers; manage full repair lifecycle from damage report through vendor negotiation, estimate approval, and return to service
+- Reduced active out-of-service units from 150+ to manageable levels through improved communication systems and tracking tools built during CS coursework
+- Coordinate across 6 distributed locations; influence fleet managers without direct authority; deliver weekly client reports
 
 **Service Manager** — Aaron's Auto Pro | Sept 2020–Apr 2022
-- Managed automotive repair operations; implemented digital job tracking reducing turnaround ~15%
+- Managed shop operations, technicians, scheduling, customer relations, and warranty resolution; improved scheduling to reduce overbooking
 
-**Project Manager** — MJK Custom Fabrication and Coatings | Jan 2015–Nov 2019
-- Directed custom fabrication projects within budget/deadlines; managed production teams and negotiated vendor terms
-
-**Multi-Channel Sales Manager** — MattressFirm | Jan 2012–Dec 2014
-- Led sales teams at national events; set performance goals and refined sales processes
-
-**Training Manager → General Manager** — Sizzling Platter | Jan 2008–Jan 2012
-- Led new store openings, updated training materials, mentored employees; managed operations and team development
-
-**Air Traffic Controller** — United States Navy, NAS Kingsville | Jan 2003–Jan 2007
-- Managed aircraft routing and flight planning; ensured air traffic safety; excelled in high-pressure decision-making
-
-## Additional Information
-
-U.S. Citizen | Available immediately for full-time work
+### Earlier Career | 2003–2019
+- **Project Manager** — MJK Custom Fabrication (2015–2019): Managed production of 60+ employees across 3 shifts; brokered multi-million dollar steel procurement with Nucor; oversaw projects for Exxon Mobil. Earned NACE Level 2 and Six Sigma Green Belt.
+- **Multi-Channel Sales Manager** — MattressFirm (2012–2014): Managed sales teams of 6–25 at state fairs and events; largest events: 9 booths, 200 people.
+- **GM & Training Manager** — Sizzling Platter (2008–2012): Promoted from busboy to GM within one year. Managed 45 employees, full P&L responsibility. Moved to corporate training team leading Little Caesar's store openings.
+- **Air Traffic Controller** — U.S. Navy (2003–2007)

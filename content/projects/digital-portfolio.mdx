@@ -2,51 +2,49 @@
 slug: digital-portfolio
 title: Digital Portfolio (This Site)
 date: 2025-10-30
-summary: Personal portfolio built with Next.js 16, TypeScript, Tailwind v4, and MDX. Features an MDX content pipeline, server-side PDF resume generation, and 12 project case studies.
+summary: My portfolio site. I built the structure, wrote all the content, and made the architecture decisions. AI helped significantly with CSS, design, and component polish.
 tags: ["Next.js", "TypeScript", "Tailwind", "MDX", "React", "Netlify"]
 repo: https://github.com/James-Hendershott/digital_portfolio
 ---
 
 ## Overview
 
-This website is my living portfolio — a statically generated Next.js site where each project is an MDX case study. It includes a contact form, downloadable PDF resume, GitHub activity showcase, and a private project access flow for work under NDA.
+This is the site you're looking at. It's a Next.js site where each project is an MDX case study.
+
+**What's honest here:** I started this site myself and made all the content and structure decisions. AI helped significantly with CSS, design polish, and component styling. The words are mine. The layout decisions are mine. The visual polish had a lot of AI assistance.
 
 ## Tech Stack
 
 - **Framework**: Next.js 16 (App Router) with React 19
-- **Language**: TypeScript throughout
-- **Styling**: Tailwind CSS v4 with CSS custom properties
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS v4
 - **Content**: MDX via `next-mdx-remote` + `gray-matter` for frontmatter
 - **Resume**: Server-side PDF generation with PDFKit (API route)
-- **Deployment**: Netlify with automatic builds from GitHub
-- **SEO**: Dynamic sitemap, robots.txt, Open Graph, Twitter Cards
+- **Deployment**: Netlify
+
+## What I Did
+
+- Chose the tech stack and set up the project
+- Wrote all project case studies and page content
+- Decided on the MDX content pipeline approach
+- Set up Netlify deployment
+- Made the decision to be honest about AI usage on every project page
+
+## What AI Helped With
+
+- CSS and Tailwind styling
+- Component structure and polish
+- Design system (colors, spacing, typography)
+- Responsive layout adjustments
+- Dark mode implementation
 
 ## Content Pipeline
 
-Project pages are authored as `.mdx` files in a `content/projects/` directory. At build time, `gray-matter` extracts frontmatter metadata (title, date, tags, repo URL, access link) and `next-mdx-remote` compiles the MDX body. This approach keeps content portable, version-controlled, and easy to add to — just drop in a new `.mdx` file.
-
-```typescript
-// Simplified content loading
-const { data, content } = matter(raw);     // extract frontmatter
-const mdx = await compileMDX({ source: content }); // compile MDX
-```
-
-## Key Features
-
-- **12 Project Case Studies**: Each with problem/solution structure, code samples, and results
-- **Private Project Access**: Projects under NDA show a "Request Access" button (mailto link) instead of a repo link
-- **PDF Resume**: Generated server-side via PDFKit — structured resume data rendered to a downloadable PDF on demand
-- **Contact Form**: Netlify Forms integration with honeypot spam protection
-- **Responsive Design**: Clean, minimal UI with dark mode defaults
-
-## Design
-
-The site uses a minimal dark theme with Geist Sans/Mono fonts, purple-to-gold gradient accents, and generous whitespace. The design prioritizes readability and fast navigation — no animations or heavy assets.
+Project pages are `.mdx` files in `content/projects/` with frontmatter metadata. At build time, `gray-matter` extracts the metadata and `next-mdx-remote` compiles the MDX. Adding a new project means dropping in a new `.mdx` file.
 
 ## What I Learned
 
-- MDX content pipelines: frontmatter parsing, dynamic routing, and static generation
-- Server-side PDF generation with PDFKit (fonts, layout, streaming response)
-- SEO fundamentals: canonical URLs, structured metadata, sitemaps
-- Netlify deployment workflows and form handling
-- Tailwind v4 migration from utility classes to CSS-first configuration
+- MDX content pipelines with frontmatter parsing and dynamic routing
+- Server-side PDF generation with PDFKit
+- Netlify deployment and form handling
+- The importance of honest project descriptions
