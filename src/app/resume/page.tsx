@@ -76,7 +76,7 @@ export default function ResumePage() {
             <h3 className="text-lg font-semibold mb-1">Bachelor of Science in Computer Science</h3>
             <p className="text-sm text-foreground/80">Weber State University &bull; December 2025</p>
             <p className="text-sm">GPA: 3.56 overall (3.87 in CS coursework) | Applied to Georgia Tech OMSCS</p>
-            <p className="text-sm italic">Key courses: Data Structures &amp; Algorithms (A), Operating Systems, Server-Side Web Architecture (Django/Python, A), Software Engineering I &amp; II (A, A), Database Design &amp; SQL (A), Advanced Database Programming (A), Computer Architecture, Formal Languages &amp; Algorithms</p>
+            <p className="text-sm italic">Key courses: Data Structures &amp; Algorithms (A), Server-Side Web Architecture &mdash; Django/Python (A), Software Engineering I &amp; II (A, A), Database Design &amp; SQL (A), Advanced Database Programming (A), Computer Architecture (A), Formal Languages &amp; Algorithms, Operating Systems</p>
           </div>
           <div>
             <h3 className="text-lg font-semibold mb-1">Associate of Applied Science in Computer Science</h3>
@@ -87,55 +87,47 @@ export default function ResumePage() {
         <h2>Technical Skills</h2>
         <div className="grid gap-3 not-prose text-sm">
           <div><strong>Languages:</strong> Python, JavaScript, TypeScript, SQL, HTML/CSS, Bash, Java, C#, C++</div>
-          <div><strong>Frameworks &amp; Tools:</strong> Django, Flask, React, Next.js, Node.js, Express, Tailwind CSS, Bootstrap</div>
-          <div><strong>Databases:</strong> PostgreSQL, MongoDB, MariaDB, SQLite, Prisma ORM, database design and SQL querying</div>
-          <div><strong>Infrastructure:</strong> Docker (44-container homelab), Nginx reverse proxy, Linux server administration, Git/GitHub, CI/CD concepts, DNS/VPN/SSL configuration</div>
+          <div><strong>Frameworks &amp; Tools:</strong> Django, Flask, React, Next.js, Node.js, Express, ASP.NET Core, Tailwind CSS, Bootstrap</div>
+          <div><strong>Databases:</strong> MySQL (stored procedures), PostgreSQL, MongoDB, MariaDB, SQLite, Prisma ORM, schema design</div>
+          <div><strong>Infrastructure:</strong> Docker (44-container homelab), Nginx reverse proxy, Linux server administration, Git/GitHub, CI/CD concepts, DNS/VPN/SSL</div>
           <div><strong>Concepts:</strong> OOP, data structures and algorithms, REST API design, MVC/MVT patterns, Agile/Scrum, unit testing, code reviews, AI-assisted development</div>
         </div>
-
-        <h2>Home Server Infrastructure &mdash; Self-Built &amp; Self-Maintained (2+ Years)</h2>
-        <ul className="text-sm space-y-1">
-          <li>Built and maintain a 24/7 Linux server (Unraid) running 44 Docker containers across 4 isolated networks with 128 TB storage, GPU-accelerated processing, and enterprise-grade hardware (Dell PowerEdge R730, 128 GB ECC RAM).</li>
-          <li>Configured Nginx reverse proxy managing 23 HTTPS subdomains with automated Let&apos;s Encrypt SSL, local DNS server (dnsmasq), and WireGuard/Tailscale VPN for secure remote access.</li>
-          <li>Administer 5 database instances across MariaDB, PostgreSQL, and MongoDB; perform SQL queries, data cleanup, and cross-database audits.</li>
-          <li>Write and maintain 20+ Bash/Python automation scripts on cron schedules for health monitoring, data pipelines, library management, and backup automation.</li>
-          <li>Diagnose and resolve complex infrastructure issues: hairpin NAT, SSL certificate chain compatibility, ISP bridge mode, Docker networking, and GPU driver configuration.</li>
-        </ul>
 
         <h2>Projects</h2>
         <div className="space-y-4">
           <div>
-            <h3 className="text-lg font-semibold">TrackMate &mdash; MERN Stack | Capstone Team | CS 4760 (A)</h3>
+            <h3 className="text-lg font-semibold">Banking System &mdash; Node.js/Express/MySQL | 119 commits | Advanced Database Programming (A)</h3>
             <ul className="text-sm space-y-1">
-              <li>39 commits on the develop branch for a 4-person capstone team; built professor cards with QR codes, refactored office hours components, fixed room tracker bugs, and wrote handoff documentation.</li>
-              <li>Managed code reviews and sprint coordination via GitHub PRs. One of two core contributors.</li>
+              <li>Built a full-stack banking application with MySQL stored procedures for all data operations, JWT + session authentication, and role-based access control (admin, employee, customer).</li>
+              <li>Implemented deposits, withdrawals, and transfers with overdraft protection, transaction history, and employee dashboard. Refactored password hashing from client-side to server-side mid-project.</li>
             </ul>
           </div>
           <div>
-            <h3 className="text-lg font-semibold">Banking System &mdash; Node.js/Express/MySQL | CS 3650</h3>
+            <h3 className="text-lg font-semibold">VSM-Tracker &mdash; MongoDB/Express/React/Node.js | 87 commits | 2025</h3>
             <ul className="text-sm space-y-1">
-              <li>119 commits of my own code (no AI). Full-stack banking app with MySQL stored procedures, role-based auth (admin/employee/customer), and financial transactions with overdraft protection.</li>
+              <li>Built a vendor management app to solve real workflow problems at my job. JWT auth with role-based access, Kanban dashboard, CSV import from Smartsheet, email integration, analytics with charts. Deployed with Docker on my home server.</li>
+              <li>Wrote most of the code myself with AI assistance on syntax and debugging. Used it as the foundation for a larger tool I now use daily at work.</li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-lg font-semibold">TrackMate &mdash; MERN Stack | Capstone Team Lead | CS 4760 (A)</h3>
+            <ul className="text-sm space-y-1">
+              <li>Led 4-person Agile team; personally wrote API endpoints, React components, QR code generation, and professor card features. Set up Docker Compose dev environment with seed data. Managed code reviews via GitHub.</li>
             </ul>
           </div>
           <div>
             <h3 className="text-lg font-semibold">Adventure Game &mdash; Python | CS 3620 Server-Side Web Architecture (A)</h3>
             <ul className="text-sm space-y-1">
-              <li>Wrote a text adventure game engine from scratch: OOP scene graph, inventory system, Tkinter GUI, file-based outcomes logging, and riddle mechanics with progressive hints.</li>
-            </ul>
-          </div>
-          <div>
-            <h3 className="text-lg font-semibold">Community Hub &mdash; Django/PostgreSQL | CS 3620 (A)</h3>
-            <ul className="text-sm space-y-1">
-              <li>Built and deployed a Django web app for community event management with models, forms, views, admin panel, and Render deployment.</li>
-            </ul>
-          </div>
-          <div>
-            <h3 className="text-lg font-semibold">Vendor Manager Dashboard &mdash; HTML/JavaScript | 2024&ndash;Present</h3>
-            <ul className="text-sm space-y-1">
-              <li>Identified workflow inefficiencies at current job and designed a tool to centralize unit tracking, automate vendor communications, and generate reports; started with hand-coded HTML forms and progressively added features using AI-assisted development.</li>
+              <li>Wrote a text adventure game engine from scratch: OOP scene graph, inventory system, Tkinter GUI, file-based logging, riddle mechanics with progressive hints. My code &mdash; used AI for research, not code generation.</li>
             </ul>
           </div>
         </div>
+
+        <h2>Home Server &mdash; Self-Built &amp; Self-Maintained (2+ Years)</h2>
+        <ul className="text-sm space-y-1">
+          <li>Run a 24/7 Linux server with 44 Docker containers across 4 networks, 128 TB storage, 5 database instances (PostgreSQL, MariaDB, MongoDB), Nginx reverse proxy with SSL for 23 subdomains, and 20+ Bash/Python automation scripts on cron schedules.</li>
+          <li>Troubleshoot real infrastructure problems: hairpin NAT, SSL certificate chain compatibility, Docker networking, GPU drivers, DNS configuration. All self-taught through Google, YouTube, and documentation.</li>
+        </ul>
 
         <h2>Professional Experience</h2>
         <div className="space-y-4">
@@ -143,24 +135,23 @@ export default function ResumePage() {
             <h3 className="text-lg font-semibold">Vendor Service Manager</h3>
             <p className="text-sm text-foreground/70 mb-2">Amerit Fleet Solutions &bull; Apr 2022 &ndash; Present</p>
             <ul className="text-sm space-y-1">
-              <li>Track 40&ndash;100 fleet units simultaneously across multiple food distribution centers; manage full repair lifecycle from damage report through vendor negotiation, estimate approval, and return to service.</li>
-              <li>Reduced active out-of-service units from 150+ to manageable levels through improved communication systems and tracking tools built during CS coursework.</li>
-              <li>Coordinate across 6 distributed locations; influence fleet managers without direct authority; deliver weekly client reports.</li>
+              <li>Track 40&ndash;100 fleet units simultaneously across multiple food distribution centers. Handle full repair lifecycle: vendor negotiation, estimates, transportation, reporting.</li>
+              <li>Reduced active out-of-service units from 150+ by building my own tracking tools &mdash; started with hand-coded HTML forms, grew into a daily-use dashboard with Smartsheet API integration and automated reporting.</li>
+              <li>Work remotely across 6 distributed locations. Coordinate with fleet managers, deliver weekly client reports, solve problems independently.</li>
             </ul>
           </div>
           <div>
             <h3 className="text-lg font-semibold">Service Manager</h3>
             <p className="text-sm text-foreground/70 mb-2">Aaron&apos;s Auto Pro &bull; Sept 2020 &ndash; Apr 2022</p>
             <ul className="text-sm space-y-1">
-              <li>Managed shop operations, technicians, scheduling, customer relations, and warranty resolution; improved scheduling to reduce overbooking.</li>
+              <li>Ran shop operations, managed technicians, handled customer relations and scheduling. Left to finish CS degree remotely.</li>
             </ul>
           </div>
           <div>
             <h3 className="text-lg font-semibold">Earlier Career | 2003&ndash;2019</h3>
             <ul className="text-sm space-y-1">
-              <li><strong>Project Manager</strong> &mdash; MJK Custom Fabrication (2015&ndash;2019): Managed production of 60+ employees across 3 shifts; brokered multi-million dollar steel procurement with Nucor; oversaw projects for Exxon Mobil. Earned NACE Level 2 and Six Sigma Green Belt.</li>
-              <li><strong>Multi-Channel Sales Manager</strong> &mdash; MattressFirm (2012&ndash;2014): Managed sales teams of 6&ndash;25 at state fairs and events; largest events: 9 booths, 200 people.</li>
-              <li><strong>GM &amp; Training Manager</strong> &mdash; Sizzling Platter (2008&ndash;2012): Promoted from busboy to GM within one year. Managed 45 employees, full P&amp;L responsibility. Moved to corporate training team leading Little Caesar&apos;s store openings.</li>
+              <li><strong>Project Manager</strong> &mdash; MJK Custom Fabrication (2015&ndash;2019): Managed 60+ employees across 3 shifts. Multi-million dollar steel procurement with Nucor. Projects for Exxon Mobil.</li>
+              <li><strong>Sales Manager</strong> &mdash; MattressFirm (2012&ndash;2014). <strong>GM &amp; Training Manager</strong> &mdash; Sizzling Platter (2008&ndash;2012): Busboy to GM in under a year.</li>
               <li><strong>Air Traffic Controller</strong> &mdash; U.S. Navy (2003&ndash;2007)</li>
             </ul>
           </div>

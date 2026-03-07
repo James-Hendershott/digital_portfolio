@@ -53,9 +53,9 @@ export const resumeData: ResumeData = {
   ],
   skills: {
     languages: ["Python", "JavaScript", "TypeScript", "SQL", "HTML/CSS", "Bash", "Java", "C#", "C++"],
-    frontend: ["Django", "Flask", "React", "Next.js", "Node.js", "Express", "Tailwind CSS", "Bootstrap"],
-    backend: ["PostgreSQL", "MongoDB", "MariaDB", "SQLite", "Prisma ORM", "database design and SQL querying"],
-    devops: ["Docker (44-container homelab)", "Nginx reverse proxy", "Linux server administration", "Git/GitHub", "CI/CD concepts", "DNS/VPN/SSL configuration"],
+    frontend: ["Django", "Flask", "React", "Next.js", "Node.js", "Express", "ASP.NET Core", "Tailwind CSS", "Bootstrap"],
+    backend: ["MySQL (stored procedures)", "PostgreSQL", "MongoDB", "MariaDB", "SQLite", "Prisma ORM", "schema design"],
+    devops: ["Docker (44-container homelab)", "Nginx reverse proxy", "Linux server administration", "Git/GitHub", "CI/CD concepts", "DNS/VPN/SSL"],
     concepts: ["OOP", "Data structures and algorithms", "REST API design", "MVC/MVT patterns", "Agile/Scrum", "Unit testing", "Code reviews", "AI-assisted development"],
   },
   experience: [
@@ -65,9 +65,9 @@ export const resumeData: ResumeData = {
       start: "Apr 2022",
       end: "Present",
       bullets: [
-        "Track 40\u2013100 fleet units simultaneously across multiple food distribution centers; manage full repair lifecycle from damage report through vendor negotiation, estimate approval, and return to service.",
-        "Reduced active out-of-service units from 150+ to manageable levels through improved communication systems and tracking tools built during CS coursework.",
-        "Coordinate across 6 distributed locations; influence fleet managers without direct authority; deliver weekly client reports.",
+        "Track 40\u2013100 fleet units simultaneously across multiple food distribution centers. Handle full repair lifecycle: vendor negotiation, estimates, transportation, reporting.",
+        "Reduced active out-of-service units from 150+ by building my own tracking tools \u2014 started with hand-coded HTML forms, grew into a daily-use dashboard with Smartsheet API integration and automated reporting.",
+        "Work remotely across 6 distributed locations. Coordinate with fleet managers, deliver weekly client reports, solve problems independently.",
       ],
     },
     {
@@ -76,7 +76,7 @@ export const resumeData: ResumeData = {
       start: "Sept 2020",
       end: "Apr 2022",
       bullets: [
-        "Managed shop operations, technicians, scheduling, customer relations, and warranty resolution; improved scheduling to reduce overbooking.",
+        "Ran shop operations, managed technicians, handled customer relations and scheduling. Left to finish CS degree remotely.",
       ],
     },
     {
@@ -85,17 +85,15 @@ export const resumeData: ResumeData = {
       start: "2015",
       end: "2019",
       bullets: [
-        "Managed production of 60+ employees across 3 shifts; brokered multi-million dollar steel procurement with Nucor; oversaw projects for Exxon Mobil. Earned NACE Level 2 and Six Sigma Green Belt.",
+        "Managed 60+ employees across 3 shifts. Multi-million dollar steel procurement with Nucor. Projects for Exxon Mobil.",
       ],
     },
     {
       company: "MattressFirm",
-      title: "Multi-Channel Sales Manager",
+      title: "Sales Manager",
       start: "2012",
       end: "2014",
-      bullets: [
-        "Managed sales teams of 6\u201325 at state fairs and events; largest events: 9 booths, 200 people.",
-      ],
+      bullets: [],
     },
     {
       company: "Sizzling Platter",
@@ -103,7 +101,7 @@ export const resumeData: ResumeData = {
       start: "2008",
       end: "2012",
       bullets: [
-        "Promoted from busboy to GM within one year. Managed 45 employees, full P&L responsibility. Moved to corporate training team leading Little Caesar\u2019s store openings.",
+        "Busboy to GM in under a year.",
       ],
     },
     {
@@ -116,14 +114,19 @@ export const resumeData: ResumeData = {
   ],
   projects: [
     {
-      name: "Home Server Infrastructure",
-      tech: ["Docker", "Nginx", "Linux", "Unraid", "Bash", "MariaDB", "PostgreSQL", "MongoDB"],
+      name: "Banking System",
+      tech: ["Node.js", "Express", "MySQL"],
       bullets: [
-        "Built and maintain a 24/7 Linux server (Unraid) running 44 Docker containers across 4 isolated networks with 128 TB storage, GPU-accelerated processing, and enterprise-grade hardware (Dell PowerEdge R730, 128 GB ECC RAM).",
-        "Configured Nginx reverse proxy managing 23 HTTPS subdomains with automated Let\u2019s Encrypt SSL, local DNS server (dnsmasq), and WireGuard/Tailscale VPN for secure remote access.",
-        "Administer 5 database instances across MariaDB, PostgreSQL, and MongoDB; perform SQL queries, data cleanup, and cross-database audits.",
-        "Write and maintain 20+ Bash/Python automation scripts on cron schedules for health monitoring, data pipelines, library management, and backup automation.",
-        "Diagnose and resolve complex infrastructure issues: hairpin NAT, SSL certificate chain compatibility, ISP bridge mode, Docker networking, and GPU driver configuration.",
+        "Built a full-stack banking application with MySQL stored procedures for all data operations, JWT + session authentication, and role-based access control (admin, employee, customer).",
+        "Implemented deposits, withdrawals, and transfers with overdraft protection, transaction history, and employee dashboard. Refactored password hashing from client-side to server-side mid-project.",
+      ],
+    },
+    {
+      name: "VSM-Tracker",
+      tech: ["MongoDB", "Express", "React", "Node.js"],
+      bullets: [
+        "Built a vendor management app to solve real workflow problems at my job. JWT auth with role-based access, Kanban dashboard, CSV import from Smartsheet, email integration, analytics with charts. Deployed with Docker on my home server.",
+        "Wrote most of the code myself with AI assistance on syntax and debugging. Used it as the foundation for a larger tool I now use daily at work.",
       ],
     },
     {
@@ -131,15 +134,7 @@ export const resumeData: ResumeData = {
       link: "https://github.com/bradleypeterson/TrackMate",
       tech: ["MERN Stack"],
       bullets: [
-        "39 commits on the develop branch for a 4-person capstone team; built professor cards with QR codes, refactored office hours components, fixed room tracker bugs, and wrote handoff documentation.",
-        "Managed code reviews and sprint coordination via GitHub PRs. One of two core contributors alongside one teammate.",
-      ],
-    },
-    {
-      name: "Banking System",
-      tech: ["Node.js", "Express", "MySQL", "EJS"],
-      bullets: [
-        "119 commits of my own code (no AI). Full-stack banking app with MySQL stored procedures, role-based auth (admin/employee/customer), and financial transactions with overdraft protection. CS 3650.",
+        "Led 4-person Agile team; personally wrote API endpoints, React components, QR code generation, and professor card features. Set up Docker Compose dev environment with seed data. Managed code reviews via GitHub.",
       ],
     },
     {
@@ -147,21 +142,15 @@ export const resumeData: ResumeData = {
       link: "https://github.com/James-Hendershott/1980_Style_Adventure-Game",
       tech: ["Python"],
       bullets: [
-        "Wrote a text adventure game engine from scratch: OOP scene graph, inventory system, Tkinter GUI, file-based outcomes logging, and riddle mechanics with progressive hints.",
+        "Wrote a text adventure game engine from scratch: OOP scene graph, inventory system, Tkinter GUI, file-based logging, riddle mechanics with progressive hints. My code \u2014 used AI for research, not code generation.",
       ],
     },
     {
-      name: "Community Hub",
-      tech: ["Django", "PostgreSQL"],
+      name: "Home Server Infrastructure",
+      tech: ["Docker", "Nginx", "Linux", "Unraid", "Bash", "MariaDB", "PostgreSQL", "MongoDB"],
       bullets: [
-        "Built and deployed a Django web app for community event management with models, forms, views, admin panel, and Render deployment.",
-      ],
-    },
-    {
-      name: "Vendor Manager Dashboard",
-      tech: ["HTML", "JavaScript"],
-      bullets: [
-        "Identified workflow inefficiencies at current job and designed a tool to centralize unit tracking, automate vendor communications, and generate reports; started with hand-coded HTML forms and progressively added features using AI-assisted development.",
+        "Run a 24/7 Linux server with 44 Docker containers across 4 networks, 128 TB storage, 5 database instances (PostgreSQL, MariaDB, MongoDB), Nginx reverse proxy with SSL for 23 subdomains, and 20+ Bash/Python automation scripts on cron schedules.",
+        "Troubleshoot real infrastructure problems: hairpin NAT, SSL certificate chain compatibility, Docker networking, GPU drivers, DNS configuration. All self-taught through Google, YouTube, and documentation.",
       ],
     },
   ],
@@ -171,7 +160,7 @@ export const resumeData: ResumeData = {
       degree: "B.S. in Computer Science \u2014 December 2025",
       bullets: [
         "GPA: 3.56 overall (3.87 in CS coursework) | Applied to Georgia Tech OMSCS",
-        "Key courses: Data Structures & Algorithms (A), Operating Systems, Server-Side Web Architecture (Django/Python, A), Software Engineering I & II (A, A), Database Design & SQL (A), Advanced Database Programming (A), Computer Architecture, Formal Languages & Algorithms",
+        "Key courses: Data Structures & Algorithms (A), Server-Side Web Architecture \u2014 Django/Python (A), Software Engineering I & II (A, A), Database Design & SQL (A), Advanced Database Programming (A), Computer Architecture (A), Formal Languages & Algorithms, Operating Systems",
       ],
     },
     {
