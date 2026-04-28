@@ -1,0 +1,589 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>BUILD_LOG.md</title>
+<style>
+  :root {
+    color-scheme: dark;
+    --bg: #0e0e10;
+    --surface: #161618;
+    --border: #2a2a2e;
+    --fg: #eaeaea;
+    --muted: #8d8d94;
+    --accent: #6c8cff;
+    --code-bg: #1a1a1d;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; height: 100%; }
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-size: 16px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+  .shell {
+    display: grid;
+    grid-template-columns: 290px 1fr;
+    min-height: 100vh;
+  }
+  @media (max-width: 900px) {
+    .shell { grid-template-columns: 1fr; }
+    .sidebar { position: static !important; height: auto !important; max-height: none !important; border-right: 0; border-bottom: 1px solid var(--border); }
+  }
+  .sidebar {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    max-height: 100vh;
+    overflow-y: auto;
+    padding: 1.5rem 1.25rem 2rem;
+    background: var(--surface);
+    border-right: 1px solid var(--border);
+    font-size: 0.88rem;
+  }
+  .sidebar h1 { margin: 0 0 0.3rem; font-size: 1.05rem; color: var(--fg); }
+  .sidebar .subtitle { margin: 0 0 1.4rem; font-size: 0.78rem; color: var(--muted); }
+  .sidebar input[type="search"] {
+    width: 100%;
+    padding: 0.4rem 0.55rem;
+    margin-bottom: 0.9rem;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    background: var(--code-bg);
+    color: var(--fg);
+    font-size: 0.85rem;
+  }
+  .toc { display: flex; flex-direction: column; gap: 0.15rem; }
+  .toc a {
+    color: var(--muted);
+    text-decoration: none;
+    padding: 0.25rem 0.35rem;
+    border-radius: 3px;
+    border-left: 2px solid transparent;
+    transition: background 0.08s, color 0.08s;
+  }
+  .toc a:hover { color: var(--fg); background: rgba(108, 140, 255, 0.08); }
+  .toc a.active { color: var(--fg); border-left-color: var(--accent); background: rgba(108, 140, 255, 0.12); }
+  .toc a.toc-l2 { padding-left: 0.35rem; font-weight: 600; }
+  .toc a.toc-l3 { padding-left: 1rem; font-weight: 400; color: var(--muted); }
+  .toc a.hidden { display: none; }
+
+  .content { padding: 2.5rem 3rem 5rem; max-width: 920px; width: 100%; }
+  @media (max-width: 900px) { .content { padding: 1.5rem 1.25rem 3rem; } }
+
+  h1 { font-size: 1.85rem; line-height: 1.2; margin: 2.5rem 0 0.8rem; }
+  h1:first-child { margin-top: 0; }
+  h2 { font-size: 1.4rem; line-height: 1.25; margin: 2.3rem 0 0.7rem; padding-bottom: 0.35rem; border-bottom: 1px solid var(--border); }
+  h3 { font-size: 1.12rem; line-height: 1.3; margin: 1.7rem 0 0.5rem; }
+  h4 { font-size: 0.95rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); margin: 1.3rem 0 0.4rem; }
+  h1, h2, h3, h4 { scroll-margin-top: 1rem; }
+
+  p { margin: 0 0 1rem; }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  ul, ol { margin: 0 0 1rem; padding-left: 1.4rem; }
+  ul li, ol li { margin-bottom: 0.25rem; }
+  hr { border: 0; border-top: 1px solid var(--border); margin: 2rem 0; }
+
+  code {
+    font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+    font-size: 0.88em;
+    padding: 0.1em 0.35em;
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+  }
+  pre {
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    padding: 0.9rem 1rem;
+    overflow-x: auto;
+    line-height: 1.55;
+    font-size: 0.87rem;
+    margin: 0 0 1rem;
+  }
+  pre code { padding: 0; border: 0; background: transparent; font-size: inherit; }
+
+  blockquote {
+    margin: 0 0 1rem;
+    padding: 0.35rem 1rem;
+    border-left: 3px solid var(--accent);
+    background: rgba(108, 140, 255, 0.06);
+    color: var(--fg);
+  }
+  blockquote p { margin: 0.3rem 0; }
+
+  table { border-collapse: collapse; width: 100%; margin: 0 0 1rem; font-size: 0.9rem; }
+  table th, table td { border: 1px solid var(--border); padding: 0.4rem 0.65rem; text-align: left; vertical-align: top; }
+  table th { background: var(--code-bg); font-weight: 600; }
+  table tr:nth-child(even) td { background: rgba(255, 255, 255, 0.02); }
+
+  strong { color: var(--fg); font-weight: 700; }
+  em { color: #dcdce2; }
+
+  .foot {
+    margin-top: 3rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 0.78rem;
+  }
+  .foot code { font-size: 0.82rem; }
+</style>
+</head>
+<body>
+<div class="shell">
+  <aside class="sidebar">
+    <h1>BUILD_LOG.md</h1>
+    <p class="subtitle">teach-as-you-build wiki</p>
+    <input id="search" type="search" placeholder="Filter sections…" autocomplete="off" />
+    <nav class="toc" id="toc">
+        <a class="toc-l2" href="#how-to-read-this">How to read this</a>
+        <a class="toc-l2" href="#table-of-contents">Table of contents</a>
+        <a class="toc-l2" href="#the-ask">The ask</a>
+        <a class="toc-l2" href="#whats-the-actual-problem">What&amp;#39;s the actual problem</a>
+        <a class="toc-l2" href="#researching-prior-art">Researching prior art</a>
+        <a class="toc-l2" href="#the-design-that-fell-out">The design that fell out</a>
+        <a class="toc-l2" href="#chapter-takeaways">Chapter takeaways</a>
+        <a class="toc-l2" href="#the-ask-2">The ask</a>
+        <a class="toc-l2" href="#the-plan">The plan</a>
+        <a class="toc-l2" href="#step-1-education-in-srclibresumets">Step 1: Education in src/lib/resume.ts</a>
+        <a class="toc-l2" href="#step-2-four-mdx-case-studies">Step 2: Four MDX case studies</a>
+        <a class="toc-l2" href="#step-3-visible-pages">Step 3: Visible pages</a>
+        <a class="toc-l2" href="#bugs-we-hit">Bugs we hit</a>
+        <a class="toc-l2" href="#verifying">Verifying</a>
+        <a class="toc-l2" href="#chapter-takeaways-2">Chapter takeaways</a>
+    </nav>
+  </aside>
+  <main class="content" id="content">
+    <h1 id="build_logmd-how-jameshendershottorg-got-built-step-by-step">BUILD_LOG.md — How jameshendershott.org Got Built, Step by Step</h1>
+<p>A chronological build log. Each chapter covers one milestone and walks
+through what we built, the decisions we made, the syntax and patterns
+we used, and any bugs we hit along the way.</p>
+<p><strong>Audience:</strong> someone with little or no experience who wants to learn
+how a real software project actually comes together. Read top to
+bottom — each chapter assumes you&#39;ve read the ones before it.</p>
+<p><strong>Companion document:</strong> <a href="LEARN.md"><code>LEARN.md</code></a> is the topical reference
+(&quot;here&#39;s how to think about X&quot;). This document is the narrative
+(&quot;here&#39;s exactly what we did and why, in order&quot;).</p>
+<hr>
+<h2 id="how-to-read-this">How to read this</h2>
+<ol>
+<li><strong>Read sequentially.</strong> Skipping chapters means missing context.</li>
+<li><strong>Open the files alongside.</strong> Path references are real — open them
+in your editor while you read.</li>
+<li><strong>Try the commands yourself.</strong> Code blocks marked <code>bash</code> are
+commands you can run.</li>
+<li><strong>It&#39;s OK to not understand everything on first pass.</strong> Some
+concepts are introduced briefly here and unpacked further in
+<code>LEARN.md</code>. Use the cross-references.</li>
+<li><strong>Glossary at the end.</strong> Anytime a term appears in <strong>bold italic</strong>,
+it&#39;s defined in the glossary.</li>
+</ol>
+<hr>
+<h2 id="table-of-contents">Table of contents</h2>
+<ul>
+<li><a href="#chapter-0--before-any-code-understanding-the-ask">Chapter 0 — Before any code: understanding the ask</a></li>
+<li><a href="#chapter-1--april-2026-omscs-admission-and-the-four-project-refresh">Chapter 1 — April 2026: OMSCS admission and the four-project refresh</a></li>
+</ul>
+<hr>
+<h1 id="chapter-0-before-any-code-understanding-the-ask">Chapter 0 — Before any code: understanding the ask</h1>
+<h2 id="the-ask">The ask</h2>
+<p>This chapter is reconstructed from the git history that pre-dated the
+teaching docs. The original commit that started this project:</p>
+<blockquote>
+<p><em>&quot;Initial commit: Digital portfolio with Next.js, TypeScript,
+Tailwind, and MDX&quot;</em> — <code>10a40f2</code></p>
+</blockquote>
+<p>The underlying need, distilled from the hundred-or-so commits since:
+<strong>a personal site that survives an interview.</strong> Not a flashy showcase,
+not a generic resume page — a portfolio where every claim is something
+the owner can defend in a code review. The honesty framing (&quot;What I
+Did vs. What AI Did&quot;) on every project page is the heart of it.</p>
+<h2 id="whats-the-actual-problem">What&#39;s the actual problem</h2>
+<p>Three problems, in priority order:</p>
+<ol>
+<li><strong>Honesty as a differentiator.</strong> AI-assisted coding is universal in<ol start="2026">
+<li>Anyone can ship code. The hard, defensible thing is being
+able to walk through your own architecture and explain <em>which</em>
+decisions are yours. The site is structured around that distinction.</li>
+</ol>
+</li>
+<li><strong>A career-changer&#39;s resume in one place.</strong> 20 years in leadership
+roles, late entry to CS, recent BS, now incoming MS. The site has
+to make that arc legible without apologising for it.</li>
+<li><strong>Self-hosted-friendly.</strong> The owner runs a 44-container homelab.
+Several of the projects on the site are deployed there, and the
+site itself should integrate with the homelab idiom without
+demanding it.</li>
+</ol>
+<h2 id="researching-prior-art">Researching prior art</h2>
+<p>The pre-existing decisions visible in the repo&#39;s <code>package.json</code> and
+<code>next.config.ts</code>:</p>
+<ul>
+<li><strong>Next.js 16</strong> App Router — chose static rendering for everything
+except <code>/api/resume</code> (server-rendered PDF). Sitemap and robots.txt
+generated by Next at build time, not handcoded.</li>
+<li><strong>Tailwind CSS v4</strong> — newer version with the <code>@theme</code> token system.
+Custom colour tokens kept to a minimum; the lofi-Japanese palette
+(purple, gold, dark) is enforced by the existing tokens.</li>
+<li><strong>MDX</strong> for project case studies — content lives in
+<code>content/projects/*.mdx</code> and is loaded by <code>src/lib/projects.ts</code> via
+<code>gray-matter</code> for frontmatter and <code>next-mdx-remote</code> for rendering.
+Adding a project = dropping a <code>.mdx</code> file. No data file to update.</li>
+<li><strong>PDFKit</strong> for the resume PDF, served on demand from
+<code>/api/resume</code>. The PDF reads from <code>src/lib/resume.ts</code> — a single
+TypeScript constant — so the data drives both the rendered
+<code>/resume</code> page and the downloadable PDF.</li>
+</ul>
+<h2 id="the-design-that-fell-out">The design that fell out</h2>
+<p>Three structural decisions worth understanding before any further
+chapter makes sense:</p>
+<ol>
+<li><strong>Data files drive output.</strong> <code>src/lib/resume.ts</code> is the source of
+truth for resume content. It&#39;s consumed by the rendered page,
+the PDF endpoint, and (today, manually) the static
+<code>public/resume.md</code>. Update one place, two surfaces update; the
+third is on a checklist.</li>
+<li><strong>Frontmatter is the schema.</strong> Project MDX files use frontmatter
+(<code>title</code>, <code>date</code>, <code>summary</code>, <code>tags</code>, <code>repo</code>, <code>live</code>, <code>access</code>,
+<code>thumbnail</code>, <code>draft</code>) to describe themselves. The page templates
+render whatever the frontmatter says. There&#39;s no list of
+projects to keep in sync — the file system is the list.</li>
+<li><strong>Honesty section is non-negotiable.</strong> Every project case study
+has a &quot;What I Did vs. What AI Did&quot; section. This is a <em>content</em>
+convention enforced by tradition, not a code constraint. The
+precedent matters more than the mechanism.</li>
+</ol>
+<h2 id="chapter-takeaways">Chapter takeaways</h2>
+<ul>
+<li>The site is content-first: most updates are MDX or data, not JSX.</li>
+<li>Honesty framing is the defensibility strategy. Without it, this is
+just another portfolio. With it, the site does the interview prep.</li>
+<li><code>src/lib/resume.ts</code> is the spine. Touch it, and the PDF, the
+rendered page, and (manually) the markdown all move with it.</li>
+</ul>
+<hr>
+<h1 id="chapter-1-april-2026-omscs-admission-and-the-four-project-refresh">Chapter 1 — April 2026: OMSCS admission and the four-project refresh</h1>
+<blockquote>
+<p>📌 <strong>What this chapter teaches.</strong> How a content-first portfolio
+absorbs a status change <em>and</em> four new projects in one sweep.
+Concepts introduced: <strong><em>data-first refactor</em></strong>, <strong><em>in-place rewrite
+vs. additive change</em></strong>, <strong><em>honesty section</em></strong> as a deliberate
+structural element, <strong><em>frontmatter as a schema</em></strong>.</p>
+</blockquote>
+<h2 id="the-ask-2">The ask</h2>
+<p>Three things had happened since the last refresh on 2026-02-28:</p>
+<ol>
+<li>Admitted to Georgia Tech&#39;s <strong><em>OMSCS</em></strong> program — Machine Learning
+specialization, Fall 2026 start, admitted 2026-04-17. The user
+provided exact wording:
+<em>&quot;Master of Science in Computer Science — Georgia Institute of
+Technology · OMSCS · Machine Learning Specialization · Admitted
+April 2026 · Fall 2026 start.&quot;</em> The OMSCS line had to land at the
+top of the Education listing in every place education appears.
+The Weber State BS (Dec 2025, 3.56/3.87 CS) and AAS (Dec 2023)
+stayed in that order below it. <em>No UX Design minor</em> anywhere — it
+was never completed and had been removed from prior materials.</li>
+<li><strong>Four new projects</strong> to add as case studies, each with the existing
+&quot;What I Did vs. What AI Did&quot; honesty section:<ul>
+<li><strong>labelgen-pro</strong> — Vue 3 / TypeScript / Vite filament label generator</li>
+<li><strong>stash</strong> — React Native + Expo + Postgres self-hosted inventory app</li>
+<li><strong>property-comparison</strong> — refresh of an existing case study (same repo)</li>
+<li><strong>real-estate-video-generator</strong> — small Python + FFmpeg desktop tool</li>
+</ul>
+</li>
+<li><strong>Sweep every page</strong> that mentioned education or current status and
+change &quot;applied to&quot; → &quot;admitted to.&quot;</li>
+</ol>
+<h2 id="the-plan">The plan</h2>
+<p>Four constraints from the user shaped the plan more than the asks
+themselves:</p>
+<ul>
+<li><em>&quot;Show me each file diff one at a time, smallest blast radius
+first.&quot;</em> → data files before pages, pages before global config.</li>
+<li><em>&quot;Do NOT remove or rename any existing project.&quot;</em> → additive only,
+with one specific exception we&#39;ll discuss.</li>
+<li><em>&quot;Do NOT modify existing &#39;What I Didn&#39;t Do&#39; honesty sections.&quot;</em></li>
+<li><em>&quot;No new dependencies.&quot;</em></li>
+</ul>
+<p><strong>Sequence we landed on:</strong></p>
+<ol>
+<li>Update <code>src/lib/resume.ts</code> (data; drives PDF + page + checklist
+for <code>public/resume.md</code>).</li>
+<li>Add three new MDX files; rewrite one existing MDX file in place.</li>
+<li>Update visible pages: <code>/now</code>, <code>/about</code>, <code>/resume</code>, and the static
+<code>public/resume.md</code>.</li>
+<li>Verify with <code>tsc --noEmit</code> and <code>next build</code>.</li>
+</ol>
+<p><strong>The conflict we caught before writing any code:</strong> the user asked us
+to <em>add</em> a <code>property-comparison</code> case study, but <code>content/projects/property-comparison.mdx</code>
+already existed for the same repo. Adding a second file would either
+collide on slug or duplicate. We flagged it; user clarified: <em>&quot;the
+property comparison is the same project but we have the updated
+version. So just do a re-write where it is.&quot;</em> That&#39;s the difference
+between an <strong><em>additive change</em></strong> (new file, no risk to existing
+content) and an <strong><em>in-place rewrite</em></strong> (overwrite existing file,
+existing thumbnail path preserved). Catching this <em>before</em> writing
+code saved us a slug collision and a duplicate visible to readers.</p>
+<h2 id="step-1-education-in-srclibresumets">Step 1: Education in src/lib/resume.ts</h2>
+<p>The <code>education</code> array used to start with the Weber BS. We prepended an
+OMSCS entry and removed <code>&quot;| Applied to Georgia Tech OMSCS&quot;</code> from the
+BS bullets (now redundant — OMSCS is its own entry above):</p>
+<pre><code class="language-ts">education: [
+  {
+    school: &quot;Georgia Institute of Technology&quot;,
+    degree: &quot;M.S. in Computer Science — OMSCS · Machine Learning Specialization&quot;,
+    bullets: [
+      &quot;Admitted April 2026 · Fall 2026 start · 100% asynchronous online&quot;,
+    ],
+  },
+  {
+    school: &quot;Weber State University&quot;,
+    degree: &quot;B.S. in Computer Science — December 2025&quot;,
+    bullets: [
+      &quot;GPA: 3.56 overall (3.87 in CS coursework)&quot;,
+      // (key courses bullet preserved)
+    ],
+  },
+  // ... AAS entry preserved
+]
+</code></pre>
+<p><strong>Why this file first.</strong> Three surfaces consume <code>resume.ts</code>:
+the rendered <code>/resume</code> page (only on the page template, indirectly via
+the same content), the PDF endpoint at <code>src/app/api/resume/route.ts</code>,
+and (manually) <code>public/resume.md</code>. The <code>route.ts</code> does:</p>
+<pre><code class="language-ts">import { resumeData } from &quot;../../../lib/resume&quot;;
+// ...
+r.education.forEach((ed) =&gt; {
+  doc.font(&quot;Helvetica-Bold&quot;).fontSize(10).text(`${ed.school}`);
+  doc.font(&quot;Helvetica&quot;).fontSize(10).fillColor(&quot;#666&quot;).text(ed.degree);
+  if (ed.bullets &amp;&amp; ed.bullets.length) bulletList(doc, ed.bullets);
+});
+</code></pre>
+<p>That loop is order-preserving. Putting OMSCS first in the array means
+it renders first in the PDF — no code change to the route required.
+This is what <em>&quot;data drives output&quot;</em> gets us: a structural change
+expressed once.</p>
+<h2 id="step-2-four-mdx-case-studies">Step 2: Four MDX case studies</h2>
+<p><code>labelgen-pro.mdx</code>, <code>stash.mdx</code>, and <code>real-estate-video-generator.mdx</code>
+are new files. <code>property-comparison.mdx</code> was rewritten in place
+(same slug, same <code>thumbnail</code> path).</p>
+<p><strong>Frontmatter pattern</strong> for each:</p>
+<pre><code class="language-yaml">---
+slug: &lt;slug&gt;
+title: &lt;Title&gt;
+date: 2026-04-25     # YYYY-MM-DD; sorts the projects list newest-first
+summary: &lt;one-line&gt;
+tags: [...]          # Title Case, matching existing convention
+repo:    &lt;url&gt;       # OR
+access:  mailto:...  # for private repos
+thumbnail: &quot;/images/projects/&lt;slug&gt;.png&quot;
+---
+</code></pre>
+<p>The <code>repo</code> vs. <code>access</code> choice is a real fork. <code>repo</code> points to a
+public GitHub URL; <code>access</code> is a <code>mailto:</code> link the page renders as a
+&quot;Request Access&quot; button. Three of the four new projects are private
+repos and used <code>access</code>; only <code>property-comparison</code> had a public
+<code>repo</code>. The page template at <code>src/app/projects/page.tsx</code> renders the
+right button based on which key is present.</p>
+<p><strong>The honesty section.</strong> Every existing case study has a &quot;What I Did
+vs. What AI Did&quot; section. We followed it on every new file:</p>
+<pre><code class="language-markdown">## What I Did vs. What AI Did
+
+**My work:**
+- [Architectural decisions, integration choices, the things you&#39;d
+  defend in a code review]
+
+**AI-assisted:**
+- [Boilerplate, library idioms, scaffolding]
+</code></pre>
+<p>This is a content convention, not a code constraint. The MDX renderer
+treats it like any other section. What enforces it is <em>precedent</em>: every
+prior case study has one, every reader expects one. Changing the
+convention would require a sweep across all files, so it stays.</p>
+<p><strong>Screenshot TODO.</strong> Each new MDX has a comment near the top:</p>
+<pre><code class="language-mdx">{/* TODO: capture screenshot at public/images/projects/&lt;slug&gt;.png — 1280x720, dark mode preferred */}
+</code></pre>
+<p>MDX comments use <code>{/* */}</code> (JSX syntax), not <code>&lt;!-- --&gt;</code>. The user
+captures the screenshots separately. Until then, the page falls back
+to a gradient placeholder via the conditional in the projects page
+template:</p>
+<pre><code class="language-tsx">{p.thumbnail ? (
+  &lt;Image src={p.thumbnail} ... /&gt;
+) : (
+  &lt;div className=&quot;...gradient...&quot;&gt;Project Screenshot&lt;/div&gt;
+)}
+</code></pre>
+<p>The placeholder doesn&#39;t break the build, doesn&#39;t 404 in <code>&lt;Image&gt;</code>
+(because we never reference a missing file unless <code>thumbnail</code> is set),
+and the <code>&lt;Image&gt;</code> itself only fails at runtime if the listed file
+doesn&#39;t exist on disk. So the moment those PNGs land in
+<code>public/images/projects/</code>, the cards light up — no MDX edit needed.</p>
+<h2 id="step-3-visible-pages">Step 3: Visible pages</h2>
+<p>Four small edits, smallest blast radius first:</p>
+<ul>
+<li><code>src/app/now/page.tsx</code> — bullet list reordered; OMSCS bullet now
+first; header date moved to April 2026.</li>
+<li><code>src/app/about/page.tsx</code> — one prose sentence: &quot;applying to Georgia
+Tech&#39;s OMSCS program&quot; → &quot;was admitted to Georgia Tech&#39;s OMSCS
+program in April 2026 — Machine Learning specialization, starting
+Fall 2026.&quot;</li>
+<li><code>src/app/resume/page.tsx</code> — added a new MS-in-CS block above the
+BS block; removed <code>&quot;| Applied to Georgia Tech OMSCS&quot;</code> from the BS
+GPA line.</li>
+<li><code>public/resume.md</code> — same as the page edit, in markdown.</li>
+</ul>
+<p>The <code>public/resume.md</code> edit is the one that bothered us. It&#39;s a
+<em>static</em> file that mirrors structured data in <code>src/lib/resume.ts</code>,
+which means the two can drift. We didn&#39;t fix that today (out of scope),
+but we flagged it as future cleanup: a small build script that
+regenerates <code>public/resume.md</code> from <code>resumeData</code> would collapse two
+sources of truth into one.</p>
+<h2 id="bugs-we-hit">Bugs we hit</h2>
+<p>None during the edits. The risk we caught upfront — the
+<code>property-comparison</code> slug collision — was the only thing that would
+have broken something, and we caught it by <em>reading the existing
+content directory</em> before writing files instead of after.</p>
+<p>That&#39;s a real lesson: when an instruction says &quot;add four projects,&quot;
+the temptation is to write four new MDX files immediately. Five
+seconds of <code>ls content/projects/</code> would have shown the conflict, and
+five minutes of clarifying with the user saved an hour of &quot;why is the
+projects page showing two property-comparison cards.&quot;</p>
+<h2 id="verifying">Verifying</h2>
+<pre><code class="language-bash">npx tsc --noEmit       # clean
+npm run build          # success, 29 static pages, 18 project routes
+</code></pre>
+<p>The <code>[+14 more paths]</code> line in the <code>next build</code> output is the SSG
+log for <code>/projects/[slug]</code>. 15 existing MDX files + 3 net new (one
+rewrite, not new) = 18 project pages. Math matches.</p>
+<h2 id="chapter-takeaways-2">Chapter takeaways</h2>
+<ul>
+<li><strong>Read the existing content directory before writing new files.</strong>
+Slug collisions are the kind of bug <code>next build</code> doesn&#39;t catch —
+it&#39;ll happily generate two pages with the same slug if the file
+system allows it, and the second one wins silently.</li>
+<li><strong>Data-first refactors travel.</strong> Updating <code>resume.ts</code>&#39;s <code>education</code>
+array updated the PDF, the rendered page, and the data flowing
+into the static markdown — three surfaces from one edit.</li>
+<li><strong>Honesty is a structural element, not garnish.</strong> The &quot;What I Did
+vs. What AI Did&quot; section is the load-bearing wall in every case
+study. Skipping it on a new project would degrade the whole site.</li>
+<li><strong>Flag conflicts before writing code.</strong> When the user&#39;s instruction
+contradicts itself (&quot;add four projects&quot; + &quot;don&#39;t rename existing&quot;<ul>
+<li>an existing file with the same name), the cost of asking is one
+message. The cost of guessing wrong is a half-day of cleanup.</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h1 id="how-future-chapters-will-get-added">How future chapters will get added</h1>
+<p>Going forward, every commit that adds a feature, fixes a bug, or makes
+a notable change gets a new chapter appended here. The chapter format:</p>
+<pre><code class="language-markdown"># Chapter N — vX.Y.Z: [Title]
+
+&gt; 📌 **What this chapter teaches.** [Concepts/syntax newly introduced]
+
+## The ask
+## The plan
+## Step 1: [Thing]
+## Step 2: [Thing]
+## Bugs we hit (if any)
+## Verifying
+## Chapter takeaways
+</code></pre>
+<p>After writing a chapter, regenerate the HTML wiki:</p>
+<pre><code class="language-bash">npm run build:wiki
+</code></pre>
+<hr>
+<h1 id="glossary">Glossary</h1>
+<table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>OMSCS</strong></td>
+<td>Online Master of Science in Computer Science (Georgia Tech). 100% asynchronous, accredited identically to the on-campus MSCS.</td>
+</tr>
+<tr>
+<td><strong>Data-first refactor</strong></td>
+<td>Updating a single source-of-truth data file (here <code>src/lib/resume.ts</code>) and letting downstream renderers (page, PDF) update by re-reading it, instead of editing each rendered surface separately.</td>
+</tr>
+<tr>
+<td><strong>In-place rewrite</strong></td>
+<td>Replacing the contents of an existing file at the same path / same slug, instead of adding a new file. Preserves the URL and any external references; risks losing prior content if not careful.</td>
+</tr>
+<tr>
+<td><strong>Additive change</strong></td>
+<td>Adding a new file or new entry without modifying anything existing. Lowest-risk change type — nothing prior is at risk.</td>
+</tr>
+<tr>
+<td><strong>Honesty section</strong></td>
+<td>The &quot;What I Did vs. What AI Did&quot; subsection on every case study. A content convention, not a code rule, but precedent across all files makes it functionally mandatory.</td>
+</tr>
+<tr>
+<td><strong>Frontmatter as a schema</strong></td>
+<td>Treating the YAML at the top of an MDX file as a typed contract (slug, title, date, summary, tags, repo/access, thumbnail). The renderer page is the schema&#39;s enforcer.</td>
+</tr>
+<tr>
+<td><strong>MDX</strong></td>
+<td>Markdown with JSX. Lets us mix component-style elements (e.g. <code>{/* comments */}</code>) into otherwise plain markdown content.</td>
+</tr>
+<tr>
+<td><strong>Frontmatter</strong></td>
+<td>The YAML block at the top of a markdown / MDX file, between two <code>---</code> lines. Parsed by <code>gray-matter</code> here.</td>
+</tr>
+<tr>
+<td><strong>Slug</strong></td>
+<td>The URL-safe identifier for a page (e.g. <code>labelgen-pro</code>). Derived from the MDX filename. Two files with the same slug collide.</td>
+</tr>
+</tbody></table>
+<hr>
+<p><em>This is a living document. Each release adds a chapter.</em></p>
+
+    <div class="foot">
+      <code>BUILD_LOG.md</code> wiki · 15 sections. Regenerate with <code>npm run build:wiki</code>.
+    </div>
+  </main>
+</div>
+<script>
+  (function () {
+    const search = document.getElementById('search')
+    const tocLinks = Array.from(document.querySelectorAll('#toc a'))
+
+    if (search) {
+      search.addEventListener('input', function () {
+        const q = search.value.trim().toLowerCase()
+        tocLinks.forEach(function (a) {
+          const match = !q || a.textContent.toLowerCase().includes(q)
+          a.classList.toggle('hidden', !match)
+        })
+      })
+    }
+
+    const headingEls = tocLinks
+      .map(function (a) { return document.querySelector(a.getAttribute('href')) })
+      .filter(Boolean)
+
+    function updateActive() {
+      const y = window.scrollY + 80
+      let activeIdx = 0
+      for (let i = 0; i < headingEls.length; i++) {
+        if (headingEls[i].offsetTop <= y) activeIdx = i
+      }
+      tocLinks.forEach(function (a, i) { a.classList.toggle('active', i === activeIdx) })
+    }
+    window.addEventListener('scroll', updateActive, { passive: true })
+    updateActive()
+  })()
+</script>
+</body>
+</html>

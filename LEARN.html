@@ -1,0 +1,737 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>LEARN.md</title>
+<style>
+  :root {
+    color-scheme: dark;
+    --bg: #0e0e10;
+    --surface: #161618;
+    --border: #2a2a2e;
+    --fg: #eaeaea;
+    --muted: #8d8d94;
+    --accent: #6c8cff;
+    --code-bg: #1a1a1d;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; height: 100%; }
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-size: 16px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+  .shell {
+    display: grid;
+    grid-template-columns: 290px 1fr;
+    min-height: 100vh;
+  }
+  @media (max-width: 900px) {
+    .shell { grid-template-columns: 1fr; }
+    .sidebar { position: static !important; height: auto !important; max-height: none !important; border-right: 0; border-bottom: 1px solid var(--border); }
+  }
+  .sidebar {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    max-height: 100vh;
+    overflow-y: auto;
+    padding: 1.5rem 1.25rem 2rem;
+    background: var(--surface);
+    border-right: 1px solid var(--border);
+    font-size: 0.88rem;
+  }
+  .sidebar h1 { margin: 0 0 0.3rem; font-size: 1.05rem; color: var(--fg); }
+  .sidebar .subtitle { margin: 0 0 1.4rem; font-size: 0.78rem; color: var(--muted); }
+  .sidebar input[type="search"] {
+    width: 100%;
+    padding: 0.4rem 0.55rem;
+    margin-bottom: 0.9rem;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    background: var(--code-bg);
+    color: var(--fg);
+    font-size: 0.85rem;
+  }
+  .toc { display: flex; flex-direction: column; gap: 0.15rem; }
+  .toc a {
+    color: var(--muted);
+    text-decoration: none;
+    padding: 0.25rem 0.35rem;
+    border-radius: 3px;
+    border-left: 2px solid transparent;
+    transition: background 0.08s, color 0.08s;
+  }
+  .toc a:hover { color: var(--fg); background: rgba(108, 140, 255, 0.08); }
+  .toc a.active { color: var(--fg); border-left-color: var(--accent); background: rgba(108, 140, 255, 0.12); }
+  .toc a.toc-l2 { padding-left: 0.35rem; font-weight: 600; }
+  .toc a.toc-l3 { padding-left: 1rem; font-weight: 400; color: var(--muted); }
+  .toc a.hidden { display: none; }
+
+  .content { padding: 2.5rem 3rem 5rem; max-width: 920px; width: 100%; }
+  @media (max-width: 900px) { .content { padding: 1.5rem 1.25rem 3rem; } }
+
+  h1 { font-size: 1.85rem; line-height: 1.2; margin: 2.5rem 0 0.8rem; }
+  h1:first-child { margin-top: 0; }
+  h2 { font-size: 1.4rem; line-height: 1.25; margin: 2.3rem 0 0.7rem; padding-bottom: 0.35rem; border-bottom: 1px solid var(--border); }
+  h3 { font-size: 1.12rem; line-height: 1.3; margin: 1.7rem 0 0.5rem; }
+  h4 { font-size: 0.95rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); margin: 1.3rem 0 0.4rem; }
+  h1, h2, h3, h4 { scroll-margin-top: 1rem; }
+
+  p { margin: 0 0 1rem; }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  ul, ol { margin: 0 0 1rem; padding-left: 1.4rem; }
+  ul li, ol li { margin-bottom: 0.25rem; }
+  hr { border: 0; border-top: 1px solid var(--border); margin: 2rem 0; }
+
+  code {
+    font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+    font-size: 0.88em;
+    padding: 0.1em 0.35em;
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+  }
+  pre {
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    padding: 0.9rem 1rem;
+    overflow-x: auto;
+    line-height: 1.55;
+    font-size: 0.87rem;
+    margin: 0 0 1rem;
+  }
+  pre code { padding: 0; border: 0; background: transparent; font-size: inherit; }
+
+  blockquote {
+    margin: 0 0 1rem;
+    padding: 0.35rem 1rem;
+    border-left: 3px solid var(--accent);
+    background: rgba(108, 140, 255, 0.06);
+    color: var(--fg);
+  }
+  blockquote p { margin: 0.3rem 0; }
+
+  table { border-collapse: collapse; width: 100%; margin: 0 0 1rem; font-size: 0.9rem; }
+  table th, table td { border: 1px solid var(--border); padding: 0.4rem 0.65rem; text-align: left; vertical-align: top; }
+  table th { background: var(--code-bg); font-weight: 600; }
+  table tr:nth-child(even) td { background: rgba(255, 255, 255, 0.02); }
+
+  strong { color: var(--fg); font-weight: 700; }
+  em { color: #dcdce2; }
+
+  .foot {
+    margin-top: 3rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 0.78rem;
+  }
+  .foot code { font-size: 0.82rem; }
+</style>
+</head>
+<body>
+<div class="shell">
+  <aside class="sidebar">
+    <h1>LEARN.md</h1>
+    <p class="subtitle">teach-as-you-build wiki</p>
+    <input id="search" type="search" placeholder="Filter sections…" autocomplete="off" />
+    <nav class="toc" id="toc">
+        <a class="toc-l2" href="#table-of-contents">Table of contents</a>
+        <a class="toc-l2" href="#1-understanding-whats-actually-being-asked">1. Understanding what&amp;#39;s actually being asked</a>
+        <a class="toc-l2" href="#2-researching-prior-art">2. Researching prior art</a>
+        <a class="toc-l2" href="#3-architecture-decisions-and-adrs">3. Architecture decisions and ADRs</a>
+        <a class="toc-l2" href="#4-designing-the-data-model">4. Designing the data model</a>
+        <a class="toc-l2" href="#5-building-a-backlog">5. Building a backlog</a>
+        <a class="toc-l2" href="#6-iteration-walking-skeleton-over-perfect-first-try">6. Iteration: walking skeleton over perfect first try</a>
+        <a class="toc-l2" href="#7-reading-errors">7. Reading errors</a>
+        <a class="toc-l2" href="#8-debugging">8. Debugging</a>
+        <a class="toc-l2" href="#9-refactoring-without-breaking-things">9. Refactoring without breaking things</a>
+        <a class="toc-l2" href="#10-testing-strategy">10. Testing strategy</a>
+        <a class="toc-l2" href="#11-ci-type-checking-linting">11. CI, type checking, linting</a>
+        <a class="toc-l2" href="#12-containers-nginx-deployment">12. Containers, nginx, deployment</a>
+        <a class="toc-l2" href="#13-observability">13. Observability</a>
+        <a class="toc-l2" href="#14-asking-better-questions-of-stakeholders">14. Asking better questions of stakeholders</a>
+        <a class="toc-l2" href="#15-reviewing-code">15. Reviewing code</a>
+        <a class="toc-l2" href="#16-documenting-for-the-right-audience">16. Documenting for the right audience</a>
+        <a class="toc-l2" href="#17-agile-in-practice">17. Agile in practice</a>
+        <a class="toc-l2" href="#18-project-content-model-mdx-as-a-schema">18. Project content model — MDX as a schema</a>
+        <a class="toc-l2" href="#19-resume-as-data-not-pages">19. Resume as data, not pages</a>
+        <a class="toc-l2" href="#20-the-honesty-layer">20. The honesty layer</a>
+    </nav>
+  </aside>
+  <main class="content" id="content">
+    <h1 id="learnmd-the-engineers-companion-to-jameshendershottorg">LEARN.md — The Engineer&#39;s Companion to jameshendershott.org</h1>
+<p>A teaching document for someone learning to think like a senior software
+engineer, using this codebase as the running case study. Every chapter
+references real decisions made while building the project — the wins,
+the bugs, the things we almost did but talked ourselves out of.</p>
+<blockquote>
+<p><strong>Why this document exists.</strong> Junior engineers often only see the
+finished code. The reasoning, the rejected alternatives, the bugs
+that shaped the design — those usually live only in the heads of
+the people who were there. This document tries to capture them.</p>
+</blockquote>
+<blockquote>
+<p><strong>Companion:</strong> <a href="BUILD_LOG.md"><code>BUILD_LOG.md</code></a> is the chronological
+&quot;what we did and when&quot; — read both. They overlap a little; that&#39;s
+intentional.</p>
+</blockquote>
+<hr>
+<h2 id="table-of-contents">Table of contents</h2>
+<p><strong>Part 1 — The work that happens before any code</strong></p>
+<ol>
+<li>Understanding what&#39;s actually being asked</li>
+<li>Researching prior art</li>
+<li>Architecture decisions and ADRs</li>
+<li>Designing the data model</li>
+<li>Building a backlog</li>
+</ol>
+<p><strong>Part 2 — Writing the code</strong>
+6. Iteration: walking skeleton over perfect first try
+7. Reading errors
+8. Debugging
+9. Refactoring without breaking things</p>
+<p><strong>Part 3 — Shipping it</strong>
+10. Testing strategy
+11. CI, type checking, linting
+12. Containers, nginx, deployment
+13. Observability</p>
+<p><strong>Part 4 — The work that&#39;s actually about other humans</strong>
+14. Asking better questions of stakeholders
+15. Reviewing code
+16. Documenting for the right audience
+17. Agile in practice</p>
+<p><strong>Part 5 — Codebase tour</strong>
+18. Project content model — MDX as a schema
+19. Resume as data, not pages
+20. The honesty layer</p>
+<p><strong>Appendices</strong></p>
+<ul>
+<li>A. Glossary</li>
+<li>B. ADR template</li>
+<li>C. Recommended reading</li>
+</ul>
+<hr>
+<h1 id="part-1-the-work-that-happens-before-any-code">Part 1 — The work that happens before any code</h1>
+<h2 id="1-understanding-whats-actually-being-asked">1. Understanding what&#39;s actually being asked</h2>
+<p>The hardest skill on this whole list, and the one most undervalued.
+Two real examples from this codebase:</p>
+<p><strong>Example 1 — &quot;Add four new projects.&quot;</strong> Five words. The work to
+deliver them well took an hour of writing and an hour of careful
+reading first. The reading caught a slug collision that would have
+quietly broken the projects page. If we&#39;d skipped straight to writing,
+we would have shipped a duplicate.</p>
+<p>The lesson: an instruction like &quot;add X&quot; is rarely just about X. It&#39;s
+about how X fits with everything that&#39;s already there. Before you
+write a single line, run <code>ls</code> (or its equivalent in your toolchain)
+and <em>see</em> the existing state. If something looks like it could
+collide, ask.</p>
+<p><strong>Example 2 — &quot;Update wherever education appears.&quot;</strong> This is a
+classic broad-stroke instruction. The job here was to enumerate every
+place — <code>resume.ts</code> (data), <code>/resume</code> page (template), <code>/about</code> page
+(prose), <code>/now</code> page (bullet), <code>public/resume.md</code> (static markdown),
+<code>/api/resume</code> (PDF endpoint, which reads from the data file) — and
+<em>verify</em> the list by grep before claiming &quot;done.&quot;</p>
+<pre><code class="language-bash"># What we ran. The grep tool, not raw grep — same idea.
+# pattern: &quot;Georgia Tech|OMSCS|Applied to|applied to|applying to&quot;
+</code></pre>
+<p>The grep step caught nothing missed, but the discipline matters more
+than the result. &quot;I think I got everything&quot; is not a deliverable.
+&quot;<code>grep</code> returned five matches; here are five edits&quot; is.</p>
+<p><strong>The takeaway.</strong> When the ask is a phrase, the actual work is making
+the phrase concrete. Concrete = file paths, line numbers, a list you
+can check off. Until you have that list, you don&#39;t have a plan; you
+have a vibe.</p>
+<h2 id="2-researching-prior-art">2. Researching prior art</h2>
+<p>This portfolio&#39;s <code>property-comparison</code> project is a clean example of
+both kinds of prior art:</p>
+<ul>
+<li><strong>External prior art:</strong> Zillow exists. Spreadsheet templates exist.
+Why build another comparison tool? Because the existing tools handle
+<em>urban</em> listings, <em>one-mortgage</em> defaults, and <em>one-user</em> sessions —
+and the actual problem was rural listings, FHA-realistic monthly cost,
+and family voting. The case study lays this out so a reader can
+follow the reasoning without you having to defend it in chat.</li>
+<li><strong>Internal prior art:</strong> the existing <code>property-comparison.mdx</code>. The
+case study had been written months earlier with different stats. The
+refresh wasn&#39;t a green-field write; it was a rewrite of an existing
+file, preserving the slug and thumbnail path so external links stayed
+intact. <em>Knowing</em> that prior art existed before writing the new file
+is the difference between an in-place rewrite and a duplicate.</li>
+</ul>
+<p>Same pattern with <code>labelgen-pro</code>: the README explicitly cites
+<code>SoCuul/Bambu-LabelGen</code> as the open-source predecessor, and the case
+study explains the architectural reframing (flat coordinates,
+diff-based URL, native SVG→PNG) that justifies a rewrite over a fork.</p>
+<p><strong>Takeaway:</strong> the question to answer in any &quot;should I build this&quot; is
+<em>&quot;what existing thing am I disagreeing with, and on what specific
+point?&quot;</em> If you can&#39;t answer that in one sentence, you haven&#39;t done the
+research.</p>
+<h2 id="3-architecture-decisions-and-adrs">3. Architecture decisions and ADRs</h2>
+<p>We don&#39;t have a formal <code>docs/adr/</code> directory yet (Appendix B has the
+template if we want to start one). The architectural decisions on this
+project are currently captured in two places:</p>
+<ol>
+<li><strong>The case-study MDX itself.</strong> Every project&#39;s &quot;What I Did vs.
+What AI Did&quot; section names the architectural decisions the author
+would defend. That&#39;s an ADR in casual form: context (the project),
+decision (the architectural call), alternatives considered (the
+thing rewritten or replaced).</li>
+<li><strong><code>BUILD_LOG.md</code>.</strong> The chronological narrative of <em>why</em> we made
+a decision when we made it. The April-2026 chapter, for example,
+explains why the property-comparison rewrite was an in-place edit
+rather than an additive new file.</li>
+</ol>
+<p>If the project grows more decisions (e.g. switching off MDX, adopting
+a CMS, replacing PDFKit), formal ADRs in <code>docs/adr/NNN-*.md</code> would
+start to pay off. For now, BUILD_LOG + case-study honesty sections are
+enough.</p>
+<p><strong>The principle:</strong> an architecture decision is anything that&#39;s
+expensive to reverse. The tactical choice &quot;use Tailwind classes vs.
+inline styles&quot; doesn&#39;t need an ADR. The structural choice &quot;MDX vs. a
+headless CMS&quot; does.</p>
+<h2 id="4-designing-the-data-model">4. Designing the data model</h2>
+<p>The data model on this site is small but instructive. Two key types:</p>
+<p><strong><code>ResumeData</code></strong> in <code>src/lib/resume.ts:1-40</code>. Notice what&#39;s there and
+what isn&#39;t. Education is an array of <code>{ school, degree, start?, end?, bullets? }</code>. There is no <code>gpa</code> field, no <code>specialization</code> field, no
+<code>status</code> field. The renderer encodes those into the <code>degree</code> string
+or the <code>bullets</code> array.</p>
+<p>That&#39;s a <em>deliberate</em> design decision. The alternative would be to
+add structured fields and have the renderer format them. We didn&#39;t,
+because:</p>
+<ul>
+<li>The set of &quot;things to say about an education entry&quot; is open-ended
+(admission status, specialization, online vs. in-person, GPA scale,
+honors). Encoding all of them in the type makes the type bloated
+and the edits brittle.</li>
+<li>Using free-form <code>degree</code> and <code>bullets</code> strings means a content edit
+is a string edit. A reader of the file can predict what&#39;ll happen
+on screen. That readability is worth more than schema purity for a
+resume that gets edited by humans.</li>
+</ul>
+<p><strong><code>ProjectMeta</code></strong> in <code>src/lib/projects.ts:9-19</code>. Same shape: required
+keys (<code>slug</code>, <code>title</code>, <code>date</code>, <code>summary</code>) plus optional keys
+(<code>tags</code>, <code>repo</code>, <code>live</code>, <code>access</code>, <code>thumbnail</code>). The key insight: the
+<em>file system</em> is the index. There&#39;s no <code>projects.json</code> listing all
+projects. <code>getAllProjectsMeta()</code> reads the directory and builds the
+list at build time.</p>
+<pre><code class="language-ts">// src/lib/projects.ts
+const CONTENT_DIR = path.join(process.cwd(), &quot;content&quot;, &quot;projects&quot;);
+// ...
+return fs.readdirSync(CONTENT_DIR)
+  .filter((f) =&gt; f.endsWith(&quot;.mdx&quot;))
+  .filter((f) =&gt; /* respect draft: true */)
+  .map((f) =&gt; f.replace(/\.mdx$/, &quot;&quot;));
+</code></pre>
+<p>Adding a project = dropping a <code>.mdx</code> file. Removing one = <code>git rm</code> it.
+There&#39;s no list to keep in sync.</p>
+<p><strong>The takeaway:</strong> small data models age better than big ones, and
+&quot;the file system <em>is</em> the data&quot; is a perfectly fine database for
+content sites with under a few hundred entries.</p>
+<h2 id="5-building-a-backlog">5. Building a backlog</h2>
+<p>For a personal site, the backlog <em>is</em> the list at the bottom of the
+audit in any given session — the &quot;what would I ship next&quot; list. It
+lives in your head and in chat history; it doesn&#39;t need a Jira board.</p>
+<p>The discipline that matters: <strong>distinguish &quot;next sprint&quot; from
+&quot;someday.&quot;</strong> &quot;Replace the GPA stat tile with OMSCS&quot; is next sprint —
+small, valuable, obvious. &quot;Generate <code>public/resume.md</code> from
+<code>resume.ts</code> at build time&quot; is someday — valuable but not blocking.
+Mixing them in your head means the someday item never ships.</p>
+<hr>
+<h1 id="part-2-writing-the-code">Part 2 — Writing the code</h1>
+<h2 id="6-iteration-walking-skeleton-over-perfect-first-try">6. Iteration: walking skeleton over perfect first try</h2>
+<p>The site itself is a working example. The first commit shipped a
+<em>walking skeleton</em> — Next.js + Tailwind + MDX + a placeholder hero —
+and every subsequent commit improved one specific thing. Read
+<code>git log --reverse --oneline</code> to see the progression: feature flags
+got added, the resume PDF was a separate commit, the Request Access
+button for private projects was its own change.</p>
+<p>The temptation when starting a new feature is to design the whole
+thing first. The discipline is to ship a thin slice that&#39;s end-to-end
+working, <em>then</em> improve. For a project page that&#39;s:</p>
+<ol>
+<li>MDX file with frontmatter.</li>
+<li>Generic page template that reads frontmatter and renders.</li>
+<li>Listing page that picks up the new file via <code>readdirSync</code>.</li>
+</ol>
+<p>You can ship at step 3 even if the MDX content is one paragraph.
+Improvements (honesty section, screenshots, tags) are additive after.</p>
+<h2 id="7-reading-errors">7. Reading errors</h2>
+<p>The most useful debugging skill, period. A real example from this
+project: <code>next build</code> will fail with a TypeScript error if frontmatter
+in an MDX file has a typed mismatch with <code>ProjectMeta</code>. The error
+message points at the <em>file</em> and the <em>line</em>, but the <em>cause</em> is in the
+frontmatter parser config in <code>src/lib/projects.ts</code>.</p>
+<p>When you see an error:</p>
+<ol>
+<li>Read it twice. Read the line numbers in the stack trace, not just
+the top message.</li>
+<li>Don&#39;t assume the error is <em>where</em> the message points; the message
+points where the type-checker noticed the mismatch, which can be
+distant from where the wrong value was set.</li>
+<li>Look for the most recent change. <code>git diff HEAD~1</code> is faster than
+binary-searching the codebase.</li>
+</ol>
+<p>For Next.js specifically: the build error log includes phase markers
+(<code>Compiled successfully</code>, <code>Collecting page data</code>, <code>Generating static pages</code>). The phase tells you whether the failure is a TypeScript
+issue, an MDX parse error, or a runtime error during static generation.</p>
+<h2 id="8-debugging">8. Debugging</h2>
+<p>The site runs locally with <code>npm run dev</code>. When something looks wrong:</p>
+<ol>
+<li><strong>Check the network tab.</strong> A missing thumbnail is silent in the
+console but obvious in the network tab as a 404 on the PNG.</li>
+<li><strong>Check the build log.</strong> <code>next build</code> is more strict than <code>next dev</code> — it&#39;ll catch issues that dev mode silently tolerates
+(notably, TypeScript errors marked <code>useUnknownInCatchVariables</code>).</li>
+<li><strong><code>/api/resume</code> debugging.</strong> The PDF endpoint is the most fragile
+surface in the codebase because PDFKit has its own quirks. If the
+PDF renders blank or 500s, it&#39;s almost always a font registration
+issue. Helvetica is bundled with PDFKit and always works.</li>
+</ol>
+<h2 id="9-refactoring-without-breaking-things">9. Refactoring without breaking things</h2>
+<p>The four-project refresh in April 2026 is a good example. We made one
+risky decision (in-place rewrite of <code>property-comparison.mdx</code>) and
+five safe ones (new files for the other three projects, new entry in
+the education array, prose edits on three pages). The risky one got
+flagged to the user <em>before</em> we touched it. The safe ones got batched.</p>
+<p><strong>Pattern:</strong> before you start, classify each edit:</p>
+<ul>
+<li><strong>Additive</strong> — new file, new array entry, new prose paragraph. No
+prior content at risk. Cheap to review, cheap to revert.</li>
+<li><strong>In-place rewrite</strong> — replaces existing content. Higher risk;
+flag and confirm before doing.</li>
+<li><strong>Restructure</strong> — moves content between files, renames, splits.
+Highest risk; requires the most careful diff review.</li>
+</ul>
+<p>The four-project refresh had three additives and one in-place
+rewrite. We treated them differently in scope (the rewrite got an
+explicit go-ahead from the user) and in review (the rewrite got a
+side-by-side check against the prior version to make sure no
+honesty-section content was lost).</p>
+<hr>
+<h1 id="part-3-shipping-it">Part 3 — Shipping it</h1>
+<h2 id="10-testing-strategy">10. Testing strategy</h2>
+<p>This site doesn&#39;t have unit tests. That&#39;s a deliberate scope decision —
+the site is content + a single dynamic endpoint (<code>/api/resume</code>), and
+the build is the test. If the MDX is malformed, <code>next build</code> fails.
+If the resume data has a type mismatch, <code>tsc</code> fails. If a thumbnail
+path is wrong, the deployed page renders the gradient fallback.</p>
+<p><strong>When this stops being enough:</strong> if <code>/api/resume</code> grew real logic
+(branching by query string, conditional sections, custom layouts),
+unit tests for the PDF generation would start paying off. Until then,
+&quot;the build passes&quot; is sufficient signal.</p>
+<p>The principle: tests are not free. They have a maintenance cost. For a
+content site with few moving parts, the build + a manual spot-check
+on dev is correct.</p>
+<h2 id="11-ci-type-checking-linting">11. CI, type checking, linting</h2>
+<p>The pre-shipping checklist for any change to this site:</p>
+<pre><code class="language-bash">npx tsc --noEmit       # TypeScript correctness
+npm run lint           # ESLint (rules from eslint-config-next)
+npm run build          # Full production build, including static gen
+</code></pre>
+<p>The <code>--webpack</code> flag on <code>next build</code> (from <code>package.json</code>) is here
+because Netlify&#39;s plugin requires it; without it, Turbopack is the
+default and Netlify&#39;s older builder hits a path that doesn&#39;t work.</p>
+<p><strong>Common failure mode:</strong> <code>tsc --noEmit</code> passes but <code>next build</code> fails
+on a different error. That&#39;s not a contradiction — <code>next build</code>
+applies stricter rules and runs MDX parsing too. Always run both.</p>
+<h2 id="12-containers-nginx-deployment">12. Containers, nginx, deployment</h2>
+<p>Not applicable to this site directly (Netlify hosts it), but multiple
+projects on the site (property-comparison, labelgen-pro, stash) deploy
+to the user&#39;s Unraid homelab. The pattern they share:</p>
+<ul>
+<li>Multi-stage Dockerfile: build stage with full tooling, runtime
+stage with just the artifacts.</li>
+<li>Bind-mounted volumes for any persistent state.</li>
+<li>Nginx Proxy Manager for SSL + subdomain routing
+(e.g. <code>homes.shottsserver.com</code>).</li>
+</ul>
+<p>The site itself uses Netlify because the <code>/api/resume</code> endpoint is the
+only dynamic surface and Netlify&#39;s serverless functions handle it for
+free. If the dynamic surface area grew, Vercel or self-hosted Next
+would be the natural next steps.</p>
+<h2 id="13-observability">13. Observability</h2>
+<p>Cloudflare Web Analytics (optional, env-gated) is wired up in
+<code>src/app/layout.tsx</code>. Set <code>CLOUDFLARE_ANALYTICS_TOKEN</code> and the beacon
+loads. There&#39;s no error tracking (Sentry, Bugsnag, etc.) because the
+surface is small enough to monitor manually.</p>
+<p>For a one-person portfolio, that&#39;s fine. For anything user-facing
+with real traffic, you&#39;d want at least:</p>
+<ul>
+<li>Analytics (page views, referrers).</li>
+<li>Error tracking (uncaught exceptions, failed API calls).</li>
+<li>Uptime monitoring (does the site respond at all).</li>
+</ul>
+<p>The site has the first; the second and third are out of scope until
+the site does anything stateful.</p>
+<hr>
+<h1 id="part-4-the-work-thats-actually-about-other-humans">Part 4 — The work that&#39;s actually about other humans</h1>
+<h2 id="14-asking-better-questions-of-stakeholders">14. Asking better questions of stakeholders</h2>
+<p>The April-2026 refresh is the canonical example. The user&#39;s
+instruction said:</p>
+<blockquote>
+<p><em>&quot;I have four new projects to add as case studies.&quot;</em></p>
+</blockquote>
+<p>Then listed Project C as <code>property-comparison</code> — the same name as an
+existing case study. The instruction also said:</p>
+<blockquote>
+<p><em>&quot;Do NOT remove or rename any existing project — only add the four
+new ones.&quot;</em></p>
+</blockquote>
+<p>These instructions contradict. There were three ways to handle the
+contradiction:</p>
+<ol>
+<li><strong>Guess</strong> and pick one interpretation. Risk: ship the wrong one.</li>
+<li><strong>Refuse</strong> and demand clarification before any work. Risk: stalls
+progress on the rest of the work, which was unambiguous.</li>
+<li><strong>Flag, propose, ask.</strong> Do the unambiguous parts (admission update,
+the three other projects) immediately; surface the conflict on the
+ambiguous part with a specific question and a recommended answer.</li>
+</ol>
+<p>Option 3 is what we did. The question was specific:</p>
+<blockquote>
+<p><em>&quot;Want me to proceed [in-place rewrite]? Or skip Project C? Or use
+a different slug like <code>property-comparison-2026</code>?&quot;</em></p>
+</blockquote>
+<p>User answered in one message: <em>&quot;do a re-write where it is.&quot;</em> Total
+delay: one round-trip. Total clarification cost: small. Total cost
+of guessing: would have been a duplicate page or a slug collision
+in production.</p>
+<p><strong>The principle:</strong> ambiguous instructions deserve a <em>specific</em>
+question with a <em>recommended</em> answer. The recommended answer signals
+that you&#39;ve thought about it; the specificity makes it cheap to
+respond.</p>
+<h2 id="15-reviewing-code">15. Reviewing code</h2>
+<p>If someone else opens a PR to this site, the review checklist is:</p>
+<ul>
+<li>Does any frontmatter field deviate from the existing convention?
+(e.g. lowercase tags when the rest are Title Case)</li>
+<li>Does any new MDX skip the honesty section?</li>
+<li>Does the change introduce a new colour token or font?
+(CLAUDE.md says no.)</li>
+<li>Does the change introduce a new dependency?
+(CLAUDE.md says no without justification.)</li>
+<li>Does <code>next build</code> pass?</li>
+</ul>
+<p>Those five questions catch most of what&#39;s worth catching on a content
+site. For larger codebases the list grows, but the principle is the
+same: <strong>review against precedent, not against your taste.</strong></p>
+<h2 id="16-documenting-for-the-right-audience">16. Documenting for the right audience</h2>
+<p>Three documents at the repo root, three audiences:</p>
+<ul>
+<li><code>README.md</code> — a developer who wants to clone and run the site.</li>
+<li><code>BUILD_LOG.md</code> — a learner reading top-to-bottom to understand how
+the site was built.</li>
+<li><code>LEARN.md</code> — an engineer wanting to skim a topic (&quot;how do I think
+about MDX content models?&quot;) without reading the whole history.</li>
+</ul>
+<p>If they all read the same, you have one document, not three. The
+structural difference: README is <em>imperative</em> (&quot;clone, install, run&quot;).
+BUILD_LOG is <em>narrative</em> (&quot;the day we added X, here&#39;s what we did&quot;).
+LEARN is <em>topical</em> (&quot;here&#39;s how to think about X in general, with
+examples from this codebase&quot;).</p>
+<h2 id="17-agile-in-practice">17. Agile in practice</h2>
+<p>The site doesn&#39;t run sprints. The user makes decisions, asks for
+work, accepts diffs. That&#39;s &quot;agile&quot; in the loose sense — small
+iterations, frequent feedback, no upfront design.</p>
+<p>What makes that work <em>here</em> is the convention discipline. Without
+&quot;every project page has an honesty section,&quot; the four-project refresh
+would have been four bespoke design decisions instead of four
+applications of an existing pattern. Convention is the substitute for
+process at small scales.</p>
+<hr>
+<h1 id="part-5-codebase-tour">Part 5 — Codebase tour</h1>
+<h2 id="18-project-content-model-mdx-as-a-schema">18. Project content model — MDX as a schema</h2>
+<p>Project case studies live in <code>content/projects/*.mdx</code>. The frontmatter
+is the type contract:</p>
+<pre><code class="language-yaml">---
+slug: my-project           # required; controls the URL
+title: My Project          # required; displayed
+date: 2026-04-25           # required; YYYY-MM-DD; sorts the list
+summary: One-line pitch.   # required; shown on cards
+tags: [&quot;Vue&quot;, &quot;Docker&quot;]    # optional; Title Case convention
+repo: https://github...    # optional; mutually exclusive with access
+access: mailto:...         # optional; private repo &quot;Request Access&quot; CTA
+live: https://...          # optional; &quot;Live Demo&quot; button
+thumbnail: &quot;/images/projects/&lt;slug&gt;.png&quot;  # optional
+draft: true                # optional; hides from listing
+---
+</code></pre>
+<p>The renderer (<code>src/app/projects/[slug]/page.tsx</code>) and the listing
+page (<code>src/app/projects/page.tsx</code>) both consume <code>getAllProjectsMeta()</code>
+from <code>src/lib/projects.ts</code>. The function:</p>
+<ul>
+<li>Reads <code>content/projects/*.mdx</code></li>
+<li>Filters out <code>draft: true</code></li>
+<li>Parses each file&#39;s frontmatter via <code>gray-matter</code></li>
+<li>Sorts by <code>date</code> descending</li>
+<li>Returns the metadata array</li>
+</ul>
+<p>Drop a new MDX in, run the build, the page appears.</p>
+<p><strong>Edge cases worth knowing:</strong></p>
+<ul>
+<li>A <code>slug</code> that conflicts with an existing file silently overwrites
+the route at build time. The order of <code>readdirSync</code> decides which
+wins. <em>Don&#39;t have two files with the same slug.</em></li>
+<li><code>draft: true</code> removes the file from listings but the URL still
+works if you guess the slug. Use it for staging new content, not
+for hiding sensitive content.</li>
+<li>The <code>access</code> mailto pattern needs URL-encoded subjects. The render
+trusts the value; if you put a literal space in there, the email
+client may misbehave.</li>
+</ul>
+<h2 id="19-resume-as-data-not-pages">19. Resume as data, not pages</h2>
+<p><code>src/lib/resume.ts</code> is a single TypeScript constant of type
+<code>ResumeData</code>. Three things consume it:</p>
+<ol>
+<li><strong><code>/resume</code> page</strong> (<code>src/app/resume/page.tsx</code>) — renders headings
+and prose from the data.</li>
+<li><strong><code>/api/resume</code> PDF</strong> (<code>src/app/api/resume/route.ts</code>) — uses
+PDFKit to render the same data into a downloadable PDF.</li>
+<li><strong><code>public/resume.md</code></strong> — currently a <em>static</em> mirror of the same
+data. This is the seam where source-of-truth drift could happen.</li>
+</ol>
+<p>The PDF route&#39;s structure is worth studying. It&#39;s a pure function of
+the data:</p>
+<pre><code class="language-ts">r.education.forEach((ed) =&gt; {
+  doc.font(&quot;Helvetica-Bold&quot;).fontSize(10).text(ed.school);
+  doc.font(&quot;Helvetica&quot;).fontSize(10).fillColor(&quot;#666&quot;).text(ed.degree);
+  if (ed.bullets) bulletList(doc, ed.bullets);
+});
+</code></pre>
+<p>Adding a new education entry to <code>resume.ts</code> requires <em>zero</em> changes
+to this code. Adding a new education <em>field</em> (e.g. <code>gpaScale</code>) would
+require a code change, which is correct — that&#39;s a schema change.</p>
+<h2 id="20-the-honesty-layer">20. The honesty layer</h2>
+<p>The &quot;What I Did vs. What AI Did&quot; section on every case study is a
+<em>design feature</em>, not a piece of code. It&#39;s how the site differentiates
+itself from generic portfolios in 2026, when AI-assisted code is
+universal.</p>
+<p>The convention has three rules:</p>
+<ol>
+<li><strong>My work</strong> — name the architectural decisions, integration
+choices, and operations responsibilities.</li>
+<li><strong>AI-assisted</strong> — name the boilerplate, library idioms, and
+scaffolding without minimising it.</li>
+<li><strong>Don&#39;t claim what isn&#39;t true.</strong> If a project was 80% AI-scaffolded,
+say so. The credibility of <em>every</em> claim on the site depends on
+no claim being a lie.</li>
+</ol>
+<p>The April-2026 chapter has a real example: the <code>stash</code> project leans
+heavily on AI for mobile components and Three.js packing. The case
+study says so explicitly. The defensible claim isn&#39;t &quot;I hand-coded
+this;&quot; it&#39;s &quot;I architected this and run it in production.&quot;</p>
+<p>That distinction is the whole site&#39;s thesis.</p>
+<hr>
+<h1 id="appendix-a-glossary">Appendix A: Glossary</h1>
+<table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ADR</td>
+<td>Architecture Decision Record. Markdown file documenting one decision, its context, alternatives, and consequences.</td>
+</tr>
+<tr>
+<td>Frontmatter</td>
+<td>The YAML block at the top of a markdown / MDX file, between two <code>---</code> lines. Parsed by <code>gray-matter</code> here.</td>
+</tr>
+<tr>
+<td>MDX</td>
+<td>Markdown with JSX. Lets us mix component-style elements (e.g. <code>{/* comments */}</code>) into otherwise plain markdown content.</td>
+</tr>
+<tr>
+<td>Slug</td>
+<td>The URL-safe identifier for a page (e.g. <code>labelgen-pro</code>). Derived from the MDX filename.</td>
+</tr>
+<tr>
+<td>OMSCS</td>
+<td>Online Master of Science in Computer Science (Georgia Tech). 100% asynchronous, accredited identically to the on-campus MSCS.</td>
+</tr>
+<tr>
+<td>Walking skeleton</td>
+<td>A thin end-to-end implementation that proves the architecture works. Improvements are additive after.</td>
+</tr>
+<tr>
+<td>In-place rewrite</td>
+<td>Replacing the contents of an existing file at the same path / same slug. Preserves URL; risks losing prior content if not careful.</td>
+</tr>
+</tbody></table>
+<hr>
+<h1 id="appendix-b-adr-template">Appendix B: ADR template</h1>
+<p>Copy into <code>docs/adr/NNN-title.md</code>:</p>
+<pre><code class="language-markdown"># ADR-NNN: [Decision title]
+
+**Date:** YYYY-MM-DD
+**Status:** Proposed | Accepted | Deprecated | Superseded by ADR-XXX
+
+## Context
+What&#39;s the situation that requires a decision?
+
+## Decision
+What did we decide to do?
+
+## Consequences
+What gets better? What gets worse? What new questions arise?
+
+## Alternatives considered
+Bulleted list with one-line reasoning for each.
+</code></pre>
+<hr>
+<h1 id="appendix-c-recommended-reading">Appendix C: Recommended reading</h1>
+<ul>
+<li><em>A Philosophy of Software Design</em> — John Ousterhout</li>
+<li><em>The Pragmatic Programmer</em> — Hunt &amp; Thomas</li>
+<li><em>Refactoring</em> — Martin Fowler</li>
+<li><em>Effective TypeScript</em> — Dan Vanderkam</li>
+<li><em>Staff Engineer</em> — Will Larson</li>
+<li><em>No Silver Bullet</em> — Fred Brooks (free essay online)</li>
+</ul>
+
+    <div class="foot">
+      <code>LEARN.md</code> wiki · 21 sections. Regenerate with <code>npm run build:wiki</code>.
+    </div>
+  </main>
+</div>
+<script>
+  (function () {
+    const search = document.getElementById('search')
+    const tocLinks = Array.from(document.querySelectorAll('#toc a'))
+
+    if (search) {
+      search.addEventListener('input', function () {
+        const q = search.value.trim().toLowerCase()
+        tocLinks.forEach(function (a) {
+          const match = !q || a.textContent.toLowerCase().includes(q)
+          a.classList.toggle('hidden', !match)
+        })
+      })
+    }
+
+    const headingEls = tocLinks
+      .map(function (a) { return document.querySelector(a.getAttribute('href')) })
+      .filter(Boolean)
+
+    function updateActive() {
+      const y = window.scrollY + 80
+      let activeIdx = 0
+      for (let i = 0; i < headingEls.length; i++) {
+        if (headingEls[i].offsetTop <= y) activeIdx = i
+      }
+      tocLinks.forEach(function (a, i) { a.classList.toggle('active', i === activeIdx) })
+    }
+    window.addEventListener('scroll', updateActive, { passive: true })
+    updateActive()
+  })()
+</script>
+</body>
+</html>

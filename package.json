@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build --webpack",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "build:wiki": "node meta/teach-as-you-build/build-wiki.mjs"
   },
   "dependencies": {
     "gray-matter": "^4.0.3",
@@ -25,6 +26,7 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.0.0",
+    "marked": "^18.0.2",
     "tailwindcss": "^4",
     "typescript": "^5"
   }
