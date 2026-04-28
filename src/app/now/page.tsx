@@ -9,13 +9,13 @@ export default function NowPage() {
     <Container className="prose prose-zinc max-w-3xl py-12 dark:prose-invert">
       <h1>Now</h1>
       <p>
-        What I&apos;m currently focused on &mdash; updated March 2026.
+        What I&apos;m currently focused on &mdash; updated April 2026.
       </p>
       <ul>
+        <li>Admitted to Georgia Tech&apos;s OMSCS program (Machine Learning specialization, Fall 2026 start)</li>
         <li>Looking for my first software engineering role</li>
-        <li>Applied to Georgia Tech OMSCS</li>
+        <li>Running Stash (self-hosted inventory + move app) and Property Comparison for our cross-country move</li>
         <li>Maintaining 44 Docker containers on my Dell R730 homelab</li>
-        <li>Planning a Python/Flask rebuild of my Vendor Manager Dashboard without AI assistance</li>
         <li>Being honest about what I built vs. what AI built on every project page</li>
       </ul>
     </Container>

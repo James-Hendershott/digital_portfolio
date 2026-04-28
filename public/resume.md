@@ -7,8 +7,11 @@ Software Engineer | Recent CS Graduate | Python · JavaScript · Django · React
 
 ## Education
 
+**Master of Science in Computer Science** — Georgia Institute of Technology | OMSCS · Machine Learning Specialization
+Admitted April 2026 · Fall 2026 start · 100% asynchronous online
+
 **Bachelor of Science in Computer Science** — Weber State University | December 2025
-GPA: 3.56 overall (3.87 in CS coursework) | Applied to Georgia Tech OMSCS
+GPA: 3.56 overall (3.87 in CS coursework)
 Key courses: Data Structures & Algorithms (A), Server-Side Web Architecture — Django/Python (A), Software Engineering I & II (A, A), Database Design & SQL (A), Advanced Database Programming (A), Computer Architecture (A), Formal Languages & Algorithms, Operating Systems
 
 **Associate of Applied Science in Computer Science** — Weber State University | December 2023

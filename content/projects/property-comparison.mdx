@@ -1,61 +1,83 @@
 ---
 slug: property-comparison
 title: Property Comparison Dashboard
-date: 2025-12-01
-summary: Family house-hunting app running on my homelab. 50 property cards across 7 states with voting, rankings, notes, and real-time polling. Built with AI assistance, deployed on my Unraid server.
-tags: ["JavaScript", "Express", "SQLite", "Node.js", "Docker"]
+date: 2026-04-25
+summary: Family voting dashboard for 71 rural property listings across NC and NY. 7-star ratings, S–D tier rules, FHA monthly-cost calculator, auto-generated realtor brief. Vanilla JS, no build step. Lives on my homelab and drives an actual relocation.
+tags: ["Node.js", "Express", "SQLite", "Leaflet", "Docker", "Real Estate"]
 repo: https://github.com/James-Hendershott/property-comparison
 live: https://homes.shottsserver.com
 thumbnail: "/images/projects/property-comparison.png"
 ---
 
+{/* TODO: refresh screenshot at public/images/projects/property-comparison.png — 1280x720, dark mode preferred. The earlier screenshot is from the v1 cycle and predates the FHA calculator and tier system. */}
+
 ## Overview
 
-My family is looking at houses across 7 states. We needed a way to compare properties, vote on favorites, and keep notes — something more interactive than a spreadsheet. So I built this and deployed it on my home server.
+We're moving the family across the country and we needed a real way to evaluate properties — something that handled rural listings (acreage, well, septic, road frontage), let multiple family members weigh in, ranked them by something more useful than gut feel, and gave me a one-page brief I could hand to a realtor. The spreadsheet version fell over fast.
 
-**What's honest here:** AI wrote most of the code. I came up with the concept, defined the features, and deployed it on my Unraid server behind Nginx Proxy Manager with SSL. The app is live and the family uses it. I understand the code well enough to maintain it, but I didn't write the majority of it from scratch.
+This is the working version. **71 listings** across rural North Carolina and rural New York, deployed on my homelab at [homes.shottsserver.com](https://homes.shottsserver.com), used weekly by family members for actual decisions.
+
+## What's Honest Here
+
+The rendering layer and most of the Leaflet integration are AI-assisted. I'm not going to claim I hand-wrote every map popup or every CSS gradient.
+
+What's mine — and what I'd defend if a realtor asked why this app instead of Zillow:
+
+- **The data model.** Property → ratings → notes → tier → realtor brief. I designed the columns we actually compare on (acreage, road frontage, well/septic, hazard zone, monthly cost band).
+- **The 7-star + S/A/B/C/D tier rules.** 7 stars beats 5 because it forces a non-symmetric distribution. The tier rules are explicit thresholds, not vibes — S = top 10%, D = below median, with hard cutoffs on dealbreakers (flood zone, no road access).
+- **The FHA monthly-cost calculator.** 6.5% APR, 30-year fixed, 3.5% down, plus property tax, insurance, and PMI computed from the listing data. This is the single biggest reason we stopped staring at price tags — *monthly* cost is what we actually live with.
+- **The auto-generated realtor brief.** One PDF page per property, generated on demand: photos, acreage map, monthly cost band, our notes, tier. I email these instead of forwarding 14 Zillow links.
+- **The "vanilla JS, no build step" architectural choice.** Intentional, not lazy. Zero deploy friction. I edit a file, refresh the browser, push the container. No webpack cache to clear, no node_modules to rebuild. This is a tool I want to fix at 11pm on a Sunday, not a portfolio piece.
 
 ## What It Does
 
-- **50 property cards** across 7 states with price, acreage, proximity grids, pros/cons, environmental hazard ratings, and monthly cost breakdowns
-- **Family voting system** — each family member rates properties 1-5 stars
-- **Rankings table** — auto-sorted leaderboard by average family rating
-- **Notes system** — per-property family discussion with author attribution
-- **Property nicknames** — custom names that propagate across all UI elements
-- **Graveyard system** — soft-delete properties that go off-market, with restore capability
-- **Real-time polling** — data refreshes every 30 seconds for multi-user collaboration
+- **71 property cards** across rural NC and rural NY, with photos, acreage, well/septic, road frontage, hazard zone, and monthly cost breakdown
+- **7-star family voting** — every family member rates each property; per-property and aggregate views
+- **S/A/B/C/D tier system** with explicit rules, not vibes (top decile / quartiles, dealbreakers as hard cutoffs)
+- **FHA monthly-cost calculator** — 6.5% / 30yr / 3.5% down + tax + insurance + PMI, recomputes per property
+- **Leaflet + OpenStreetMap** — see geographic clusters, distance to nearest town, distance between candidates
+- **Auto-generated realtor brief** — one-page PDF per property for handoff
+- **Notes per property** with author attribution
+- **Graveyard** — soft-delete listings that go off-market, restorable
 
 ## Tech Stack
 
-| Layer | Technology |
-|-------|-----------|
+| Layer | Tech |
+|-------|------|
 | Backend | Node.js, Express |
-| Database | SQLite via sql.js (WASM) |
-| Frontend | Vanilla JavaScript, CSS, HTML |
-| Deployment | Docker Compose on my Unraid server |
+| Database | SQLite via `sql.js` (pure WASM, no native binary) |
+| Frontend | Vanilla JavaScript, vanilla CSS, no framework, no build step |
+| Maps | Leaflet + OpenStreetMap |
+| Deployment | Docker on my Unraid server |
 | Proxy | Nginx Proxy Manager with SSL at `homes.shottsserver.com` |
 
 ## What I Did vs. What AI Did
 
 **My work:**
-- Came up with the concept and every feature requirement
-- Deployed via Docker Compose on my Unraid homelab
-- Configured Nginx Proxy Manager with SSL subdomain routing
-- Maintain the running instance and add property data
-- The family uses this daily for real decision-making
+- Designed the data model and the columns we actually compare on
+- Designed the 7-star + S/A/B/C/D tier rules and the dealbreaker hard cutoffs
+- Wrote the FHA monthly-cost calculator (rate, term, down payment, tax, insurance, PMI)
+- Designed the realtor-brief format and the data flow that builds it
+- Chose "vanilla JS, no build step" as a deliberate architectural call
+- Deploy and operate the production instance my family uses
+- Curate the listings — what gets in, what gets soft-deleted, what becomes a tier-S candidate
 
 **AI-assisted:**
-- Most of the application code (Express backend, frontend JavaScript, HTML/CSS)
-- Database schema and API endpoints
-- Voting and ranking logic
+- Most of the rendering JavaScript and the property-card CSS
+- Leaflet map integration, custom markers, popup formatting
+- API endpoint scaffolding
+- The graveyard / restore logic boilerplate
 
 ## Why I'm Including This
 
-It's not a showcase of my coding ability — it's an example of identifying a real problem, designing a solution, and deploying it on infrastructure I built and maintain. The app is live at [homes.shottsserver.com](https://homes.shottsserver.com) and my family actually uses it.
+It's not a showcase of pure coding skill. It's a working tool I built to solve a real problem on a real timeline, deployed on infrastructure I built and maintain. The family uses it every week. The tier rules and FHA calculator have already changed which properties we're driving out to see.
+
+If you want to see what I prioritise when I'm not optimising for an interview, this is it.
 
 ## What I Learned
 
-- Deploying a real app to my homelab for daily use by multiple people
-- Docker volume mounting for SQLite persistence
-- How multi-user collaboration features work (polling, upserts, soft deletes)
-- The difference between building something AI writes and understanding how it works well enough to maintain it
+- A 7-point scale forces a decision in a way a 5-point scale doesn't
+- Monthly cost is the right unit for housing decisions; price is a distraction
+- "No build step" is a real feature, not a limitation
+- SQLite via WASM is a perfectly fine production database for read-heavy household tools
+- Curating data is half the value — the app is the easy part

@@ -1,0 +1,78 @@
+---
+slug: stash
+title: Stash
+date: 2026-04-25
+summary: Self-hosted inventory and move-management platform. Mobile app, web admin, REST API, Postgres, Three.js packing, Claude API valuation. Architected for our cross-country move, designed to keep working as a permanent household inventory after.
+tags: ["React Native", "Expo", "Node.js", "PostgreSQL", "Three.js", "Claude API", "Docker"]
+access: "mailto:james_hendershott@outlook.com?subject=Stash%20Code%20Access%20Request"
+thumbnail: "/images/projects/stash.png"
+---
+
+{/* TODO: capture screenshot at public/images/projects/stash.png — 1280x720, dark mode preferred */}
+
+## Overview
+
+Stash answers three questions about every physical thing my household owns: **where is it, what condition is it in, and what happens to it next.** The "what happens next" is the bit no spreadsheet handles well — during a move it's "which truck, which box, which room"; after the move it's "which shelf, which container, which child's closet." Same data, different mode.
+
+**Status:** v1.1.1. Build is complete. Production deploy to my Unraid box is the next step.
+
+## What's Honest Here
+
+I leaned hard on AI for this one. The mobile app scaffolding, most of the Three.js container-packing visualisation, and a lot of the boilerplate Express routes and Prisma schemas were AI-assisted. I am not claiming I hand-coded every line.
+
+What I do claim — and would defend in a code review:
+
+- **The architectural decisions are mine.** The monorepo layout (mobile / admin / api / db / shared types). The Move-mode vs Home-mode split that lets the same data model represent two different lifecycle states. The Item / Container / Location relationship and the rule that a Container is also an Item (so you can pack containers inside containers). The pricing boundary — Claude API gets called for valuation and condition assessment, but never for inventory mutation, because hallucinated quantities would corrupt the source of truth.
+- **I run this in production.** Docker Compose on Unraid, Postgres volume backups, Tailscale for remote access from the phone, JWT + bcrypt auth, Three.js render running off live container data. When something breaks on a Saturday I'm the one who fixes it.
+- **The model selection between Sonnet and Haiku is intentional.** Sonnet for valuation and condition write-ups (where reasoning quality matters and latency doesn't). Haiku for quick "is this the same item I already photographed" checks (where it's the other way around).
+
+Don't read this as "hand-coded full-stack app." Read it as "system I architected, integrated, and run in production."
+
+## What It Does
+
+- **Mobile-first capture** — photograph an item, get an AI-generated condition note and rough valuation, attach to a container
+- **Container hierarchy** — items live in containers, containers live in containers, the top container lives in a location (truck, room, storage unit)
+- **3D packing view** — Three.js render of a container with its current items at scale, so I can see what fits before sealing it
+- **Move mode** — every item has a destination location and a status (packed / in transit / unpacked); the dashboard is "what didn't make it"
+- **Home mode** — items revert to permanent locations; dashboard becomes "where is X" + replacement value rollup
+- **Web admin** — bulk edits, valuation review queue, manual overrides on AI suggestions
+
+## Tech Stack
+
+| Layer | Tech |
+|-------|------|
+| Mobile | React Native, Expo |
+| Web admin | React 18, Vite |
+| API | Node 20, Express |
+| Database | PostgreSQL 16, Prisma ORM |
+| Auth | JWT, bcrypt |
+| 3D | Three.js (container packing visualisation) |
+| AI | Claude API — Sonnet for valuation/condition, Haiku for quick checks |
+| Hosting | Docker Compose on Unraid |
+| Remote access | Tailscale |
+
+## What I Did vs. What AI Did
+
+**My work:**
+- Monorepo architecture and the shared-types package that keeps mobile, admin, and API in sync
+- Move-mode vs Home-mode split (same data, different lifecycle semantics)
+- Item / Container / Location data model with self-referential containers
+- AI boundary: Claude calls valuation, never inventory mutation
+- Sonnet-vs-Haiku model routing based on task type
+- Docker Compose layout and the Unraid deploy plan
+- Tailscale for mobile-to-API access without exposing the API to the internet
+- I run the system. Backups, recovery, monitoring — me.
+
+**AI-assisted:**
+- Most of the React Native screens and component scaffolding
+- Boilerplate Express route handlers and Prisma schemas
+- The Three.js packing-view rendering (camera, lighting, AABB collision)
+- Test scaffolding
+
+## What I Learned
+
+- React Native + Expo is genuinely productive for a one-person mobile app, but the build tooling will surprise you
+- Self-referential schemas in Prisma are clean if you commit to them up front and a nightmare if you bolt them on later
+- Three.js is not a 3D engine, it's a thin wrapper around WebGL — knowing where that line is matters when something looks wrong
+- The model-routing decision (Sonnet vs Haiku) is the most leverage-per-line decision in an AI-integrated app
+- "Architected and operate" is a more honest claim than "built from scratch," and it's the claim that's actually defensible

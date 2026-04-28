@@ -242,7 +242,7 @@ export default function AboutPage() {
                   I use AI tools &mdash; I&apos;m honest about that on every project page. But I also wrote a text adventure engine from scratch, led a capstone team, and maintain infrastructure that&apos;s been running 24/7 for over two years. I know what I built and what I&apos;m still learning.
                 </p>
                 <p className="text-lg leading-relaxed">
-                  I&apos;m looking for my first software engineering role. I&apos;m also applying to Georgia Tech&apos;s OMSCS program because I want to keep growing. I live with my wife Savanah and our kids Theo and Sophie.
+                  I&apos;m looking for my first software engineering role. I was admitted to Georgia Tech&apos;s OMSCS program in April 2026 &mdash; Machine Learning specialization, starting Fall 2026 &mdash; because I want to keep growing. I live with my wife Savanah and our kids Theo and Sophie.
                 </p>
               </div>
             </div>

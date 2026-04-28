@@ -1,0 +1,58 @@
+---
+slug: real-estate-video-generator
+title: Real Estate Video Generator
+date: 2026-04-25
+summary: Windows desktop app that stitches phone walkthrough clips into a single stabilized H.264 MP4 with an address title card and an issue-photo slideshow. 75 KB Python, narrow scope, drag-to-reorder. Solves one real step in the relocation workflow.
+tags: ["Python", "FFmpeg", "Windows", "Video Processing"]
+access: "mailto:james_hendershott@outlook.com?subject=Real%20Estate%20Video%20Generator%20Code%20Access%20Request"
+thumbnail: "/images/projects/real-estate-video-generator.png"
+---
+
+{/* TODO: capture screenshot at public/images/projects/real-estate-video-generator.png — 1280x720, dark mode preferred */}
+
+## Overview
+
+When you tour 71 candidate properties across two states, the phone-video archive gets out of hand fast. This is the tool I wrote to bring it back under control: drag walkthrough clips into the order I want, stick an address title card on the front, append the issue-photo slideshow on the end, run the whole thing through `vidstab` to kill the handshake, and write a single H.264 MP4 to a known folder.
+
+**Status:** v1.0, completed. ~75 KB of Python. It does exactly this and nothing else.
+
+## What's Honest Here
+
+This is intentionally small. There's nothing architecturally clever here — it's an FFmpeg wrapper with a Tkinter list and a couple of useful defaults. I'm including it because it solves a real, specific step in the relocation workflow alongside [Property Comparison](/projects/property-comparison), and because the practical fixes it took to ship are the kind of debugging that doesn't show up in a portfolio of polished projects.
+
+## What It Does
+
+- **Drag-to-reorder** input list — clips go in the order you want, not the order the phone exported them
+- **Stabilization** via `vidstab` (two-pass: detect → transform)
+- **Address title card** rendered to a static PNG and prepended at known duration
+- **Issue-photo slideshow** appended at end with per-photo dwell time
+- **Single H.264 MP4 output** to a known folder by default (Documents / Property Walkthroughs)
+- **Drop a folder of phone clips, get a single shareable file**
+
+## Tech Stack
+
+- **Python 3.11+**
+- **FFmpeg + FFprobe** with `vidstab` build (the one that actually has `vidstabdetect` / `vidstabtransform`)
+- **Tkinter** for the drag-to-reorder UI
+- Windows (PowerShell-friendly install path)
+
+## What I Did vs. What AI Did
+
+**My work:**
+- Defined the scope and held it — refused to add features that didn't ship the actual videos
+- Worked around `vidstab`'s filename-only quirk on Windows: the filter writes its transform file using a relative-path-only convention that breaks if you give it a fully qualified path with drive letter. The fix was a temp directory + `cd` into it for the duration of the two-pass run.
+- Defaulted output to `Documents/Property Walkthroughs/` because "where did it save" was the bug I kept hitting on my own tool
+- Implemented drag-to-reorder on the input list because clip order is the actual content decision
+- Validated against a real backlog of phone clips, not synthetic test data
+
+**AI-assisted:**
+- Tkinter scaffolding and the drag-and-drop event wiring
+- Initial FFmpeg argument strings (most of which I had to fix when the real two-pass behaviour surprised me)
+- Slideshow timing math
+
+## What I Learned
+
+- `vidstab` is the right call for handheld walkthrough clips, but its Windows path handling will eat an afternoon if you don't know about it
+- "Default to a known folder" is the smallest UX feature with the biggest payoff on a one-person tool
+- Holding scope is harder than expanding it
+- A 75 KB tool that ships every property tour you take is more valuable than a 75 MB tool that does ten things badly

@@ -73,9 +73,14 @@ export default function ResumePage() {
         <h2>Education</h2>
         <div className="space-y-3">
           <div>
+            <h3 className="text-lg font-semibold mb-1">Master of Science in Computer Science</h3>
+            <p className="text-sm text-foreground/80">Georgia Institute of Technology &bull; OMSCS &bull; Machine Learning Specialization</p>
+            <p className="text-sm">Admitted April 2026 &bull; Fall 2026 start &bull; 100% asynchronous online</p>
+          </div>
+          <div>
             <h3 className="text-lg font-semibold mb-1">Bachelor of Science in Computer Science</h3>
             <p className="text-sm text-foreground/80">Weber State University &bull; December 2025</p>
-            <p className="text-sm">GPA: 3.56 overall (3.87 in CS coursework) | Applied to Georgia Tech OMSCS</p>
+            <p className="text-sm">GPA: 3.56 overall (3.87 in CS coursework)</p>
             <p className="text-sm italic">Key courses: Data Structures &amp; Algorithms (A), Server-Side Web Architecture &mdash; Django/Python (A), Software Engineering I &amp; II (A, A), Database Design &amp; SQL (A), Advanced Database Programming (A), Computer Architecture (A), Formal Languages &amp; Algorithms, Operating Systems</p>
           </div>
           <div>

@@ -156,10 +156,17 @@ export const resumeData: ResumeData = {
   ],
   education: [
     {
+      school: "Georgia Institute of Technology",
+      degree: "M.S. in Computer Science \u2014 OMSCS \u00b7 Machine Learning Specialization",
+      bullets: [
+        "Admitted April 2026 \u00b7 Fall 2026 start \u00b7 100% asynchronous online",
+      ],
+    },
+    {
       school: "Weber State University",
       degree: "B.S. in Computer Science \u2014 December 2025",
       bullets: [
-        "GPA: 3.56 overall (3.87 in CS coursework) | Applied to Georgia Tech OMSCS",
+        "GPA: 3.56 overall (3.87 in CS coursework)",
         "Key courses: Data Structures & Algorithms (A), Server-Side Web Architecture \u2014 Django/Python (A), Software Engineering I & II (A, A), Database Design & SQL (A), Advanced Database Programming (A), Computer Architecture (A), Formal Languages & Algorithms, Operating Systems",
       ],
     },

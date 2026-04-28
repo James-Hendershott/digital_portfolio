@@ -1,0 +1,63 @@
+---
+slug: labelgen-pro
+title: LabelGen Pro
+date: 2026-04-25
+summary: Bambu-style filament label generator where every layout coordinate is a slider, swatch, or drag handle. Vue 3 + TypeScript rewrite of an open-source tool, with a flat-coordinate architecture I argue is easier to reason about.
+tags: ["Vue", "TypeScript", "Vite", "Docker", "Homelab", "3D Printing"]
+access: "mailto:james_hendershott@outlook.com?subject=LabelGen%20Pro%20Code%20Access%20Request"
+thumbnail: "/images/projects/labelgen-pro.png"
+---
+
+{/* TODO: capture screenshot at public/images/projects/labelgen-pro.png — 1280x720, dark mode preferred */}
+
+## Overview
+
+LabelGen Pro is a browser tool for designing the cards that ride along on a Bambu Lab AMS or any filament shelf. Every coordinate on the label — text X/Y, font size, swatch radius, brand-strip width, line spacing — is a slider, a colour picker, or a drag handle. You move things until they look right. The state lives in the URL.
+
+It's a clean-room rewrite of [SoCuul/Bambu-LabelGen](https://github.com/SoCuul/Bambu-LabelGen) with a different architecture. The original works; I wanted something I could extend without fighting nested SVG transform matrices.
+
+**Status:** v0.1.13 as of 2026-04-25. Build is clean. Deployment to `labelgen.shottsserver.com` is paused mid-SSH — I'm finishing the Unraid + Nginx Proxy Manager bring-up.
+
+## What's Honest Here
+
+This is a rewrite of someone else's open-source idea. I'm not claiming the *concept* is mine — Bambu's filament cards have existed forever, and SoCuul wrote the first browser version. What I claim is the **architectural reframing**, which is the part I'd defend in a code review:
+
+- **Flat viewBox coordinates instead of nested transform matrices.** The original places elements through stacked SVG `<g transform="translate(...) scale(...)">` wrappers. I work in a single absolute coordinate space with explicit X/Y per element. Every slider maps directly to one number on screen — no walking up a transform tree to figure out where something actually rendered.
+- **Base64url-encoded JSON diffs for the share URL** instead of full-state `jsurl` encoding. The URL only carries fields that differ from the default template. Default-only configs produce an empty diff — the URL stays clean. Round-tripping through the diff also catches when a "customisation" is actually equivalent to the template, which is the bug class that motivated this in the first place.
+- **Native browser SVG → PNG via a temp `<canvas>`** instead of `canvg`. One fewer dependency, one fewer rendering quirk to track across browsers, faster export.
+- **Config sliced into four orthogonal namespaces:** `content` (the words), `style` (typography and colour), `layout` (positions and sizes), `visibility` (show/hide). Templates compose by merging slices. UI panels map 1:1 to slices. New label format = new template, no new code path.
+
+AI was useful here on Vue 3 idioms — Composition API patterns, `<script setup>` typing, reactivity gotchas. The architectural decisions above are mine and I can walk through any of them on a whiteboard.
+
+## Tech Stack
+
+| Layer | Tech |
+|-------|------|
+| Frontend | Vue 3, TypeScript, Vite |
+| Rendering | Native SVG, browser canvas for PNG export |
+| State | Reactive store with default-template diffing |
+| URL encoding | Base64url-encoded JSON diff |
+| Container | Multi-stage Docker build (Node build → static `nginx:alpine`) |
+| Deployment | Unraid + Nginx Proxy Manager (in progress) |
+
+## What I Did vs. What AI Did
+
+**My work:**
+- Decided to rewrite rather than fork — the original architecture was the thing I wanted to change
+- Designed the four-slice config namespace (content / style / layout / visibility) and the template-merge model
+- Chose flat viewBox coordinates over nested transforms, and wrote the migration from the original's coordinate system
+- Designed the diff-based URL encoding (template + delta, not full state)
+- Replaced `canvg` with a native SVG → canvas → PNG pipeline
+- Wrote the multi-stage Dockerfile and the Unraid + NPM deploy plan
+
+**AI-assisted:**
+- Vue 3 Composition API idioms — `defineProps` typing, `computed` vs `watchEffect` choices, ref unwrapping in templates
+- Vite config and asset handling
+- TypeScript ergonomics inside Vue SFCs
+
+## What I Learned
+
+- Vue 3's reactivity model is a real upgrade over Options API once the typing clicks
+- Diff-based URL state is genuinely different from full-state — it forces you to be explicit about what your template *means*
+- A flat coordinate space is the kind of architectural decision that pays back every time you add a feature, and it's invisible to users
+- Multi-stage Docker for a static SPA is 80% the same Dockerfile every time, but writing it once on your own beats copying it ten times
