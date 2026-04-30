@@ -158,6 +158,15 @@
         <a class="toc-l2" href="#bugs-we-hit">Bugs we hit</a>
         <a class="toc-l2" href="#verifying">Verifying</a>
         <a class="toc-l2" href="#chapter-takeaways-2">Chapter takeaways</a>
+        <a class="toc-l2" href="#the-ask-3">The ask</a>
+        <a class="toc-l2" href="#the-plan-2">The plan</a>
+        <a class="toc-l2" href="#step-1-the-audit-itself">Step 1: The audit itself</a>
+        <a class="toc-l2" href="#step-2-the-vault-index-update">Step 2: The vault index update</a>
+        <a class="toc-l2" href="#step-3-the-honest-non-update">Step 3: The honest non-update</a>
+        <a class="toc-l2" href="#what-didnt-happen-this-session">What didn&amp;#39;t happen this session</a>
+        <a class="toc-l2" href="#the-parallel-work">The parallel work</a>
+        <a class="toc-l2" href="#verifying-2">Verifying</a>
+        <a class="toc-l2" href="#chapter-takeaways-3">Chapter takeaways</a>
     </nav>
   </aside>
   <main class="content" id="content">
@@ -190,6 +199,7 @@ it&#39;s defined in the glossary.</li>
 <ul>
 <li><a href="#chapter-0--before-any-code-understanding-the-ask">Chapter 0 — Before any code: understanding the ask</a></li>
 <li><a href="#chapter-1--april-2026-omscs-admission-and-the-four-project-refresh">Chapter 1 — April 2026: OMSCS admission and the four-project refresh</a></li>
+<li><a href="#chapter-2--april-2026-site-audit-plus-a-parallel-skill-refactor">Chapter 2 — April 2026: site audit, plus a parallel skill refactor</a></li>
 </ul>
 <hr>
 <h1 id="chapter-0-before-any-code-understanding-the-ask">Chapter 0 — Before any code: understanding the ask</h1>
@@ -482,6 +492,114 @@ message. The cost of guessing wrong is a half-day of cleanup.</li>
 </li>
 </ul>
 <hr>
+<h1 id="chapter-2-april-2026-site-audit-plus-a-parallel-skill-refactor">Chapter 2 — April 2026: site audit, plus a parallel skill refactor</h1>
+<blockquote>
+<p>📌 <strong>What this chapter teaches.</strong> How to keep an honest engineering
+log when a session does <em>no</em> code work on the project but produces
+durable artifacts (an audit, a backlog) that will shape future
+sessions. Concepts introduced: <strong><em>audit-as-punch-list</em></strong>,
+<strong><em>severity-indexed findings</em></strong>, <strong><em>session-honesty principle</em></strong> —
+if you don&#39;t log the sessions where nothing shipped to main, the
+teaching log slowly turns into a highlight reel and stops teaching.</p>
+</blockquote>
+<h2 id="the-ask-3">The ask</h2>
+<p>Two distinct asks in one session, on different surfaces:</p>
+<ol>
+<li><em>&quot;Audit the site and see where I could make improvements.&quot;</em> Then,
+after the audit landed: <em>&quot;save it into the vault.&quot;</em> Then <em>&quot;add an
+Audits section to the project index with a link to this file.&quot;</em></li>
+<li><em>&quot;While we&#39;re here, can you also help me with the home-search
+skill files? I think one of the other Claude agents may have
+written something into one of your skills.&quot;</em></li>
+</ol>
+<p>The first is portfolio work. The second is unrelated home-search
+infrastructure work. Both happened in the same conversation. This
+chapter covers the portfolio side honestly — which means
+acknowledging that the bulk of the session&#39;s effort went elsewhere.</p>
+<h2 id="the-plan-2">The plan</h2>
+<p>For the portfolio side specifically:</p>
+<ol>
+<li>Walk every page and component, every config file, the global CSS,
+the data layer.</li>
+<li>Produce findings in three buckets — visual design, UX, code
+structure — with one specific recommendation per finding.</li>
+<li>Save the audit as a dated, ID-indexed markdown file in the vault
+so future commits can reference findings by ID
+(e.g. <em>&quot;fix(ux): home hero mentions OMSCS (audit U9)&quot;</em>).</li>
+<li>Update the vault project index to point at the new audit.</li>
+<li><strong>Don&#39;t ship any audit fixes in this session.</strong> That was the
+user&#39;s explicit choice — they wanted the audit written first, then
+to triage in a separate sitting.</li>
+</ol>
+<h2 id="step-1-the-audit-itself">Step 1: The audit itself</h2>
+<p>Output: <code>D:/James_Journey/projects/active/digital-portfolio/audit-2026-04-29.md</code>
+(35 KB, 1117 lines, 31 findings).</p>
+<p>Findings are indexed by ID — <code>V1</code>–<code>V8</code> for visual, <code>U1</code>–<code>U10</code> for
+UX, <code>C1</code>–<code>C13</code> for code structure, <code>A1</code>–<code>A7</code> for accessibility /
+performance / SEO. Severity scale 🟥/🟨/🟩 (high / medium / low).</p>
+<p>The format that worked: each finding is <em>self-contained</em> — file path,
+current code snippet, suggested change with code example. So a future
+implementer can act on <code>U9</code> without re-reading the audit&#39;s preamble.</p>
+<h2 id="step-2-the-vault-index-update">Step 2: The vault index update</h2>
+<p><code>D:/James_Journey/projects/active/digital-portfolio/digital-portfolio.md</code>
+got a new &quot;Audits&quot; section between Recent Updates and TODO. The
+section is a single-row table:</p>
+<pre><code class="language-markdown">| Date       | Audit                              | Against commit | Findings                          | Status |
+|------------|------------------------------------|----------------|-----------------------------------|--------|
+| 2026-04-29 | [[audit-2026-04-29|Site Audit ...]] | `8ee1966`      | 31 (4 high · 12 medium · 15 low) | Open   |
+</code></pre>
+<p>Plus a &quot;Top items from the latest audit&quot; sub-block listing the four
+high-severity findings. The intent: anyone opening the project index
+sees both the <em>current state</em> (Recent Updates) and the <em>open
+backlog</em> (Audits → Top items) at a glance.</p>
+<h2 id="step-3-the-honest-non-update">Step 3: The honest non-update</h2>
+<p>The user also asked to refresh two stale lines in the project index:</p>
+<ul>
+<li>&quot;Recent Updates&quot; had a <code>(PENDING)</code> entry from before this session&#39;s
+commits actually shipped. Updated to a 2026-04-27 entry citing the
+commit range.</li>
+<li>The file&#39;s <code>*Last Updated*</code> footer was 2026-02-28. Updated to
+2026-04-29.</li>
+</ul>
+<p>These are tiny edits but they&#39;re the kind of thing that <em>visibly</em>
+rots a project index when neglected. Worth doing.</p>
+<h2 id="what-didnt-happen-this-session">What didn&#39;t happen this session</h2>
+<p>Nothing portfolio-side actually shipped to <code>main</code>. No audit findings
+were addressed. The push from Chapter 1 (<code>8ee1966</code>) is still the
+HEAD. <strong>Chapter 2 is a planning chapter.</strong> The honest framing
+matters: a teaching log that only chronicles ship-days drifts into
+revisionism. Documenting the day where you <em>thought</em> and <em>queued</em>
+without coding is part of the engineering practice.</p>
+<h2 id="the-parallel-work">The parallel work</h2>
+<p>For completeness — the bulk of the session&#39;s wall-clock time went
+into refactoring James&#39;s home-search skill files (a different
+project entirely, in <code>C:/Users/James/.claude/skills/</code>). That work
+introduced a <code>_buyer-profile.md</code> single-source-of-truth pattern,
+revised the <code>all-in-monthly</code> skill with a &quot;no guessing, worst-case
+bias&quot; data-sourcing policy, and ran a full property intake for 159
+Volley Rd, Ellenboro NC. None of that touched the portfolio
+codebase, but mentioning it here keeps the timeline truthful — when
+future-James reads this chapter, the session was <em>not</em> a quiet day.</p>
+<h2 id="verifying-2">Verifying</h2>
+<p>Nothing to verify on the portfolio side — no code changed.</p>
+<h2 id="chapter-takeaways-3">Chapter takeaways</h2>
+<ul>
+<li><strong>An audit is a backlog, not a deliverable.</strong> The audit&#39;s value
+isn&#39;t in being written; it&#39;s in being <em>referenced</em> by future
+commits. The ID system (<code>U9</code>, <code>C2</code>) makes that reference cheap.</li>
+<li><strong>Save the audit somewhere durable, not in chat.</strong> The vault is
+the right home — versioned, syncs to Unraid via Syncthing, gets
+picked up by future sessions reading project state.</li>
+<li><strong>Log the planning sessions too.</strong> A teaching log that only
+documents code-shipping days drifts into revisionism. The session
+where nothing shipped but something was <em>decided</em> is exactly the
+kind of session worth remembering.</li>
+<li><strong>Cross-project sessions are fine; just be honest about them.</strong>
+When one conversation spans two unrelated projects, each project&#39;s
+log records its own slice. Don&#39;t mix them, but don&#39;t pretend the
+other half of the session didn&#39;t exist either.</li>
+</ul>
+<hr>
 <h1 id="how-future-chapters-will-get-added">How future chapters will get added</h1>
 <p>Going forward, every commit that adds a feature, fixes a bug, or makes
 a notable change gets a new chapter appended here. The chapter format:</p>
@@ -545,12 +663,24 @@ a notable change gets a new chapter appended here. The chapter format:</p>
 <td><strong>Slug</strong></td>
 <td>The URL-safe identifier for a page (e.g. <code>labelgen-pro</code>). Derived from the MDX filename. Two files with the same slug collide.</td>
 </tr>
+<tr>
+<td><strong>Audit-as-punch-list</strong></td>
+<td>An audit document treated not as a one-time deliverable but as a referenceable backlog. Findings get stable IDs (e.g. <code>U9</code>, <code>C2</code>) so future commit messages can cite the audit, turning fixes into a checklist that closes over time.</td>
+</tr>
+<tr>
+<td><strong>Severity-indexed findings</strong></td>
+<td>Audit findings tagged with a severity (🟥 high / 🟨 medium / 🟩 low) and grouped at the end into an index. Lets a reader skim the top tier without reading the full document.</td>
+</tr>
+<tr>
+<td><strong>Session-honesty principle</strong></td>
+<td>Log every working session in the build log, including the ones where nothing shipped to main. Skipping the planning / decision-making / pivoting sessions turns the log into a highlight reel and erodes its teaching value.</td>
+</tr>
 </tbody></table>
 <hr>
 <p><em>This is a living document. Each release adds a chapter.</em></p>
 
     <div class="foot">
-      <code>BUILD_LOG.md</code> wiki · 15 sections. Regenerate with <code>npm run build:wiki</code>.
+      <code>BUILD_LOG.md</code> wiki · 24 sections. Regenerate with <code>npm run build:wiki</code>.
     </div>
   </main>
 </div>

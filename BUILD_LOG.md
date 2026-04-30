@@ -33,6 +33,7 @@ bottom — each chapter assumes you've read the ones before it.
 
 - [Chapter 0 — Before any code: understanding the ask](#chapter-0--before-any-code-understanding-the-ask)
 - [Chapter 1 — April 2026: OMSCS admission and the four-project refresh](#chapter-1--april-2026-omscs-admission-and-the-four-project-refresh)
+- [Chapter 2 — April 2026: site audit, plus a parallel skill refactor](#chapter-2--april-2026-site-audit-plus-a-parallel-skill-refactor)
 
 ---
 
@@ -365,6 +366,135 @@ rewrite, not new) = 18 project pages. Math matches.
 
 ---
 
+# Chapter 2 — April 2026: site audit, plus a parallel skill refactor
+
+> 📌 **What this chapter teaches.** How to keep an honest engineering
+> log when a session does *no* code work on the project but produces
+> durable artifacts (an audit, a backlog) that will shape future
+> sessions. Concepts introduced: **_audit-as-punch-list_**,
+> **_severity-indexed findings_**, **_session-honesty principle_** —
+> if you don't log the sessions where nothing shipped to main, the
+> teaching log slowly turns into a highlight reel and stops teaching.
+
+## The ask
+
+Two distinct asks in one session, on different surfaces:
+
+1. *"Audit the site and see where I could make improvements."* Then,
+   after the audit landed: *"save it into the vault."* Then *"add an
+   Audits section to the project index with a link to this file."*
+2. *"While we're here, can you also help me with the home-search
+   skill files? I think one of the other Claude agents may have
+   written something into one of your skills."*
+
+The first is portfolio work. The second is unrelated home-search
+infrastructure work. Both happened in the same conversation. This
+chapter covers the portfolio side honestly — which means
+acknowledging that the bulk of the session's effort went elsewhere.
+
+## The plan
+
+For the portfolio side specifically:
+
+1. Walk every page and component, every config file, the global CSS,
+   the data layer.
+2. Produce findings in three buckets — visual design, UX, code
+   structure — with one specific recommendation per finding.
+3. Save the audit as a dated, ID-indexed markdown file in the vault
+   so future commits can reference findings by ID
+   (e.g. *"fix(ux): home hero mentions OMSCS (audit U9)"*).
+4. Update the vault project index to point at the new audit.
+5. **Don't ship any audit fixes in this session.** That was the
+   user's explicit choice — they wanted the audit written first, then
+   to triage in a separate sitting.
+
+## Step 1: The audit itself
+
+Output: `D:/James_Journey/projects/active/digital-portfolio/audit-2026-04-29.md`
+(35 KB, 1117 lines, 31 findings).
+
+Findings are indexed by ID — `V1`–`V8` for visual, `U1`–`U10` for
+UX, `C1`–`C13` for code structure, `A1`–`A7` for accessibility /
+performance / SEO. Severity scale 🟥/🟨/🟩 (high / medium / low).
+
+The format that worked: each finding is *self-contained* — file path,
+current code snippet, suggested change with code example. So a future
+implementer can act on `U9` without re-reading the audit's preamble.
+
+## Step 2: The vault index update
+
+`D:/James_Journey/projects/active/digital-portfolio/digital-portfolio.md`
+got a new "Audits" section between Recent Updates and TODO. The
+section is a single-row table:
+
+```markdown
+| Date       | Audit                              | Against commit | Findings                          | Status |
+|------------|------------------------------------|----------------|-----------------------------------|--------|
+| 2026-04-29 | [[audit-2026-04-29|Site Audit ...]] | `8ee1966`      | 31 (4 high · 12 medium · 15 low) | Open   |
+```
+
+Plus a "Top items from the latest audit" sub-block listing the four
+high-severity findings. The intent: anyone opening the project index
+sees both the *current state* (Recent Updates) and the *open
+backlog* (Audits → Top items) at a glance.
+
+## Step 3: The honest non-update
+
+The user also asked to refresh two stale lines in the project index:
+
+- "Recent Updates" had a `(PENDING)` entry from before this session's
+  commits actually shipped. Updated to a 2026-04-27 entry citing the
+  commit range.
+- The file's `*Last Updated*` footer was 2026-02-28. Updated to
+  2026-04-29.
+
+These are tiny edits but they're the kind of thing that *visibly*
+rots a project index when neglected. Worth doing.
+
+## What didn't happen this session
+
+Nothing portfolio-side actually shipped to `main`. No audit findings
+were addressed. The push from Chapter 1 (`8ee1966`) is still the
+HEAD. **Chapter 2 is a planning chapter.** The honest framing
+matters: a teaching log that only chronicles ship-days drifts into
+revisionism. Documenting the day where you *thought* and *queued*
+without coding is part of the engineering practice.
+
+## The parallel work
+
+For completeness — the bulk of the session's wall-clock time went
+into refactoring James's home-search skill files (a different
+project entirely, in `C:/Users/James/.claude/skills/`). That work
+introduced a `_buyer-profile.md` single-source-of-truth pattern,
+revised the `all-in-monthly` skill with a "no guessing, worst-case
+bias" data-sourcing policy, and ran a full property intake for 159
+Volley Rd, Ellenboro NC. None of that touched the portfolio
+codebase, but mentioning it here keeps the timeline truthful — when
+future-James reads this chapter, the session was *not* a quiet day.
+
+## Verifying
+
+Nothing to verify on the portfolio side — no code changed.
+
+## Chapter takeaways
+
+- **An audit is a backlog, not a deliverable.** The audit's value
+  isn't in being written; it's in being *referenced* by future
+  commits. The ID system (`U9`, `C2`) makes that reference cheap.
+- **Save the audit somewhere durable, not in chat.** The vault is
+  the right home — versioned, syncs to Unraid via Syncthing, gets
+  picked up by future sessions reading project state.
+- **Log the planning sessions too.** A teaching log that only
+  documents code-shipping days drifts into revisionism. The session
+  where nothing shipped but something was *decided* is exactly the
+  kind of session worth remembering.
+- **Cross-project sessions are fine; just be honest about them.**
+  When one conversation spans two unrelated projects, each project's
+  log records its own slice. Don't mix them, but don't pretend the
+  other half of the session didn't exist either.
+
+---
+
 # How future chapters will get added
 
 Going forward, every commit that adds a feature, fixes a bug, or makes
@@ -405,6 +535,9 @@ npm run build:wiki
 | **MDX** | Markdown with JSX. Lets us mix component-style elements (e.g. `{/* comments */}`) into otherwise plain markdown content. |
 | **Frontmatter** | The YAML block at the top of a markdown / MDX file, between two `---` lines. Parsed by `gray-matter` here. |
 | **Slug** | The URL-safe identifier for a page (e.g. `labelgen-pro`). Derived from the MDX filename. Two files with the same slug collide. |
+| **Audit-as-punch-list** | An audit document treated not as a one-time deliverable but as a referenceable backlog. Findings get stable IDs (e.g. `U9`, `C2`) so future commit messages can cite the audit, turning fixes into a checklist that closes over time. |
+| **Severity-indexed findings** | Audit findings tagged with a severity (🟥 high / 🟨 medium / 🟩 low) and grouped at the end into an index. Lets a reader skim the top tier without reading the full document. |
+| **Session-honesty principle** | Log every working session in the build log, including the ones where nothing shipped to main. Skipping the planning / decision-making / pivoting sessions turns the log into a highlight reel and erodes its teaching value. |
 
 ---
 
